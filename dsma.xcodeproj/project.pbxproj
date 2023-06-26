@@ -598,7 +598,6 @@
 				TargetAttributes = {
 					8ADD77F71B1DBEFE008324DF = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = L7T39LKSK7;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
@@ -1014,17 +1013,19 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 23042900;
-				DEVELOPMENT_TEAM = L7T39LKSK7;
+				CURRENT_PROJECT_VERSION = 23061803;
+				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = /Users/linanfine/Documents/XCodeProjects/dsma;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = /Users/apple/SwiftProjects/dsma;
 				INFOPLIST_FILE = dsma/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.38;
+				MARKETING_VERSION = 0.40;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;
@@ -1043,17 +1044,19 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 23042900;
-				DEVELOPMENT_TEAM = L7T39LKSK7;
+				CURRENT_PROJECT_VERSION = 23061803;
+				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = /Users/linanfine/Documents/XCodeProjects/dsma;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = /Users/apple/SwiftProjects/dsma;
 				INFOPLIST_FILE = dsma/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.38;
+				MARKETING_VERSION = 0.40;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;

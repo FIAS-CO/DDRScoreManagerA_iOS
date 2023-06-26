@@ -26,7 +26,7 @@ class Admob: NSObject, GADBannerViewDelegate {
                 bannerView = GADBannerView(adSize:kGADAdSizeBanner)
                 bannerView.frame.origin = CGPoint(x: 0, y: 0)
                 bannerView.frame.size = CGSize(width: 325, height: 50)
-                bannerView.adUnitID = "ca-app-pub-3940256099942544~1458002511" // Enter Ad's ID here
+                bannerView.adUnitID = "ca-app-pub-8151928728657048~1065565151" // Enter Ad's ID here
                 bannerView.delegate = Instance
                 bannerView.rootViewController = viewController
                 
@@ -40,7 +40,7 @@ class Admob: NSObject, GADBannerViewDelegate {
             bannerView = GADBannerView(adSize:kGADAdSizeBanner)
             bannerView.frame.origin = CGPoint(x: 0, y: 0)
             bannerView.frame.size = CGSize(width: 325, height: 50)
-            bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111" // Enter Ad's ID here
+            bannerView.adUnitID = "ca-app-pub-8151928728657048/4727276862" // Enter Ad's ID here
             bannerView.delegate = Instance
             bannerView.rootViewController = viewController
             
