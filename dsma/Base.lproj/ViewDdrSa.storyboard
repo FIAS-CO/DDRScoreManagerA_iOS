@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nRd-1F-66L">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Ddr Sa-->
+        <scene sceneID="hIo-9J-Jd6">
+            <objects>
+                <viewController id="nRd-1F-66L" customClass="ViewDdrSa" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fUZ-Jq-DoX"/>
+                        <viewControllerLayoutGuide type="bottom" id="lGZ-Zt-ORu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bdq-Kj-E8f">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REW-zO-PW2">
+                                <rect key="frame" x="0.0" y="600" width="325" height="0.0"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="JtL-BZ-YLM"/>
+                                    <constraint firstAttribute="width" constant="325" id="Yew-Wt-7nV"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="JC3-ri-YX9">
+                                <rect key="frame" x="0.0" y="44" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qTv-zq-P3L"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="DDR SA" id="JvO-9H-QjG"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="315" translatesAutoresizingMaskIntoConstraints="NO" id="Mc4-6t-Adb">
+                                <rect key="frame" x="5" y="93" width="315" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="C2d-AS-vRp"/>
+                                </constraints>
+                                <string key="text">Press "Authenticate" button 
+      to authenticate DDR SA.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4z-KK-8jh">
+                                <rect key="frame" x="5" y="143" width="315" height="50"/>
+                                <color key="backgroundColor" red="0.094117647058823528" green="0.098039215686274508" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Vwj-Qs-gr2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Export">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonExportTouchUpInside:" destination="nRd-1F-66L" eventType="touchUpInside" id="eyf-Fm-Z7L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qI-of-CL7">
+                                <rect key="frame" x="5" y="198" width="155" height="50"/>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2ya-Vt-bAX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Authenticate">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonAuthenicateTouchUpInside:" destination="nRd-1F-66L" eventType="touchUpInside" id="twO-Tm-UMk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNz-OX-wwH">
+                                <rect key="frame" x="165" y="198" width="155" height="50"/>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="dJt-kn-9aj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Unauthenicate">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonUnauthenicateTouchUpInside:" destination="nRd-1F-66L" eventType="touchUpInside" id="KTM-Ny-Rw3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsH-3G-OYt">
+                                <rect key="frame" x="5" y="268" width="315" height="35"/>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="w6R-Vm-9yn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Open user page">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonOpenUserPageTouchUpInside:" destination="nRd-1F-66L" eventType="touchUpInside" id="sQq-qR-BFn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eha-Sz-j6c">
+                                <rect key="frame" x="5" y="308" width="315" height="35"/>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="52F-CL-scS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Open DDR SA web site">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonOpenDdrSaWebSiteTouchUpInside:" destination="nRd-1F-66L" eventType="touchUpInside" id="02T-7R-Qpj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LsH-3G-OYt" firstAttribute="leading" secondItem="bdq-Kj-E8f" secondAttribute="leading" constant="5" id="6PM-n1-hyP"/>
+                            <constraint firstItem="n4z-KK-8jh" firstAttribute="top" secondItem="Mc4-6t-Adb" secondAttribute="bottom" constant="5" id="6uv-FC-M0s"/>
+                            <constraint firstAttribute="trailing" secondItem="eha-Sz-j6c" secondAttribute="trailing" constant="5" id="9tL-Uz-ak3"/>
+                            <constraint firstAttribute="trailing" secondItem="n4z-KK-8jh" secondAttribute="trailing" constant="5" id="D6X-Mh-l0c"/>
+                            <constraint firstItem="LsH-3G-OYt" firstAttribute="top" secondItem="UNz-OX-wwH" secondAttribute="bottom" constant="20" id="Ddd-wk-i0V"/>
+                            <constraint firstAttribute="trailing" secondItem="JC3-ri-YX9" secondAttribute="trailing" id="Dzw-3C-5dC"/>
+                            <constraint firstAttribute="centerX" secondItem="REW-zO-PW2" secondAttribute="centerX" id="IzN-ZT-tu3"/>
+                            <constraint firstItem="eha-Sz-j6c" firstAttribute="leading" secondItem="bdq-Kj-E8f" secondAttribute="leading" constant="5" id="KF8-xL-eeX"/>
+                            <constraint firstItem="Mc4-6t-Adb" firstAttribute="top" secondItem="JC3-ri-YX9" secondAttribute="bottom" constant="5" id="NVV-Tq-FvN"/>
+                            <constraint firstItem="JC3-ri-YX9" firstAttribute="leading" secondItem="bdq-Kj-E8f" secondAttribute="leading" id="NWu-oy-nf1"/>
+                            <constraint firstItem="Mc4-6t-Adb" firstAttribute="leading" secondItem="bdq-Kj-E8f" secondAttribute="leading" constant="5" id="OYW-Dd-Udb"/>
+                            <constraint firstItem="9qI-of-CL7" firstAttribute="leading" secondItem="bdq-Kj-E8f" secondAttribute="leading" constant="5" id="W0c-gt-dQv"/>
+                            <constraint firstItem="9qI-of-CL7" firstAttribute="top" secondItem="n4z-KK-8jh" secondAttribute="bottom" constant="5" id="YRQ-6Y-pCC"/>
+                            <constraint firstItem="UNz-OX-wwH" firstAttribute="leading" secondItem="9qI-of-CL7" secondAttribute="trailing" constant="5" id="ZiU-Lu-bfR"/>
+                            <constraint firstItem="UNz-OX-wwH" firstAttribute="top" secondItem="n4z-KK-8jh" secondAttribute="bottom" constant="5" id="aRy-Ub-41h"/>
+                            <constraint firstItem="eha-Sz-j6c" firstAttribute="top" secondItem="LsH-3G-OYt" secondAttribute="bottom" constant="5" id="avd-vW-ZJu"/>
+                            <constraint firstItem="lGZ-Zt-ORu" firstAttribute="top" secondItem="REW-zO-PW2" secondAttribute="bottom" id="ewM-dt-kTI"/>
+                            <constraint firstAttribute="trailing" secondItem="Mc4-6t-Adb" secondAttribute="trailing" constant="5" id="ioe-8n-Q7x"/>
+                            <constraint firstItem="UNz-OX-wwH" firstAttribute="leading" secondItem="9qI-of-CL7" secondAttribute="trailing" constant="5" id="jgI-uB-Vz3"/>
+                            <constraint firstAttribute="trailing" secondItem="LsH-3G-OYt" secondAttribute="trailing" constant="5" id="rHv-CM-5XN"/>
+                            <constraint firstItem="n4z-KK-8jh" firstAttribute="leading" secondItem="bdq-Kj-E8f" secondAttribute="leading" constant="5" id="uvQ-eX-PHQ"/>
+                            <constraint firstItem="JC3-ri-YX9" firstAttribute="top" secondItem="fUZ-Jq-DoX" secondAttribute="bottom" id="v3w-lk-mlj"/>
+                            <constraint firstItem="9qI-of-CL7" firstAttribute="width" secondItem="UNz-OX-wwH" secondAttribute="width" id="wU8-vE-JI9"/>
+                            <constraint firstAttribute="trailing" secondItem="UNz-OX-wwH" secondAttribute="trailing" constant="5" id="wtT-VA-Vm4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vIK-hq-rY1"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="600"/>
+                    <connections>
+                        <outlet property="adHeight" destination="JtL-BZ-YLM" id="IiG-I3-xOO"/>
+                        <outlet property="adView" destination="REW-zO-PW2" id="sRf-Ui-xvb"/>
+                        <outlet property="bgView" destination="bdq-Kj-E8f" id="ETg-Ag-vNA"/>
+                        <outlet property="buttonAuthenticate" destination="9qI-of-CL7" id="sOy-RR-TtH"/>
+                        <outlet property="buttonExport" destination="n4z-KK-8jh" id="19V-P4-Tel"/>
+                        <outlet property="buttonOpenUserPage" destination="LsH-3G-OYt" id="Ux4-q5-jPO"/>
+                        <outlet property="buttonUnauthenticate" destination="UNz-OX-wwH" id="0QZ-Lf-e6K"/>
+                        <outlet property="labelAuthenicateId" destination="Mc4-6t-Adb" id="omC-5q-RFL"/>
+                        <outlet property="navigationBar" destination="JC3-ri-YX9" id="0RV-wF-lU4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vyd-pY-hFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2825.5" y="2740"/>
+        </scene>
+    </scenes>
+</document>

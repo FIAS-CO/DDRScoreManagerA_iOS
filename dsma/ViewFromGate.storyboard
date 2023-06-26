@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4Tf-IB-I1R">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View From Gate-->
+        <scene sceneID="4WA-J7-pY8">
+            <objects>
+                <viewController id="4Tf-IB-I1R" customClass="ViewFromGate" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aZG-x3-JhP"/>
+                        <viewControllerLayoutGuide type="bottom" id="au4-gi-pgW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ESx-Kt-Cny">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cVM-PA-F7w">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="250"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <sections/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbH-LE-R9c">
+                                <rect key="frame" x="0.0" y="250" width="325" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="325" id="a2J-vK-NDd"/>
+                                    <constraint firstAttribute="height" constant="50" id="jwy-tm-0Rc"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="dWV-5i-GNF">
+                                <rect key="frame" x="0.0" y="44" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="r5L-bT-JNx"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Score Loader" id="867-FU-3Jq"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cVM-PA-F7w" firstAttribute="top" secondItem="ESx-Kt-Cny" secondAttribute="top" id="9Bv-Lp-AAl"/>
+                            <constraint firstAttribute="trailing" secondItem="cVM-PA-F7w" secondAttribute="trailing" id="FZz-d4-tFd"/>
+                            <constraint firstItem="dWV-5i-GNF" firstAttribute="top" secondItem="aZG-x3-JhP" secondAttribute="bottom" id="Ip5-Am-KaW"/>
+                            <constraint firstItem="dWV-5i-GNF" firstAttribute="leading" secondItem="ESx-Kt-Cny" secondAttribute="leading" id="Xmg-HI-oFf"/>
+                            <constraint firstAttribute="trailing" secondItem="dWV-5i-GNF" secondAttribute="trailing" id="dwS-ee-k8L"/>
+                            <constraint firstItem="cVM-PA-F7w" firstAttribute="leading" secondItem="ESx-Kt-Cny" secondAttribute="leading" id="gdH-wo-kpv"/>
+                            <constraint firstItem="au4-gi-pgW" firstAttribute="top" secondItem="vbH-LE-R9c" secondAttribute="bottom" id="gkW-fd-TYc"/>
+                            <constraint firstItem="vbH-LE-R9c" firstAttribute="top" secondItem="cVM-PA-F7w" secondAttribute="bottom" id="tAT-qs-v1S"/>
+                            <constraint firstAttribute="centerX" secondItem="vbH-LE-R9c" secondAttribute="centerX" id="vJb-ze-bmN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jxm-7B-UTM"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="jwy-tm-0Rc" id="XGG-I2-l2u"/>
+                        <outlet property="adView" destination="vbH-LE-R9c" id="VeA-X0-1CQ"/>
+                        <outlet property="navigationBar" destination="dWV-5i-GNF" id="psw-LZ-dk0"/>
+                        <outlet property="tableView" destination="cVM-PA-F7w" id="fbC-a5-V8x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQj-7q-Zhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3347.5" y="2590"/>
+        </scene>
+    </scenes>
+</document>

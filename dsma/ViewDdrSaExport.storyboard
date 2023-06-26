@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qaR-zF-xTR">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Ddr Sa Export-->
+        <scene sceneID="MAf-Zy-OgH">
+            <objects>
+                <viewController id="qaR-zF-xTR" customClass="ViewDdrSaExport" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PTh-DA-Jj8"/>
+                        <viewControllerLayoutGuide type="bottom" id="JYp-K4-kOa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gte-OJ-LlB">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sze-9l-EAn">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ugz-GG-Gfr">
+                                <rect key="frame" x="0.0" y="300" width="325" height="0.0"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="lvQ-Wx-0CY"/>
+                                    <constraint firstAttribute="width" constant="325" id="u3v-cL-Ooo"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Dta-Xr-Ksl">
+                                <rect key="frame" x="0.0" y="44" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Bbk-aK-Bjd"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="DDR SA Export" id="EU1-Aj-oMA"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Dta-Xr-Ksl" secondAttribute="trailing" id="2dg-r3-UV0"/>
+                            <constraint firstAttribute="trailing" secondItem="sze-9l-EAn" secondAttribute="trailing" id="BbV-t3-Bcd"/>
+                            <constraint firstItem="Ugz-GG-Gfr" firstAttribute="top" secondItem="sze-9l-EAn" secondAttribute="bottom" id="HnF-Rj-YTC"/>
+                            <constraint firstAttribute="centerX" secondItem="Ugz-GG-Gfr" secondAttribute="centerX" id="Jrx-fy-fsC"/>
+                            <constraint firstItem="Dta-Xr-Ksl" firstAttribute="top" secondItem="PTh-DA-Jj8" secondAttribute="bottom" id="PpF-lh-ltv"/>
+                            <constraint firstItem="sze-9l-EAn" firstAttribute="leading" secondItem="gte-OJ-LlB" secondAttribute="leading" id="Vhk-Tb-Aey"/>
+                            <constraint firstItem="Dta-Xr-Ksl" firstAttribute="leading" secondItem="gte-OJ-LlB" secondAttribute="leading" id="WFw-oG-wS6"/>
+                            <constraint firstItem="sze-9l-EAn" firstAttribute="top" secondItem="gte-OJ-LlB" secondAttribute="top" id="lTS-Xo-TI7"/>
+                            <constraint firstItem="JYp-K4-kOa" firstAttribute="top" secondItem="Ugz-GG-Gfr" secondAttribute="bottom" id="xHJ-VC-rJr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="h1M-ZZ-vkj"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="lvQ-Wx-0CY" id="YYv-nN-yc6"/>
+                        <outlet property="adView" destination="Ugz-GG-Gfr" id="o72-ps-PEl"/>
+                        <outlet property="navigationBar" destination="Dta-Xr-Ksl" id="8LL-AM-kDC"/>
+                        <outlet property="tableView" destination="sze-9l-EAn" id="Bfy-Ep-b27"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SEw-5u-uYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3038.5" y="3419"/>
+        </scene>
+    </scenes>
+</document>

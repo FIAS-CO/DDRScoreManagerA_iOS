@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hQd-Yg-7lJ">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Score List-->
+        <scene sceneID="gbk-bq-dX1">
+            <objects>
+                <viewController id="hQd-Yg-7lJ" customClass="ViewScoreList" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nQQ-T6-zz2"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Nl-TG-oaz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ExP-tz-gKU">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="POL-cY-dEv" customClass="TouchDownTableView" customModule="dsma" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="216"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <color key="separatorColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="inT-Y7-13Q" appends="YES" id="Zjh-d7-b7m"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RO6-ia-3N5">
+                                <rect key="frame" x="0.0" y="216" width="325" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="sQY-Bc-9R9"/>
+                                    <constraint firstAttribute="width" constant="325" id="xD1-1U-c7d"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView opaque="NO" alpha="0.40000000596046448" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ReG-Zz-JqU">
+                                <rect key="frame" x="0.0" y="88" width="325" height="128"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="sMt-Se-EoJ">
+                                <rect key="frame" x="0.0" y="44" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="l9z-wP-d5Y"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="j4z-HP-tr3"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="POL-cY-dEv" firstAttribute="leading" secondItem="ExP-tz-gKU" secondAttribute="leading" id="5Rl-9Y-iec"/>
+                            <constraint firstItem="6Nl-TG-oaz" firstAttribute="top" secondItem="RO6-ia-3N5" secondAttribute="bottom" id="Ijd-jj-OgL"/>
+                            <constraint firstItem="sMt-Se-EoJ" firstAttribute="top" secondItem="nQQ-T6-zz2" secondAttribute="bottom" id="O3y-Jo-Gf1"/>
+                            <constraint firstItem="RO6-ia-3N5" firstAttribute="top" secondItem="ReG-Zz-JqU" secondAttribute="bottom" id="Oxe-wg-dDh"/>
+                            <constraint firstItem="POL-cY-dEv" firstAttribute="top" secondItem="ExP-tz-gKU" secondAttribute="top" id="Q0e-H9-Y8P"/>
+                            <constraint firstAttribute="trailing" secondItem="POL-cY-dEv" secondAttribute="trailing" id="XJo-VP-uyL"/>
+                            <constraint firstItem="sMt-Se-EoJ" firstAttribute="leading" secondItem="ExP-tz-gKU" secondAttribute="leading" id="Y6W-P6-pap"/>
+                            <constraint firstAttribute="trailing" secondItem="sMt-Se-EoJ" secondAttribute="trailing" id="ZDs-kZ-zrC"/>
+                            <constraint firstAttribute="trailing" secondItem="ReG-Zz-JqU" secondAttribute="trailing" id="acy-X0-vau"/>
+                            <constraint firstItem="ReG-Zz-JqU" firstAttribute="top" secondItem="sMt-Se-EoJ" secondAttribute="bottom" id="cLp-mm-wHS"/>
+                            <constraint firstItem="RO6-ia-3N5" firstAttribute="top" secondItem="POL-cY-dEv" secondAttribute="bottom" id="djW-ah-1V9"/>
+                            <constraint firstAttribute="centerX" secondItem="RO6-ia-3N5" secondAttribute="centerX" id="fJr-Q5-4iu"/>
+                            <constraint firstItem="ReG-Zz-JqU" firstAttribute="leading" secondItem="ExP-tz-gKU" secondAttribute="leading" id="ldj-Qm-rbV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uxm-lk-5vM"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="sQY-Bc-9R9" id="fQN-4S-GwK"/>
+                        <outlet property="adView" destination="RO6-ia-3N5" id="PBS-iH-3yj"/>
+                        <outlet property="indicator" destination="ReG-Zz-JqU" id="9ed-w5-Nu9"/>
+                        <outlet property="naviTitle" destination="j4z-HP-tr3" id="kOE-9e-unA"/>
+                        <outlet property="navigationBar" destination="sMt-Se-EoJ" id="fuC-b7-Gvt"/>
+                        <outlet property="tableView" destination="POL-cY-dEv" id="zy4-44-8Wc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZK0-jx-GVC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="inT-Y7-13Q">
+                    <connections>
+                        <action selector="tapGestureAction:" destination="hQd-Yg-7lJ" id="gpn-cY-vQi"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2313.5" y="1776"/>
+        </scene>
+    </scenes>
+</document>

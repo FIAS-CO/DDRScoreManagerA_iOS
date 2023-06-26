@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eJg-co-pmt">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View From Gate Recent-->
+        <scene sceneID="Vfw-z0-dtY">
+            <objects>
+                <viewController id="eJg-co-pmt" customClass="ViewFromGateRecent" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qMQ-Bs-FNr"/>
+                        <viewControllerLayoutGuide type="bottom" id="a7n-PS-HUy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gwC-qr-81G">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oW3-po-kKF">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="250"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRX-RS-irP">
+                                <rect key="frame" x="0.0" y="250" width="325" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hzm-aP-cgq"/>
+                                    <constraint firstAttribute="width" constant="325" id="mge-Ug-7MV"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="GKK-ov-WVw">
+                                <rect key="frame" x="0.0" y="44" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bYB-jV-peL"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Reload Recent" id="auz-e6-20L"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GKK-ov-WVw" secondAttribute="trailing" id="4Vk-8Q-y0Y"/>
+                            <constraint firstItem="oW3-po-kKF" firstAttribute="leading" secondItem="gwC-qr-81G" secondAttribute="leading" id="Hjh-7o-wls"/>
+                            <constraint firstItem="oW3-po-kKF" firstAttribute="top" secondItem="gwC-qr-81G" secondAttribute="top" id="M1J-ei-TOx"/>
+                            <constraint firstItem="GKK-ov-WVw" firstAttribute="leading" secondItem="gwC-qr-81G" secondAttribute="leading" id="NOX-fQ-IC0"/>
+                            <constraint firstItem="HRX-RS-irP" firstAttribute="top" secondItem="oW3-po-kKF" secondAttribute="bottom" id="bLS-EE-O1C"/>
+                            <constraint firstItem="a7n-PS-HUy" firstAttribute="top" secondItem="HRX-RS-irP" secondAttribute="bottom" id="uSJ-0i-shk"/>
+                            <constraint firstAttribute="centerX" secondItem="HRX-RS-irP" secondAttribute="centerX" id="uVW-g2-rna"/>
+                            <constraint firstItem="GKK-ov-WVw" firstAttribute="top" secondItem="qMQ-Bs-FNr" secondAttribute="bottom" id="uet-m1-Kvf"/>
+                            <constraint firstAttribute="trailing" secondItem="oW3-po-kKF" secondAttribute="trailing" id="xcy-MY-ERQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Nd0-bk-UrC"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="hzm-aP-cgq" id="KhM-BN-Bz5"/>
+                        <outlet property="adView" destination="HRX-RS-irP" id="fJC-6q-qjj"/>
+                        <outlet property="navigationBar" destination="GKK-ov-WVw" id="2YG-ju-KzS"/>
+                        <outlet property="tableView" destination="oW3-po-kKF" id="dUe-TZ-dJL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nhM-DF-JFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3869.5" y="2590"/>
+        </scene>
+    </scenes>
+</document>

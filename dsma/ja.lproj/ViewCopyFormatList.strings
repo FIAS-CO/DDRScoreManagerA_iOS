@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "* Legends.\n\n%t% - Music Title\n%p:b:B:D:E:C% - Pattern Type\n%y:SP:DP% - Play Style\n%d% - Difficulty\n%s% - Score\n%l% - Dance Level\n%f:MFC:PFC:FC:GFC:Life4:NoFC% - FullCombo Type\n%c% - Max Combo\n%e% - Clear Count\n%a% - Play Count\n\n* Following options are available for Score, Difficulty, Max Combo, Clear Count, Play Count.\n\n“%s0%” -> “0987650”\n“%s %” -> “ 987650”\n“%s0,%” -> “0,987,650”"; ObjectID = "3Ww-lo-MTV"; */
+"3Ww-lo-MTV.text" = "* 凡例\n\n%t% - 曲名\n%p:b:B:D:E:C% - 譜面種別\n%y:SP:DP% - SP/DP\n%d% - 難易度\n%s% - スコア\n%l% - ダンスレベル\n%f:MFC:PFC:FC:GFC:Life4:NoFC% - フルコン種別\n%c% - 最大コンボ数\n%e% - クリア回数\n%a% - プレイ回数\n\n* スコア, 難易度, 最大コンボ数, クリア回数, プレイ回数 では以下のオプションが有効です.\n\n“%s0%” -> “0987650”\n“%s %” -> “ 987650”\n“%s0,%” -> “0,987,650”";
+
+/* Class = "UINavigationItem"; title = "Copy Formats"; ObjectID = "q1Y-tI-vmd"; */
+"q1Y-tI-vmd.title" = "コピーフォーマットの編集";

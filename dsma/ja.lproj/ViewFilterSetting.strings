@@ -1,0 +1,507 @@
+
+/* Class = "UILabel"; text = "0"; ObjectID = "0aV-xD-nDe"; */
+"0aV-xD-nDe.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "1w2-oZ-30F"; */
+"1w2-oZ-30F.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "2BW-Z8-Tod"; */
+"2BW-Z8-Tod.text" = "0";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "2Lb-I1-6dJ"; */
+"2Lb-I1-6dJ.text" = "〜";
+
+/* Class = "UILabel"; text = "13"; ObjectID = "2Vd-rp-7TD"; */
+"2Vd-rp-7TD.text" = "13";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "33v-3O-bYB"; */
+"33v-3O-bYB.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "7"; ObjectID = "3Q1-9J-UQ8"; */
+"3Q1-9J-UQ8.text" = "7";
+
+/* Class = "UILabel"; text = "11"; ObjectID = "51K-eN-sRh"; */
+"51K-eN-sRh.text" = "11";
+
+/* Class = "UILabel"; text = "A"; ObjectID = "5QT-yP-NWZ"; */
+"5QT-yP-NWZ.text" = "A";
+
+/* Class = "UILabel"; text = "NoPlay"; ObjectID = "5ic-Tc-28W"; */
+"5ic-Tc-28W.text" = "NoPlay";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "5sg-tV-BCU"; */
+"5sg-tV-BCU.text" = "〜";
+
+/* Class = "UILabel"; text = "2nd"; ObjectID = "5xs-NI-rCl"; */
+"5xs-NI-rCl.text" = "2nd";
+
+/* Class = "UILabel"; text = "∞"; ObjectID = "6uu-Su-YlK"; */
+"6uu-Su-YlK.text" = "∞";
+
+/* Class = "UILabel"; text = "GFC"; ObjectID = "7hZ-oX-XAx"; */
+"7hZ-oX-XAx.text" = "GFC";
+
+/* Class = "UILabel"; text = "∞"; ObjectID = "7zN-Rd-0ix"; */
+"7zN-Rd-0ix.text" = "∞";
+
+/* Class = "UILabel"; text = "18"; ObjectID = "8ng-iM-dri"; */
+"8ng-iM-dri.text" = "18";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "8qA-JS-3Pn"; */
+"8qA-JS-3Pn.text" = "-";
+
+/* Class = "UILabel"; text = "8"; ObjectID = "8tO-Nb-xoU"; */
+"8tO-Nb-xoU.text" = "8";
+
+/* Class = "UILabel"; text = "D+"; ObjectID = "8um-tV-8c6"; */
+"8um-tV-8c6.text" = "D+";
+
+/* Class = "UILabel"; text = "MAX"; ObjectID = "92t-9b-AUT"; */
+"92t-9b-AUT.text" = "MAX";
+
+/* Class = "UILabel"; text = "3rd"; ObjectID = "96q-Vv-bqg"; */
+"96q-Vv-bqg.text" = "3rd";
+
+/* Class = "UILabel"; text = "A+"; ObjectID = "9K4-Dt-4nF"; */
+"9K4-Dt-4nF.text" = "A+";
+
+/* Class = "UILabel"; text = "1,000,000"; ObjectID = "9Ks-D3-47y"; */
+"9Ks-D3-47y.text" = "1,000,000";
+
+/* Class = "UILabel"; text = "AAA"; ObjectID = "AoS-Qy-108"; */
+"AoS-Qy-108.text" = "AAA";
+
+/* Class = "UILabel"; text = "B-"; ObjectID = "BE7-G4-kn6"; */
+"BE7-G4-kn6.text" = "B-";
+
+/* Class = "UILabel"; text = "bSP"; ObjectID = "Bu3-ym-uLa"; */
+"Bu3-ym-uLa.text" = "bSP";
+
+/* Class = "UILabel"; text = "X"; ObjectID = "BuO-1z-19u"; */
+"BuO-1z-19u.text" = "X";
+
+/* Class = "UILabel"; text = "Shock Arrows"; ObjectID = "By2-rL-NU6"; */
+"By2-rL-NU6.text" = "ショックアロー";
+
+/* Class = "UIButton"; normalTitle = "Edit Filter Name"; ObjectID = "CGo-SD-fPB"; */
+"CGo-SD-fPB.normalTitle" = "名前を編集";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "CUU-P8-crl"; */
+"CUU-P8-crl.text" = "3";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "Ci6-FV-giz"; */
+"Ci6-FV-giz.text" = "20";
+
+/* Class = "UILabel"; text = "AA+"; ObjectID = "DFx-Be-qHl"; */
+"DFx-Be-qHl.text" = "AA+";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "DjB-FL-Opg"; */
+"DjB-FL-Opg.text" = "2";
+
+/* Class = "UILabel"; text = "Deleted Musics"; ObjectID = "Dro-1W-LBr"; */
+"Dro-1W-LBr.text" = "Deleted Musics";
+
+/* Class = "UILabel"; text = "X2"; ObjectID = "F2X-D9-FDj"; */
+"F2X-D9-FDj.text" = "X2";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "FLV-t2-Idv"; */
+"FLV-t2-Idv.text" = "4";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "FM2-q8-2IM"; */
+"FM2-q8-2IM.text" = "〜";
+
+/* Class = "UILabel"; text = "NoPlay"; ObjectID = "Fxs-jI-LZL"; */
+"Fxs-jI-LZL.text" = "NoPlay";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "GK5-q8-Sf7"; */
+"GK5-q8-Sf7.text" = "〜";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "GOJ-FN-sla"; */
+"GOJ-FN-sla.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "MAX2"; ObjectID = "GOg-5L-00Z"; */
+"GOg-5L-00Z.text" = "MAX2";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "GbB-4G-hCB"; */
+"GbB-4G-hCB.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Gc2-RF-HkR"; */
+"Gc2-RF-HkR.text" = "0";
+
+/* Class = "UILabel"; text = "CSP"; ObjectID = "Gr0-Vj-rPa"; */
+"Gr0-Vj-rPa.text" = "CSP";
+
+/* Class = "UILabel"; text = "Rival Max Combo Range"; ObjectID = "H9F-g8-hpz"; */
+"H9F-g8-hpz.text" = "ライバル最大コンボ数";
+
+/* Class = "UILabel"; text = "+"; ObjectID = "HQG-Ly-xSc"; */
+"HQG-Ly-xSc.text" = "+";
+
+/* Class = "UILabel"; text = "Score Range"; ObjectID = "HuG-CM-XyF"; */
+"HuG-CM-XyF.text" = "スコア";
+
+/* Class = "UILabel"; text = "PFC"; ObjectID = "IAv-m1-jyp"; */
+"IAv-m1-jyp.text" = "PFC";
+
+/* Class = "UILabel"; text = "+"; ObjectID = "Irs-UK-vCD"; */
+"Irs-UK-vCD.text" = "+";
+
+/* Class = "UILabel"; text = "NoFC"; ObjectID = "Ix8-Ss-HcN"; */
+"Ix8-Ss-HcN.text" = "NoFC";
+
+/* Class = "UILabel"; text = "BDP"; ObjectID = "J5F-vM-z1I"; */
+"J5F-vM-z1I.text" = "BDP";
+
+/* Class = "UILabel"; text = "E"; ObjectID = "JD2-6W-8oO"; */
+"JD2-6W-8oO.text" = "E";
+
+/* Class = "UILabel"; text = "B+"; ObjectID = "JUJ-D4-xrk"; */
+"JUJ-D4-xrk.text" = "B+";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "JZk-ew-Der"; */
+"JZk-ew-Der.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "E"; ObjectID = "Jdd-TL-FOp"; */
+"Jdd-TL-FOp.text" = "E";
+
+/* Class = "UILabel"; text = "CDP"; ObjectID = "JjH-dD-7dr"; */
+"JjH-dD-7dr.text" = "CDP";
+
+/* Class = "UILabel"; text = "Pattern Type"; ObjectID = "Jo7-Qr-1Z2"; */
+"Jo7-Qr-1Z2.text" = "譜面種別";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "KLk-aH-Ph8"; */
+"KLk-aH-Ph8.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "No FC"; ObjectID = "KVt-ef-Qyg"; */
+"KVt-ef-Qyg.text" = "No FC";
+
+/* Class = "UILabel"; text = "AA"; ObjectID = "Kj5-2U-6iv"; */
+"Kj5-2U-6iv.text" = "AA";
+
+/* Class = "UILabel"; text = "1st"; ObjectID = "KvI-RW-xdl"; */
+"KvI-RW-xdl.text" = "1st";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "LBu-Hf-dpZ"; */
+"LBu-Hf-dpZ.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "C-"; ObjectID = "MHF-9A-PWk"; */
+"MHF-9A-PWk.text" = "C-";
+
+/* Class = "UILabel"; text = "@"; ObjectID = "N1U-2W-aZ0"; */
+"N1U-2W-aZ0.text" = "@";
+
+/* Class = "UILabel"; text = "Rival Full Combo Type"; ObjectID = "NSl-VG-NEh"; */
+"NSl-VG-NEh.text" = "ライバルフルコン種別";
+
+/* Class = "UILabel"; text = "Score Difference"; ObjectID = "Nb1-w2-e0A"; */
+"Nb1-w2-e0A.text" = "ライバルとのスコア差";
+
+/* Class = "UILabel"; text = "∞"; ObjectID = "Njy-1H-fpU"; */
+"Njy-1H-fpU.text" = "∞";
+
+/* Class = "UILabel"; text = "C+"; ObjectID = "Nug-Mx-LPg"; */
+"Nug-Mx-LPg.text" = "C+";
+
+/* Class = "UILabel"; text = "5th"; ObjectID = "OOn-RH-orn"; */
+"OOn-RH-orn.text" = "5th";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "OQH-3d-pC6"; */
+"OQH-3d-pC6.text" = "5";
+
+/* Class = "UILabel"; text = "B+"; ObjectID = "P4d-nl-QbF"; */
+"P4d-nl-QbF.text" = "B+";
+
+/* Class = "UILabel"; text = "AA+"; ObjectID = "PIF-SW-Rgj"; */
+"PIF-SW-Rgj.text" = "AA+";
+
+/* Class = "UILabel"; text = "C"; ObjectID = "PW7-97-q4o"; */
+"PW7-97-q4o.text" = "C";
+
+/* Class = "UILabel"; text = "AA"; ObjectID = "QD2-75-rX2"; */
+"QD2-75-rX2.text" = "AA";
+
+/* Class = "UILabel"; text = "D"; ObjectID = "QRI-zb-A5J"; */
+"QRI-zb-A5J.text" = "D";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "QYp-ZI-Szo"; */
+"QYp-ZI-Szo.text" = "-";
+
+/* Class = "UILabel"; text = "D+"; ObjectID = "RQW-5J-NWj"; */
+"RQW-5J-NWj.text" = "D+";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "RRH-C1-MQt"; */
+"RRH-C1-MQt.text" = "0";
+
+/* Class = "UILabel"; text = "17"; ObjectID = "Rt2-Ui-xeP"; */
+"Rt2-Ui-xeP.text" = "17";
+
+/* Class = "UILabel"; text = "@"; ObjectID = "SRJ-Sl-7hp"; */
+"SRJ-Sl-7hp.text" = "@";
+
+/* Class = "UILabel"; text = "+"; ObjectID = "SYK-Zc-gdr"; */
+"SYK-Zc-gdr.text" = "+";
+
+/* Class = "UILabel"; text = "∞"; ObjectID = "Sc1-kk-GYM"; */
+"Sc1-kk-GYM.text" = "∞";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "TSJ-Fg-r8F"; */
+"TSJ-Fg-r8F.text" = "〜";
+
+/* Class = "UILabel"; text = "C-"; ObjectID = "TuZ-zW-9R8"; */
+"TuZ-zW-9R8.text" = "C-";
+
+/* Class = "UILabel"; text = "∞"; ObjectID = "UWu-JW-Z5U"; */
+"UWu-JW-Z5U.text" = "∞";
+
+/* Class = "UILabel"; text = "Play Count Range"; ObjectID = "Vnl-HB-Wlx"; */
+"Vnl-HB-Wlx.text" = "ライバルとのプレイ回数差";
+
+/* Class = "UILabel"; text = "AA-"; ObjectID = "W94-jh-v7u"; */
+"W94-jh-v7u.text" = "AA-";
+
+/* Class = "UILabel"; text = "Rival Dance Level"; ObjectID = "WAN-FZ-4sb"; */
+"WAN-FZ-4sb.text" = "ライバルダンスレベル";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "WJR-jT-D4O"; */
+"WJR-jT-D4O.text" = "0";
+
+/* Class = "UILabel"; text = "Max Combo Range"; ObjectID = "WJq-4f-D5O"; */
+"WJq-4f-D5O.text" = "最大コンボ数";
+
+/* Class = "UILabel"; text = "Clear Count Range"; ObjectID = "WKo-eX-XXl"; */
+"WKo-eX-XXl.text" = "クリア回数";
+
+/* Class = "UILabel"; text = "2014"; ObjectID = "Xpj-iD-4AY"; */
+"Xpj-iD-4AY.text" = "2014";
+
+/* Class = "UILabel"; text = "Life4"; ObjectID = "Xqm-q6-bww"; */
+"Xqm-q6-bww.text" = "Life4";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "YDq-vG-E8E"; */
+"YDq-vG-E8E.text" = "〜";
+
+/* Class = "UILabel"; text = "DSP"; ObjectID = "YKW-v5-YJG"; */
+"YKW-v5-YJG.text" = "DSP";
+
+/* Class = "UILabel"; text = "Max Combo Difference"; ObjectID = "YxZ-Um-gvE"; */
+"YxZ-Um-gvE.text" = "ライバルとの最大コンボ差";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "Zdd-jd-JbE"; */
+"Zdd-jd-JbE.text" = "〜";
+
+/* Class = "UILabel"; text = "PFC"; ObjectID = "a0Y-KF-q4A"; */
+"a0Y-KF-q4A.text" = "PFC";
+
+/* Class = "UILabel"; text = "1,000,000"; ObjectID = "a2U-ri-n9E"; */
+"a2U-ri-n9E.text" = "1,000,000";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "a6F-HE-5Zu"; */
+"a6F-HE-5Zu.text" = "-";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "aQ0-7Q-Aho"; */
+"aQ0-7Q-Aho.text" = "-";
+
+/* Class = "UILabel"; text = "EDP"; ObjectID = "and-aa-7Yt"; */
+"and-aa-7Yt.text" = "EDP";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "bM0-a6-BIn"; */
+"bM0-a6-BIn.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "bpr-FS-aBR"; */
+"bpr-FS-aBR.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "d8Y-2O-G25"; */
+"d8Y-2O-G25.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "FC"; ObjectID = "dJm-u8-YAg"; */
+"dJm-u8-YAg.text" = "FC";
+
+/* Class = "UILabel"; text = "Rival Score Range"; ObjectID = "dl9-4u-1Aj"; */
+"dl9-4u-1Aj.text" = "ライバルスコア";
+
+/* Class = "UILabel"; text = "EXTREME"; ObjectID = "e8V-B9-bOa"; */
+"e8V-B9-bOa.text" = "EXTREME";
+
+/* Class = "UILabel"; text = "AAA"; ObjectID = "eX0-4K-fyl"; */
+"eX0-4K-fyl.text" = "AAA";
+
+/* Class = "UILabel"; text = "Display Challenge pattern when"; ObjectID = "ebP-RI-s4j"; */
+"ebP-RI-s4j.text" = "Challenge 以外が存在しない場合は";
+
+/* Class = "UILabel"; text = "DDP"; ObjectID = "f3l-3r-45e"; */
+"f3l-3r-45e.text" = "DDP";
+
+/* Class = "UILabel"; text = "B-"; ObjectID = "fFP-9V-K78"; */
+"fFP-9V-K78.text" = "B-";
+
+/* Class = "UILabel"; text = "Shock Arrows"; ObjectID = "fiZ-0T-kBD"; */
+"fiZ-0T-kBD.text" = "ショックアロー";
+
+/* Class = "UILabel"; text = "X3"; ObjectID = "fqS-Op-x3N"; */
+"fqS-Op-x3N.text" = "X3";
+
+/* Class = "UILabel"; text = "6"; ObjectID = "gtU-EW-QuR"; */
+"gtU-EW-QuR.text" = "6";
+
+/* Class = "UILabel"; text = "19"; ObjectID = "hQC-wq-vUf"; */
+"hQC-wq-vUf.text" = "19";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "hQG-nX-r3H"; */
+"hQG-nX-r3H.text" = "〜";
+
+/* Class = "UILabel"; text = "A-"; ObjectID = "hfu-Me-7k0"; */
+"hfu-Me-7k0.text" = "A-";
+
+/* Class = "UILabel"; text = "15"; ObjectID = "i5X-eb-1nv"; */
+"i5X-eb-1nv.text" = "15";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "iE4-5X-Odj"; */
+"iE4-5X-Odj.text" = "1";
+
+/* Class = "UILabel"; text = "Draw"; ObjectID = "jPK-gf-sXE"; */
+"jPK-gf-sXE.text" = "Draw";
+
+/* Class = "UILabel"; text = "Others"; ObjectID = "jcI-Xm-eab"; */
+"jcI-Xm-eab.text" = "その他";
+
+/* Class = "UILabel"; text = "A+"; ObjectID = "jqS-oK-UHP"; */
+"jqS-oK-UHP.text" = "A+";
+
+/* Class = "UILabel"; text = "Lose"; ObjectID = "kIh-I2-Ak4"; */
+"kIh-I2-Ak4.text" = "Lose";
+
+/* Class = "UILabel"; text = "14"; ObjectID = "kYt-tj-2yQ"; */
+"kYt-tj-2yQ.text" = "14";
+
+/* Class = "UILabel"; text = "Super NOVA2"; ObjectID = "kag-B8-tKk"; */
+"kag-B8-tKk.text" = "Super NOVA2";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "lJ5-R7-rWS"; */
+"lJ5-R7-rWS.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "B"; ObjectID = "ltt-5V-A6I"; */
+"ltt-5V-A6I.text" = "B";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "mAX-wz-9MW"; */
+"mAX-wz-9MW.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "MFC"; ObjectID = "mUH-nq-er6"; */
+"mUH-nq-er6.text" = "MFC";
+
+/* Class = "UILabel"; text = "2013"; ObjectID = "mVW-K1-shr"; */
+"mVW-K1-shr.text" = "2013";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "mVj-DV-NJp"; */
+"mVj-DV-NJp.text" = "0";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "mkK-4a-E5z"; */
+"mkK-4a-E5z.text" = "〜";
+
+/* Class = "UILabel"; text = "Full Combo Type"; ObjectID = "mkV-mu-ZgX"; */
+"mkV-mu-ZgX.text" = "フルコン種別";
+
+/* Class = "UILabel"; text = "A"; ObjectID = "mst-A1-C2h"; */
+"mst-A1-C2h.text" = "A";
+
+/* Class = "UILabel"; text = "Win"; ObjectID = "n8l-TP-mmU"; */
+"n8l-TP-mmU.text" = "Win";
+
+/* Class = "UILabel"; text = "Display Expert pattern when"; ObjectID = "noF-a0-coP"; */
+"noF-a0-coP.text" = "Challenge が存在しない場合";
+
+/* Class = "UILabel"; text = "Series Title"; ObjectID = "npA-IR-FLr"; */
+"npA-IR-FLr.text" = "シリーズタイトル";
+
+/* Class = "UILabel"; text = "1,000,000"; ObjectID = "ns8-Ey-ITx"; */
+"ns8-Ey-ITx.text" = "1,000,000";
+
+/* Class = "UILabel"; text = "Life4"; ObjectID = "oTI-Nu-CIr"; */
+"oTI-Nu-CIr.text" = "Life4";
+
+/* Class = "UILabel"; text = "MFC"; ObjectID = "oWg-bE-n8m"; */
+"oWg-bE-n8m.text" = "MFC";
+
+/* Class = "UILabel"; text = "A-"; ObjectID = "opp-a3-6a5"; */
+"opp-a3-6a5.text" = "A-";
+
+/* Class = "UILabel"; text = "+"; ObjectID = "oqm-dC-CQP"; */
+"oqm-dC-CQP.text" = "+";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "p85-Jv-NUv"; */
+"p85-Jv-NUv.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "A"; ObjectID = "rC3-Yd-h3J"; */
+"rC3-Yd-h3J.text" = "A";
+
+/* Class = "UILabel"; text = "GFC"; ObjectID = "rd4-g9-gVU"; */
+"rd4-g9-gVU.text" = "GFC";
+
+/* Class = "UILabel"; text = "Win / Lose"; ObjectID = "suB-LA-Es3"; */
+"suB-LA-Es3.text" = "Win / Lose";
+
+/* Class = "UILabel"; text = "FC"; ObjectID = "tJq-TE-rvy"; */
+"tJq-TE-rvy.text" = "FC";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "thl-I8-hiw"; */
+"thl-I8-hiw.text" = "0";
+
+/* Class = "UILabel"; text = "4th"; ObjectID = "uAM-wH-W1X"; */
+"uAM-wH-W1X.text" = "4th";
+
+/* Class = "UILabel"; text = "C"; ObjectID = "uEf-dn-ngW"; */
+"uEf-dn-ngW.text" = "C";
+
+/* Class = "UILabel"; text = "1,000,000"; ObjectID = "udX-VL-Yvs"; */
+"udX-VL-Yvs.text" = "1,000,000";
+
+/* Class = "UILabel"; text = "16"; ObjectID = "uk5-bi-X5I"; */
+"uk5-bi-X5I.text" = "16";
+
+/* Class = "UILabel"; text = "Dance Level"; ObjectID = "v6m-7X-Mju"; */
+"v6m-7X-Mju.text" = "ダンスレベル";
+
+/* Class = "UILabel"; text = "〜"; ObjectID = "vF7-wY-FPW"; */
+"vF7-wY-FPW.text" = "〜";
+
+/* Class = "UILabel"; text = "AA-"; ObjectID = "vSe-vG-tXf"; */
+"vSe-vG-tXf.text" = "AA-";
+
+/* Class = "UILabel"; text = "C+"; ObjectID = "vjA-Zv-tfE"; */
+"vjA-Zv-tfE.text" = "C+";
+
+/* Class = "UILabel"; text = "∞"; ObjectID = "vpr-jX-F3o"; */
+"vpr-jX-F3o.text" = "∞";
+
+/* Class = "UILabel"; text = "B"; ObjectID = "vvd-bJ-NL5"; */
+"vvd-bJ-NL5.text" = "B";
+
+/* Class = "UILabel"; text = "9"; ObjectID = "wLu-em-5A9"; */
+"wLu-em-5A9.text" = "9";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "whG-CS-9z2"; */
+"whG-CS-9z2.text" = "12";
+
+/* Class = "UILabel"; text = "D"; ObjectID = "wna-4r-Q3f"; */
+"wna-4r-Q3f.text" = "D";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "x1Z-ah-JL2"; */
+"x1Z-ah-JL2.text" = "10";
+
+/* Class = "UILabel"; text = "BSP"; ObjectID = "x61-AA-3F7"; */
+"x61-AA-3F7.text" = "BSP";
+
+/* Class = "UILabel"; text = "Difficulty"; ObjectID = "x8t-Qp-deV"; */
+"x8t-Qp-deV.text" = "難易度";
+
+/* Class = "UILabel"; text = "Super NOVA"; ObjectID = "yWt-es-c9o"; */
+"yWt-es-c9o.text" = "Super NOVA";
+
+/* Class = "UILabel"; text = "only Challenge pattern."; ObjectID = "z1n-qV-5WD"; */
+"z1n-qV-5WD.text" = "Challenge を表示する";
+
+/* Class = "UILabel"; text = "ESP"; ObjectID = "zAu-tf-SjW"; */
+"zAu-tf-SjW.text" = "ESP";
+
+/* Class = "UILabel"; text = "no Challenge pattern."; ObjectID = "zUS-pK-Vn6"; */
+"zUS-pK-Vn6.text" = "Expert を表示する";

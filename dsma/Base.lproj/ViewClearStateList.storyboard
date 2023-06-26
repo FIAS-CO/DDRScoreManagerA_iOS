@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RPo-6s-muG">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Clear State List-->
+        <scene sceneID="anR-lK-Feg">
+            <objects>
+                <viewController id="RPo-6s-muG" customClass="ViewClearStateList" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nEA-bZ-IOT"/>
+                        <viewControllerLayoutGuide type="bottom" id="pZP-iX-VWi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dFE-Bh-2AM">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xnF-pO-3WY" customClass="TouchDownTableView" customModule="dsma" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="216"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <color key="separatorColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Qfu-aP-B6h" appends="YES" id="wjq-pB-hBU"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6B-t3-P1B">
+                                <rect key="frame" x="0.0" y="216" width="325" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="325" id="nbf-YQ-bfh"/>
+                                    <constraint firstAttribute="height" constant="50" id="wPK-XO-6nR"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="0sE-5a-CGB">
+                                <rect key="frame" x="0.0" y="20" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="HE8-sG-EMQ"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Clear States" id="eyI-T0-ePh"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="u6B-t3-P1B" secondAttribute="centerX" id="1VW-eM-lib"/>
+                            <constraint firstItem="u6B-t3-P1B" firstAttribute="top" secondItem="xnF-pO-3WY" secondAttribute="bottom" id="D7A-r4-kGW"/>
+                            <constraint firstAttribute="trailing" secondItem="0sE-5a-CGB" secondAttribute="trailing" id="PlI-0n-EK7"/>
+                            <constraint firstItem="0sE-5a-CGB" firstAttribute="leading" secondItem="dFE-Bh-2AM" secondAttribute="leading" id="VCi-hZ-2ss"/>
+                            <constraint firstItem="0sE-5a-CGB" firstAttribute="top" secondItem="dFE-Bh-2AM" secondAttribute="top" constant="20" id="Z4w-yq-IS2"/>
+                            <constraint firstAttribute="trailing" secondItem="xnF-pO-3WY" secondAttribute="trailing" id="bOW-hv-xrt"/>
+                            <constraint firstItem="xnF-pO-3WY" firstAttribute="top" secondItem="dFE-Bh-2AM" secondAttribute="top" id="sHC-R5-eTB"/>
+                            <constraint firstItem="xnF-pO-3WY" firstAttribute="leading" secondItem="dFE-Bh-2AM" secondAttribute="leading" id="ylg-4z-yZG"/>
+                            <constraint firstItem="pZP-iX-VWi" firstAttribute="top" secondItem="u6B-t3-P1B" secondAttribute="bottom" id="zuL-bO-0pO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0Qy-d7-crX"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="wPK-XO-6nR" id="hjN-Ar-KVg"/>
+                        <outlet property="adView" destination="u6B-t3-P1B" id="Ye5-LA-cVN"/>
+                        <outlet property="navigationBar" destination="0sE-5a-CGB" id="JG9-eV-cAa"/>
+                        <outlet property="tableView" destination="xnF-pO-3WY" id="bPk-Sl-xCa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Niq-hj-TI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Qfu-aP-B6h">
+                    <connections>
+                        <action selector="tapGestureAction:" destination="RPo-6s-muG" id="B53-qY-Wlq"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1792.5" y="3419"/>
+        </scene>
+    </scenes>
+</document>

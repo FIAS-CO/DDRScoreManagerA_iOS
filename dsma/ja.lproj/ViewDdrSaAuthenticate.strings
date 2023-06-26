@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "DDR Code:"; ObjectID = "7Eb-Wc-gHL"; */
+"7Eb-Wc-gHL.text" = "DDR Code:";
+
+/* Class = "UIButton"; normalTitle = "Authenticate"; ObjectID = "ntc-bx-FCf"; */
+"ntc-bx-FCf.normalTitle" = "認証";
+
+/* Class = "UINavigationItem"; title = "DDR SA Authenticate"; ObjectID = "qj1-6s-xp3"; */
+"qj1-6s-xp3.title" = "DDR SA 認証";
+
+/* Class = "UILabel"; text = "Password:"; ObjectID = "sYq-Nd-4uL"; */
+"sYq-Nd-4uL.text" = "Password:";

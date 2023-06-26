@@ -1,0 +1,53 @@
+/* Class = "UILabel"; text = "0"; ObjectID = "1Z2-Iu-XCP"; */
+"1Z2-Iu-XCP.text" = "0";
+
+/* Class = "UILabel"; text = "スコア"; ObjectID = "2m9-xd-b1q"; */
+"2m9-xd-b1q.text" = "스코어";
+
+/* Class = "UIButton"; normalTitle = "楽曲一覧の更新"; ObjectID = "8wm-wz-Hox"; */
+"8wm-wz-Hox.normalTitle" = "곡 리스트를 업데이트";
+
+/* Class = "UIButton"; normalTitle = "Manual Login"; ObjectID = "ADE-Mk-f9Z"; */
+"ADE-Mk-f9Z.normalTitle" = "수동 로그인";
+
+/* Class = "UILabel"; text = "「Life4クリア」を、取得した「未フルコン」で上書き"; ObjectID = "Czc-hV-yU2"; */
+"Czc-hV-yU2.text" = "'Life4 클리어'를, 받아온 결과인 '풀콤보 미달성'으로 덮어쓰기";
+
+/* Class = "UINavigationItem"; title = "共通設定"; ObjectID = "Fy3-wi-v1l"; */
+"Fy3-wi-v1l.title" = "공통 설정";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "NhU-8G-vMh"; */
+"NhU-8G-vMh.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "一覧から取得時にPFCと\n    判断するスコア:"; ObjectID = "ObK-Qh-DKL"; */
+"ObK-Qh-DKL.text" = "리스트에서 받아올 시PFC로\n    판단할 스코어:";
+
+/* Class = "UILabel"; text = "取得したスコアが低い場合も上書き"; ObjectID = "UMg-Do-RsO"; */
+"UMg-Do-RsO.text" = "받아온 스코어가 낮은 경우에도 덮어쓰기";
+
+/* Class = "UILabel"; text = "最大コンボ数"; ObjectID = "W7g-hc-942"; */
+"W7g-hc-942.text" = "최대 콤보수";
+
+/* Class = "UILabel"; text = "ダンスレベル"; ObjectID = "eN4-oT-rgE"; */
+"eN4-oT-rgE.text" = "댄스 레벨";
+
+/* Class = "UILabel"; text = "「Goodフルコンボ」を、取得した「フルコンボ」で上書き"; ObjectID = "ehn-jU-JVV"; */
+"ehn-jU-JVV.text" = "'Good 풀콤보'를, 받아온 결과인 '풀콤보'로 덮어쓰기";
+
+/* Class = "UILabel"; text = "プレイ回数"; ObjectID = "epw-a7-7C4"; */
+"epw-a7-7C4.text" = "플레이 횟수";
+
+/* Class = "UILabel"; text = "クリア回数"; ObjectID = "uGG-NE-OPY"; */
+"uGG-NE-OPY.text" = "클리어 횟수";
+
+/* Class = "UILabel"; text = "GATE"; ObjectID = "vnL-Wt-joX"; */
+"vnL-Wt-joX.text" = "GATE";
+
+/* Class = "UILabel"; text = "楽曲一覧"; ObjectID = "yJ8-8N-Tmg"; */
+"yJ8-8N-Tmg.text" = "곡 리스트";
+
+/* Class = "UILabel"; text = "表示項目"; ObjectID = "ynX-cO-MaN"; */
+"ynX-cO-MaN.text" = "표시 항목";
+
+/* Class = "UILabel"; text = "Load From A3"; ObjectID = "rm9-iL-cCi"; */
+"rm9-iL-cCi.text" = "A3 점수 받기";

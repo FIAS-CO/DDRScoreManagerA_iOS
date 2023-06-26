@@ -1,0 +1,62 @@
+﻿/* Class = "UILabel"; text = "3rd"; ObjectID = "05o-AT-k6r"; */
+"05o-AT-k6r.text" = "3rd";
+
+/* Class = "UISegmentedControl"; 6a6-9H-QRP.segmentTitles[0] = "Asc"; ObjectID = "6a6-9H-QRP"; */
+"6a6-9H-QRP.segmentTitles[0]" = "오름차순";
+
+/* Class = "UISegmentedControl"; 6a6-9H-QRP.segmentTitles[1] = "Des"; ObjectID = "6a6-9H-QRP"; */
+"6a6-9H-QRP.segmentTitles[1]" = "내림차순";
+
+/* Class = "UIButton"; normalTitle = "Type"; ObjectID = "CIn-j7-OCr"; */
+"CIn-j7-OCr.normalTitle" = "Type";
+
+/* Class = "UIButton"; normalTitle = "Edit Sort Name"; ObjectID = "DJT-tm-i8S"; */
+"DJT-tm-i8S.normalTitle" = "이름을 편집";
+
+/* Class = "UISegmentedControl"; Mph-qP-u1h.segmentTitles[0] = "Asc"; ObjectID = "Mph-qP-u1h"; */
+"Mph-qP-u1h.segmentTitles[0]" = "오름차순";
+
+/* Class = "UISegmentedControl"; Mph-qP-u1h.segmentTitles[1] = "Des"; ObjectID = "Mph-qP-u1h"; */
+"Mph-qP-u1h.segmentTitles[1]" = "내림차순";
+
+/* Class = "UISegmentedControl"; T65-aC-Zoa.segmentTitles[0] = "Asc"; ObjectID = "T65-aC-Zoa"; */
+"T65-aC-Zoa.segmentTitles[0]" = "오름차순";
+
+/* Class = "UISegmentedControl"; T65-aC-Zoa.segmentTitles[1] = "Des"; ObjectID = "T65-aC-Zoa"; */
+"T65-aC-Zoa.segmentTitles[1]" = "내림차순";
+
+/* Class = "UILabel"; text = "2nd"; ObjectID = "W7P-A2-Yxk"; */
+"W7P-A2-Yxk.text" = "2nd";
+
+/* Class = "UILabel"; text = "4th"; ObjectID = "W8Z-60-Pl0"; */
+"W8Z-60-Pl0.text" = "4th";
+
+/* Class = "UISegmentedControl"; WW7-Qo-ood.segmentTitles[0] = "Asc"; ObjectID = "WW7-Qo-ood"; */
+"WW7-Qo-ood.segmentTitles[0]" = "오름차순";
+
+/* Class = "UISegmentedControl"; WW7-Qo-ood.segmentTitles[1] = "Des"; ObjectID = "WW7-Qo-ood"; */
+"WW7-Qo-ood.segmentTitles[1]" = "내림차순";
+
+/* Class = "UIButton"; normalTitle = "Type"; ObjectID = "ZRP-0f-91T"; */
+"ZRP-0f-91T.normalTitle" = "Type";
+
+/* Class = "UILabel"; text = "1st"; ObjectID = "bRk-KB-JMU"; */
+"bRk-KB-JMU.text" = "1st";
+
+/* Class = "UISegmentedControl"; dXl-sF-PY6.segmentTitles[0] = "Asc"; ObjectID = "dXl-sF-PY6"; */
+"dXl-sF-PY6.segmentTitles[0]" = "오름차순";
+
+/* Class = "UISegmentedControl"; dXl-sF-PY6.segmentTitles[1] = "Des"; ObjectID = "dXl-sF-PY6"; */
+"dXl-sF-PY6.segmentTitles[1]" = "내림차순";
+
+/* Class = "UIButton"; normalTitle = "Type"; ObjectID = "iaE-AJ-VBG"; */
+"iaE-AJ-VBG.normalTitle" = "Type";
+
+/* Class = "UILabel"; text = "5th"; ObjectID = "qGY-ai-eJ1"; */
+"qGY-ai-eJ1.text" = "5th";
+
+/* Class = "UIButton"; normalTitle = "Type"; ObjectID = "qKp-P1-Ioe"; */
+"qKp-P1-Ioe.normalTitle" = "Type";
+
+/* Class = "UIButton"; normalTitle = "Type"; ObjectID = "sBW-GN-EL9"; */
+"sBW-GN-EL9.normalTitle" = "Type";

@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "(　ﾟдﾟ)"; ObjectID = "1PD-LK-8Uf"; */
+"1PD-LK-8Uf.text" = "(　ﾟдﾟ)";
+
+/* Class = "UILabel"; text = "↑"; ObjectID = "Btq-Le-MPU"; */
+"Btq-Le-MPU.text" = "↑";
+
+/* Class = "UILabel"; text = "2015010100"; ObjectID = "CJ7-U6-osS"; */
+"CJ7-U6-osS.text" = "2015010100";
+
+/* Class = "UILabel"; text = "Music List Version:"; ObjectID = "Cmj-Ad-2i8"; */
+"Cmj-Ad-2i8.text" = "Music List Version:";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "DTs-al-Gfu"; */
+"DTs-al-Gfu.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "0.11.22334400"; ObjectID = "L6K-iD-Szd"; */
+"L6K-iD-Szd.text" = "0.11.22334400";
+
+/* Class = "UILabel"; text = "App Version:"; ObjectID = "STY-Zi-NIM"; */
+"STY-Zi-NIM.text" = "App Version:";
+
+/* Class = "UILabel"; text = "You can hide Ad while 24-hours by making sure to tap it."; ObjectID = "UCo-gW-Lqa"; */
+"UCo-gW-Lqa.text" = "広告はタップして確認することで24時間非表示にできます。";
+
+/* Class = "UILabel"; text = "このボタンでメニューを表示します。\nマニュアルはメニューから   .\n参照できます。"; ObjectID = "Zx3-3B-4nS"; */
+"Zx3-3B-4nS.text" = "このボタンでメニューを表示します。\nマニュアルはメニューから   .\n参照できます。";
+
+/* Class = "UILabel"; text = "このアプリは, GATEサーバからWebサイトの情報を取得する機能を具備します.\nGATEサーバへの負荷を避けるため,取得機能の使用は最小限に留めてください."; ObjectID = "jwJ-zE-HRv"; */
+"jwJ-zE-HRv.text" = "このアプリは, GATEサーバからWebサイトの情報を取得する機能を具備します.\nGATEサーバへの負荷を避けるため,取得機能の使用は最小限に留めてください.";

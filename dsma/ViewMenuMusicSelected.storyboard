@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sWJ-PJ-gbb">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Menu Music Selected-->
+        <scene sceneID="6wv-du-gcl">
+            <objects>
+                <viewController id="sWJ-PJ-gbb" customClass="ViewMenuMusicSelected" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N1v-0B-9aB"/>
+                        <viewControllerLayoutGuide type="bottom" id="TNX-C0-iwX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JMf-Kd-6sX">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UE0-UW-drX">
+                                <rect key="frame" x="0.0" y="216" width="325" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="325" id="JSS-Ca-9AD"/>
+                                    <constraint firstAttribute="height" constant="50" id="qpI-jC-5Wg"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vcX-Xo-VjC" customClass="TouchDownTableView" customModule="dsma" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="216"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <color key="separatorColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bHT-3r-aoO" appends="YES" id="cOd-oF-i7j"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="z7A-Aq-Kid">
+                                <rect key="frame" x="0.0" y="44" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="iGe-FK-aZC"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="Iad-E4-G1Q"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UE0-UW-drX" firstAttribute="top" secondItem="vcX-Xo-VjC" secondAttribute="bottom" id="4Mu-qp-lDP"/>
+                            <constraint firstAttribute="centerX" secondItem="UE0-UW-drX" secondAttribute="centerX" id="C8X-KJ-Z35"/>
+                            <constraint firstItem="vcX-Xo-VjC" firstAttribute="top" secondItem="JMf-Kd-6sX" secondAttribute="top" id="EcJ-Bq-cM9"/>
+                            <constraint firstAttribute="trailing" secondItem="z7A-Aq-Kid" secondAttribute="trailing" id="MgP-S9-mIX"/>
+                            <constraint firstItem="vcX-Xo-VjC" firstAttribute="leading" secondItem="JMf-Kd-6sX" secondAttribute="leading" id="OoN-TS-zvC"/>
+                            <constraint firstItem="z7A-Aq-Kid" firstAttribute="top" secondItem="N1v-0B-9aB" secondAttribute="bottom" id="TMZ-dM-pKJ"/>
+                            <constraint firstAttribute="trailing" secondItem="vcX-Xo-VjC" secondAttribute="trailing" id="Un9-I0-hgK"/>
+                            <constraint firstItem="TNX-C0-iwX" firstAttribute="top" secondItem="UE0-UW-drX" secondAttribute="bottom" id="e1l-g3-hwf"/>
+                            <constraint firstItem="z7A-Aq-Kid" firstAttribute="leading" secondItem="JMf-Kd-6sX" secondAttribute="leading" id="u7k-57-lbg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3Rb-hu-JlI"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="qpI-jC-5Wg" id="LbZ-51-jte"/>
+                        <outlet property="adView" destination="UE0-UW-drX" id="cy0-eh-Yyu"/>
+                        <outlet property="naviTitle" destination="Iad-E4-G1Q" id="mAv-lJ-zhs"/>
+                        <outlet property="navigationBar" destination="z7A-Aq-Kid" id="P8F-Ow-Ul8"/>
+                        <outlet property="tableView" destination="vcX-Xo-VjC" id="acZ-R6-Mkd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r4e-64-Bjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bHT-3r-aoO">
+                    <connections>
+                        <action selector="tapGestureAction:" destination="sWJ-PJ-gbb" id="FKI-Gr-caF"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2825.5" y="1776"/>
+        </scene>
+    </scenes>
+</document>

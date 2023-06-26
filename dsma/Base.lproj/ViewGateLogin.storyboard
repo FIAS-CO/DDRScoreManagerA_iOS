@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GCG-po-RLf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Gate Login-->
+        <scene sceneID="sPg-LU-Rx0">
+            <objects>
+                <viewController id="GCG-po-RLf" customClass="ViewGateLogin" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SFm-vF-AOR"/>
+                        <viewControllerLayoutGuide type="bottom" id="pIx-HQ-HaR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F8i-h9-Z6X">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="BP0-bo-8HH">
+                                <rect key="frame" x="0.0" y="44" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SEa-LX-XEF"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="GATE Login" id="yVg-uD-AxE"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDl-BY-ypM">
+                                <rect key="frame" x="0.0" y="240" width="325" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="A7H-q1-LZQ"/>
+                                </constraints>
+                                <string key="text">When you logged in to gate, this form will be closed automaticaly. If this form will not be closed automaticaly, click Cancel button and retry.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ub-lT-aBi">
+                                <rect key="frame" x="0.0" y="300" width="325" height="0.0"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Lbh-zg-b2O"/>
+                                    <constraint firstAttribute="width" constant="325" id="rFl-h8-ee9"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ac-sr-hWI">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="240"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5ub-lT-aBi" firstAttribute="top" secondItem="RDl-BY-ypM" secondAttribute="bottom" id="89Z-UX-P7q"/>
+                            <constraint firstItem="3ac-sr-hWI" firstAttribute="leading" secondItem="F8i-h9-Z6X" secondAttribute="leading" id="Els-oc-lpv"/>
+                            <constraint firstItem="BP0-bo-8HH" firstAttribute="leading" secondItem="F8i-h9-Z6X" secondAttribute="leading" id="FEE-8R-zQr"/>
+                            <constraint firstAttribute="trailing" secondItem="RDl-BY-ypM" secondAttribute="trailing" id="IXT-W6-de2"/>
+                            <constraint firstAttribute="trailing" secondItem="BP0-bo-8HH" secondAttribute="trailing" id="Lw5-fc-pIf"/>
+                            <constraint firstItem="BP0-bo-8HH" firstAttribute="top" secondItem="SFm-vF-AOR" secondAttribute="bottom" id="QUV-ho-Q2b"/>
+                            <constraint firstAttribute="trailing" secondItem="3ac-sr-hWI" secondAttribute="trailing" id="WHd-gJ-xdl"/>
+                            <constraint firstItem="pIx-HQ-HaR" firstAttribute="top" secondItem="5ub-lT-aBi" secondAttribute="bottom" id="e2G-AZ-ayu"/>
+                            <constraint firstItem="RDl-BY-ypM" firstAttribute="leading" secondItem="F8i-h9-Z6X" secondAttribute="leading" id="hAn-VG-Alo"/>
+                            <constraint firstAttribute="centerX" secondItem="5ub-lT-aBi" secondAttribute="centerX" id="xDO-hO-c4i"/>
+                            <constraint firstItem="RDl-BY-ypM" firstAttribute="top" secondItem="3ac-sr-hWI" secondAttribute="bottom" id="yIM-8v-zQX"/>
+                            <constraint firstItem="3ac-sr-hWI" firstAttribute="top" secondItem="F8i-h9-Z6X" secondAttribute="top" id="yKj-7u-d1Z"/>
+                            <constraint firstItem="RDl-BY-ypM" firstAttribute="top" secondItem="3ac-sr-hWI" secondAttribute="bottom" id="yN3-MZ-tSk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9RM-Kd-XnU"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="Lbh-zg-b2O" id="N7V-ei-ZFX"/>
+                        <outlet property="adView" destination="5ub-lT-aBi" id="g7C-XF-gU3"/>
+                        <outlet property="mainView" destination="3ac-sr-hWI" id="ebR-2z-h3D"/>
+                        <outlet property="message" destination="RDl-BY-ypM" id="3Hp-8M-TJQ"/>
+                        <outlet property="navigationBar" destination="BP0-bo-8HH" id="7LQ-Jp-Vle"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kdf-Fn-5O4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3563" y="250"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

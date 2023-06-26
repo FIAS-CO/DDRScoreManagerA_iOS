@@ -1,0 +1,11 @@
+﻿/* Class = "UIButton"; normalTitle = "***"; ObjectID = "0N6-zb-sk8"; */
+"0N6-zb-sk8.normalTitle" = " ";
+
+/* Class = "UIButton"; normalTitle = "***"; ObjectID = "NAL-Xg-Vuw"; */
+"NAL-Xg-Vuw.normalTitle" = " ";
+
+/* Class = "UILabel"; text = "フィルタ: "; ObjectID = "buR-44-TZR"; */
+"buR-44-TZR.text" = "필터: ";
+
+/* Class = "UILabel"; text = "ソート: "; ObjectID = "iDK-bg-uw3"; */
+"iDK-bg-uw3.text" = "정렬: ";

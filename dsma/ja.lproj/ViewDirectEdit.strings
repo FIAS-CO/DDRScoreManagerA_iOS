@@ -1,0 +1,102 @@
+
+/* Class = "UILabel"; text = "クリア状況:"; ObjectID = "0gC-zV-weV"; */
+"0gC-zV-weV.text" = "クリア状況:";
+
+/* Class = "UIButton"; normalTitle = "スコアをリセット"; ObjectID = "1bi-K9-XJh"; */
+"1bi-K9-XJh.normalTitle" = "スコアをリセット";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "35P-Vs-7bn"; */
+"35P-Vs-7bn.text" = "Title";
+
+/* Class = "UILabel"; text = "State:"; ObjectID = "3ql-v2-Chv"; */
+"3ql-v2-Chv.text" = "クリア状況:";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "43g-Li-Dny"; */
+"43g-Li-Dny.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "Score:"; ObjectID = "4yD-zf-p97"; */
+"4yD-zf-p97.text" = "スコア:";
+
+/* Class = "UIButton"; normalTitle = "Reset Score"; ObjectID = "5JY-jq-A9f"; */
+"5JY-jq-A9f.normalTitle" = "スコアをリセット";
+
+/* Class = "UIButton"; normalTitle = "_________________________"; ObjectID = "6iL-lb-ofO"; */
+"6iL-lb-ofO.normalTitle" = "_________________________";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "6n3-jm-XxA"; */
+"6n3-jm-XxA.text" = "0";
+
+/* Class = "UILabel"; text = "クリア回数:"; ObjectID = "AFi-i6-AAO"; */
+"AFi-i6-AAO.text" = "クリア回数:";
+
+/* Class = "UILabel"; text = "Rival"; ObjectID = "CXI-Xz-169"; */
+"CXI-Xz-169.text" = "Rival";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "DoH-YJ-hJc"; */
+"DoH-YJ-hJc.text" = "0";
+
+/* Class = "UILabel"; text = "Pattern"; ObjectID = "HBB-HL-AY6"; */
+"HBB-HL-AY6.text" = "Pattern";
+
+/* Class = "UILabel"; text = "プレイ回数:"; ObjectID = "OfQ-cf-SJa"; */
+"OfQ-cf-SJa.text" = "プレイ回数:";
+
+/* Class = "UILabel"; text = "Clear:"; ObjectID = "Ol0-3x-M8v"; */
+"Ol0-3x-M8v.text" = "クリア回数:";
+
+/* Class = "UILabel"; text = "スコア:"; ObjectID = "QXn-20-0NK"; */
+"QXn-20-0NK.text" = "スコア:";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "QuT-Tt-0EN"; */
+"QuT-Tt-0EN.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "SCK-hU-vyM"; */
+"SCK-hU-vyM.text" = "0";
+
+/* Class = "UILabel"; text = "1,000,000"; ObjectID = "ZQ3-2f-wBs"; */
+"ZQ3-2f-wBs.text" = "1,000,000";
+
+/* Class = "UILabel"; text = "1,000,000"; ObjectID = "b3u-MK-5jP"; */
+"b3u-MK-5jP.text" = "1,000,000";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "cNz-IZ-1XG"; */
+"cNz-IZ-1XG.normalTitle" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "doi-QS-2hx"; */
+"doi-QS-2hx.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "Combo:"; ObjectID = "etq-sT-pJ6"; */
+"etq-sT-pJ6.text" = "コンボ:";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "m2a-Qz-2PD"; */
+"m2a-Qz-2PD.normalTitle" = "Edit";
+
+/* Class = "UINavigationItem"; title = "Score Edit"; ObjectID = "nDT-ii-GQE"; */
+"nDT-ii-GQE.title" = "Score Edit";
+
+/* Class = "UILabel"; text = "コンボ:"; ObjectID = "ooC-pN-oFb"; */
+"ooC-pN-oFb.text" = "コンボ:";
+
+/* Class = "UIButton"; normalTitle = "_________________________"; ObjectID = "p0i-mD-c6K"; */
+"p0i-mD-c6K.normalTitle" = "_________________________";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "qNC-rb-ZaZ"; */
+"qNC-rb-ZaZ.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "qgD-lm-Ceo"; */
+"qgD-lm-Ceo.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "tdu-Fa-v18"; */
+"tdu-Fa-v18.normalTitle" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "vu6-Bf-oQE"; */
+"vu6-Bf-oQE.normalTitle" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "wUL-kk-YZw"; */
+"wUL-kk-YZw.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "Play:"; ObjectID = "xnA-pz-M5K"; */
+"xnA-pz-M5K.text" = "プレイ回数:";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "yH5-eh-beN"; */
+"yH5-eh-beN.normalTitle" = "Edit";

@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; text = "0"; ObjectID = "1Z2-Iu-XCP"; */
+"1Z2-Iu-XCP.text" = "0";
+
+/* Class = "UILabel"; text = "スコア"; ObjectID = "2m9-xd-b1q"; */
+"2m9-xd-b1q.text" = "スコア";
+
+/* Class = "UIButton"; normalTitle = "楽曲一覧の更新"; ObjectID = "8wm-wz-Hox"; */
+"8wm-wz-Hox.normalTitle" = "楽曲一覧の更新";
+
+/* Class = "UIButton"; normalTitle = "Manual Login"; ObjectID = "ADE-Mk-f9Z"; */
+"ADE-Mk-f9Z.normalTitle" = "手動ログイン";
+
+/* Class = "UILabel"; text = "「Life4クリア」を、取得した「未フルコン」で上書き"; ObjectID = "Czc-hV-yU2"; */
+"Czc-hV-yU2.text" = "「Life4クリア」を、取得した「未フルコン」で上書き";
+
+/* Class = "UINavigationItem"; title = "共通設定"; ObjectID = "Fy3-wi-v1l"; */
+"Fy3-wi-v1l.title" = "共通設定";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "NhU-8G-vMh"; */
+"NhU-8G-vMh.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "一覧から取得時にPFCと\n    判断するスコア:"; ObjectID = "ObK-Qh-DKL"; */
+"ObK-Qh-DKL.text" = "一覧から取得時にPFCと\n    判断するスコア:";
+
+/* Class = "UILabel"; text = "取得したスコアが低い場合も上書き"; ObjectID = "UMg-Do-RsO"; */
+"UMg-Do-RsO.text" = "取得したスコアが低い場合も上書き";
+
+/* Class = "UILabel"; text = "最大コンボ数"; ObjectID = "W7g-hc-942"; */
+"W7g-hc-942.text" = "最大コンボ数";
+
+/* Class = "UILabel"; text = "ダンスレベル"; ObjectID = "eN4-oT-rgE"; */
+"eN4-oT-rgE.text" = "ダンスレベル";
+
+/* Class = "UILabel"; text = "「Goodフルコンボ」を、取得した「フルコンボ」で上書き"; ObjectID = "ehn-jU-JVV"; */
+"ehn-jU-JVV.text" = "「Goodフルコンボ」を、取得した「フルコンボ」で上書き";
+
+/* Class = "UILabel"; text = "プレイ回数"; ObjectID = "epw-a7-7C4"; */
+"epw-a7-7C4.text" = "プレイ回数";
+
+/* Class = "UILabel"; text = "クリア回数"; ObjectID = "uGG-NE-OPY"; */
+"uGG-NE-OPY.text" = "クリア回数";
+
+/* Class = "UILabel"; text = "GATE"; ObjectID = "vnL-Wt-joX"; */
+"vnL-Wt-joX.text" = "GATE";
+
+/* Class = "UILabel"; text = "楽曲一覧"; ObjectID = "yJ8-8N-Tmg"; */
+"yJ8-8N-Tmg.text" = "楽曲一覧";
+
+/* Class = "UILabel"; text = "表示項目"; ObjectID = "ynX-cO-MaN"; */
+"ynX-cO-MaN.text" = "表示項目";
+
+/* Class = "UILabel"; text = "Load From A3"; ObjectID = "rm9-iL-cCi"; */
+"rm9-iL-cCi.text" = "A3 のスコアを取得する";

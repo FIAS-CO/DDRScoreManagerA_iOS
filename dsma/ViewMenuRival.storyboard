@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DNh-wh-5RT">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Menu Rival-->
+        <scene sceneID="vvg-4D-mUe">
+            <objects>
+                <viewController id="DNh-wh-5RT" customClass="ViewMenuRival" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Me3-jC-wON"/>
+                        <viewControllerLayoutGuide type="bottom" id="O4F-A7-FNr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="COb-K3-2hz">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pbh-QN-pfq" customClass="TouchDownTableView" customModule="dsma" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="216"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <color key="separatorColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3Wp-5T-9V6" appends="YES" id="yRt-Ql-JXb"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8gM-nO-Ahg">
+                                <rect key="frame" x="0.0" y="216" width="325" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="79D-Ms-siI"/>
+                                    <constraint firstAttribute="width" constant="325" id="ZRb-eM-e9P"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Pbh-QN-pfq" firstAttribute="top" secondItem="COb-K3-2hz" secondAttribute="top" id="18Z-Mt-cR5"/>
+                            <constraint firstItem="8gM-nO-Ahg" firstAttribute="top" secondItem="Pbh-QN-pfq" secondAttribute="bottom" id="D4M-F8-QnO"/>
+                            <constraint firstAttribute="trailing" secondItem="Pbh-QN-pfq" secondAttribute="trailing" id="GWy-G8-aa8"/>
+                            <constraint firstItem="Pbh-QN-pfq" firstAttribute="leading" secondItem="COb-K3-2hz" secondAttribute="leading" id="aPK-U1-9BJ"/>
+                            <constraint firstItem="O4F-A7-FNr" firstAttribute="top" secondItem="8gM-nO-Ahg" secondAttribute="bottom" id="mXx-Zm-4zJ"/>
+                            <constraint firstAttribute="centerX" secondItem="8gM-nO-Ahg" secondAttribute="centerX" id="sfW-K7-FMb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="J0D-dH-37Y"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="79D-Ms-siI" id="hpT-9p-Xup"/>
+                        <outlet property="adView" destination="8gM-nO-Ahg" id="yJl-4V-dKX"/>
+                        <outlet property="tableView" destination="Pbh-QN-pfq" id="uIF-w6-L8u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5nH-Gq-HMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3Wp-5T-9V6">
+                    <connections>
+                        <action selector="tapGestureAction:" destination="DNh-wh-5RT" id="hPs-ZF-snW"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="784.5" y="1326"/>
+        </scene>
+    </scenes>
+</document>

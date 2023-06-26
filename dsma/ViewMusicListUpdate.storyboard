@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VRb-bj-EJF">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Music List Update-->
+        <scene sceneID="8Xg-SO-Fqz">
+            <objects>
+                <viewController id="VRb-bj-EJF" customClass="ViewMusicListUpdate" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eg9-lZ-6HO"/>
+                        <viewControllerLayoutGuide type="bottom" id="xER-oI-qMk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mLy-In-Oe9">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fWP-2H-2Wi">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="216"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hei-yv-zhJ">
+                                <rect key="frame" x="0.0" y="216" width="325" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="M8w-V3-7Y6"/>
+                                    <constraint firstAttribute="width" constant="325" id="z6a-ly-RXY"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="VjD-8S-Gm4">
+                                <rect key="frame" x="0.0" y="44" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="EFO-pI-T91"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Music List Updater" id="iXq-mG-Olp"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="hei-yv-zhJ" secondAttribute="centerX" id="55i-AY-31A"/>
+                            <constraint firstItem="VjD-8S-Gm4" firstAttribute="leading" secondItem="mLy-In-Oe9" secondAttribute="leading" id="AeQ-gM-4sP"/>
+                            <constraint firstItem="VjD-8S-Gm4" firstAttribute="top" secondItem="eg9-lZ-6HO" secondAttribute="bottom" id="EnE-vp-0la"/>
+                            <constraint firstAttribute="trailing" secondItem="VjD-8S-Gm4" secondAttribute="trailing" id="OIf-3W-mTN"/>
+                            <constraint firstAttribute="trailing" secondItem="fWP-2H-2Wi" secondAttribute="trailing" id="UdY-bw-ENb"/>
+                            <constraint firstItem="hei-yv-zhJ" firstAttribute="top" secondItem="fWP-2H-2Wi" secondAttribute="bottom" id="Yup-Dk-PRi"/>
+                            <constraint firstItem="fWP-2H-2Wi" firstAttribute="top" secondItem="mLy-In-Oe9" secondAttribute="top" id="eIR-j3-Geb"/>
+                            <constraint firstItem="xER-oI-qMk" firstAttribute="top" secondItem="hei-yv-zhJ" secondAttribute="bottom" id="g0Q-4m-UuK"/>
+                            <constraint firstItem="fWP-2H-2Wi" firstAttribute="leading" secondItem="mLy-In-Oe9" secondAttribute="leading" id="vdI-hr-3mI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Iis-jg-Hu1"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="M8w-V3-7Y6" id="ztn-pH-nYG"/>
+                        <outlet property="adView" destination="hei-yv-zhJ" id="UAY-EO-Sh5"/>
+                        <outlet property="navigationBar" destination="VjD-8S-Gm4" id="fkX-24-yxe"/>
+                        <outlet property="tableView" destination="fWP-2H-2Wi" id="kdf-Wc-Jzr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZw-I3-lbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3835.5" y="466"/>
+        </scene>
+    </scenes>
+</document>

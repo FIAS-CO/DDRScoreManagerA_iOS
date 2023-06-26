@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iPf-rf-Hlo">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View From Gate Rival List-->
+        <scene sceneID="qM8-91-rqB">
+            <objects>
+                <viewController id="iPf-rf-Hlo" customClass="ViewFromGateRivalList" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VIH-G0-Cuc"/>
+                        <viewControllerLayoutGuide type="bottom" id="yGd-wr-6ks"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wPz-sj-Jba">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2vX-dT-NLl">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="250"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LG1-yH-xsa">
+                                <rect key="frame" x="0.0" y="250" width="325" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="325" id="mgq-bO-JtX"/>
+                                    <constraint firstAttribute="height" constant="50" id="ssG-pH-qLM"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="XJH-gD-PiJ">
+                                <rect key="frame" x="0.0" y="44" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="A9l-wV-5Cd"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Rival List Loader" id="7U4-zf-bP7"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XJH-gD-PiJ" firstAttribute="top" secondItem="VIH-G0-Cuc" secondAttribute="bottom" id="6M7-zD-pOK"/>
+                            <constraint firstItem="XJH-gD-PiJ" firstAttribute="leading" secondItem="wPz-sj-Jba" secondAttribute="leading" id="BTO-Kc-Gef"/>
+                            <constraint firstItem="2vX-dT-NLl" firstAttribute="top" secondItem="wPz-sj-Jba" secondAttribute="top" id="Ed7-6x-Bc2"/>
+                            <constraint firstItem="yGd-wr-6ks" firstAttribute="top" secondItem="LG1-yH-xsa" secondAttribute="bottom" id="F65-Hw-5tC"/>
+                            <constraint firstAttribute="trailing" secondItem="2vX-dT-NLl" secondAttribute="trailing" id="FUx-Ac-eal"/>
+                            <constraint firstItem="2vX-dT-NLl" firstAttribute="leading" secondItem="wPz-sj-Jba" secondAttribute="leading" id="LDt-sN-h2H"/>
+                            <constraint firstItem="LG1-yH-xsa" firstAttribute="top" secondItem="2vX-dT-NLl" secondAttribute="bottom" id="WDF-dc-ZfJ"/>
+                            <constraint firstAttribute="centerX" secondItem="LG1-yH-xsa" secondAttribute="centerX" id="WhQ-xy-y3D"/>
+                            <constraint firstAttribute="trailing" secondItem="XJH-gD-PiJ" secondAttribute="trailing" id="fXC-cU-992"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cfJ-cW-0Z1"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="ssG-pH-qLM" id="Ptj-mn-UPH"/>
+                        <outlet property="adView" destination="LG1-yH-xsa" id="ijm-6J-YWN"/>
+                        <outlet property="navigationBar" destination="XJH-gD-PiJ" id="Udl-v2-GmS"/>
+                        <outlet property="tableView" destination="2vX-dT-NLl" id="zaz-id-CTT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgr-Xt-3Wk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3869.5" y="2590"/>
+        </scene>
+    </scenes>
+</document>

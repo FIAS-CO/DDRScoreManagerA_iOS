@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "When you logged in to gate, this form will be closed automaticaly. If this form will not be closed automaticaly, click Cancel button and retry."; ObjectID = "RDl-BY-ypM"; */
+"RDl-BY-ypM.text" = "로그인이 완료되면이 양식은 자동으로 닫힙니다. 자동으로 닫히지 않으면 취소를 클릭하고 다시 시도하십시오.";
+
+/* Class = "UINavigationItem"; title = "GATE Login"; ObjectID = "yVg-uD-AxE"; */
+"yVg-uD-AxE.title" = "GATE Login";

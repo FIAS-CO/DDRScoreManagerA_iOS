@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "Authenticate"; ObjectID = "9qI-of-CL7"; */
+"9qI-of-CL7.normalTitle" = "認証";
+
+/* Class = "UINavigationItem"; title = "DDR SA"; ObjectID = "JvO-9H-QjG"; */
+"JvO-9H-QjG.title" = "DDR SA";
+
+/* Class = "UIButton"; normalTitle = "Open user page"; ObjectID = "LsH-3G-OYt"; */
+"LsH-3G-OYt.normalTitle" = "ユーザページを開く";
+
+/* Class = "UILabel"; text = "Press \"Authenticate\" button \n      to authenticate DDR SA."; ObjectID = "Mc4-6t-Adb"; */
+"Mc4-6t-Adb.text" = "「認証」ボタンをおして\n      認証を行ってください";
+
+/* Class = "UIButton"; normalTitle = "Unauthenicate"; ObjectID = "UNz-OX-wwH"; */
+"UNz-OX-wwH.normalTitle" = "認証解除";
+
+/* Class = "UIButton"; normalTitle = "Open DDR SA web site"; ObjectID = "eha-Sz-j6c"; */
+"eha-Sz-j6c.normalTitle" = "DDR SA Webサイトを開く";
+
+/* Class = "UIButton"; normalTitle = "Export"; ObjectID = "n4z-KK-8jh"; */
+"n4z-KK-8jh.normalTitle" = "エクスポート";
