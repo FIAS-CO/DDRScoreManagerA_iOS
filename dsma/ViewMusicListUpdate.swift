@@ -18,11 +18,10 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
         return ret
     }
     
-    
-    let sMusicListVersionTxt: String = "https://docs.google.com/spreadsheets/d/1G0coQfw5UB101V_-Fh1oDjg9OY6OtHKVd3vlQNecBmY/export?format=tsv&gid=334969595"
-    let sMusicNamesTxt: String = "https://docs.google.com/spreadsheets/d/1G0coQfw5UB101V_-Fh1oDjg9OY6OtHKVd3vlQNecBmY/export?format=tsv&gid=0";
-    let sShockArrowExistsTxt: String = "https://docs.google.com/spreadsheets/d/1G0coQfw5UB101V_-Fh1oDjg9OY6OtHKVd3vlQNecBmY/export?format=tsv&gid=1975740187";
-    let sWebMusicIdsTxt: String = "https://docs.google.com/spreadsheets/d/1G0coQfw5UB101V_-Fh1oDjg9OY6OtHKVd3vlQNecBmY/export?format=tsv&gid=1376903169";
+    let sMusicListVersionTxt: String = "https://docs.google.com/spreadsheets/d/1HA8RH2ozKQTPvvq2BVcVoOSEMVIldRw89tFtNg8Z4V8/export?format=tsv&gid=334969595"
+    let sMusicNamesTxt: String = "https://docs.google.com/spreadsheets/d/1HA8RH2ozKQTPvvq2BVcVoOSEMVIldRw89tFtNg8Z4V8/export?format=tsv&gid=0";
+    let sShockArrowExistsTxt: String = "https://docs.google.com/spreadsheets/d/1HA8RH2ozKQTPvvq2BVcVoOSEMVIldRw89tFtNg8Z4V8/export?format=tsv&gid=1975740187";
+    let sWebMusicIdsTxt: String = "https://docs.google.com/spreadsheets/d/1HA8RH2ozKQTPvvq2BVcVoOSEMVIldRw89tFtNg8Z4V8/export?format=tsv&gid=1376903169";
     
     var rparam_ParentView: ViewCategorySelect!
     
