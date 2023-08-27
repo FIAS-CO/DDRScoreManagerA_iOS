@@ -1,0 +1,6 @@
+framework module Pods_dsma {
+  umbrella header "Pods-dsma-umbrella.h"
+
+  export *
+  module * { export * }
+}
