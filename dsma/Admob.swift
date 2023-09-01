@@ -23,7 +23,7 @@ class Admob: NSObject, GADBannerViewDelegate {
         var bannerView: GADBannerView = GADBannerView()
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization(completionHandler: {status in
-                bannerView = GADBannerView(adSize:kGADAdSizeBanner)
+                bannerView = GADBannerView(adSize:GADAdSizeBanner)
                 bannerView.frame.origin = CGPoint(x: 0, y: 0)
                 bannerView.frame.size = CGSize(width: 325, height: 50)
                 bannerView.adUnitID = "ca-app-pub-8151928728657048/4727276862" // Enter Ad's ID here
@@ -33,11 +33,11 @@ class Admob: NSObject, GADBannerViewDelegate {
                 let request:GADRequest = GADRequest()
                 //request.testDevices = [kGADSimulatorID, "e6cfec14a364685bacbcf949bb123f5a", "5890ffced044af1d8f8aa98ae704c77f"]
                 //request.testDevices = [ kGADSimulatorID as! String, "9740bf7fbe1b3f0f7d7649a2d7a585b6" ];
-                GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ kGADSimulatorID as! String, "" ];
+                GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ GADSimulatorID as! String, "" ];
                 bannerView.load(request)
             })
         } else {
-            bannerView = GADBannerView(adSize:kGADAdSizeBanner)
+            bannerView = GADBannerView(adSize:GADAdSizeBanner)
             bannerView.frame.origin = CGPoint(x: 0, y: 0)
             bannerView.frame.size = CGSize(width: 325, height: 50)
             bannerView.adUnitID = "ca-app-pub-8151928728657048/4727276862" // Enter Ad's ID here
@@ -47,7 +47,7 @@ class Admob: NSObject, GADBannerViewDelegate {
             let request:GADRequest = GADRequest()
             //request.testDevices = [kGADSimulatorID, "e6cfec14a364685bacbcf949bb123f5a", "5890ffced044af1d8f8aa98ae704c77f"]
             //request.testDevices = [ kGADSimulatorID as! String, "9740bf7fbe1b3f0f7d7649a2d7a585b6" ];
-            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ kGADSimulatorID as! String, "" ];
+            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ GADSimulatorID as! String, "" ];
             bannerView.load(request)
         }
         return bannerView
