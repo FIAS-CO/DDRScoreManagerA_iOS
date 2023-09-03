@@ -1055,7 +1055,7 @@
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 $(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"${inherited}",
@@ -1086,7 +1086,7 @@
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 $(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"${inherited}",
