@@ -1,4 +1,5 @@
 PODS:
+  - FBAudienceNetwork (6.14.0)
   - Google-Mobile-Ads-SDK (10.9.0):
     - GoogleAppMeasurement (< 11.0, >= 7.0)
     - GoogleUserMessagingPlatform (>= 1.1)
@@ -22,6 +23,9 @@ PODS:
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - GoogleMobileAdsMediationFacebook (6.14.0.0):
+    - FBAudienceNetwork (= 6.14.0)
+    - Google-Mobile-Ads-SDK (~> 10.4)
   - GoogleUserMessagingPlatform (2.1.0)
   - GoogleUtilities/AppDelegateSwizzler (7.11.5):
     - GoogleUtilities/Environment
@@ -49,24 +53,29 @@ PODS:
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK
+  - GoogleMobileAdsMediationFacebook
 
 SPEC REPOS:
   trunk:
+    - FBAudienceNetwork
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
+    - GoogleMobileAdsMediationFacebook
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - nanopb
     - PromisesObjC
 
 SPEC CHECKSUMS:
+  FBAudienceNetwork: 03e273f66b70756be7d060927111af97b7641b06
   Google-Mobile-Ads-SDK: e81e8b009a182dc8dd14951782efdbb30a5e4510
   GoogleAppMeasurement: 7fee012a868315d418f365fbc8d394d8e020e749
+  GoogleMobileAdsMediationFacebook: 13b1e1b86cca4f186fdfa0ba50467479b842c342
   GoogleUserMessagingPlatform: dce302b8f1b84d6e945812ee7a15c3f65a102cbf
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
 
-PODFILE CHECKSUM: 51665d7538fe83b652d3c3f3e817d9a77607b740
+PODFILE CHECKSUM: 59faa4dff4792cba9f31a4b403573fab7ef96479
 
 COCOAPODS: 1.12.1

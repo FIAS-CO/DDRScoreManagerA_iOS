@@ -10,6 +10,7 @@ import UIKit
 //import AppTrackingTransparency
 import AdSupport
 import GoogleMobileAds
+import FBAudienceNetwork
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //srand(UInt32(Date().timeIntervalSinceReferenceDate))
         //UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
+        // Revisit Facebook用の広告トラッキング設定。ここでいいのか不明
+        FBAdSettings.setAdvertiserTrackingEnabled(true)
+
         if #available(iOS 14, *) {
 //            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
                 GADMobileAds.sharedInstance().start(completionHandler: nil)
