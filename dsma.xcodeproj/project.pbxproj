@@ -13,7 +13,6 @@
 		181B2BFB2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */; };
 		181B2BFD2AA9779500982212 /* MetaAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */; };
 		181B2BFF2AA977A800982212 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */; };
-		49F162C6D6BCBEC6D7E95AEC /* Pods_dsma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC13D48B93085305BD5E927 /* Pods_dsma.framework */; };
 		8A04D8A01B3F9A58006EDD51 /* ViewClearStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */; };
 		8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8541B55F24300EF6A99 /* Localizable.strings */; };
 		8A05B8561B564D5700EF6A99 /* ViewCategorySelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8581B564D5700EF6A99 /* ViewCategorySelect.storyboard */; };
@@ -275,7 +274,6 @@
 		8AFD01EE1B2284F4006500A0 /* StringUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtil.swift; sourceTree = "<group>"; };
 		8AFF0FC81BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFromGatePlayerStatus.swift; sourceTree = "<group>"; };
 		8AFF0FCA1BA7D45900CF96BC /* ViewFromGatePlayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewFromGatePlayerStatus.storyboard; sourceTree = "<group>"; };
-		ADC13D48B93085305BD5E927 /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D166AAE2DD99A1D6770E1A55 /* Pods-dsma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.debug.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,7 +298,6 @@
 				8A9693621B5495E60025E229 /* MessageUI.framework in Frameworks */,
 				8A9693631B5495E60025E229 /* StoreKit.framework in Frameworks */,
 				8A9693641B5495E60025E229 /* SystemConfiguration.framework in Frameworks */,
-				49F162C6D6BCBEC6D7E95AEC /* Pods_dsma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +313,6 @@
 				181B2BF82AA9773A00982212 /* GoogleAppMeasurement.xcframework */,
 				181B2BF62AA9770A00982212 /* FBAudienceNetwork.xcframework */,
 				181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */,
-				ADC13D48B93085305BD5E927 /* Pods_dsma.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
