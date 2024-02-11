@@ -20,34 +20,42 @@ class Admob: NSObject, GADBannerViewDelegate {
     }
     
     static func getAdBannerView(_ viewController: UIViewController) -> GADBannerView {
-        var bannerView: GADBannerView = GADBannerView()
+        let bannerView: GADBannerView = GADBannerView(adSize:GADAdSizeBanner)
+        bannerView.adUnitID = "ca-app-pub-8151928728657048/4727276862"
+        
+        bannerView.frame.origin = CGPoint(x: 0, y: 0)
+        bannerView.frame.size = CGSize(width: 325, height: 50)
+        bannerView.delegate = Instance
+        
+        bannerView.rootViewController = viewController
+        let request:GADRequest = GADRequest()
+        
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization(completionHandler: {status in
-                bannerView = GADBannerView(adSize:GADAdSizeBanner)
-                bannerView.frame.origin = CGPoint(x: 0, y: 0)
-                bannerView.frame.size = CGSize(width: 325, height: 50)
-                bannerView.adUnitID = "ca-app-pub-8151928728657048/4727276862" // Enter Ad's ID here
-                bannerView.delegate = Instance
-                bannerView.rootViewController = viewController
-                
-                let request:GADRequest = GADRequest()
-                //request.testDevices = [kGADSimulatorID, "e6cfec14a364685bacbcf949bb123f5a", "5890ffced044af1d8f8aa98ae704c77f"]
-                //request.testDevices = [ kGADSimulatorID as! String, "9740bf7fbe1b3f0f7d7649a2d7a585b6" ];
-                GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ GADSimulatorID as! String, "" ];
-                bannerView.load(request)
+                DispatchQueue.main.async {
+                    print("ATTステータス: \(status.rawValue)") // ATTのステータスログ
+                    switch status {
+                    case .authorized:
+                        print("ユーザーが追跡を許可しました。")
+                        bannerView.load(request)
+                    case .denied:
+                        print("ユーザーが追跡を拒否しました。")
+                        bannerView.load(request)
+                    case .notDetermined:
+                        print("ユーザーが追跡許可をまだ選択していません。")
+                        bannerView.load(request)
+                    case .restricted:
+                        print("ユーザーが追跡を制限しています。")
+                        bannerView.load(request)
+                    @unknown default:
+                        print("未知のATTステータス")
+                        break
+                    }
+                }
             })
         } else {
-            bannerView = GADBannerView(adSize:GADAdSizeBanner)
-            bannerView.frame.origin = CGPoint(x: 0, y: 0)
-            bannerView.frame.size = CGSize(width: 325, height: 50)
-            bannerView.adUnitID = "ca-app-pub-8151928728657048/4727276862" // Enter Ad's ID here
-            bannerView.delegate = Instance
-            bannerView.rootViewController = viewController
-            
-            let request:GADRequest = GADRequest()
-            //request.testDevices = [kGADSimulatorID, "e6cfec14a364685bacbcf949bb123f5a", "5890ffced044af1d8f8aa98ae704c77f"]
-            //request.testDevices = [ kGADSimulatorID as! String, "9740bf7fbe1b3f0f7d7649a2d7a585b6" ];
-            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ GADSimulatorID as! String, "" ];
+            print("iOS 14未満です。ATTフレームワークは利用できません。")
+
             bannerView.load(request)
         }
         return bannerView
@@ -63,10 +71,14 @@ class Admob: NSObject, GADBannerViewDelegate {
     }
     
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-
+        print("広告のロードに成功しました。")
     }
     
     func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
         FileReader.saveLastAdTapTime()
+    }
+    
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        print("広告のロードに失敗しました: \(error.localizedDescription)")
     }
 }

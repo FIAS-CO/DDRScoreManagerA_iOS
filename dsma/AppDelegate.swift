@@ -25,14 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Revisit Facebook用の広告トラッキング設定。ここでいいのか不明
         FBAdSettings.setAdvertiserTrackingEnabled(true)
 
-        if #available(iOS 14, *) {
-//            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                GADMobileAds.sharedInstance().start(completionHandler: nil)
-//            })
-        } else {
-            // Fallback on earlier versions
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-        }
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
         return true
     }
 
