@@ -11,6 +11,7 @@ import UIKit
 import AdSupport
 import GoogleMobileAds
 import FBAudienceNetwork
+import AppTrackingTransparency
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,10 +23,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //srand(UInt32(Date().timeIntervalSinceReferenceDate))
         //UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
+        
+        GADMobileAds.sharedInstance().start()
+        
         // Revisit Facebook用の広告トラッキング設定。ここでいいのか不明
-        FBAdSettings.setAdvertiserTrackingEnabled(true)
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: {status in
+                DispatchQueue.main.async {
+                    print("ATTステータス: \(status.rawValue)") // ATTのステータスログ
+                    switch status {
+                    case .authorized:
+                        print("ユーザーが追跡を許可しました。")
+                        FBAdSettings.setAdvertiserTrackingEnabled(true)
+                    case .denied:
+                        print("ユーザーが追跡を拒否しました。")
+                        FBAdSettings.setAdvertiserTrackingEnabled(false)
+                    case .notDetermined:
+                        print("ユーザーが追跡許可をまだ選択していません。")
+                        FBAdSettings.setAdvertiserTrackingEnabled(false)
+                    case .restricted:
+                        print("ユーザーが追跡を制限しています。")
+                        FBAdSettings.setAdvertiserTrackingEnabled(false)
+                    @unknown default:
+                        print("未知のATTステータス")
+                        FBAdSettings.setAdvertiserTrackingEnabled(false)
+                        break
+                    }
+                }
+            })
+        }
 
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+//        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         return true
     }

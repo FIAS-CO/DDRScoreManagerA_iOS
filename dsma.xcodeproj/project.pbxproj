@@ -13,6 +13,7 @@
 		181B2BFB2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */; };
 		181B2BFD2AA9779500982212 /* MetaAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */; };
 		181B2BFF2AA977A800982212 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */; };
+		18AC4C9A2B879F3500F9B4EF /* GoogleMobileAdsConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC4C992B879F3500F9B4EF /* GoogleMobileAdsConsentManager.swift */; };
 		8A04D8A01B3F9A58006EDD51 /* ViewClearStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */; };
 		8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8541B55F24300EF6A99 /* Localizable.strings */; };
 		8A05B8561B564D5700EF6A99 /* ViewCategorySelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8581B564D5700EF6A99 /* ViewCategorySelect.storyboard */; };
@@ -131,6 +132,7 @@
 		181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurementIdentitySupport.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurementIdentitySupport.xcframework; sourceTree = "<group>"; };
 		181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MetaAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.14.0.0/MetaAdapter.xcframework"; sourceTree = "<group>"; };
 		181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
+		18AC4C992B879F3500F9B4EF /* GoogleMobileAdsConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAdsConsentManager.swift; sourceTree = "<group>"; };
 		31FCA3B6710854ED722F2B90 /* Pods-dsma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.release.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.release.xcconfig"; sourceTree = "<group>"; };
 		8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClearStateList.swift; sourceTree = "<group>"; };
 		8A05B8531B55F24300EF6A99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				8A9693681B549CD30025E229 /* Admob-Bridging-Header.h */,
+				18AC4C992B879F3500F9B4EF /* GoogleMobileAdsConsentManager.swift */,
 			);
 			name = admob;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				8A16E4071B25240700372D68 /* ViewMusicListUpdate.swift in Sources */,
 				8A41B6FF1B4414B10094B1FE /* ViewGateLogin.swift in Sources */,
 				8A0DC88C1B33A98C00F162B7 /* ViewSortTypeSetting.swift in Sources */,
+				18AC4C9A2B879F3500F9B4EF /* GoogleMobileAdsConsentManager.swift in Sources */,
 				8A9693671B5498550025E229 /* Admob.swift in Sources */,
 				8ABA79901B4E0C4700880817 /* ViewFromGateRecent.swift in Sources */,
 			);
