@@ -372,24 +372,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         return cell!
     }
     
-    let actionSheetTextsMusicSelectedA = [
-        NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
-        NSLocalizedString("from GATE", comment: "ViewScoreList"),
-        NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
-        NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
-        NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
-        NSLocalizedString("Memo", comment: "ViewScoreList"),
-    ]
-    let actionSheetTextsMusicSelectedC = [
-        NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
-        NSLocalizedString("from GATE", comment: "ViewScoreList"),
-        NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
-        NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
-        NSLocalizedString("Remove From This MyList", comment: "ViewScoreList"),
-        NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
-        NSLocalizedString("Memo", comment: "ViewScoreList"),
-    ]
-    
     let actionSheetTextsSystemA = [
         NSLocalizedString("Preferences", comment: "ViewScoreList"),
         NSLocalizedString("Player Status", comment: "ViewScoreList"),
@@ -429,9 +411,24 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         var texts: [String]
         switch rparam_ParentCategory {
         case "My List":
-            texts = actionSheetTextsMusicSelectedC
+            texts = [
+                NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
+                NSLocalizedString("from GATE", comment: "ViewScoreList"),
+                NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
+                NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
+                NSLocalizedString("Remove From This MyList", comment: "ViewScoreList"),
+                NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
+                NSLocalizedString("Memo", comment: "ViewScoreList"),
+            ]
         default:
-            texts = actionSheetTextsMusicSelectedA
+            texts = [
+                NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
+                NSLocalizedString("from GATE", comment: "ViewScoreList"),
+                NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
+                NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
+                NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
+                NSLocalizedString("Memo", comment: "ViewScoreList"),
+            ]
         }
         if mActiveRival.Id != "" {
             texts.insert(NSLocalizedString("Rival Score", comment: "ViewScoreList"), at: 3)
