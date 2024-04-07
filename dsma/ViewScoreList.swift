@@ -378,12 +378,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
         NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
         NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
-    ]
-    let actionSheetTextsMusicSelectedB = [
-        NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
-        NSLocalizedString("from GATE", comment: "ViewScoreList"),
-        NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
-        NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
+        NSLocalizedString("Memo", comment: "ViewScoreList"),
     ]
     let actionSheetTextsMusicSelectedC = [
         NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
@@ -432,8 +427,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         let title = music!.Name + " (" + mi.Pattern.rawValue + ")"
         var texts: [String]
         switch rparam_ParentCategory {
-        case "Display All Pattern":
-            texts = actionSheetTextsMusicSelectedB
         case "My List":
             texts = actionSheetTextsMusicSelectedC
         default:
@@ -521,7 +514,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             mActionSheet.addAction(ActionSheetAction(title: text, method: action))
         }
         mActionSheet.show(self, sourceView: self.view, sourceRect: tableView.convert(tableView.rectForRow(at: IndexPath(row: self.mSelectedIndexForActionSheet, section: 0)), to: tableView.superview))
-        //presentViewController(ViewMenuMusicSelected.checkOut(self, musics: mMusicData, uniquePattern: mListItems[indexPath.row], parentCategory: rparam_ParentCategory, category: rparam_Category), animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
