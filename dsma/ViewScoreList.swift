@@ -387,6 +387,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
         NSLocalizedString("Remove From This MyList", comment: "ViewScoreList"),
         NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
+        NSLocalizedString("Memo", comment: "ViewScoreList"),
     ]
     
     let actionSheetTextsSystemA = [
