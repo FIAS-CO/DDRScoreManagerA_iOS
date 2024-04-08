@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		181B2BFB2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */; };
 		181B2BFD2AA9779500982212 /* MetaAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */; };
 		181B2BFF2AA977A800982212 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */; };
+		1863B0322BC2AE5500B01EF3 /* ViewSongMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */; };
+		1863B0342BC2B6B000B01EF3 /* ViewSongMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1863B0332BC2B6B000B01EF3 /* ViewSongMemo.storyboard */; };
 		8A04D8A01B3F9A58006EDD51 /* ViewClearStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */; };
 		8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8541B55F24300EF6A99 /* Localizable.strings */; };
 		8A05B8561B564D5700EF6A99 /* ViewCategorySelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8581B564D5700EF6A99 /* ViewCategorySelect.storyboard */; };
@@ -131,6 +133,8 @@
 		181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurementIdentitySupport.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurementIdentitySupport.xcframework; sourceTree = "<group>"; };
 		181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MetaAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.14.0.0/MetaAdapter.xcframework"; sourceTree = "<group>"; };
 		181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
+		1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongMemo.swift; sourceTree = "<group>"; };
+		1863B0332BC2B6B000B01EF3 /* ViewSongMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewSongMemo.storyboard; sourceTree = "<group>"; };
 		31FCA3B6710854ED722F2B90 /* Pods-dsma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.release.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.release.xcconfig"; sourceTree = "<group>"; };
 		8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClearStateList.swift; sourceTree = "<group>"; };
 		8A05B8531B55F24300EF6A99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -464,6 +468,7 @@
 				8A86BAF51B4CE7FF00D4DAAE /* ViewDdrSaExport.storyboard */,
 				8AEC3D221BA16F7D00277E87 /* ViewPlayerStatus.storyboard */,
 				8A6DF1971CF537A300BDF736 /* ViewCopyFormatList.storyboard */,
+				1863B0332BC2B6B000B01EF3 /* ViewSongMemo.storyboard */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -495,11 +500,12 @@
 				8A5D6E011B5DDA5E002E4961 /* ViewFromGateRivalList.swift */,
 				8AFF0FC81BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift */,
 				8A16E4061B25240700372D68 /* ViewMusicListUpdate.swift */,
-				8AE105671B48BB8800329285 /* ViewDdrSa.swift */,
 				8AC6D51E1B4A01250041A1B2 /* ViewDdrSaAuthenticate.swift */,
 				8AC6D5201B4A01830041A1B2 /* ViewDdrSaExport.swift */,
 				8AEC3D241BA1706500277E87 /* ViewPlayerStatus.swift */,
 				8AB4C27A1CF40AE8001B02F4 /* ViewCopyFormatList.swift */,
+				8AE105671B48BB8800329285 /* ViewDdrSa.swift */,
+				1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -649,6 +655,7 @@
 				8AFCB8391B5391EE009133F9 /* ViewMenuRival.storyboard in Resources */,
 				8A9694091B54CFE80025E229 /* ViewSortSetting.storyboard in Resources */,
 				8AFF0FCB1BA7D45900CF96BC /* ViewFromGatePlayerStatus.storyboard in Resources */,
+				1863B0342BC2B6B000B01EF3 /* ViewSongMemo.storyboard in Resources */,
 				8A86BAFE1B4CF1C100D4DAAE /* ViewFromGate.storyboard in Resources */,
 				8ABA798A1B4DF26E00880817 /* ViewSubCategorySelect.storyboard in Resources */,
 				8A96941B1B54D0DD0025E229 /* ViewDdrSaAuthenticate.storyboard in Resources */,
@@ -738,6 +745,7 @@
 				8A16E4111B27171F00372D68 /* MusicSortType.swift in Sources */,
 				8A16E40D1B26747A00372D68 /* UniquePatternCollectionMaker.swift in Sources */,
 				8AFCB8311B5175D4009133F9 /* ViewManageRivals.swift in Sources */,
+				1863B0322BC2AE5500B01EF3 /* ViewSongMemo.swift in Sources */,
 				8AFD01C51B1FD81F006500A0 /* ViewCategorySelect.swift in Sources */,
 				8A9B47BF1BA257890080FF8D /* PlayerStatus.swift in Sources */,
 				8AC23E631B4371A200F294D8 /* WebMusicId.swift in Sources */,
