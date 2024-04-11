@@ -506,6 +506,11 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     FileReader.saveMyList(Int32(Int(self.rparam_Category)!), list: mylistSv)
                     self.refreshAll()
                 }
+            case NSLocalizedString("Memo", comment: "ViewScoreList"):
+                action = { ()->Void in
+                    self.present(ViewSongMemo.checkOut(self.mListItems[self.mSelectedIndexForActionSheet]),
+                                 animated: true, completion: nil)
+                }
             default:
                 action = { ()->Void in }
             }

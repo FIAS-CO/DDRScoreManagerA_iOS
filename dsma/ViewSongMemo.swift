@@ -10,8 +10,13 @@ import UIKit
 import WebKit
 import GoogleMobileAds
 
-class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningDelegate, UIScrollViewDelegate  {
+class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningDelegate {
     
+    @IBOutlet weak var adView: UIView!
+    @IBOutlet weak var adHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var naviTitle: UINavigationItem!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     var rparam_AddTarget: UniquePattern!
     
     static func checkOut(_ target: UniquePattern?) -> (ViewSongMemo) {
@@ -27,4 +32,11 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             return ret
         }
     }
+    
+    // UIBarPositioningDelegate
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.topAttached
+    }
+    
+    
 }
