@@ -17,7 +17,13 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
+    
+    var buttonDone: UIBarButtonItem!
+    var buttonCancel: UIBarButtonItem!
+    
     var rparam_AddTarget: UniquePattern!
+    
+    var mMag: CGFloat = 1 // Padの場合のサイズを変更？
     
     static func checkOut(_ target: UniquePattern?) -> (ViewSongMemo) {
         if target == nil {
@@ -33,10 +39,47 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         }
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        checkDeviceIsPad()
+        
+        buttonDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(ViewMyList.doneButtonTouched(_:)))
+        buttonCancel = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(ViewMyList.cancelButtonTouched(_:)))
+        
+        let bl = [UIBarButtonItem](arrayLiteral: buttonCancel)
+        navigationBar.topItem?.leftBarButtonItems = bl
+        
+        if rparam_AddTarget == nil {
+            self.title = "My List"
+        }
+        else {
+            naviTitle.title = NSLocalizedString("Select My List", comment: "ViewMyList")
+            let nvFrame: CGRect = navigationBar.frame;
+            //            tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
+            navigationBar.delegate = self
+        }
+        adView.addSubview(Admob.getAdBannerView(self))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        Admob.shAdView(adHeight)
+    }
+    
     // UIBarPositioningDelegate
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.topAttached
     }
     
     
+    @objc func applicationWillEnterForeground() {
+        Admob.shAdView(adHeight)
+    }
+    
+    fileprivate func checkDeviceIsPad() {
+        let device = UIDevice.current.userInterfaceIdiom
+        if device == UIUserInterfaceIdiom.pad {
+            mMag = 1.5
+        }
+    }
 }
