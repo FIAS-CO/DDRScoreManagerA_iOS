@@ -13,7 +13,6 @@ import GoogleMobileAds
 class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningDelegate {
     
     @IBOutlet weak var adView: UIView!
-    @IBOutlet weak var adHeight: NSLayoutConstraint!
     
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -39,7 +38,6 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkDeviceIsPad()
@@ -62,18 +60,9 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         adView.addSubview(Admob.getAdBannerView(self))
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        Admob.shAdView(adHeight)
-    }
-    
     // UIBarPositioningDelegate
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.topAttached
-    }
-    
-    
-    @objc func applicationWillEnterForeground() {
-        Admob.shAdView(adHeight)
     }
     
     fileprivate func checkDeviceIsPad() {
