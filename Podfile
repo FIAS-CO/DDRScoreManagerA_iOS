@@ -8,5 +8,6 @@ target 'dsma' do
   # Pods for dsma
   pod 'Google-Mobile-Ads-SDK'
   pod 'GoogleMobileAdsMediationFacebook'
+  pod 'RealmSwift'
 
 end

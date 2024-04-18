@@ -124,6 +124,7 @@
 		8AFD01EF1B2284F4006500A0 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFD01EE1B2284F4006500A0 /* StringUtil.swift */; };
 		8AFF0FC91BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF0FC81BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift */; };
 		8AFF0FCB1BA7D45900CF96BC /* ViewFromGatePlayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF0FCA1BA7D45900CF96BC /* ViewFromGatePlayerStatus.storyboard */; };
+		BE73F293EFF7DDBEFCABE3BC /* Pods_dsma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301D12A40069F6AD8E8732CC /* Pods_dsma.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,7 @@
 		184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewSongMemo.storyboard; sourceTree = "<group>"; };
 		184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewMyList_Add.storyboard; sourceTree = "<group>"; };
 		1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongMemo.swift; sourceTree = "<group>"; };
+		301D12A40069F6AD8E8732CC /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31FCA3B6710854ED722F2B90 /* Pods-dsma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.release.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.release.xcconfig"; sourceTree = "<group>"; };
 		8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClearStateList.swift; sourceTree = "<group>"; };
 		8A05B8531B55F24300EF6A99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				8A9693621B5495E60025E229 /* MessageUI.framework in Frameworks */,
 				8A9693631B5495E60025E229 /* StoreKit.framework in Frameworks */,
 				8A9693641B5495E60025E229 /* SystemConfiguration.framework in Frameworks */,
+				BE73F293EFF7DDBEFCABE3BC /* Pods_dsma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +320,7 @@
 				181B2BF82AA9773A00982212 /* GoogleAppMeasurement.xcframework */,
 				181B2BF62AA9770A00982212 /* FBAudienceNetwork.xcframework */,
 				181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */,
+				301D12A40069F6AD8E8732CC /* Pods_dsma.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -696,12 +700,16 @@
 				"${PODS_ROOT}/Target Support Files/Pods-dsma/Pods-dsma-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
