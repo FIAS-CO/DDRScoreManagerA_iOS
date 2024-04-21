@@ -20,7 +20,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8VA-v0-lOB">
                                 <rect key="frame" x="16" y="103" width="361" height="643"/>
                                 <color key="backgroundColor" red="0.28568507713337099" green="0.28469376590456102" blue="0.30200950386597936" alpha="0.87988945578231292" colorSpace="custom" customColorSpace="displayP3"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -36,7 +35,9 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="Title" id="0uS-qS-Ao4"/>
+                                    <navigationItem title="Title" id="Qdf-i3-hMq">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="FOv-Nd-eVX" userLabel="Save"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -58,8 +59,9 @@
                     <navigationItem key="navigationItem" id="rbk-kn-Jo9"/>
                     <connections>
                         <outlet property="adView" destination="qX3-XH-nzX" id="lHb-KB-ddR"/>
-                        <outlet property="naviTitle" destination="0uS-qS-Ao4" id="eTa-K5-0bT"/>
+                        <outlet property="naviTitle" destination="Qdf-i3-hMq" id="MBt-XA-Pzv"/>
                         <outlet property="navigationBar" destination="Dn6-eL-jyp" id="Eso-Gh-KDw"/>
+                        <outlet property="textBox" destination="8VA-v0-lOB" id="9Sb-38-Ujw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

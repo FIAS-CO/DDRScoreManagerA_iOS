@@ -16,6 +16,7 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var textBox: UITextView!
     
     var buttonDone: UIBarButtonItem!
     var buttonCancel: UIBarButtonItem!
@@ -23,6 +24,8 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     var rparam_AddTarget: UniquePattern!
     
     var mMag: CGFloat = 1 // Padの場合のサイズを変更？
+    
+    let realmUtil = RealmUtil()
     
     static func checkOut(_ target: UniquePattern?) -> (ViewSongMemo) {
         if target == nil {
@@ -41,6 +44,12 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     override func viewDidLoad() {
         super.viewDidLoad()
         checkDeviceIsPad()
+        
+        if let musicId = rparam_AddTarget?.MusicId {
+            textBox.text = realmUtil.loadMemo(id: Int(musicId))
+        } else {
+            textBox.text = "aaa" // または適切なデフォルト値
+        }
         
         buttonDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(ViewMyList.doneButtonTouched(_:)))
         buttonCancel = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(ViewMyList.cancelButtonTouched(_:)))
