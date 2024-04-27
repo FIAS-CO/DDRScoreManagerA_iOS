@@ -23,6 +23,7 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     
     var rparam_AddTarget: UniquePattern!
     
+    var keyboardHeight: CGFloat = 0 // ViewControllerのプロパティとしてキーボードの高さを保持
     var mMag: CGFloat = 1 // Padの場合のサイズを変更？
     
     let realmUtil = RealmUtil()
@@ -50,7 +51,21 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         naviTitle.title = NSLocalizedString("Memo", comment: "ViewSongMemo")
         navigationBar.delegate = self
         
+        // キーボードの表示・非表示の通知を購読
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         adView.addSubview(Admob.getAdBannerView(self))
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            keyboardHeight = keyboardSize.height
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        keyboardHeight = 0
     }
     
     // UIBarPositioningDelegate
@@ -71,7 +86,9 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     }
     
     func showSaveSuccessMessage() {
-        let label = UILabel(frame: CGRect(x: 0, y: self.view.frame.size.height - 80, width: self.view.frame.size.width, height: 40))
+        let labelHeight: CGFloat = 40
+        let yOffset: CGFloat = self.view.frame.size.height - keyboardHeight - labelHeight - 20  // 20は余裕を持たせるための値
+        let label = UILabel(frame: CGRect(x: 0, y: yOffset, width: self.view.frame.size.width, height: labelHeight))
         label.backgroundColor = UIColor.blue
         label.textColor = UIColor.white
         label.textAlignment = .center
