@@ -81,6 +81,9 @@
 /* ViewScoreList */
 "Memo saved." = "메모가 저장되었습니다.";
 
+/* ViewScoreList */
+"Please enter your memo." = "메모를 입력하세요.";
+
 /* ViewDdrSaExport */
 " items." = " 건의 스코어를 내보냈습니다.";
 

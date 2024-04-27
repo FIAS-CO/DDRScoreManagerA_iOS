@@ -17,6 +17,7 @@
 		184DD9D62BCC1647006FB282 /* ViewMyList_Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */; };
 		184DD9D82BD56A9A006FB282 /* RealmUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DD9D72BD56A9A006FB282 /* RealmUtil.swift */; };
 		1863B0322BC2AE5500B01EF3 /* ViewSongMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */; };
+		18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */; };
 		8A04D8A01B3F9A58006EDD51 /* ViewClearStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */; };
 		8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8541B55F24300EF6A99 /* Localizable.strings */; };
 		8A05B8561B564D5700EF6A99 /* ViewCategorySelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8581B564D5700EF6A99 /* ViewCategorySelect.storyboard */; };
@@ -139,6 +140,7 @@
 		184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewMyList_Add.storyboard; sourceTree = "<group>"; };
 		184DD9D72BD56A9A006FB282 /* RealmUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtil.swift; sourceTree = "<group>"; };
 		1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongMemo.swift; sourceTree = "<group>"; };
+		18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		301D12A40069F6AD8E8732CC /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31FCA3B6710854ED722F2B90 /* Pods-dsma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.release.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.release.xcconfig"; sourceTree = "<group>"; };
 		8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClearStateList.swift; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 				8AD4E1411B676AA0007DF84D /* MessageAlertView.swift */,
 				8A1A3D87290807520037B7DB /* NetworkUtil.swift */,
 				184DD9D72BD56A9A006FB282 /* RealmUtil.swift */,
+				18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				8AFD01C71B1FE17D006500A0 /* ViewScoreList.swift in Sources */,
 				8A1A3D88290807520037B7DB /* NetworkUtil.swift in Sources */,
 				8AE105681B48BB8800329285 /* ViewDdrSa.swift in Sources */,
+				18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */,
 				8A0DC88E1B33FFDC00F162B7 /* ViewSubCategorySelect.swift in Sources */,
 				8AFD01EA1B217698006500A0 /* ScoreData.swift in Sources */,
 				8A41B7021B441C420094B1FE /* LoginViewOpener.swift in Sources */,

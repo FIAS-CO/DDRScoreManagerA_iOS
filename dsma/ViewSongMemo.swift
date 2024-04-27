@@ -16,7 +16,7 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var textBox: UITextView!
+    @IBOutlet weak var textBox: PlaceholderTextView!
     
     var buttonDone: UIBarButtonItem!
     var buttonCancel: UIBarButtonItem!
@@ -41,6 +41,9 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         
         let musicId = rparam_AddTarget.MusicId
         textBox.text = realmUtil.loadMemo(id: Int(musicId))
+        // 上下に20ポイントのマージンを設定
+        textBox.textContainerInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        textBox.placeHolder = NSLocalizedString("Please enter your memo.", comment: "ViewSongMemo")
         
         buttonDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(ViewMyList.doneButtonTouched(_:)))
         buttonCancel = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(ViewMyList.cancelButtonTouched(_:)))
