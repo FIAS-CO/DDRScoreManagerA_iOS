@@ -67,6 +67,22 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         realmUtil.saveOrUpdateMemo(id: Int(rparam_AddTarget.MusicId), text:textBox.text)
+        showSaveSuccessMessage()
+    }
+    
+    func showSaveSuccessMessage() {
+        let label = UILabel(frame: CGRect(x: 0, y: self.view.frame.size.height - 80, width: self.view.frame.size.width, height: 40))
+        label.backgroundColor = UIColor.blue
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.text = "データが保存されました"
+        self.view.addSubview(label)
+
+        UIView.animate(withDuration: 2.0, delay: 1.0, options: [], animations: {
+            label.alpha = 0.0
+        }) { (completed) in
+            label.removeFromSuperview()
+        }
     }
     
     @objc func cancelButtonTouched(_ sender: UIBarButtonItem) {
