@@ -78,6 +78,9 @@
 /* ViewScoreList */
 "Memo" = "楽曲メモ";
 
+/* ViewScoreList */
+"Memo saved." = "楽曲メモを保存しました";
+
 /* ViewDdrSaExport */
 " items." = " 件のスコアをエクスポートしました";
 

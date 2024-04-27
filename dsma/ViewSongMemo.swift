@@ -47,7 +47,7 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         let bl = [UIBarButtonItem](arrayLiteral: buttonCancel)
         navigationBar.topItem?.leftBarButtonItems = bl
         
-        naviTitle.title = NSLocalizedString("Select My List", comment: "ViewMyList")
+        naviTitle.title = NSLocalizedString("Memo", comment: "ViewSongMemo")
         navigationBar.delegate = self
         
         adView.addSubview(Admob.getAdBannerView(self))
@@ -75,7 +75,7 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         label.backgroundColor = UIColor.blue
         label.textColor = UIColor.white
         label.textAlignment = .center
-        label.text = "データが保存されました"
+        label.text = NSLocalizedString("Memo saved.", comment: "ViewSongMemo")//"データが保存されました"
         self.view.addSubview(label)
 
         UIView.animate(withDuration: 2.0, delay: 1.0, options: [], animations: {
