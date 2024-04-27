@@ -19,7 +19,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8VA-v0-lOB">
                                 <rect key="frame" x="16" y="103" width="361" height="643"/>
-                                <color key="backgroundColor" red="0.28568507713337099" green="0.28469376590456102" blue="0.30200950386597936" alpha="0.87988945578231292" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.15706108047481682" green="0.15651608731575509" blue="0.16603576030927836" alpha="0.87988945578231292" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -31,12 +31,16 @@
                                     <constraint firstAttribute="height" constant="50" id="3t1-hl-ySF"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dn6-eL-jyp">
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Dn6-eL-jyp">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Title" id="Qdf-i3-hMq">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="FOv-Nd-eVX" userLabel="Save"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="FOv-Nd-eVX" userLabel="Save">
+                                            <connections>
+                                                <action selector="saveButtonTapped:" destination="Y6W-OH-hqX" id="gMY-OQ-8xf"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

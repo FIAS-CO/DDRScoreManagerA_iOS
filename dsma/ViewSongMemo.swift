@@ -64,4 +64,13 @@ class ViewSongMemo: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             mMag = 1.5
         }
     }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        realmUtil.saveOrUpdateMemo(id: Int(rparam_AddTarget.MusicId), text:textBox.text)
+    }
+    
+    @objc func cancelButtonTouched(_ sender: UIBarButtonItem) {
+        // キャンセルボタンが押されたときの処理
+        self.dismiss(animated: true, completion: nil)
+    }
 }
