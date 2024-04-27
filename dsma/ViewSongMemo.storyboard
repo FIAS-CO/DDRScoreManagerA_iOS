@@ -21,12 +21,12 @@
                                 <rect key="frame" x="16" y="103" width="361" height="643"/>
                                 <color key="backgroundColor" red="0.15706108047481682" green="0.15651608731575509" blue="0.16603576030927836" alpha="0.87988945578231292" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qX3-XH-nzX">
-                                <rect key="frame" x="8" y="826" width="377" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="8" y="746" width="377" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3t1-hl-ySF"/>
                                 </constraints>
@@ -49,7 +49,7 @@
                         <color key="backgroundColor" systemColor="systemFillColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8VA-v0-lOB" secondAttribute="trailing" constant="16" id="0MW-Ca-hyz" userLabel="Safe Area.trailing = trailingMargin"/>
-                            <constraint firstItem="qX3-XH-nzX" firstAttribute="top" secondItem="8VA-v0-lOB" secondAttribute="bottom" constant="80" id="5qh-vE-DBs"/>
+                            <constraint firstItem="qX3-XH-nzX" firstAttribute="top" secondItem="8VA-v0-lOB" secondAttribute="bottom" id="5qh-vE-DBs"/>
                             <constraint firstItem="qX3-XH-nzX" firstAttribute="centerX" secondItem="Dn6-eL-jyp" secondAttribute="centerX" id="NEb-Fv-ktf"/>
                             <constraint firstItem="8VA-v0-lOB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="44" id="Nyk-TI-YrK" userLabel="Text View.top = Navigation Bar.bottom"/>
                             <constraint firstItem="qX3-XH-nzX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="PGQ-qP-i1n"/>
@@ -74,9 +74,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemFillColor">
             <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
