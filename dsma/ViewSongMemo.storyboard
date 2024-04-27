@@ -36,7 +36,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Title" id="Qdf-i3-hMq">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="FOv-Nd-eVX" userLabel="Save">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="FOv-Nd-eVX" userLabel="Save">
                                             <connections>
                                                 <action selector="saveButtonTapped:" destination="Y6W-OH-hqX" id="gMY-OQ-8xf"/>
                                             </connections>
