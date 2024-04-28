@@ -19,6 +19,12 @@ final class PlaceholderTextView: UITextView {
         }
     }
     
+    override var text: String! {
+        didSet {
+            textDidChanged()  // プログラムによる変更でもプレースホルダーの表示を更新
+        }
+    }
+    
     private lazy var placeHolderLabel: UILabel = {
         let label = UILabel()
         label.lineBreakMode = .byWordWrapping
@@ -41,10 +47,8 @@ final class PlaceholderTextView: UITextView {
         
         NSLayoutConstraint.activate([
             placeHolderLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            placeHolderLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -7),
-            placeHolderLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 7)
+            placeHolderLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 6)
         ])
-        
     }
     
     @objc private func textDidChanged() {
