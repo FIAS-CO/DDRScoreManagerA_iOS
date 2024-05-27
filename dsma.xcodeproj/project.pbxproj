@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,11 @@
 		181B2BFB2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */; };
 		181B2BFD2AA9779500982212 /* MetaAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */; };
 		181B2BFF2AA977A800982212 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */; };
+		184DD9D42BCC1373006FB282 /* ViewSongMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */; };
+		184DD9D62BCC1647006FB282 /* ViewMyList_Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */; };
+		184DD9D82BD56A9A006FB282 /* RealmUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DD9D72BD56A9A006FB282 /* RealmUtil.swift */; };
+		1863B0322BC2AE5500B01EF3 /* ViewSongMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */; };
+		18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */; };
 		8A04D8A01B3F9A58006EDD51 /* ViewClearStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */; };
 		8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8541B55F24300EF6A99 /* Localizable.strings */; };
 		8A05B8561B564D5700EF6A99 /* ViewCategorySelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8581B564D5700EF6A99 /* ViewCategorySelect.storyboard */; };
@@ -71,7 +76,6 @@
 		8A9B47BF1BA257890080FF8D /* PlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B47BE1BA257890080FF8D /* PlayerStatus.swift */; };
 		8AA8DACA1BA68883008733ED /* MgrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA8DAC91BA68883008733ED /* MgrView.swift */; };
 		8AA9D7E91B4D56820001ECFE /* ViewFilterList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA9D7E81B4D56820001ECFE /* ViewFilterList.storyboard */; };
-		8AA9D7EB1B4D5BD60001ECFE /* ViewMyList_Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA9D7EA1B4D5BD60001ECFE /* ViewMyList_Add.storyboard */; };
 		8AA9D7ED1B4D5E520001ECFE /* ViewMyList_Select.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA9D7EC1B4D5E520001ECFE /* ViewMyList_Select.storyboard */; };
 		8AA9D7EF1B4D604A0001ECFE /* ViewMenuMusicSelected.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA9D7EE1B4D604A0001ECFE /* ViewMenuMusicSelected.storyboard */; };
 		8AA9D7F11B4D61480001ECFE /* ViewScoreList_SameTitle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA9D7F01B4D61480001ECFE /* ViewScoreList_SameTitle.storyboard */; };
@@ -122,6 +126,7 @@
 		8AFD01EF1B2284F4006500A0 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFD01EE1B2284F4006500A0 /* StringUtil.swift */; };
 		8AFF0FC91BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF0FC81BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift */; };
 		8AFF0FCB1BA7D45900CF96BC /* ViewFromGatePlayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF0FCA1BA7D45900CF96BC /* ViewFromGatePlayerStatus.storyboard */; };
+		BE73F293EFF7DDBEFCABE3BC /* Pods_dsma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301D12A40069F6AD8E8732CC /* Pods_dsma.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +136,12 @@
 		181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurementIdentitySupport.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurementIdentitySupport.xcframework; sourceTree = "<group>"; };
 		181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MetaAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.14.0.0/MetaAdapter.xcframework"; sourceTree = "<group>"; };
 		181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
+		184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewSongMemo.storyboard; sourceTree = "<group>"; };
+		184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewMyList_Add.storyboard; sourceTree = "<group>"; };
+		184DD9D72BD56A9A006FB282 /* RealmUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtil.swift; sourceTree = "<group>"; };
+		1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongMemo.swift; sourceTree = "<group>"; };
+		18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		301D12A40069F6AD8E8732CC /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31FCA3B6710854ED722F2B90 /* Pods-dsma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.release.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.release.xcconfig"; sourceTree = "<group>"; };
 		8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClearStateList.swift; sourceTree = "<group>"; };
 		8A05B8531B55F24300EF6A99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -210,7 +221,6 @@
 		8AA069732872598D0029C01D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ViewPreferences.strings; sourceTree = "<group>"; };
 		8AA8DAC91BA68883008733ED /* MgrView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MgrView.swift; sourceTree = "<group>"; };
 		8AA9D7E81B4D56820001ECFE /* ViewFilterList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewFilterList.storyboard; sourceTree = "<group>"; };
-		8AA9D7EA1B4D5BD60001ECFE /* ViewMyList_Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewMyList_Add.storyboard; sourceTree = "<group>"; };
 		8AA9D7EC1B4D5E520001ECFE /* ViewMyList_Select.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewMyList_Select.storyboard; sourceTree = "<group>"; };
 		8AA9D7EE1B4D604A0001ECFE /* ViewMenuMusicSelected.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewMenuMusicSelected.storyboard; sourceTree = "<group>"; };
 		8AA9D7F01B4D61480001ECFE /* ViewScoreList_SameTitle.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewScoreList_SameTitle.storyboard; sourceTree = "<group>"; };
@@ -298,6 +308,7 @@
 				8A9693621B5495E60025E229 /* MessageUI.framework in Frameworks */,
 				8A9693631B5495E60025E229 /* StoreKit.framework in Frameworks */,
 				8A9693641B5495E60025E229 /* SystemConfiguration.framework in Frameworks */,
+				BE73F293EFF7DDBEFCABE3BC /* Pods_dsma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +324,7 @@
 				181B2BF82AA9773A00982212 /* GoogleAppMeasurement.xcframework */,
 				181B2BF62AA9770A00982212 /* FBAudienceNetwork.xcframework */,
 				181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */,
+				301D12A40069F6AD8E8732CC /* Pods_dsma.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -438,7 +450,7 @@
 				8AFCB8381B5391EE009133F9 /* ViewMenuRival.storyboard */,
 				8A05B8581B564D5700EF6A99 /* ViewCategorySelect.storyboard */,
 				8ABA79891B4DF26E00880817 /* ViewSubCategorySelect.storyboard */,
-				8AA9D7EA1B4D5BD60001ECFE /* ViewMyList_Add.storyboard */,
+				184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */,
 				8AA9D7EC1B4D5E520001ECFE /* ViewMyList_Select.storyboard */,
 				8A9694021B54CF6B0025E229 /* ViewScoreList_Standard.storyboard */,
 				8AA9D7F01B4D61480001ECFE /* ViewScoreList_SameTitle.storyboard */,
@@ -464,6 +476,7 @@
 				8A86BAF51B4CE7FF00D4DAAE /* ViewDdrSaExport.storyboard */,
 				8AEC3D221BA16F7D00277E87 /* ViewPlayerStatus.storyboard */,
 				8A6DF1971CF537A300BDF736 /* ViewCopyFormatList.storyboard */,
+				184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -495,11 +508,12 @@
 				8A5D6E011B5DDA5E002E4961 /* ViewFromGateRivalList.swift */,
 				8AFF0FC81BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift */,
 				8A16E4061B25240700372D68 /* ViewMusicListUpdate.swift */,
-				8AE105671B48BB8800329285 /* ViewDdrSa.swift */,
 				8AC6D51E1B4A01250041A1B2 /* ViewDdrSaAuthenticate.swift */,
 				8AC6D5201B4A01830041A1B2 /* ViewDdrSaExport.swift */,
 				8AEC3D241BA1706500277E87 /* ViewPlayerStatus.swift */,
 				8AB4C27A1CF40AE8001B02F4 /* ViewCopyFormatList.swift */,
+				8AE105671B48BB8800329285 /* ViewDdrSa.swift */,
+				1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -561,6 +575,8 @@
 				8AD4E13F1B6755BF007DF84D /* TextAlertView.swift */,
 				8AD4E1411B676AA0007DF84D /* MessageAlertView.swift */,
 				8A1A3D87290807520037B7DB /* NetworkUtil.swift */,
+				184DD9D72BD56A9A006FB282 /* RealmUtil.swift */,
+				18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -656,6 +672,7 @@
 				8A9694061B54CFC80025E229 /* ViewFilterSetting.storyboard in Resources */,
 				8AA9D7F11B4D61480001ECFE /* ViewScoreList_SameTitle.storyboard in Resources */,
 				8A86BAF01B4CC0E100D4DAAE /* ViewMusicListUpdate.storyboard in Resources */,
+				184DD9D62BCC1647006FB282 /* ViewMyList_Add.storyboard in Resources */,
 				8A96940F1B54D0370025E229 /* ViewStatistics.storyboard in Resources */,
 				8A9694151B54D0650025E229 /* ViewClearStateList.storyboard in Resources */,
 				8A86BAF61B4CE7FF00D4DAAE /* ViewDdrSaExport.storyboard in Resources */,
@@ -670,10 +687,10 @@
 				8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */,
 				8A7F127425CE8118006C0CAC /* InfoPlist.strings in Resources */,
 				8A86BB0A1B4D113600D4DAAE /* ViewSortList.storyboard in Resources */,
+				184DD9D42BCC1373006FB282 /* ViewSongMemo.storyboard in Resources */,
 				8A9694031B54CF8A0025E229 /* ViewPreferences.storyboard in Resources */,
 				8A9694121B54D0530025E229 /* ViewDirectEdit.storyboard in Resources */,
 				8AEC3D231BA16F7D00277E87 /* ViewPlayerStatus.storyboard in Resources */,
-				8AA9D7EB1B4D5BD60001ECFE /* ViewMyList_Add.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,12 +706,16 @@
 				"${PODS_ROOT}/Target Support Files/Pods-dsma/Pods-dsma-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,6 +759,7 @@
 				8A16E4111B27171F00372D68 /* MusicSortType.swift in Sources */,
 				8A16E40D1B26747A00372D68 /* UniquePatternCollectionMaker.swift in Sources */,
 				8AFCB8311B5175D4009133F9 /* ViewManageRivals.swift in Sources */,
+				1863B0322BC2AE5500B01EF3 /* ViewSongMemo.swift in Sources */,
 				8AFD01C51B1FD81F006500A0 /* ViewCategorySelect.swift in Sources */,
 				8A9B47BF1BA257890080FF8D /* PlayerStatus.swift in Sources */,
 				8AC23E631B4371A200F294D8 /* WebMusicId.swift in Sources */,
@@ -747,6 +769,7 @@
 				8AE467511B3BD26C00D58C5A /* Preferences.swift in Sources */,
 				8AB4C2771CF3D18D001B02F4 /* StringUtilLng.swift in Sources */,
 				8AFCB83B1B539250009133F9 /* ViewMenuRival.swift in Sources */,
+				184DD9D82BD56A9A006FB282 /* RealmUtil.swift in Sources */,
 				8AFCB8331B51FDBA009133F9 /* RivalData.swift in Sources */,
 				8AFD01CD1B200B80006500A0 /* ScoreListItem.swift in Sources */,
 				8AFD01E01B2164E3006500A0 /* PatternType.swift in Sources */,
@@ -785,6 +808,7 @@
 				8AFD01C71B1FE17D006500A0 /* ViewScoreList.swift in Sources */,
 				8A1A3D88290807520037B7DB /* NetworkUtil.swift in Sources */,
 				8AE105681B48BB8800329285 /* ViewDdrSa.swift in Sources */,
+				18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */,
 				8A0DC88E1B33FFDC00F162B7 /* ViewSubCategorySelect.swift in Sources */,
 				8AFD01EA1B217698006500A0 /* ScoreData.swift in Sources */,
 				8A41B7021B441C420094B1FE /* LoginViewOpener.swift in Sources */,
@@ -1072,7 +1096,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24010101;
+				CURRENT_PROJECT_VERSION = 24042701;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1087,7 +1111,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.45;
+				MARKETING_VERSION = 0.50;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;
@@ -1106,7 +1130,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24010101;
+				CURRENT_PROJECT_VERSION = 24042701;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1121,7 +1145,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.45;
+				MARKETING_VERSION = 0.50;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;

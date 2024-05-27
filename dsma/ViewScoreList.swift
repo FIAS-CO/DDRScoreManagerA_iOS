@@ -14,7 +14,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     static func checkOut(_ parentCategory: String, category: String, targets: [UniquePattern]?, parentScoreList: ViewScoreList?, processPool: WKProcessPool) -> (ViewScoreList) {
         switch parentCategory {
-            case "Display All Pattern":
+        case "Display All Pattern":
             let storyboard = UIStoryboard(name: "ViewScoreList_SameTitle", bundle: nil)
             let ret = storyboard.instantiateInitialViewController() as! ViewScoreList
             ret.rparam_ParentCategory = parentCategory
@@ -50,7 +50,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     var rparam_Targets: [UniquePattern]!
     var rparam_ParentScoreListView: ViewScoreList!
     var rparam_ProcessPool: WKProcessPool!
-
+    
     var mTitle: String = ""
     var mFilterName: String = ""
     
@@ -245,12 +245,12 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                         isDP = true
                         sd = ms!.CDP
                         sdr = msr!.CDP
-                    //default:
-                    //    diff = 0
-                    //    diffColor = UIColor.clearColor()
-                    //    isDP = false
-                    //    sd = ScoreData(Rank: MusicRank.Noplay, Score: 0, MaxCombo: 0, FullComboType_: FullComboType.None, PlayCount: 0, ClearCount: 0)
-                    //    break
+                        //default:
+                        //    diff = 0
+                        //    diffColor = UIColor.clearColor()
+                        //    isDP = false
+                        //    sd = ScoreData(Rank: MusicRank.Noplay, Score: 0, MaxCombo: 0, FullComboType_: FullComboType.None, PlayCount: 0, ClearCount: 0)
+                        //    break
                     }
                     var rankColor: UIColor
                     switch sd.Rank{
@@ -372,28 +372,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         return cell!
     }
     
-    let actionSheetTextsMusicSelectedA = [
-        NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
-        NSLocalizedString("from GATE", comment: "ViewScoreList"),
-        NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
-        NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
-        NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
-    ]
-    let actionSheetTextsMusicSelectedB = [
-        NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
-        NSLocalizedString("from GATE", comment: "ViewScoreList"),
-        NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
-        NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
-    ]
-    let actionSheetTextsMusicSelectedC = [
-        NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
-        NSLocalizedString("from GATE", comment: "ViewScoreList"),
-        NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
-        NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
-        NSLocalizedString("Remove From This MyList", comment: "ViewScoreList"),
-        NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
-    ]
-    
     let actionSheetTextsSystemA = [
         NSLocalizedString("Preferences", comment: "ViewScoreList"),
         NSLocalizedString("Player Status", comment: "ViewScoreList"),
@@ -413,7 +391,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         NSLocalizedString("DDR SA", comment: "ViewScoreList"),
         NSLocalizedString("Manage Rivals", comment: "ViewScoreList"),
     ]
-
+    
     var mSelectedIndexForActionSheet = 0
     internal func cellTapAction(_ tableView: UITableView, indexPath: IndexPath) {
         if mListItems.count == 0 {
@@ -432,24 +410,37 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         let title = music!.Name + " (" + mi.Pattern.rawValue + ")"
         var texts: [String]
         switch rparam_ParentCategory {
-        case "Display All Pattern":
-            texts = actionSheetTextsMusicSelectedB
         case "My List":
-            texts = actionSheetTextsMusicSelectedC
+            texts = [
+                NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
+                NSLocalizedString("from GATE", comment: "ViewScoreList"),
+                NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
+                NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
+                NSLocalizedString("Remove From This MyList", comment: "ViewScoreList"),
+                NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
+                NSLocalizedString("Memo", comment: "ViewScoreList"),
+            ]
         default:
-            texts = actionSheetTextsMusicSelectedA
+            texts = [
+                NSLocalizedString("Copy to clipboard", comment: "ViewScoreList"),
+                NSLocalizedString("from GATE", comment: "ViewScoreList"),
+                NSLocalizedString("Direct Edit", comment: "ViewScoreList"),
+                NSLocalizedString("Add to MyList", comment: "ViewScoreList"),
+                NSLocalizedString("Display all pattern", comment: "ViewScoreList"),
+                NSLocalizedString("Memo", comment: "ViewScoreList"),
+            ]
         }
         if mActiveRival.Id != "" {
             texts.insert(NSLocalizedString("Rival Score", comment: "ViewScoreList"), at: 3)
         }
         /*var actionSheet = UIActionSheet(title: title, delegate: self, cancelButtonTitle: "Close", destructiveButtonTitle: nil)
-        for text in texts {
-            actionSheet.addButtonWithTitle(text)
-        }
-        actionSheet.tag = sActionSheetIdMusicSelected
-        actionSheet.actionSheetStyle = UIActionSheetStyle.BlackTranslucent
-        actionSheet.showInView(self.view)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)*/
+         for text in texts {
+         actionSheet.addButtonWithTitle(text)
+         }
+         actionSheet.tag = sActionSheetIdMusicSelected
+         actionSheet.actionSheetStyle = UIActionSheetStyle.BlackTranslucent
+         actionSheet.showInView(self.view)
+         tableView.deselectRowAtIndexPath(indexPath, animated: true)*/
         mActionSheet = ActionSheet(title: title, cancelAction: { ()->Void in self.tableView.deselectRow(at: indexPath, animated: true) })
         for text in texts {
             var action: (()->Void)
@@ -464,7 +455,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                         StringUtil.textFromCopyFormat(formats[0], targetPattern: targetPattern, targetMusicData: targetMusicData, targetScoreData: targetScoreData),
                         StringUtil.textFromCopyFormat(formats[1], targetPattern: targetPattern, targetMusicData: targetMusicData, targetScoreData: targetScoreData),
                         StringUtil.textFromCopyFormat(formats[2], targetPattern: targetPattern, targetMusicData: targetMusicData, targetScoreData: targetScoreData),
-                        ]
+                    ]
                     self.mActionSheet = ActionSheet(title: NSLocalizedString("Select format", comment: "ViewScoreList"), cancelAction: { ()->Void in self.tableView.deselectRow(at: indexPath, animated: true) })
                     for i in 0 ..< formats.count {
                         self.mActionSheet.addAction(ActionSheetAction(title: formated[i], method: { () -> Void in
@@ -483,7 +474,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             case NSLocalizedString("from GATE", comment: "ViewScoreList"):
                 action = { ()->Void in
                     var targets = [UniquePattern]()
-                targets.append(self.mListItems[self.mSelectedIndexForActionSheet])
+                    targets.append(self.mListItems[self.mSelectedIndexForActionSheet])
                     self.present(ViewFromGate.checkOut(self, musics: self.mMusicData, targets: targets, rivalId: nil, rivalName: nil, processPool: self.rparam_ProcessPool), animated: true, completion: nil) }
             case NSLocalizedString("Direct Edit", comment: "ViewScoreList"):
                 action = { ()->Void in self.present(ViewDirectEdit.checkOut(self, musics: self.mMusicData, target: self.mListItems[self.mSelectedIndexForActionSheet], rivalData: FileReader.readRivalList()[FileReader.readActiveRivalNo()]), animated: true, completion: nil) }
@@ -505,15 +496,20 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             case NSLocalizedString("Remove From This MyList", comment: "ViewScoreList"):
                 action = { ()->Void in
                     let mylist = FileReader.readMyList(Int32(Int(self.rparam_Category)!))
-                var mylistSv = [UniquePattern]()
-                for pt in mylist {
-                    if pt.equals(self.mListItems[self.mSelectedIndexForActionSheet]) {
-                        continue
+                    var mylistSv = [UniquePattern]()
+                    for pt in mylist {
+                        if pt.equals(self.mListItems[self.mSelectedIndexForActionSheet]) {
+                            continue
+                        }
+                        mylistSv.append(pt)
                     }
-                    mylistSv.append(pt)
+                    FileReader.saveMyList(Int32(Int(self.rparam_Category)!), list: mylistSv)
+                    self.refreshAll()
                 }
-                FileReader.saveMyList(Int32(Int(self.rparam_Category)!), list: mylistSv)
-                self.refreshAll()
+            case NSLocalizedString("Memo", comment: "ViewScoreList"):
+                action = { ()->Void in
+                    self.present(ViewSongMemo.checkOut(self.mListItems[self.mSelectedIndexForActionSheet]),
+                                 animated: true, completion: nil)
                 }
             default:
                 action = { ()->Void in }
@@ -521,7 +517,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             mActionSheet.addAction(ActionSheetAction(title: text, method: action))
         }
         mActionSheet.show(self, sourceView: self.view, sourceRect: tableView.convert(tableView.rectForRow(at: IndexPath(row: self.mSelectedIndexForActionSheet, section: 0)), to: tableView.superview))
-        //presentViewController(ViewMenuMusicSelected.checkOut(self, musics: mMusicData, uniquePattern: mListItems[indexPath.row], parentCategory: rparam_ParentCategory, category: rparam_Category), animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -529,8 +524,8 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     /*func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }*/
+     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+     }*/
     
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
         let pt = sender.location(in: tableView)
@@ -572,7 +567,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             let bb = [UIBarButtonItem](arrayLiteral: self.buttonMenu)
             self.navigationController?.navigationBar.topItem?.rightBarButtonItems = bb
         }
-
+        
         mActiveRival = FileReader.readRivalList()[FileReader.readActiveRivalNo()]
         
         let now = Date()
@@ -619,52 +614,52 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             }
             else if(self.rparam_ParentCategory == "Random Pickup") {
                 if self.rparam_Targets.count > 0 {
-                let no = Int(arc4random())%self.rparam_Targets.count
-                var cn = 0
-                var pat: UniquePattern?
-                for target in self.rparam_Targets {
-                    if cn == no {
-                        pat = target
-                        break
+                    let no = Int(arc4random())%self.rparam_Targets.count
+                    var cn = 0
+                    var pat: UniquePattern?
+                    for target in self.rparam_Targets {
+                        if cn == no {
+                            pat = target
+                            break
+                        }
+                        cn += 1
                     }
-                    cn += 1
-                }
-                if pat != nil {
-                    musicFilter.Title = self.mMusicData[pat!.MusicId]!.Name
-                    musicFilter.bSP = false
-                    musicFilter.BSP = false
-                    musicFilter.DSP = false
-                    musicFilter.ESP = false
-                    musicFilter.CSP = false
-                    musicFilter.BDP = false
-                    musicFilter.DDP = false
-                    musicFilter.EDP = false
-                    musicFilter.CDP = false
-                    switch pat!.Pattern {
-                    case PatternType.bSP:
-                        musicFilter.bSP = true
-                    case PatternType.BSP:
-                        musicFilter.BSP = true
-                    case PatternType.DSP:
-                        musicFilter.DSP = true
-                    case PatternType.ESP:
-                        musicFilter.ESP = true
-                    case PatternType.CSP:
-                        musicFilter.CSP = true
-                    case PatternType.BDP:
-                        musicFilter.BDP = true
-                    case PatternType.DDP:
-                        musicFilter.DDP = true
-                    case PatternType.EDP:
-                        musicFilter.EDP = true
-                    case PatternType.CDP:
-                        musicFilter.CDP = true
+                    if pat != nil {
+                        musicFilter.Title = self.mMusicData[pat!.MusicId]!.Name
+                        musicFilter.bSP = false
+                        musicFilter.BSP = false
+                        musicFilter.DSP = false
+                        musicFilter.ESP = false
+                        musicFilter.CSP = false
+                        musicFilter.BDP = false
+                        musicFilter.DDP = false
+                        musicFilter.EDP = false
+                        musicFilter.CDP = false
+                        switch pat!.Pattern {
+                        case PatternType.bSP:
+                            musicFilter.bSP = true
+                        case PatternType.BSP:
+                            musicFilter.BSP = true
+                        case PatternType.DSP:
+                            musicFilter.DSP = true
+                        case PatternType.ESP:
+                            musicFilter.ESP = true
+                        case PatternType.CSP:
+                            musicFilter.CSP = true
+                        case PatternType.BDP:
+                            musicFilter.BDP = true
+                        case PatternType.DDP:
+                            musicFilter.DDP = true
+                        case PatternType.EDP:
+                            musicFilter.EDP = true
+                        case PatternType.CDP:
+                            musicFilter.CDP = true
+                        }
+                        musicSort._1stType = MusicSortType.SPDP
+                        musicSort._1stOrder = SortOrder.Ascending
+                        musicSort._2ndType = MusicSortType.Pattern
+                        musicSort._2ndOrder = SortOrder.Ascending
                     }
-                    musicSort._1stType = MusicSortType.SPDP
-                    musicSort._1stOrder = SortOrder.Ascending
-                    musicSort._2ndType = MusicSortType.Pattern
-                    musicSort._2ndOrder = SortOrder.Ascending
-                }
                 }
                 else {
                     musicFilter.Title = ""
@@ -1085,29 +1080,8 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                 self.mThreadIds.remove(at: noc)
             }
             objc_sync_exit(self.mThreadIds)
-
+            
         })
-        /*
-        var musics: [Int32 : MusicData] = FileReader.readMusicList()
-        var scores: [Int32 : MusicScore] = FileReader.readScoreList()
-        var rivalScores: [Int32 : MusicScore] = [:]
-        
-        mListItems = UniquePatternCollectionMaker.create(musicFilter, musics: musics, scores: &scores, rivalScores: &rivalScores)
-        
-        if rparam_ParentCategory == "Display All Pattern" {
-            naviTitle.title = rparam_Category + " (" + mListItems.count.description + ")"
-        }
-        else {
-            self.title = rparam_Category + " (" + mListItems.count.description + ")"
-        }
-        
-        //mListItems.sort{ (m, p) in return m.MusicId < p.MusicId }
-        mListItems.sort(musicSort.compare)
-        
-        tableView.reloadData()
-        
-        self.title = category
-        */
     }
     
     @objc internal func refreshButtonTouched(_ sender: UIButton) {
@@ -1134,52 +1108,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         default:
             texts = actionSheetTextsSystemA
         }
-        /*if objc_getClass("UIAlertController") == nil {
-            let device = UIDevice.currentDevice().userInterfaceIdiom
-            if device == UIUserInterfaceIdiom.Pad {
-                var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: nil, destructiveButtonTitle: nil)
-                var count = 0
-                for text in texts {
-                    actionSheet.addButtonWithTitle(text)
-                    ++count
-                }
-                actionSheet.addButtonWithTitle("Cancel")
-                actionSheet.cancelButtonIndex = count
-                actionSheet.tag = sActionSheetIdSystem
-                actionSheet.actionSheetStyle = UIActionSheetStyle.BlackTranslucent
-                switch rparam_ParentCategory {
-                case "Random Pickup": fallthrough
-                case "Display All Pattern":
-                    actionSheet.showFromBarButtonItem(navigationBar.topItem?.rightBarButtonItem, animated: true)
-                default:
-                    actionSheet.showFromBarButtonItem(navigationController?.navigationBar.topItem?.rightBarButtonItem, animated: true)
-                }
-            }
-            else {
-                var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Close", destructiveButtonTitle: nil)
-                for text in texts {
-                    actionSheet.addButtonWithTitle(text)
-                }
-                actionSheet.tag = sActionSheetIdSystem
-                actionSheet.actionSheetStyle = UIActionSheetStyle.BlackTranslucent
-                actionSheet.showInView(self.view)
-            }
-        }
-        else {
-            let device = UIDevice.currentDevice().userInterfaceIdiom
-            if device == UIUserInterfaceIdiom.Pad {
-                var alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-                //alertController.popoverPresentationController!.sourceView = self.view;
-                //alertController.popoverPresentationController!.sourceRect = CGRectMake(0, 0, 0, 0);
-                alertController.popoverPresentationController!.barButtonItem = sender
-                alertController.addAction(UIAlertAction(title: "test", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                    self.presentViewController(ViewPreferences.checkOut(self), animated: true, completion: nil)
-                }))
-                presentViewController(alertController, animated: true, completion: nil)
-            }
-            else {
-            }
-        }*/
         mActionSheet = ActionSheet(title: nil, cancelAction: nil)
         for text in texts {
             var action: (()->Void)
@@ -1203,17 +1131,17 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                         StringUtil.textFromCopyFormat(formats[0], targetPattern: targetPattern, targetMusicData: targetMusicData, targetScoreData: targetScoreData),
                         StringUtil.textFromCopyFormat(formats[1], targetPattern: targetPattern, targetMusicData: targetMusicData, targetScoreData: targetScoreData),
                         StringUtil.textFromCopyFormat(formats[2], targetPattern: targetPattern, targetMusicData: targetMusicData, targetScoreData: targetScoreData),
-                        ]
+                    ]
                     self.mActionSheet = ActionSheet(title: NSLocalizedString("Select format", comment: "ViewScoreList"), cancelAction: { ()->Void in  })
                     for i in 0 ..< formats.count {
                         self.mActionSheet.addAction(ActionSheetAction(title: formated[i], method: { () -> Void in
                             var copyText = ""
-                                for it in 0 ..< self.mListItems.count {
-                                    let targetPattern = self.mListItems[it]
-                                    let targetMusicData = self.mMusicData[targetPattern.MusicId]!
-                                    let targetScoreData = self.mScoreData[targetPattern.MusicId]!.getScoreData(targetPattern.Pattern)
-                                    copyText = copyText + StringUtil.textFromCopyFormat(formats[i], targetPattern: targetPattern, targetMusicData: targetMusicData, targetScoreData: targetScoreData) + "\n"
-                                }
+                            for it in 0 ..< self.mListItems.count {
+                                let targetPattern = self.mListItems[it]
+                                let targetMusicData = self.mMusicData[targetPattern.MusicId]!
+                                let targetScoreData = self.mScoreData[targetPattern.MusicId]!.getScoreData(targetPattern.Pattern)
+                                copyText = copyText + StringUtil.textFromCopyFormat(formats[i], targetPattern: targetPattern, targetMusicData: targetMusicData, targetScoreData: targetScoreData) + "\n"
+                            }
                             let clip = UIPasteboard.general
                             clip.setValue(copyText, forPasteboardType: "public.utf8-plain-text")
                             self.mMessageAlertView = MessageAlertView(title: "", message: NSLocalizedString("Scoredata has been copied to clipboard.", comment: "ViewScoreList"), okAction: MessageAlertViewAction(method: {()->Void in }), cancelAction: nil)
@@ -1290,14 +1218,14 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     override func viewDidAppear(_ animated: Bool) {
         switch rparam_ParentCategory {
-        //case "Random Pickup":
+            //case "Random Pickup":
             //let nvFrame: CGRect = navigationBar.frame;
             //tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
             //tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
         case "Recent":
             let bb = [UIBarButtonItem](arrayLiteral: buttonMenu, buttonRefresh)
             navigationController?.navigationBar.topItem?.rightBarButtonItems = bb
-        //case "Display All Pattern":
+            //case "Display All Pattern":
             //let nvFrame: CGRect = navigationBar.frame;
             //tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
             //tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
@@ -1316,7 +1244,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -1335,7 +1263,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         buttonRefresh = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(ViewScoreList.refreshButtonTouched(_:)))
         buttonRefresh.isEnabled = false
         buttonStop = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.stop, target: self, action: #selector(ViewScoreList.stopButtonTouched(_:)))
-
+        
         switch rparam_ParentCategory {
         case "Display All Pattern": fallthrough
         case "Random Pickup":
@@ -1352,17 +1280,16 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             sortBtnLabel?.minimumScaleFactor = 0.5
         }
         adView.addSubview(Admob.getAdBannerView(self))
-
+        
         tableView.indicatorStyle = UIScrollView.IndicatorStyle.white
         tableView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         tableView.delegate = self
         tableView.dataSource = self
         
         refreshAllInternal()
-
+        
         //var nib  = UINib(nibName: "ScoreListItem", bundle: nil)
         //tableView.registerNib(nib, forCellReuseIdentifier: "ScoreListItemCell")
-
     }
     
     override func didReceiveMemoryWarning() {
