@@ -372,7 +372,9 @@ struct FileReader{
                                 spd=="A" ? SeriesTitle.A :
                                 spd=="A20" ? SeriesTitle.A20 :
                                 spd=="A20 PLUS" ? SeriesTitle.A20PLUS :
-                                SeriesTitle.A3);
+                                spd=="A3" ? SeriesTitle.A3 :
+                                SeriesTitle.WORLD
+                        );
                     case 4:
                         md.MinBPM = "?"==spd ? 0 : Int32(Int(spd)!)
                     case 5:
@@ -1353,6 +1355,7 @@ struct FileReader{
         ret.ClearCountDifferenceMinusMax = sfm.getInt32("ClearCountDifferenceMinusMax", def: Int32.min);
         ret.ClearCountDifferencePlusMin = sfm.getInt32("ClearCountDifferencePlusMin", def: 0);
         ret.ClearCountDifferencePlusMax = sfm.getInt32("ClearCountDifferencePlusMax", def: Int32.max);
+        ret.SerWORLD = sfm.getBool("SerWORLD", def: true);
         ret.SerA3 = sfm.getBool("SerA3", def: true);
         ret.SerA20PLUS = sfm.getBool("SerA20PLUS", def: true);
         ret.SerA20 = sfm.getBool("SerA20", def: true);
@@ -1494,6 +1497,7 @@ struct FileReader{
         sfm.putInt32("ClearCountDifferenceMinusMax", value: filter.ClearCountDifferenceMinusMax);
         sfm.putInt32("ClearCountDifferencePlusMin", value: filter.ClearCountDifferencePlusMin);
         sfm.putInt32("ClearCountDifferencePlusMax", value: filter.ClearCountDifferencePlusMax);
+        sfm.putBool("SerWORLD", value: filter.SerWORLD);
         sfm.putBool("SerA3", value: filter.SerA3);
         sfm.putBool("SerA20PLUS", value: filter.SerA20PLUS);
         sfm.putBool("SerA20", value: filter.SerA20);

@@ -111,6 +111,7 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
     @IBOutlet weak var serA20: UILabel!
     @IBOutlet weak var serA20PLUS: UILabel!
     @IBOutlet weak var serA3: UILabel!
+    @IBOutlet weak var serWORLD: UILabel!
 
     var rparam_Title: String!
     var rparam_Targets: [UniquePattern] = [UniquePattern]()
@@ -224,6 +225,7 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
             var _serA20: Int = 0
             var _serA20PLUS: Int = 0;
             var _serA3: Int = 0;
+            var _serWORLD: Int = 0;
 
             for target in self.rparam_Targets {
                 if let pat = self.rparam_Scores[target.MusicId] {
@@ -295,6 +297,7 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
                         case SeriesTitle.A20:_serA20 += 1
                         case SeriesTitle.A20PLUS:_serA20PLUS += 1
                         case SeriesTitle.A3:_serA3 += 1
+                        case SeriesTitle.WORLD: _serWORLD += 1
                         default:break
                         }
                     }
@@ -405,6 +408,7 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
                 self.serA20.text = _serA20.description
                 self.serA20PLUS.text = _serA20PLUS.description
                 self.serA3.text = _serA3.description
+                self.serWORLD.text = _serWORLD.description
 
                 self.indicator.stopAnimating()
             })
