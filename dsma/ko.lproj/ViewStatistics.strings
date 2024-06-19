@@ -1,4 +1,4 @@
-﻿/* Class = "UILabel"; text = "0"; ObjectID = "0Gm-zI-qsg"; */
+/* Class = "UILabel"; text = "0"; ObjectID = "0Gm-zI-qsg"; */
 "0Gm-zI-qsg.text" = "0";
 
 /* Class = "UILabel"; text = ":"; ObjectID = "0ca-pC-IkA"; */
@@ -582,3 +582,6 @@
 
 /* Class = "UILabel"; text = "0"; ObjectID = "z28-xE-8XV"; */
 "z28-xE-8XV.text" = "0";
+
+/* Class = "UILabel"; text = "WORLD"; ObjectID = "vxm-hu-0Ii"; */
+"vxm-hu-0Ii.text" = "WORLD";

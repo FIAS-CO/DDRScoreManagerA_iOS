@@ -100,6 +100,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var swDif17: UISwitch!
     @IBOutlet weak var swDif18: UISwitch!
     @IBOutlet weak var swDif19: UISwitch!
+    @IBOutlet weak var swSerWORLD: UISwitch!
     @IBOutlet weak var swSerA3: UISwitch!
     @IBOutlet weak var swSerA20PLUS: UISwitch!
     @IBOutlet weak var swSerA20: UISwitch!
@@ -234,6 +235,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         swDif17.isOn = mFilter.Dif17
         swDif18.isOn = mFilter.Dif18
         swDif19.isOn = mFilter.Dif19
+        swSerWORLD.isOn = mFilter.SerWORLD
         swSerA3.isOn = mFilter.SerA3
         swSerA20PLUS.isOn = mFilter.SerA20PLUS
         swSerA20.isOn = mFilter.SerA20
@@ -851,6 +853,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func dif17(_ sender: AnyObject) { mFilter.Dif17 = (sender as! UISwitch).isOn }
     @IBAction func dif18(_ sender: AnyObject) { mFilter.Dif18 = (sender as! UISwitch).isOn }
     @IBAction func dif19(_ sender: AnyObject) { mFilter.Dif19 = (sender as! UISwitch).isOn }
+    @IBAction func serWORLD(_ sender: AnyObject) { mFilter.SerWORLD = (sender as! UISwitch).isOn }
     @IBAction func serA3(_ sender: AnyObject) {mFilter.SerA3 = (sender as! UISwitch).isOn }
     @IBAction func serA20PLUS(_ sender: AnyObject) {mFilter.SerA20PLUS = (sender as! UISwitch).isOn }
     @IBAction func serA20(_ sender: AnyObject) {mFilter.SerA20 = (sender as! UISwitch).isOn }

@@ -93,6 +93,7 @@ class MusicFilter{
     var Dif18: Bool  = true;
     var Dif19: Bool  = true;
     
+    var SerWORLD: Bool = true;
     var SerA3: Bool = true;
     var SerA20PLUS: Bool = true;
     var SerA20: Bool = true;
@@ -355,6 +356,7 @@ class MusicFilter{
             myscore = scoreData;
         //}
         
+        if(!SerWORLD && music.SeriesTitle_ == SeriesTitle.WORLD){ return false; }
         if(!SerA3 && music.SeriesTitle_ == SeriesTitle.A3){ return false; }
         if(!SerA20PLUS && music.SeriesTitle_ == SeriesTitle.A20PLUS){ return false; }
         if(!SerA20 && music.SeriesTitle_ == SeriesTitle.A20){ return false; }

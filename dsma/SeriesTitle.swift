@@ -27,4 +27,5 @@ enum SeriesTitle: String {
     case A20        = "A20"
     case A20PLUS    = "A20PLUS"
     case A3         = "A3"
+    case WORLD      = "WORLD"
 }

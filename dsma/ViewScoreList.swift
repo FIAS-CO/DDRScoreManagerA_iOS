@@ -105,7 +105,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     let sParentCategoyText = ["Series Title", "ABC", "Difficulty", "Dance Level", "Full Combo Type"]
     
     let sCategoryText = [
-        "Series Title" : ["A3", "A20 PLUS", "A20", "A", "2014", "2013", "X3", "X2", "X", "Super NOVA2", "Super NOVA", "EXTREME", "MAX2", "MAX", "5th", "4th", "3rd", "2nd", "1st"],
+        "Series Title" : ["WORLD", "A3", "A20 PLUS", "A20", "A", "2014", "2013", "X3", "X2", "X", "Super NOVA2", "Super NOVA", "EXTREME", "MAX2", "MAX", "5th", "4th", "3rd", "2nd", "1st"],
         "ABC" : ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
         "Difficulty" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"],
         "Dance Level" : ["AAA", "AA+", "AA", "AA-", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "E", "NoPlay"],
@@ -691,6 +691,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                 
                 switch self.rparam_ParentCategory {
                 case "Series Title":
+                    if self.rparam_Category == "WORLD" { self.mTitle = "DDR WORLD" }
                     if self.rparam_Category == "A3" { self.mTitle = "DDR A3" }
                     if self.rparam_Category == "A20 PLUS" { self.mTitle = "DDR A20 PLUS" }
                     if self.rparam_Category == "A20" { self.mTitle = "DDR A20" }
@@ -698,6 +699,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     if self.rparam_Category == "2014" { self.mTitle = "DDR 2014" }
                     if self.rparam_Category == "2013" { self.mTitle = "DDR 2013" }
                     
+                    if self.rparam_Category != "WORLD" { musicFilter.SerWORLD = false }
                     if self.rparam_Category != "A3" { musicFilter.SerA3 = false }
                     if self.rparam_Category != "A20 PLUS" { musicFilter.SerA20PLUS = false }
                     if self.rparam_Category != "A20" { musicFilter.SerA20 = false }
