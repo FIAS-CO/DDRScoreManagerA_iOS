@@ -410,7 +410,83 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    @IBAction func editClearCountRange(_ sender: AnyObject) { 
+    
+    // 全選択ボタンのアクション
+    @IBAction func selectAllGoldButtonTapped(_ sender: UIButton) {
+        setGoldSwitches(isOn: true)
+    }
+
+    // 全解除ボタンのアクション
+    @IBAction func deselectAllGoldButtonTapped(_ sender: UIButton) {
+        setGoldSwitches(isOn: false)
+    }
+
+    // GOLDカテゴリのスイッチを設定する関数
+    private func setGoldSwitches(isOn: Bool) {
+        swSerWORLD.setOn(isOn, animated: true)
+        swSerA3.setOn(isOn, animated: true)
+        swSerA20PLUS.setOn(isOn, animated: true)
+        swSerA20.setOn(isOn, animated: true)
+        
+        // mFilterのプロパティを直接更新
+        mFilter.SerWORLD = isOn
+        mFilter.SerA3 = isOn
+        mFilter.SerA20PLUS = isOn
+        mFilter.SerA20 = isOn
+        
+        print("All GOLD switches set to: \(isOn)")
+    }
+    
+    // WHITE カテゴリ
+    @IBAction func selectAllWhiteButtonTapped(_ sender: UIButton) {
+        setWhiteSwitches(isOn: true)
+    }
+
+    @IBAction func deselectAllWhiteButtonTapped(_ sender: UIButton) {
+        setWhiteSwitches(isOn: false)
+    }
+    
+    private func setWhiteSwitches(isOn: Bool) {
+        [swSerA, swSer2014, swSer2013].forEach { $0?.setOn(isOn, animated: true) }
+        
+        mFilter.SerA = isOn
+        mFilter.Ser2014 = isOn
+        mFilter.Ser2013 = isOn
+        
+        print("All WHITE switches set to: \(isOn)")
+    }
+
+    // CLASSIC カテゴリ
+    @IBAction func selectAllClassicButtonTapped(_ sender: UIButton) {
+        setClassicSwitches(isOn: true)
+    }
+
+    @IBAction func deselectAllClassicButtonTapped(_ sender: UIButton) {
+        setClassicSwitches(isOn: false)
+    }
+
+    private func setClassicSwitches(isOn: Bool) {
+        [swSerX3, swSerX2, swSerX, swSerSuperNOVA2, swSerSuperNOVA, swSerEXTREME,
+         swSerMAX2, swSerMAX, swSer5th, swSer4th, swSer3rd, swSer2nd, swSer1st].forEach { $0?.setOn(isOn, animated: true) }
+        
+        mFilter.SerX3 = isOn
+        mFilter.SerX2 = isOn
+        mFilter.SerX = isOn
+        mFilter.SerSuperNova2 = isOn
+        mFilter.SerSuperNova = isOn
+        mFilter.SerEXTREME = isOn
+        mFilter.SerMAX2 = isOn
+        mFilter.SerMAX = isOn
+        mFilter.Ser5th = isOn
+        mFilter.Ser4th = isOn
+        mFilter.Ser3rd = isOn
+        mFilter.Ser2nd = isOn
+        mFilter.Ser1st = isOn
+        
+        print("All CLASSIC switches set to: \(isOn)")
+    }
+    
+    @IBAction func editClearCountRange(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Clear Count Range", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input FROM(minimum) clears.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.ClearCountMin.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if let no = Int(prevStr) {
@@ -863,8 +939,8 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func serX3(_ sender: AnyObject) { mFilter.SerX3 = (sender as! UISwitch).isOn }
     @IBAction func serX2(_ sender: AnyObject) { mFilter.SerX2 = (sender as! UISwitch).isOn }
     @IBAction func serX(_ sender: AnyObject) { mFilter.SerX = (sender as! UISwitch).isOn }
-    @IBAction func serSuperNova2(_ sender: AnyObject) { mFilter.SerSuperNova2 = (sender as! UISwitch).isOn }
-    @IBAction func serSuperNova(_ sender: AnyObject) { mFilter.SerSuperNova = (sender as! UISwitch).isOn }
+    @IBAction func serSuperNOVA2(_ sender: AnyObject) { mFilter.SerSuperNova2 = (sender as! UISwitch).isOn }
+    @IBAction func serSuperNOVA(_ sender: AnyObject) { mFilter.SerSuperNova = (sender as! UISwitch).isOn }
     @IBAction func serEXTREME(_ sender: AnyObject) { mFilter.SerEXTREME = (sender as! UISwitch).isOn }
     @IBAction func serMAX2(_ sender: AnyObject) { mFilter.SerMAX2 = (sender as! UISwitch).isOn }
     @IBAction func serMAX(_ sender: AnyObject) { mFilter.SerMAX = (sender as! UISwitch).isOn }
