@@ -5,7 +5,8 @@
 "DDR SA" = "DDR SA";
 
 /* ViewCategorySelect */
-"----- Version Information Main Text-----" = "\n* Fix: 앱 내부에서 사용하는 라이브러리의 버전업이 이루어졌습니다.\n";
+"----- Version Information Main Text-----" = "\n
+* Update: DDR WORLD 시작! \nGOLD/WHITE/CLASSIC의 카테고리 구분과 관련하여 곡 필터를 개선하였습니다.\n";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 연동";

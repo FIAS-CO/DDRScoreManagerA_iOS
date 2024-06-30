@@ -5,7 +5,8 @@
 "DDR SA" = "DDR SA";
 
 /* ViewCategorySelect */
-"----- Version Information Main Text-----" = "\n* Fix: アプリ内部で使用しているライブラリのバージョンアップをおこないました。\n";
+"----- Version Information Main Text-----" = "\n
+* Update: DDR WORLDスタート！\nGOLD/WHITE/CLASSICのカテゴリ分けに関して楽曲フィルターの改善を行いました。";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 連携";
