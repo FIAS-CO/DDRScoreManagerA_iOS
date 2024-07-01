@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.0'
+platform :ios, '14.0'
 
 target 'dsma' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -8,6 +8,7 @@ target 'dsma' do
   # Pods for dsma
   pod 'Google-Mobile-Ads-SDK'
   pod 'GoogleMobileAdsMediationFacebook'
+  pod 'GoogleUserMessagingPlatform'
   pod 'RealmSwift'
 
 end

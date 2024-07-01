@@ -3,15 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		181B2BF52AA976DF00982212 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */; };
 		181B2BF72AA9770A00982212 /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BF62AA9770A00982212 /* FBAudienceNetwork.xcframework */; };
-		181B2BF92AA9773A00982212 /* GoogleAppMeasurement.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BF82AA9773A00982212 /* GoogleAppMeasurement.xcframework */; };
-		181B2BFB2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */; };
-		181B2BFD2AA9779500982212 /* MetaAdapter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */; };
 		181B2BFF2AA977A800982212 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */; };
 		184DD9D42BCC1373006FB282 /* ViewSongMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */; };
 		184DD9D62BCC1647006FB282 /* ViewMyList_Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */; };
@@ -126,21 +123,23 @@
 		8AFD01EF1B2284F4006500A0 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFD01EE1B2284F4006500A0 /* StringUtil.swift */; };
 		8AFF0FC91BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF0FC81BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift */; };
 		8AFF0FCB1BA7D45900CF96BC /* ViewFromGatePlayerStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF0FCA1BA7D45900CF96BC /* ViewFromGatePlayerStatus.storyboard */; };
+		A41694B5D302F871D5A26DCE /* Pods_dsma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7575189524A9105CD96AFCA3 /* Pods_dsma.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
-		181B2BF62AA9770A00982212 /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FBAudienceNetwork.xcframework; path = Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
+		181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
+		181B2BF62AA9770A00982212 /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:V9WTTPBFK9:Meta Platforms, Inc."; lastKnownFileType = wrapper.xcframework; name = FBAudienceNetwork.xcframework; path = Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
 		181B2BF82AA9773A00982212 /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurement.xcframework; sourceTree = "<group>"; };
 		181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurementIdentitySupport.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurementIdentitySupport.xcframework; sourceTree = "<group>"; };
 		181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MetaAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.14.0.0/MetaAdapter.xcframework"; sourceTree = "<group>"; };
-		181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
+		181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
 		184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewSongMemo.storyboard; sourceTree = "<group>"; };
 		184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewMyList_Add.storyboard; sourceTree = "<group>"; };
 		184DD9D72BD56A9A006FB282 /* RealmUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtil.swift; sourceTree = "<group>"; };
 		1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongMemo.swift; sourceTree = "<group>"; };
 		18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
-		332FABB715C9AAD98BB6C472 /* Pods-dsma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.release.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.release.xcconfig"; sourceTree = "<group>"; };
+		527B346527866270E84DC9AC /* Pods-dsma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.release.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.release.xcconfig"; sourceTree = "<group>"; };
+		7575189524A9105CD96AFCA3 /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClearStateList.swift; sourceTree = "<group>"; };
 		8A05B8531B55F24300EF6A99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8A05B8551B55F24600EF6A99 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -282,8 +281,7 @@
 		8AFD01EE1B2284F4006500A0 /* StringUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtil.swift; sourceTree = "<group>"; };
 		8AFF0FC81BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFromGatePlayerStatus.swift; sourceTree = "<group>"; };
 		8AFF0FCA1BA7D45900CF96BC /* ViewFromGatePlayerStatus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewFromGatePlayerStatus.storyboard; sourceTree = "<group>"; };
-		A55E32AF71241D0570FD6145 /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB3605A457EA919770AD2DDD /* Pods-dsma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.debug.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.debug.xcconfig"; sourceTree = "<group>"; };
+		E5B30026DAD4CD28C184BE3B /* Pods-dsma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.debug.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,9 +290,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				181B2BFF2AA977A800982212 /* UserMessagingPlatform.xcframework in Frameworks */,
-				181B2BFD2AA9779500982212 /* MetaAdapter.xcframework in Frameworks */,
-				181B2BFB2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */,
-				181B2BF92AA9773A00982212 /* GoogleAppMeasurement.xcframework in Frameworks */,
 				181B2BF72AA9770A00982212 /* FBAudienceNetwork.xcframework in Frameworks */,
 				181B2BF52AA976DF00982212 /* GoogleMobileAds.xcframework in Frameworks */,
 				8A96935B1B5495E60025E229 /* AdSupport.framework in Frameworks */,
@@ -307,6 +302,7 @@
 				8A9693621B5495E60025E229 /* MessageUI.framework in Frameworks */,
 				8A9693631B5495E60025E229 /* StoreKit.framework in Frameworks */,
 				8A9693641B5495E60025E229 /* SystemConfiguration.framework in Frameworks */,
+				A41694B5D302F871D5A26DCE /* Pods_dsma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +318,7 @@
 				181B2BF82AA9773A00982212 /* GoogleAppMeasurement.xcframework */,
 				181B2BF62AA9770A00982212 /* FBAudienceNetwork.xcframework */,
 				181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */,
-				A55E32AF71241D0570FD6145 /* Pods_dsma.framework */,
+				7575189524A9105CD96AFCA3 /* Pods_dsma.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -582,8 +578,8 @@
 		FB78B3BDA3B8F376AFF2F45A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DB3605A457EA919770AD2DDD /* Pods-dsma.debug.xcconfig */,
-				332FABB715C9AAD98BB6C472 /* Pods-dsma.release.xcconfig */,
+				E5B30026DAD4CD28C184BE3B /* Pods-dsma.debug.xcconfig */,
+				527B346527866270E84DC9AC /* Pods-dsma.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -595,11 +591,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8ADD78171B1DBEFE008324DF /* Build configuration list for PBXNativeTarget "dsma" */;
 			buildPhases = (
-				AAF8A27412956A7DF18C62AA /* [CP] Check Pods Manifest.lock */,
+				C2C1AC593195364436A2FEC7 /* [CP] Check Pods Manifest.lock */,
 				8ADD77F41B1DBEFE008324DF /* Sources */,
 				8ADD77F51B1DBEFE008324DF /* Frameworks */,
 				8ADD77F61B1DBEFE008324DF /* Resources */,
-				D6BBC5D7205376141662B7DD /* [CP] Embed Pods Frameworks */,
+				B6826D72DE22A15515457C18 /* [CP] Embed Pods Frameworks */,
+				92F7724D66E5D8F37C04BF85 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -694,7 +691,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AAF8A27412956A7DF18C62AA /* [CP] Check Pods Manifest.lock */ = {
+		92F7724D66E5D8F37C04BF85 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dsma/Pods-dsma-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FBAudienceNetwork.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dsma/Pods-dsma-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6826D72DE22A15515457C18 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dsma/Pods-dsma-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dsma/Pods-dsma-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2C1AC593195364436A2FEC7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -714,32 +753,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D6BBC5D7205376141662B7DD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dsma/Pods-dsma-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dsma/Pods-dsma-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1087,7 +1100,7 @@
 		};
 		8ADD78181B1DBEFE008324DF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB3605A457EA919770AD2DDD /* Pods-dsma.debug.xcconfig */;
+			baseConfigurationReference = E5B30026DAD4CD28C184BE3B /* Pods-dsma.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
@@ -1121,7 +1134,7 @@
 		};
 		8ADD78191B1DBEFE008324DF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 332FABB715C9AAD98BB6C472 /* Pods-dsma.release.xcconfig */;
+			baseConfigurationReference = 527B346527866270E84DC9AC /* Pods-dsma.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
