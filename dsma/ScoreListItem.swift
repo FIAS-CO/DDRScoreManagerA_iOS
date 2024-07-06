@@ -57,7 +57,6 @@ class ScoreListItem: UITableViewCell{
         let _10: CGFloat = CGFloat(mag*10)
         let _25: CGFloat = CGFloat(mag*25)
         let _11: CGFloat = CGFloat(mag*11)
-        //let _15: CGFloat = CGFloat(mag*15)
         let _5: CGFloat = CGFloat(mag*5)
         let _27: CGFloat = CGFloat(mag*27)
         let _30: CGFloat = CGFloat(mag*30)
@@ -288,7 +287,7 @@ class ScoreListItem: UITableViewCell{
         ]
         
         let pref: Preferences = FileReader.readPreferences()
-                
+        
         if reuseIdentifier.range(of: "Rival") == nil {
             lowerView.isHidden = true
         }
@@ -325,10 +324,6 @@ class ScoreListItem: UITableViewCell{
         lowerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[rivalscore]|", options: [], metrics: nil, views: views))
         lowerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[rivalslashSC]|", options: [], metrics: nil, views: views))
         lowerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[rivalcombo]|", options: [], metrics: nil, views: views))
-        
-        //NSLayoutConstraint.activateConstraints(h)
-        //NSLayoutConstraint.activateConstraints(v)
-        
     }
     
     override func awakeFromNib() {
