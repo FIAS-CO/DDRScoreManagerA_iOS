@@ -32,7 +32,6 @@ class ViewSubCategorySelect: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     // セルに表示するテキスト
-    //var texts: [String]!
     
     let texts = [
         "Series Title" : ["WORLD(Coming Soon)", "A3", "A20 PLUS", "A20", "A", "2014", "2013", "X3", "X2", "X", "Super NOVA2", "Super NOVA", "EXTREME", "MAX2", "MAX", "5th", "4th", "3rd", "2nd", "1st"],
@@ -67,7 +66,6 @@ class ViewSubCategorySelect: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "Cell")
         cell.backgroundColor = UIColor(white: 0, alpha: 0.01)
-        //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.textLabel?.font = UIFont.systemFont(ofSize: cell.textLabel!.font.pointSize * mMag)
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.text = texts[rparam_ParentCategory]![(indexPath as NSIndexPath).row]
@@ -100,24 +98,20 @@ class ViewSubCategorySelect: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
         let pt = sender.location(in: tableView)
         if let indexPath = tableView.indexPathForRow(at: pt) {
-            //tableView.deselectRowAtIndexPath(indexPath, animated: true)
             cellTapAction(tableView, indexPath: indexPath)
         }
     }
     
     var mActionSheet: ActionSheet!
     @objc internal func menuButtonTouched(_ sender: UIButton) {
-        //performSegueWithIdentifier("modalMenuSystem", sender: nil)
         var texts: [String]
         texts = actionSheetTextsSystemB
         mActionSheet = ActionSheet(title: nil, cancelAction: nil)
@@ -140,7 +134,6 @@ class ViewSubCategorySelect: UIViewController, UITableViewDataSource, UITableVie
             mActionSheet.addAction(ActionSheetAction(title: text, method: action))
         }
         mActionSheet.show(self, barButtonItem: buttonMenu)
-        //presentViewController(ViewMenuSystem.checkOut(nil, scores: nil, rivalScores: nil, musics: nil, webMusicIds: nil, listItems: nil), animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -111,14 +111,11 @@ class ViewMenuSystem: UIViewController, UITableViewDataSource, UITableViewDelega
     
     internal func cellTapAction(_ tableView: UITableView, indexPath: IndexPath) {
         var texts: [String]
-        //var detailTexts: [String]
         if rparam_ParentView == nil {
             texts = textsB
-            //detailTexts = detailTextsB
         }
         else {
             texts = textsA
-            //detailTexts = detailTextsA
         }
         switch texts[(indexPath as NSIndexPath).row] {
         case NSLocalizedString("Preferences", comment: "ViewMenuSystem"):
@@ -156,8 +153,6 @@ class ViewMenuSystem: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //navigationController?.navigationBarHidden = false
-        //setFilterData()
         buttonStop = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.stop, target: self, action: #selector(ViewMenuSystem.stopButtonTouched(_:)))
         let bl = [UIBarButtonItem](arrayLiteral: buttonStop)
         navigationBar.topItem?.leftBarButtonItems = bl

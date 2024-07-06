@@ -35,9 +35,7 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     @IBOutlet weak var navigationBar: UINavigationBar!
     
     @IBOutlet weak var gateLoadFromA3: UISwitch!
-    //@IBOutlet weak var gateSaveAsPfc: UILabel!
     @IBOutlet weak var gateOverWriteLowerScores: UISwitch!
-    //@IBOutlet weak var gateOverWriteFullCombo: UISwitch!
     @IBOutlet weak var gateOverWriteLife4: UISwitch!
     
     @IBOutlet weak var visibleItemsMaxCombo: UISwitch!
@@ -92,9 +90,6 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     @IBAction func gateOverWriteLowerScoresValueChanged(_ sender: AnyObject) {
         mPreferences.Gate_OverWriteLowerScores = gateOverWriteLowerScores.isOn
     }
-    //@IBAction func gateOverWriteFullComboValueChanged(sender: AnyObject) {
-    //    mPreferences.Gate_OverWriteFullCombo = gateOverWriteFullCombo.on
-    //}
     @IBAction func gateOverWriteLive4ValueChanged(_ sender: AnyObject) {
         mPreferences.Gate_OverWriteLife4 = gateOverWriteLife4.isOn
     }
@@ -114,10 +109,8 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     }
     
     func setPreferenceData() {
-        //gateSaveAsPfc.text = StringUtil.toCommaFormattedString(mPreferences.Gate_SetPfcScore)
         gateLoadFromA3.isOn = mPreferences.Gate_LoadFromA3
         gateOverWriteLowerScores.isOn = mPreferences.Gate_OverWriteLowerScores
-        //gateOverWriteFullCombo.on = mPreferences.Gate_OverWriteFullCombo
         gateOverWriteLife4.isOn = mPreferences.Gate_OverWriteLife4
         visibleItemsMaxCombo.isOn = mPreferences.VisibleItems_MaxCombo
         visibleItemsScore.isOn = mPreferences.VisibleItems_Score
@@ -127,7 +120,6 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //navigationController?.navigationBarHidden = false
         mPreferences = FileReader.readPreferences()
         setPreferenceData()
         buttonDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(ViewPreferences.doneButtonTouched(_:)))
@@ -137,7 +129,6 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        //navigationController?.navigationBarHidden = true
         FileReader.savePreferences(mPreferences)
     }
     
@@ -145,7 +136,6 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
         if mRefreshFlag {
             rparam_ParentView?.refreshAll()
         }
-        //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -154,7 +144,7 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -164,9 +154,7 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
         
         self.title = "Preferences"
         adView.addSubview(Admob.getAdBannerView(self))
-
-        //let nvFrame: CGRect = navigationBar.frame;
-        //scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
+        
         navigationBar.delegate = self
         
         scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
@@ -178,6 +166,5 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
 

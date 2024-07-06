@@ -28,18 +28,10 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
     var rparam_FromMenu: Bool!
     var rparam_ProcessPool: WKProcessPool!
     
-    //var sortShowing: Bool = false
-    //var sparam_SortId: Int32!
-    
     @IBOutlet weak var adView: UIView!
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
     @IBOutlet weak var tableView: UITableView!
-    //@IBOutlet weak var navigationBar: UINavigationBar!
-    
-    //func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-    //    return UIBarPosition.TopAttached
-    //}
     
     var mScrollDecelerating = false
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
@@ -49,15 +41,13 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
         mScrollDecelerating = false
     }
     
-    // セルに表示するテキスト
-    //let texts = ["All Musics", "Series Title", "ABC", "Difficulty", "Dance Level", "Full Combo Type", "My List", "Rival", "Recent"]
     var mRivalList: [RivalData] = []
     var mActiveRivalNo: Int = 0
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40 * mMag
     }
-
+    
     // セルの行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mRivalList.count
@@ -106,7 +96,7 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
     let actionSheetTextsOldDdrSmScore = [
         NSLocalizedString("Read from clipboard", comment: "ViewManageRivals"),
     ]
-
+    
     var mActionSheet: ActionSheet!
     var mTextAlertView: TextAlertView!
     var mMessageAlertView: MessageAlertView!
@@ -118,22 +108,21 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
             if (indexPath as NSIndexPath).row > 1 {
                 var texts: [String]
                 texts = actionSheetTextsRivalMenu
-                //var list = FileReader.readRivalList()
                 mActionSheet = ActionSheet(title: mRivalList[(indexPath as NSIndexPath).row].Name, cancelAction: {()->Void in self.tableView.deselectRow(at: indexPath, animated: true)})
                 for text in texts {
                     var action: (()->Void)
                     switch text {
-                        case NSLocalizedString("from GATE (simple)", comment: "ViewManageRivals"):
+                    case NSLocalizedString("from GATE (simple)", comment: "ViewManageRivals"):
                         action = { ()->Void in
                             self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("from GATE (simple)", comment: "ViewManageRivals"), message: NSLocalizedString("Load active rival's all scores from GATE with no detail data.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in
                                 self.present(ViewFromGateList.checkOut(self.rparam_ParentView, rivalId: self.mRivalList[(indexPath as NSIndexPath).row].Id, rivalName: self.mRivalList[(indexPath as NSIndexPath).row].Name, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
                             }), cancelAction: MessageAlertViewAction(method: {()->Void in self.tableView.deselectRow(at: indexPath, animated: true)}))
                             self.mMessageAlertView.show(self)
                         }
-                        case NSLocalizedString("from GATE (detail)", comment: "ViewManageRivals"):
-                            if self.rparam_ListItems == nil {
-                                continue
-                            }
+                    case NSLocalizedString("from GATE (detail)", comment: "ViewManageRivals"):
+                        if self.rparam_ListItems == nil {
+                            continue
+                        }
                         action = { ()->Void in
                             self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("from GATE (detail)", comment: "ViewManageRivals"), message: NSLocalizedString("Load active rival's scores listed from GATE with detail data.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in
                                 let musics = FileReader.readMusicList()
@@ -141,7 +130,7 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
                             }), cancelAction: MessageAlertViewAction(method: {()->Void in self.tableView.deselectRow(at: indexPath, animated: true)}))
                             self.mMessageAlertView.show(self)
                         }
-                        case NSLocalizedString("Edit code & name", comment: "ViewManageRivals"):
+                    case NSLocalizedString("Edit code & name", comment: "ViewManageRivals"):
                         action = { ()->Void in
                             self.mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Name", comment: "ViewMenuRival"), message: NSLocalizedString("1. Input rival Name.", comment: "ViewMenuRival"), placeholder: "Rival Name", defaultText: self.mRivalList[(indexPath as NSIndexPath).row].Name, kbd: UIKeyboardType.asciiCapable, okAction: TextAlertViewAction(method: {(text)->Void in
                                 let prevStr = text
@@ -176,12 +165,11 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
                     mActionSheet.addAction(ActionSheetAction(title: text, method: action))
                 }
                 mActionSheet.show(self, sourceView: self.view, sourceRect: tableView.convert(tableView.rectForRow(at: indexPath), to: tableView.superview))
-                //navigationController?.pushViewController(ViewMenuRival.checkOut(rparam_ParentView, listItems: rparam_ListItems, rivalNo: indexPath.row), animated: true)
             }
             else if (indexPath as NSIndexPath).row == 1 {
                 var texts: [String]
                 texts = actionSheetTextsOldDdrSmScore
-                //var list = FileReader.readRivalList()
+                
                 mActionSheet = ActionSheet(title: mRivalList[(indexPath as NSIndexPath).row].Name, cancelAction: {()->Void in self.tableView.deselectRow(at: indexPath, animated: true)})
                 for text in texts {
                     var action: (()->Void)
@@ -218,28 +206,28 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
             if (indexPath as NSIndexPath).row == 1 {
                 let scores = FileReader.readScoreList("00000000")
                 if scores.count == 0 {
-                self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("Read from clipboard", comment: "ViewManageRivals"), message: NSLocalizedString("You can use scoredata from DDR Score Manager 2013 (old DDR SM version). On old score manager,\"Menu\"->\"Preferences\"->\"Import/Export\"->\"Copy score database\". And import on this menu.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in
-                    let clip = UIPasteboard.general
-                    if let scoreText = clip.value(forPasteboardType: "public.utf8-plain-text") as? String {
-                    let scores = FileReader.scoreFromScoreDb(scoreText)
-                    if scores.count > 0 {
-                        let _ = FileReader.saveScoreList("00000000", scores: scores)
-                        self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("Succeed", comment: "ViewManageRivals"), message: NSLocalizedString("Import completed.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in }), cancelAction: nil)
-                        self.mMessageAlertView.show(self)
-                        FileReader.saveActiveRivalNo((indexPath as NSIndexPath).row)
-                    }
-                    else {
-                        self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewManageRivals"), message: NSLocalizedString("No scores detected from clipboard.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in }), cancelAction: nil)
-                        self.mMessageAlertView.show(self)
-                    }
-                    }
-                    else {
-                        self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewManageRivals"), message: NSLocalizedString("No scores detected from clipboard.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in }), cancelAction: nil)
-                        self.mMessageAlertView.show(self)
-                    }
-                    self.tableView.deselectRow(at: indexPath, animated: true)
-                }), cancelAction: MessageAlertViewAction(method: {()->Void in self.tableView.deselectRow(at: indexPath, animated: true)}))
-                self.mMessageAlertView.show(self)
+                    self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("Read from clipboard", comment: "ViewManageRivals"), message: NSLocalizedString("You can use scoredata from DDR Score Manager 2013 (old DDR SM version). On old score manager,\"Menu\"->\"Preferences\"->\"Import/Export\"->\"Copy score database\". And import on this menu.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in
+                        let clip = UIPasteboard.general
+                        if let scoreText = clip.value(forPasteboardType: "public.utf8-plain-text") as? String {
+                            let scores = FileReader.scoreFromScoreDb(scoreText)
+                            if scores.count > 0 {
+                                let _ = FileReader.saveScoreList("00000000", scores: scores)
+                                self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("Succeed", comment: "ViewManageRivals"), message: NSLocalizedString("Import completed.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in }), cancelAction: nil)
+                                self.mMessageAlertView.show(self)
+                                FileReader.saveActiveRivalNo((indexPath as NSIndexPath).row)
+                            }
+                            else {
+                                self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewManageRivals"), message: NSLocalizedString("No scores detected from clipboard.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in }), cancelAction: nil)
+                                self.mMessageAlertView.show(self)
+                            }
+                        }
+                        else {
+                            self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewManageRivals"), message: NSLocalizedString("No scores detected from clipboard.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in }), cancelAction: nil)
+                            self.mMessageAlertView.show(self)
+                        }
+                        self.tableView.deselectRow(at: indexPath, animated: true)
+                    }), cancelAction: MessageAlertViewAction(method: {()->Void in self.tableView.deselectRow(at: indexPath, animated: true)}))
+                    self.mMessageAlertView.show(self)
                 }
                 else {
                     FileReader.saveActiveRivalNo((indexPath as NSIndexPath).row)
@@ -247,11 +235,9 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
                 }
             }
             else {
-            FileReader.saveActiveRivalNo((indexPath as NSIndexPath).row)
-            refreshAll()
-            //rparam_ParentView?.refreshAll()
-            //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-            //presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                FileReader.saveActiveRivalNo((indexPath as NSIndexPath).row)
+                refreshAll()
+                
             }
         }
     }
@@ -283,7 +269,6 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
                 }
             }
             mDeleteShow = false
-            //tableView.deselectRowAtIndexPath(indexPath, animated: true)
             cellTapAction(tableView, indexPath: indexPath)
         }
     }
@@ -320,7 +305,6 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     @objc internal func addButtonTouched(_ sender: UIButton) {
-        //var id: Int32 = Int32(mRivalList.count)
         self.mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Name", comment: "ViewMenuRival"), message: NSLocalizedString("1. Input rival Name.", comment: "ViewMenuRival"), placeholder: "Rival Name", defaultText: "", kbd: UIKeyboardType.asciiCapable, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if prevStr.count == 0 {
@@ -348,8 +332,6 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
             self.mTextAlertView.show(self)
         }), cancelAction: nil)
         self.mTextAlertView.show(self)
-        //tableView.reloadData()
-        //tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: mRivalList.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
     
     @objc internal func refreshButtonTouched(_ sender: UIButton) {
@@ -358,9 +340,7 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
     
     @objc internal func stopButtonTouched(_ sender: UIButton) {
         rparam_ParentView?.refreshAll()
-        if rparam_FromMenu! {
-            //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        }
+        
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -387,7 +367,7 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
     var buttonStop: UIBarButtonItem!
     
     var mMag: CGFloat = 1
-
+    
     func refreshAll() {
         mRivalList.removeAll(keepingCapacity: true)
         mActiveRivalNo = FileReader.readActiveRivalNo()
@@ -400,7 +380,7 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -418,20 +398,15 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
         if device == UIUserInterfaceIdiom.pad {
             mMag = 1.5
         }
-
+        
         self.title = NSLocalizedString("Manage Rivals", comment: "ViewManageRivals")
         adView.addSubview(Admob.getAdBannerView(self))
-
-        //var nvFrame: CGRect = navigationBar.frame;
-        //tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
-        //navigationController?.navigationBar.delegate = self
         
         tableView.allowsSelectionDuringEditing = true
         tableView.indicatorStyle = UIScrollView.IndicatorStyle.white
         tableView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         tableView.delegate = self
         tableView.dataSource = self
-        
     }
     
     override func didReceiveMemoryWarning() {

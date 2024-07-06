@@ -219,7 +219,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
             }
             
             var idText: String
-            //var musicId: Int32
             var musicName: String
             
             if let rs = musicBlock.range(of: titleLinkText) {
@@ -227,12 +226,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 musicBlock = String(musicBlock[rs.lowerBound...]);
                 if let rs = idText.range(of: idDiffEnd) {
                     idText = String(idText[..<rs.lowerBound]);
-                    //if let _ = Int(idText) { // let num
-                        //musicId = Int32(num);
-                    //}
-                    //else {
-                    //    continue
-                    //}
                 }
                 else {
                     continue
@@ -261,13 +254,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
             else {
                 continue
             }
-            //var musicData: MusicData;
-            //if let ml = mMusicList[musicIdSaved] {
-            //    musicData = ml;
-            //}
-            //else {
-            //    musicData = MusicData();
-            //}
             
             var ms: MusicScore;
             if let sl = mScoreList[musicIdSaved] {
@@ -276,20 +262,16 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
             else {
                 ms = MusicScore();
             }
-            //print("1")
+            
             while let rs = musicBlock.range(of: patternBlockStartText) {
-                //print("2")
                 var sd = ScoreData();
                 var diff: Int32
                 
                 let patternLinkText = titleLinkText+idText+"&amp;diff=";
                 var patternBlock: String
-                //if let rs = musicBlock.rangeOfString(patternBlockStartText) {
+                
                     musicBlock = String(musicBlock[rs.lowerBound...]);
-                //}
-                //else {
-                //    break
-                //}
+                
                 if let rs = musicBlock.range(of: patternBlockEndText) {
                     patternBlock = String(musicBlock[..<rs.lowerBound]);
                     musicBlock = String(musicBlock[rs.lowerBound...]);
@@ -297,14 +279,14 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 else {
                     break
                 }
-                //print("3")
+                
                 if let rs = patternBlock.range(of: patternLinkText) {
                     patternBlock = String(patternBlock[rs.upperBound...]);
                 }
                 else {
                     break
                 }
-                //print("4")
+                
                 var diffText: String
                 if let rs = patternBlock.range(of: idDiffEnd) {
                     diffText = String(patternBlock[..<rs.lowerBound]);
@@ -318,7 +300,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 else {
                     continue
                 }
-                //print("5")
+                
                 if let rs = patternBlock.range(of: ">") {
                     patternBlock = String(patternBlock[patternBlock.index(rs.lowerBound, offsetBy: 1)...])
                 }
@@ -343,8 +325,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 }
                 else {
                     let scoreText = patternBlock.replacingOccurrences(of: "<.*?>", with: "", options: NSString.CompareOptions.regularExpression, range: nil);
-                    //print(patternBlock)
-                    //print(scoreText)
+                    
                     if let num = Int(scoreText) {
                         sd.Score = Int32(num);
                     }
@@ -400,7 +381,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                         sd.Rank = MusicRank.AAA;
                     }
                 }
-                //print("6")
+                
                 var msd: ScoreData;
                 switch(diff) {
                 case 0:
@@ -452,63 +433,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                         // コンボを元に戻す
                         sd.MaxCombo = msd.MaxCombo;
                     }
-                    /*
-                     // 元の値がAAA
-                     if(msd.Rank == MusicRank.AAA) {
-                     // AAAにする
-                     sd.Rank = msd.Rank;
-                     }
-                     // 元の値がAA
-                     else if(msd.Rank == MusicRank.AA) {
-                     // 取得した値がAAAでない
-                     if(sd.Rank != MusicRank.AAA) {
-                     // AAにする
-                     sd.Rank = msd.Rank;
-                     }
-                     }
-                     // 元の値がA
-                     else if(msd.Rank == MusicRank.A) {
-                     // 取得した値がAAAでもAAでもない
-                     if(sd.Rank != MusicRank.AAA && sd.Rank != MusicRank.AA) {
-                     // Aにする
-                     sd.Rank = msd.Rank;
-                     }
-                     }
-                     // 元の値がB
-                     else if(msd.Rank == MusicRank.B) {
-                     // 取得した値がAAAでもAAでもAでもない
-                     if(sd.Rank != MusicRank.AAA && sd.Rank != MusicRank.AA && sd.Rank != MusicRank.A) {
-                     // Bにする
-                     sd.Rank = msd.Rank;
-                     }
-                     }
-                     // 元の値がC
-                     else if(msd.Rank == MusicRank.C)
-                     {
-                     // 取得した値がNoPlayかEかD
-                     if(sd.Rank == MusicRank.Noplay || sd.Rank == MusicRank.E || sd.Rank == MusicRank.D)
-                     {
-                     // Cにする
-                     sd.Rank = msd.Rank;
-                     }
-                     }
-                     // 元の値がD
-                     else if(msd.Rank == MusicRank.D) {
-                     // 取得した値がNoPlayかE
-                     if(sd.Rank == MusicRank.Noplay || sd.Rank == MusicRank.E) {
-                     // Dにする
-                     sd.Rank = msd.Rank;
-                     }
-                     }
-                     // 元の値がE
-                     else if(msd.Rank == MusicRank.E) {
-                     // 取得した値がNoPlay
-                     if(sd.Rank == MusicRank.Noplay) {
-                     // Eにする
-                     sd.Rank = msd.Rank;
-                     }
-                     }
-                     */
                     // 元の値がMFC
                     if(msd.FullComboType_ == FullComboType.MarvelousFullCombo)
                     {

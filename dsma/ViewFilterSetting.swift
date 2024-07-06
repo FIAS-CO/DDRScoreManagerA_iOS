@@ -49,10 +49,6 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var textScoreRangeRivalMax: UILabel!
     @IBOutlet weak var textMaxComboRangeRivalMin: UILabel!
     @IBOutlet weak var textMaxComboRangeRivalMax: UILabel!
-    //@IBOutlet weak var textPlayCountRangeRivalMin: UILabel!
-    //@IBOutlet weak var textPlayCountRangeRivalMax: UILabel!
-    //@IBOutlet weak var textClearCountRangeRivalMin: UILabel!
-    //@IBOutlet weak var textClearCountRangeRivalMax: UILabel!
     @IBOutlet weak var textScoreDifferencePlusMin: UILabel!
     @IBOutlet weak var textScoreDifferencePlusMax: UILabel!
     @IBOutlet weak var textScoreDifferenceMinusMin: UILabel!
@@ -61,14 +57,6 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var textMaxComboDifferencePlusMax: UILabel!
     @IBOutlet weak var textMaxComboDifferenceMinusMin: UILabel!
     @IBOutlet weak var textMaxComboDifferenceMinusMax: UILabel!
-    //@IBOutlet weak var textPlayCountDifferencePlusMin: UILabel!
-    //@IBOutlet weak var textPlayCountDifferencePlusMax: UILabel!
-    //@IBOutlet weak var textPlayCountDifferenceMinusMin: UILabel!
-    //@IBOutlet weak var textPlayCountDifferenceMinusMax: UILabel!
-    //@IBOutlet weak var textClearCountDifferencePlusMin: UILabel!
-    //@IBOutlet weak var textClearCountDifferencePlusMax: UILabel!
-    //@IBOutlet weak var textClearCountDifferenceMinusMin: UILabel!
-    //@IBOutlet weak var textClearCountDifferenceMinusMax: UILabel!
     
     @IBOutlet weak var swPatbSP: UISwitch!
     @IBOutlet weak var swPatBSP: UISwitch!
@@ -184,10 +172,6 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         textScoreRangeRivalMax.text = mFilter.ScoreMaxRival.description
         textMaxComboRangeRivalMin.text = mFilter.MaxComboMinRival.description
         textMaxComboRangeRivalMax.text = mFilter.MaxComboMaxRival == Int32.max ? "∞" : mFilter.MaxComboMaxRival.description
-        //textPlayCountRangeRivalMin.text = mFilter.PlayCountMinRival.description
-        //textPlayCountRangeRivalMax.text = mFilter.PlayCountMaxRival == Int32.max ? "∞" : mFilter.PlayCountMaxRival.description
-        //textClearCountRangeRivalMin.text = mFilter.ClearCountMinRival.description
-        //textClearCountRangeRivalMax.text = mFilter.ClearCountMaxRival == Int32.max ? "∞" : mFilter.ClearCountMaxRival.description
         textScoreDifferencePlusMin.text = mFilter.ScoreDifferencePlusMin.description
         textScoreDifferencePlusMax.text = mFilter.ScoreDifferencePlusMax.description
         textScoreDifferenceMinusMin.text = (-mFilter.ScoreDifferenceMinusMin).description
@@ -196,14 +180,6 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         textMaxComboDifferencePlusMax.text = mFilter.MaxComboDifferencePlusMax == Int32.max ? "∞" : mFilter.MaxComboDifferencePlusMax.description
         textMaxComboDifferenceMinusMin.text = (-mFilter.MaxComboDifferenceMinusMin).description
         textMaxComboDifferenceMinusMax.text = mFilter.MaxComboDifferenceMinusMax == Int32.min ? "∞" : (-mFilter.MaxComboDifferenceMinusMax).description
-        //textPlayCountDifferencePlusMin.text = mFilter.PlayCountDifferencePlusMin.description
-        //textPlayCountDifferencePlusMax.text = mFilter.PlayCountDifferencePlusMax == Int32.max ? "∞" : mFilter.PlayCountDifferencePlusMax.description
-        ///textPlayCountDifferenceMinusMin.text = (-mFilter.PlayCountDifferenceMinusMin).description
-        //textPlayCountDifferenceMinusMax.text = mFilter.PlayCountDifferenceMinusMax == Int32.min ? "∞" : (-mFilter.PlayCountDifferenceMinusMax).description
-        //textClearCountDifferencePlusMin.text = mFilter.ClearCountDifferencePlusMin.description
-        //textClearCountDifferencePlusMax.text = mFilter.ClearCountDifferencePlusMax == Int32.max ? "∞" : mFilter.ClearCountDifferencePlusMax.description
-        //textClearCountDifferenceMinusMin.text = (-mFilter.ClearCountDifferenceMinusMin).description
-        //textClearCountDifferenceMinusMax.text = mFilter.ClearCountDifferenceMinusMax == Int32.min ? "∞" : (-mFilter.ClearCountDifferenceMinusMax).description
         
         swPatbSP.isOn = mFilter.bSP
         swPatBSP.isOn = mFilter.BSP
@@ -566,60 +542,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    /*@IBAction func editPlayCountRangeRival(sender: AnyObject) {
-        mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Play Count Range", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input FROM(minimum) rival plays.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.PlayCountMinRival.description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-            let prevStr = text
-            if let no = Int(prevStr) {
-                if no >= 0 {
-                    self.mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Play Count Range", comment: "ViewFilterSetting"), message: NSLocalizedString("2. Input TO(maximum) rival plays.", comment: "ViewFilterSetting"), placeholder: "9999",defaultText: min(9999, self.mFilter.PlayCountMaxRival).description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-                        if let no = Int(text) {
-                            let nom = Int(prevStr)!
-                            if no >= nom {
-                                self.mFilter.PlayCountMinRival = nom > 9999 ? 9999 : Int32(nom)
-                                self.mFilter.PlayCountMaxRival = no >= 9999 ? Int32.max : Int32(no)
-                                self.setFilterData()
-                                return
-                            }
-                        }
-                        let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Max play count required over than MIN number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-                    }), cancelAction: nil)
-                    self.mTextAlertView.show(self)
-                    return
-                }
-            }
-            let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min play count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-        }), cancelAction: nil)
-        mTextAlertView.show(self)
-    }
-    @IBAction func editClearCountRangeRival(sender: AnyObject) { 
-        mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Clear Count Range", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input FROM(minimum) rival clears.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.ClearCountMinRival.description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-            let prevStr = text
-            if let no = Int(prevStr) {
-                if no >= 0 {
-                    self.mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Clear Count Range", comment: "ViewFilterSetting"), message: NSLocalizedString("2. Input TO(maximum) rival clears.", comment: "ViewFilterSetting"), placeholder: "9999",defaultText: min(9999, self.mFilter.ClearCountMaxRival).description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-                        if let no = Int(text) {
-                            let nom = Int(prevStr)!
-                            if no >= nom {
-                                self.mFilter.ClearCountMinRival = Int32(nom)
-                                self.mFilter.ClearCountMaxRival = Int32(no)
-                                self.setFilterData()
-                                return
-                            }
-                        }
-                        let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Max clear count required over than MIN number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-                    }), cancelAction: nil)
-                    self.mTextAlertView.show(self)
-                    return
-                }
-            }
-            let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min clear count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-        }), cancelAction: nil)
-        mTextAlertView.show(self)
-    }*/
+    
     @IBAction func editScoreDifferencePlus(_ sender: AnyObject) { 
         mTextAlertView = TextAlertView(title: NSLocalizedString("Score Difference (Plus)", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input PLUS FROM(minimum) score difference.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.ScoreDifferencePlusMin.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
@@ -728,114 +651,6 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    /*@IBAction func editPlayCountDifferencePlus(sender: AnyObject) {
-        mTextAlertView = TextAlertView(title: NSLocalizedString("Play Count Difference (Plus)", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input PLUS FROM(minimum) play count difference.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: self.mFilter.PlayCountDifferencePlusMin.description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-            let prevStr = text
-            if let no = Int(prevStr) {
-                if no >= 0 {
-                    self.mTextAlertView = TextAlertView(title: NSLocalizedString("Play Count Difference (Plus)", comment: "ViewFilterSetting"), message: NSLocalizedString("2. Input PLUS TO(maximum) play count difference.", comment: "ViewFilterSetting"), placeholder: "9999",defaultText: min(9999, self.mFilter.PlayCountDifferencePlusMax).description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-                        if let no = Int(text) {
-                            let nom = Int(prevStr)!
-                            if no >= nom {
-                                self.mFilter.PlayCountDifferencePlusMin = nom > 9999 ? 9999 : Int32(nom)
-                                self.mFilter.PlayCountDifferencePlusMax = no >= 9999 ? Int32.max : Int32(no)
-                                self.setFilterData()
-                                return
-                            }
-                        }
-                        let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Max play count required over than MIN number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-                    }), cancelAction: nil)
-                    self.mTextAlertView.show(self)
-                    return
-                }
-            }
-            let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min play count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-        }), cancelAction: nil)
-        mTextAlertView.show(self)
-    }
-    @IBAction func editPlayCountDifferenceMinus(sender: AnyObject) { 
-        mTextAlertView = TextAlertView(title: NSLocalizedString("Play Count Difference (Minus)", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input MINUS FROM(minimum) play count difference.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: (-self.mFilter.PlayCountDifferenceMinusMin).description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-            let prevStr = text
-            if let no = Int(prevStr) {
-                if no >= 0 {
-                    self.mTextAlertView = TextAlertView(title: NSLocalizedString("Play Count Difference (Minus)", comment: "ViewFilterSetting"), message: NSLocalizedString("2. Input MINUS TO(maximum) play count difference.", comment: "ViewFilterSetting"), placeholder: "9999",defaultText: (-max(-9999, self.mFilter.PlayCountDifferenceMinusMax)).description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-                        if let no = Int(text) {
-                            let nom = Int(prevStr)!
-                            if no >= nom {
-                                self.mFilter.PlayCountDifferenceMinusMin = nom > 9999 ? 9999 : Int32(-nom)
-                                self.mFilter.PlayCountDifferenceMinusMax = no >= 9999 ? Int32.min : Int32(-no)
-                                self.setFilterData()
-                                return
-                            }
-                        }
-                        let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Max play count required over than MIN number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-                    }), cancelAction: nil)
-                    self.mTextAlertView.show(self)
-                    return
-                }
-            }
-            let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min play count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-        }), cancelAction: nil)
-        mTextAlertView.show(self)
-    }
-    @IBAction func editClearCountDifferencePlus(sender: AnyObject) { 
-        mTextAlertView = TextAlertView(title: NSLocalizedString("Clear Count Difference (Plus)", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input PLUS FROM(minimum) clear count difference.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.ClearCountDifferencePlusMin.description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-            let prevStr = text
-            if let no = Int(prevStr) {
-                if no >= 0 {
-                    self.mTextAlertView = TextAlertView(title: NSLocalizedString("Clear Count Difference (Plus)", comment: "ViewFilterSetting"), message: NSLocalizedString("2. Input PLUS TO(maximum) clear count difference.", comment: "ViewFilterSetting"), placeholder: "9999",defaultText: min(9999, self.mFilter.ClearCountDifferencePlusMax).description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-                        if let no = Int(text) {
-                            let nom = Int(prevStr)!
-                            if no >= nom {
-                                self.mFilter.ClearCountDifferencePlusMin = nom > 9999 ? 9999 : Int32(nom)
-                                self.mFilter.ClearCountDifferencePlusMax = no >= 9999 ? Int32.max : Int32(no)
-                                self.setFilterData()
-                                return
-                            }
-                        }
-                        let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Max clear count required over than MIN number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-                    }), cancelAction: nil)
-                    self.mTextAlertView.show(self)
-                    return
-                }
-            }
-            let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min clear count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-        }), cancelAction: nil)
-        mTextAlertView.show(self)
-    }
-    @IBAction func editClearCountDifferenceMinus(sender: AnyObject) { 
-        mTextAlertView = TextAlertView(title: NSLocalizedString("Clear Count Difference (Minus)", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input MINUS FROM(minimum) clear count difference.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: (-self.mFilter.ClearCountDifferenceMinusMin).description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-            let prevStr = text
-            if let no = Int(prevStr) {
-                if no >= 0 {
-                    self.mTextAlertView = TextAlertView(title: NSLocalizedString("Clear Count Difference (Minus)", comment: "ViewFilterSetting"), message: NSLocalizedString("2. Input MINUS TO(maximum) clear count difference.", comment: "ViewFilterSetting"), placeholder: "9999",defaultText: (-max(-9999, self.mFilter.ClearCountDifferenceMinusMax)).description, kbd: UIKeyboardType.NumberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-                        if let no = Int(text) {
-                            let nom = Int(prevStr)!
-                            if no >= nom {
-                                self.mFilter.ClearCountDifferenceMinusMin = nom > 9999 ? -9999 : Int32(-nom)
-                                self.mFilter.ClearCountDifferenceMinusMax = no >= 9999 ? Int32.min : Int32(-no)
-                                self.setFilterData()
-                                return
-                            }
-                        }
-                        let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Max clear count required over than MIN number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-                    }), cancelAction: nil)
-                    self.mTextAlertView.show(self)
-                    return
-                }
-            }
-            let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min clear count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-        }), cancelAction: nil)
-        mTextAlertView.show(self)
-    }*/
     
     func filterDispCpat() {
         if !mFilter.CSP && ( mFilter.bSP || mFilter.BSP || mFilter.DSP || mFilter.ESP ) {
@@ -1005,9 +820,6 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         return 3
     }
     
-    //var mSPShockSelection: Int = 0
-    //var mDPShockSelection: Int = 0
-    
     // セルの内容を変更
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "Cell")
@@ -1059,13 +871,11 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //navigationController?.navigationBarHidden = false
         setFilterData()
         Admob.shAdView(adHeight)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        //navigationController?.navigationBarHidden = true
     }
     
     override func didMove(toParent parent: UIViewController?) {
@@ -1120,6 +930,4 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }

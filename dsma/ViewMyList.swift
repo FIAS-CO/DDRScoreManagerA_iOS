@@ -30,7 +30,7 @@ class ViewMyList: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     var rparam_AddTarget: UniquePattern!
     var rparam_ProcessPool: WKProcessPool!
-
+    
     var sparam_ParentCategory: String!
     var sparam_Category: String!
     
@@ -62,7 +62,7 @@ class ViewMyList: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40 * mMag
     }
-
+    
     // セルの行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mMyListNames.count
@@ -206,11 +206,6 @@ class ViewMyList: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        /*if let indexPathes = tableView.indexPathsForSelectedRows() {
-            if let indexPath = indexPathes.first as? NSIndexPath {
-                tableView.deselectRowAtIndexPath(indexPath, animated: false)
-            }
-        }*/
         Admob.shAdView(adHeight)
     }
     
@@ -226,7 +221,6 @@ class ViewMyList: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             navigationBar.topItem?.leftBarButtonItems = bl
             let nvFrame: CGRect = navigationBar.frame;
             tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
-            //tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         }
     }
     
@@ -240,7 +234,7 @@ class ViewMyList: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -248,13 +242,11 @@ class ViewMyList: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         let notifc: NotificationCenter = NotificationCenter.default
         notifc.addObserver(self, selector: #selector(applicationWillEnterForeground), name: NSNotification.Name(rawValue: "applicationWillEnterForeground"), object: nil)
         
-        //addButton.hidden = true
-        
         let device = UIDevice.current.userInterfaceIdiom
         if device == UIUserInterfaceIdiom.pad {
             mMag = 1.5
         }
-
+        
         buttonEdit = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(ViewMyList.editButtonTouched(_:)))
         buttonDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(ViewMyList.doneButtonTouched(_:)))
         buttonAdd = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ViewMyList.addButtonTouched(_:)))
@@ -269,8 +261,6 @@ class ViewMyList: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             navigationBar.delegate = self
         }
         adView.addSubview(Admob.getAdBannerView(self))
-
-        //navigationController?.setNavigationBarHidden(true, animated: true)
         
         refreshAll()
         
@@ -286,5 +276,4 @@ class ViewMyList: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }

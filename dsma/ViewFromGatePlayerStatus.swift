@@ -20,10 +20,10 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
     }
     
     var rparam_ProcessPool: WKProcessPool!
-
+    
     var mPreferences: Preferences
     var mRequestUri: String!
-
+    
     @IBOutlet weak var adView: UIView!
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
@@ -95,7 +95,6 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
         cell.backgroundColor = UIColor(white: 0, alpha: 0.01)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
         cell.textLabel?.minimumScaleFactor = 0.5
-        //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.text = logText[(indexPath as NSIndexPath).row]
         let cellSelectedBgView = UIView()
@@ -113,8 +112,6 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
     }
     
     @objc internal func cancelButtonTouched(_ sender: UIButton) {
-        //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        //presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         addLog(NSLocalizedString("Canceling...", comment: "ViewFromGatePlayerStatus"))
         mCancel = true
         buttonCancel.isEnabled = false
@@ -136,17 +133,11 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
         let cmpDancerName = "<th>ダンサーネーム</th><td>";
         let cmpDdrCode = "<th>DDR-CODE</th><td>";
         let cmpTodofuken = "<th>所属都道府県</th><td>";
-        //let cmpEnjoyLevel = "<th>エンジョイレベル</th><td>";
-        //let cmpEnjoyLevelEnd = "<span style=\"color:black;font-size:12px;\">";
-        //let cmpEnjoyLevelNextExp = "次のレベルまであと<b>";
-        //let cmpEnjoyLevelNextExpEnd = "</b>Exp</span>";
         let cmpPlayCount = "<th>総プレー回数</th><td>";
         let cmpPlayCountEnd = "回"
         let cmpLastPlay = "<th>最終プレー日時</th><td>";
         
         var parsingText = src;
-        //parsingText = parsingText.stringByReplacingOccurrencesOfString("&nbsp;", withString: " ", options: [], range: nil).stringByReplacingOccurrencesOfString("&lt;", withString: "<", options: [], range: nil).stringByReplacingOccurrencesOfString("&gt;", withString: ">", options: [], range: nil);
-        
         var playerStatus = FileReader.readPlayerStatus()
         
         if let rs = parsingText.range(of: cmpDancerName) {
@@ -179,32 +170,7 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
             else{ return false }
         }
         else{ return false }
-        /*if let rs = parsingText.rangeOfString(cmpEnjoyLevel) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpEnjoyLevelEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.EnjoyLevel = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpEnjoyLevelNextExp) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpEnjoyLevelNextExpEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.EnjoyLevelNextExp = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }*/
+        
         if let rs = parsingText.range(of: cmpPlayCount) {
             parsingText = String(parsingText[rs.upperBound...])
             if let rs = parsingText.range(of: cmpPlayCountEnd) {
@@ -228,90 +194,10 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
             else{ return false }
         }
         else{ return false }
-        //let cmpStream = "<th>STREAM</th><td>:</td><td>";
-        //let cmpChaos = "<th>CHAOS</th><td>:</td><td>";
-        //let cmpVoltage = "<th>VOLTAGE</th><td>:</td><td>";
-        //let cmpFreeze = "<th>FREEZE</th><td>:</td><td>";
-        //let cmpAir = "<th>AIR</th><td>:</td><td>";
-        //let cmpShougou = "<th>称号</th><td>";
+        
         let cmpOPlayCount = "<th>プレー回数</th><td>";
         let cmpOLastPlay = "<th>最終プレー日時</th><td>";
         
-        /*if let rs = parsingText.rangeOfString(cmpStream) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.SingleMgrStream = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpChaos) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.SingleMgrChaos = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpVoltage) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.SingleMgrVoltage = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpFreeze) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.SingleMgrFreeze = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpAir) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.SingleMgrAir = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpShougou) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex)
-                playerStatus.SingleShougou = block
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }*/
         if let rs = parsingText.range(of: cmpOPlayCount) {
             parsingText = String(parsingText[rs.upperBound...])
             if let rs = parsingText.range(of: cmpPlayCountEnd) {
@@ -335,81 +221,6 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
             else{ return false }
         }
         else{ return false }
-        /*if let rs = parsingText.rangeOfString(cmpStream) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.DoubleMgrStream = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpChaos) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.DoubleMgrChaos = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-            }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpVoltage) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.DoubleMgrVoltage = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpFreeze) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.DoubleMgrFreeze = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpAir) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if let num = Int(block) {
-                    playerStatus.DoubleMgrAir = Int32(num);
-                }
-                else{ return false }
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }
-        if let rs = parsingText.rangeOfString(cmpShougou) {
-            parsingText = parsingText.substringFromIndex(rs.endIndex)
-            if let rs = parsingText.rangeOfString(cmpTdEnd) {
-                let block = parsingText.substringToIndex(rs.startIndex)
-                playerStatus.DoubleShougou = block
-                parsingText = parsingText.substringFromIndex(rs.endIndex)
-            }
-            else{ return false }
-        }
-        else{ return false }*/
         if let rs = parsingText.range(of: cmpOPlayCount) {
             parsingText = String(parsingText[rs.upperBound...])
             if let rs = parsingText.range(of: cmpPlayCountEnd) {
@@ -453,8 +264,7 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
             case 1:
                 DispatchQueue.main.async(execute: {
                     self.addLog(NSLocalizedString("Opening login form...", comment: "ViewFromGatePlayerStatus"))
-                    //self.sparam_ParentView = self
-                    //self.performSegueWithIdentifier("modalGateLogin",sender: nil)
+                    
                     self.present(ViewGateLogin.checkOut(self, errorCheck: true, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
                 })
                 return
@@ -469,16 +279,6 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
         }
     }
     
-    /*func webViewDidFinishLoad(_ webView: UIWebView) {
-        let url = webView.stringByEvaluatingJavaScript(from: "document.URL")
-        let html = webView.stringByEvaluatingJavaScript(from: "document.getElementsByTagName('html')[0].outerHTML")
-        didFinishLoad(url!, html: html!)
-    }
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        
-    }*/
-    
     override func viewWillAppear(_ animated: Bool) {
         Admob.shAdView(adHeight)
     }
@@ -491,7 +291,7 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -499,37 +299,28 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
         let notifc: NotificationCenter = NotificationCenter.default
         notifc.addObserver(self, selector: #selector(applicationWillEnterForeground), name: NSNotification.Name(rawValue: "applicationWillEnterForeground"), object: nil)
         
-        //self.title = "Preferences"
         adView.addSubview(Admob.getAdBannerView(self))
         
         let nvFrame: CGRect = navigationBar.frame;
-        //webView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
         tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
         navigationBar.delegate = self
         
         tableView.dataSource = self
         tableView.delegate = self
-        /*
-        webView.delegate = self
-        webView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
-        webView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-        */
+        
         tableView.indicatorStyle = UIScrollView.IndicatorStyle.white
         tableView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         
-        //if #available(iOS 8.0, *) {
-            let configuration = WKWebViewConfiguration()
-            configuration.processPool = rparam_ProcessPool
-            wkWebView = WKWebView(frame: CGRect.zero, configuration: configuration)
-            wkWebView.navigationDelegate = self
-            wkWebView.translatesAutoresizingMaskIntoConstraints = false
-            wkWebView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
-            wkWebView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-            wkWebView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
-            navigationBar.delegate = self
-            self.view.addSubview(wkWebView)
-            //self.view.bringSubviewToFront(navigationBar)
-        //}
+        let configuration = WKWebViewConfiguration()
+        configuration.processPool = rparam_ProcessPool
+        wkWebView = WKWebView(frame: CGRect.zero, configuration: configuration)
+        wkWebView.navigationDelegate = self
+        wkWebView.translatesAutoresizingMaskIntoConstraints = false
+        wkWebView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
+        wkWebView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        wkWebView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
+        navigationBar.delegate = self
+        self.view.addSubview(wkWebView)
         
         addLog(NSLocalizedString("Loading player status started.", comment: "ViewFromGatePlayerStatus"))
         
@@ -552,12 +343,8 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
                     }
                     let url: URL = URL(string: (self.mRequestUri))!
                     let request: URLRequest = URLRequest(url: url)
-                    //if #available(iOS 8.0, *) {
-                        self.wkWebView.load(request)
-                    /*}
-                    else {
-                        self.webView.loadRequest(request)
-                    }*/
+                    
+                    self.wkWebView.load(request)
                 })
                 while self.mPause && !self.mCancel {
                     sleep(1)
@@ -596,7 +383,6 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
     @available(iOS 8.0, *)
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         wkWebView.evaluateJavaScript("document.getElementsByTagName('html')[0].outerHTML", completionHandler: {(html, error) -> Void in
-            //print(html)
             self.didFinishLoad(String(describing: self.wkWebView.url), html: String(describing: html))
         })
     }
@@ -605,6 +391,4 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }

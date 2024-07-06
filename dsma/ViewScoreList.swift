@@ -1100,9 +1100,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     var mActionSheet: ActionSheet!
     var mMessageAlertView: MessageAlertView!
     @objc internal func menuButtonTouched(_ sender: UIBarButtonItem) {
-        //sparam_ParentView = self
-        //sparam_ListItems = mListItems
-        //performSegueWithIdentifier("modalMenuSystem", sender: nil)
         var texts: [String]
         switch rparam_ParentCategory {
         case "Random Pickup":
@@ -1181,14 +1178,12 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             mActionSheet.addAction(ActionSheetAction(title: text, method: action))
         }
         mActionSheet.show(self, barButtonItem: buttonMenu)
-        //presentViewController(ViewMenuSystem.checkOut(self, scores: mScoreData, rivalScores: mRivalScoreData, musics: mMusicData, webMusicIds: mWebMusicIds, listItems: mListItems), animated: true, completion: nil)
     }
     
     @objc internal func stopButtonTouched(_ sender: UIButton) {
         if mCloseRefeshFlag {
             rparam_ParentScoreListView?.refreshAll()
         }
-        //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -1220,17 +1215,9 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     override func viewDidAppear(_ animated: Bool) {
         switch rparam_ParentCategory {
-            //case "Random Pickup":
-            //let nvFrame: CGRect = navigationBar.frame;
-            //tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
-            //tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
         case "Recent":
             let bb = [UIBarButtonItem](arrayLiteral: buttonMenu, buttonRefresh)
             navigationController?.navigationBar.topItem?.rightBarButtonItems = bb
-            //case "Display All Pattern":
-            //let nvFrame: CGRect = navigationBar.frame;
-            //tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
-            //tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
         default:
             let bb = [UIBarButtonItem](arrayLiteral: buttonMenu)
             navigationController?.navigationBar.topItem?.rightBarButtonItems = bb
@@ -1289,9 +1276,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         tableView.dataSource = self
         
         refreshAllInternal()
-        
-        //var nib  = UINib(nibName: "ScoreListItem", bundle: nil)
-        //tableView.registerNib(nib, forCellReuseIdentifier: "ScoreListItemCell")
     }
     
     override func didReceiveMemoryWarning() {

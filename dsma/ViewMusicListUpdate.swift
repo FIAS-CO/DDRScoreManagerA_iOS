@@ -30,7 +30,7 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
-
+    
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.topAttached
     }
@@ -113,15 +113,15 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
     var mRequest: URLRequest!
     
     func errorHandle() {
-            self.addLog(NSLocalizedString("Network error occured.", comment: "ViewMusicListUpdate"))
-            self.addLog(NSLocalizedString("Music list download failed.", comment: "ViewMusicListUpdate"))
-            self.addLog(NSLocalizedString("Wait a while...", comment: "ViewMusicListUpdate"))
-            OperationQueue().addOperation({ () -> Void in
-                sleep(5)
-                DispatchQueue.main.async(execute: {
-                    self.presentingViewController?.dismiss(animated: true, completion: nil)
-                })
+        self.addLog(NSLocalizedString("Network error occured.", comment: "ViewMusicListUpdate"))
+        self.addLog(NSLocalizedString("Music list download failed.", comment: "ViewMusicListUpdate"))
+        self.addLog(NSLocalizedString("Wait a while...", comment: "ViewMusicListUpdate"))
+        OperationQueue().addOperation({ () -> Void in
+            sleep(5)
+            DispatchQueue.main.async(execute: {
+                self.presentingViewController?.dismiss(animated: true, completion: nil)
             })
+        })
     }
     
     func errorHandle2() {
@@ -139,7 +139,7 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -149,7 +149,7 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
         
         self.title = "Updating Music List..."
         adView.addSubview(Admob.getAdBannerView(self))
-
+        
         let nvFrame: CGRect = navigationBar.frame;
         tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
         navigationBar.delegate = self
@@ -160,33 +160,43 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
         tableView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         
         //errorHandle()
-  
+        
         OperationQueue().addOperation({ () -> Void in
             
-        let libraryDirPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+            let libraryDirPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
             let cacheDirPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
-                
-                //var err: NSError?
-                //var res: URLResponse?
+            
             var data: Data!
             
-            //"hoge".writeToFile(libraryDirPath.stringByAppendingPathComponent("MusicListVersion.txt"), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-                
-                self.addLog(NSLocalizedString("Checking for update...", comment: "ViewMusicListUpdate"))
+            self.addLog(NSLocalizedString("Checking for update...", comment: "ViewMusicListUpdate"))
             data = NetworkUtil.sessionSyncRequestGET(self.sMusicListVersionTxt)
-            /*do {
-                let data = try NSURLConnection.sendSynchronousRequest(URLRequest(url: URL(string: self.sMusicListVersionTxt)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10), returning: &res)*/
-                if (data == nil ) {
-                    return
-                }
-                else {
-                    if let dataNS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
-                        let dataString: String = dataNS as String
-                        if "edit" == dataString {
-                            self.addLog(NSLocalizedString("Update file is now editing.", comment: "ViewMusicListUpdate"))
+            
+            if (data == nil ) {
+                return
+            }
+            else {
+                if let dataNS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
+                    let dataString: String = dataNS as String
+                    if "edit" == dataString {
+                        self.addLog(NSLocalizedString("Update file is now editing.", comment: "ViewMusicListUpdate"))
+                        self.addLog(NSLocalizedString("Wait a while...", comment: "ViewMusicListUpdate"))
+                        
+                        OperationQueue().addOperation({ () -> Void in
+                            sleep(3)
+                            DispatchQueue.main.async(execute: {
+                                self.presentingViewController?.dismiss(animated: true, completion: nil)
+                            })
+                        })
+                        return
+                    }
+                    if let savedNS = try? NSString(contentsOfFile: (libraryDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), encoding: String.Encoding.utf8.rawValue) {
+                        let saved: String = savedNS as String
+                        self.addLog(NSLocalizedString("Done.", comment: "ViewMusicListUpdate"))
+                        if saved == dataString {
+                            self.addLog(NSLocalizedString("No Updates are found.", comment: "ViewMusicListUpdate"))
                             self.addLog(NSLocalizedString("Wait a while...", comment: "ViewMusicListUpdate"))
-                            //FileReader.saveLastAppVersion()
-                            //FileReader.saveLastBootTime()
+                            FileReader.saveLastAppVersion()
+                            FileReader.saveLastBootTime()
                             OperationQueue().addOperation({ () -> Void in
                                 sleep(3)
                                 DispatchQueue.main.async(execute: {
@@ -195,171 +205,103 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
                             })
                             return
                         }
-                        if let savedNS = try? NSString(contentsOfFile: (libraryDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), encoding: String.Encoding.utf8.rawValue) {
-                            let saved: String = savedNS as String
-                            self.addLog(NSLocalizedString("Done.", comment: "ViewMusicListUpdate"))
-                            if saved == dataString {
-                                self.addLog(NSLocalizedString("No Updates are found.", comment: "ViewMusicListUpdate"))
-                                self.addLog(NSLocalizedString("Wait a while...", comment: "ViewMusicListUpdate"))
-                                FileReader.saveLastAppVersion()
-                                FileReader.saveLastBootTime()
-                                OperationQueue().addOperation({ () -> Void in
-                                    sleep(3)
-                                    DispatchQueue.main.async(execute: {
-                                        self.presentingViewController?.dismiss(animated: true, completion: nil)
-                                    })
-                                })
-                                return
-                            }
-                        }
-                        do {
-                            try dataString.write(toFile: (cacheDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), atomically: true, encoding: String.Encoding.utf8)
-                        } catch _ {
-                        }
+                    }
+                    do {
+                        try dataString.write(toFile: (cacheDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), atomically: true, encoding: String.Encoding.utf8)
+                    } catch _ {
                     }
                 }
-                /*else {
-                    self.errorHandle()
-                    return
-                }
-            } catch let error as NSError {
-                err = error
-                self.errorHandle()
-                return
-            } catch {
-                fatalError()
-            }*/
-            
+            }
             self.addLog(NSLocalizedString("Downloading Music Information File...", comment: "ViewMusicListUpdate"))
             data = NetworkUtil.sessionSyncRequestGET(self.sMusicNamesTxt)
-            /*do {
-                let data = try NSURLConnection.sendSynchronousRequest(URLRequest(url: URL(string: self.sMusicNamesTxt)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10), returning: &res)*/
+            
             if (data == nil ) {
                 return
             }
             else {
-                    if let dataNS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
-                        let dataString: String = dataNS as String
-                        self.addLog(NSLocalizedString("Done.", comment: "ViewMusicListUpdate"))
-                        do {
-                            try dataString.write(toFile: (cacheDirPath as NSString).appendingPathComponent("MusicNames.txt"), atomically: true, encoding: String.Encoding.utf8)
-                        } catch _ {
-                        }
+                if let dataNS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
+                    let dataString: String = dataNS as String
+                    self.addLog(NSLocalizedString("Done.", comment: "ViewMusicListUpdate"))
+                    do {
+                        try dataString.write(toFile: (cacheDirPath as NSString).appendingPathComponent("MusicNames.txt"), atomically: true, encoding: String.Encoding.utf8)
+                    } catch _ {
                     }
                 }
-                /*else {
-                    self.errorHandle()
-                    return
-                }
-            } catch let error as NSError {
-                err = error
-                self.errorHandle()
-                return
-            } catch {
-                fatalError()
-            }*/
+            }
             
             self.addLog(NSLocalizedString("Downloading Shock Arrow Information File...", comment: "ViewMusicListUpdate"))
             data = NetworkUtil.sessionSyncRequestGET(self.sShockArrowExistsTxt)
-            /*do {
-                let data = try NSURLConnection.sendSynchronousRequest(URLRequest(url: URL(string: self.sShockArrowExistsTxt)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10), returning: &res)*/
+            
             if (data == nil ) {
                 return
             }
             else {
-                    if let dataNS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
-                        let dataString: String = dataNS as String
-                        self.addLog(NSLocalizedString("Done.", comment: "ViewMusicListUpdate"))
-                        do {
-                            try dataString.write(toFile: (cacheDirPath as NSString).appendingPathComponent("ShockArrowExists.txt"), atomically: true, encoding: String.Encoding.utf8)
-                        } catch _ {
-                        }
+                if let dataNS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
+                    let dataString: String = dataNS as String
+                    self.addLog(NSLocalizedString("Done.", comment: "ViewMusicListUpdate"))
+                    do {
+                        try dataString.write(toFile: (cacheDirPath as NSString).appendingPathComponent("ShockArrowExists.txt"), atomically: true, encoding: String.Encoding.utf8)
+                    } catch _ {
                     }
                 }
-                /*else {
-                    self.errorHandle()
-                    return
-                }
-            } catch let error as NSError {
-                err = error
-                self.errorHandle()
-                return
-            } catch {
-                fatalError()
-            }*/
+            }
+            
             
             self.addLog(NSLocalizedString("Downloading Music ID Information File...", comment: "ViewMusicListUpdate"))
             data = NetworkUtil.sessionSyncRequestGET(self.sWebMusicIdsTxt)
-            /*do {
-                let data = try NSURLConnection.sendSynchronousRequest(URLRequest(url: URL(string: self.sWebMusicIdsTxt)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10), returning: &res)*/
+            
             if (data == nil ) {
                 return
             }
             else {
-                    if let dataNS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
-                        let dataString: String = dataNS as String
-                        self.addLog(NSLocalizedString("Done.", comment: "ViewMusicListUpdate"))
-                        do {
-                            try dataString.write(toFile: (cacheDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), atomically: true, encoding: String.Encoding.utf8)
-                        } catch _ {
-                        }
+                if let dataNS = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) {
+                    let dataString: String = dataNS as String
+                    self.addLog(NSLocalizedString("Done.", comment: "ViewMusicListUpdate"))
+                    do {
+                        try dataString.write(toFile: (cacheDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), atomically: true, encoding: String.Encoding.utf8)
+                    } catch _ {
                     }
                 }
-                /*else {
-                    self.errorHandle()
-                    return
-                }
-            } catch let error as NSError {
-                err = error
-                self.errorHandle()
-                return
-            } catch {
-                fatalError()
-            }*/
-                
-                if let lvns: NSString = try? NSString(contentsOfFile: (cacheDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), encoding: String.Encoding.utf8.rawValue) {
-                    if let mnns: NSString = try? NSString(contentsOfFile: (cacheDirPath as NSString).appendingPathComponent("MusicNames.txt"), encoding: String.Encoding.utf8.rawValue) {
-                        if let sans: NSString = try? NSString(contentsOfFile: (cacheDirPath as NSString).appendingPathComponent("ShockArrowExists.txt"), encoding: String.Encoding.utf8.rawValue) {
-                            if let wmns: NSString = try? NSString(contentsOfFile: (cacheDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), encoding: String.Encoding.utf8.rawValue) {
-                                var mnn = 0
-                                var san = 0
-                                var wmn = 0
-                                (mnns as String).enumerateLines {
-                                    line, stop in
-                                    mnn += 1
-                                }
-                                (sans as String).enumerateLines {
-                                    line, stop in
-                                    san += 1
-                                }
-                                (wmns as String).enumerateLines {
-                                    line, stop in
-                                    wmn += 1
-                                }
-                                if mnn != san || san != wmn || wmn != mnn {
-                                    self.errorHandle2()
-                                    return
-                                }
-                                do {
-                                    try lvns.write(toFile: (libraryDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
-                                } catch _ {
-                                }
-                                do {
-                                    try mnns.write(toFile: (libraryDirPath as NSString).appendingPathComponent("MusicNames.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
-                                } catch _ {
-                                }
-                                do {
-                                    try sans.write(toFile: (libraryDirPath as NSString).appendingPathComponent("ShockArrowExists.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
-                                } catch _ {
-                                }
-                                do {
-                                    try (StringUtilLng.escapeWebMusicTitle(src: wmns as String) as NSString).write(toFile: (libraryDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
-                                } catch _ {
-                                }
+            }
+            
+            if let lvns: NSString = try? NSString(contentsOfFile: (cacheDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), encoding: String.Encoding.utf8.rawValue) {
+                if let mnns: NSString = try? NSString(contentsOfFile: (cacheDirPath as NSString).appendingPathComponent("MusicNames.txt"), encoding: String.Encoding.utf8.rawValue) {
+                    if let sans: NSString = try? NSString(contentsOfFile: (cacheDirPath as NSString).appendingPathComponent("ShockArrowExists.txt"), encoding: String.Encoding.utf8.rawValue) {
+                        if let wmns: NSString = try? NSString(contentsOfFile: (cacheDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), encoding: String.Encoding.utf8.rawValue) {
+                            var mnn = 0
+                            var san = 0
+                            var wmn = 0
+                            (mnns as String).enumerateLines {
+                                line, stop in
+                                mnn += 1
                             }
-                            else {
+                            (sans as String).enumerateLines {
+                                line, stop in
+                                san += 1
+                            }
+                            (wmns as String).enumerateLines {
+                                line, stop in
+                                wmn += 1
+                            }
+                            if mnn != san || san != wmn || wmn != mnn {
                                 self.errorHandle2()
                                 return
+                            }
+                            do {
+                                try lvns.write(toFile: (libraryDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
+                            } catch _ {
+                            }
+                            do {
+                                try mnns.write(toFile: (libraryDirPath as NSString).appendingPathComponent("MusicNames.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
+                            } catch _ {
+                            }
+                            do {
+                                try sans.write(toFile: (libraryDirPath as NSString).appendingPathComponent("ShockArrowExists.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
+                            } catch _ {
+                            }
+                            do {
+                                try (StringUtilLng.escapeWebMusicTitle(src: wmns as String) as NSString).write(toFile: (libraryDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
+                            } catch _ {
                             }
                         }
                         else {
@@ -376,11 +318,14 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
                     self.errorHandle2()
                     return
                 }
-                
-                FileReader.saveLastBootTime()
- 
+            }
+            else {
+                self.errorHandle2()
+                return
+            }
             
-        
+            FileReader.saveLastBootTime()
+            
             self.addLog(NSLocalizedString("Wait a while...", comment: "ViewMusicListUpdate"))
             OperationQueue().addOperation({ () -> Void in
                 sleep(3)
@@ -388,43 +333,10 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
                 })
             })
-
+            
         })
-
-        /*
-        /*
-        // 通信のコンフィグを用意.
-        let config: NSURLSessionConfiguration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("sessionMusicListUpdate")
-        
-        // Sessionを作成する.
-        let session: NSURLSession = NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
-        */
-        
-        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1) {
-            mBackgroundConfiguration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(sSessionIdentifier)
-        }
-        else {
-            mBackgroundConfiguration = NSURLSessionConfiguration.backgroundSessionConfiguration(sSessionIdentifier)
-        }
-        mBackgroundConfiguration.timeoutIntervalForRequest = 10
-        mBackgroundConfiguration.timeoutIntervalForResource = 60
-        mSession = NSURLSession(configuration: mBackgroundConfiguration, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-
-        // ダウンロード先のURLからリクエストを生成.
-        //let uri: NSURL = NSURL(string: "https://docs.google.com/spreadsheets/d/1kyKUUgQ5EuCJRUy4XO8t1vCzxzJc4Y2f-yw9iLiSanc/export?format=tsv&id=1kyKUUgQ5EuCJRUy4XO8t1vCzxzJc4Y2f-yw9iLiSanc&gid=0")!
-        
-        mRequest = NSURLRequest(URL: NSURL(string: sMusicListVersionTxt)!)
-        mRequest.timeoutInterval = 10
-        
-        // ダウンロードタスクを生成.
-        let task: NSURLSessionDownloadTask = mSession.downloadTaskWithRequest(mRequest)
-        
-        // タスクを実行.
-        task.resume()
-        */
-        
     }
-
+    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         //self.addLog(statusText.text! + "."
     }
@@ -435,63 +347,54 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
     var mUpdateAvailable: Bool = true
     
     /*
-    ダウンロード終了時に呼び出されるデリゲート.
-    */
+     ダウンロード終了時に呼び出されるデリゲート.
+     */
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         
         let libraryDirPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
-            if let data: Data = try? Data(contentsOf: location, options: NSData.ReadingOptions.alwaysMapped) {
-                if let dataNS = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-                    let dataString: String = dataNS as String
-                    if let url = mRequest.url {
-                        switch url {
-                        case URL(string: sMusicListVersionTxt)!:
-                            if let savedNS = try? NSString(contentsOfFile: (libraryDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), encoding: String.Encoding.utf8.rawValue) {
-                                let saved: String = savedNS as String
-                                if saved == dataString {
-                                    mUpdateAvailable = false
-                                    break
-                                }
+        if let data: Data = try? Data(contentsOf: location, options: NSData.ReadingOptions.alwaysMapped) {
+            if let dataNS = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
+                let dataString: String = dataNS as String
+                if let url = mRequest.url {
+                    switch url {
+                    case URL(string: sMusicListVersionTxt)!:
+                        if let savedNS = try? NSString(contentsOfFile: (libraryDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), encoding: String.Encoding.utf8.rawValue) {
+                            let saved: String = savedNS as String
+                            if saved == dataString {
+                                mUpdateAvailable = false
+                                break
                             }
-                            do {
-                                try dataString.write(toFile: (libraryDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), atomically: true, encoding: String.Encoding.utf8)
-                            } catch _ {
-                            }
-                        case URL(string: sMusicNamesTxt)!:
-                            do {
-                                try dataString.write(toFile: (libraryDirPath as NSString).appendingPathComponent("MusicNames.txt"), atomically: true, encoding: String.Encoding.utf8)
-                            } catch _ {
-                            }
-                        case URL(string: sShockArrowExistsTxt)!:
-                            do {
-                                try dataString.write(toFile: (libraryDirPath as NSString).appendingPathComponent("ShockArrowExists.txt"), atomically: true, encoding: String.Encoding.utf8)
-                            } catch _ {
-                            }
-                        case URL(string: sWebMusicIdsTxt)!:
-                            do {
-                                try dataString.write(toFile: (libraryDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), atomically: true, encoding: String.Encoding.utf8)
-                            } catch _ {
-                            }
-                        default:
-                            break
                         }
+                        do {
+                            try dataString.write(toFile: (libraryDirPath as NSString).appendingPathComponent("MusicListVersion.txt"), atomically: true, encoding: String.Encoding.utf8)
+                        } catch _ {
+                        }
+                    case URL(string: sMusicNamesTxt)!:
+                        do {
+                            try dataString.write(toFile: (libraryDirPath as NSString).appendingPathComponent("MusicNames.txt"), atomically: true, encoding: String.Encoding.utf8)
+                        } catch _ {
+                        }
+                    case URL(string: sShockArrowExistsTxt)!:
+                        do {
+                            try dataString.write(toFile: (libraryDirPath as NSString).appendingPathComponent("ShockArrowExists.txt"), atomically: true, encoding: String.Encoding.utf8)
+                        } catch _ {
+                        }
+                    case URL(string: sWebMusicIdsTxt)!:
+                        do {
+                            try dataString.write(toFile: (libraryDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), atomically: true, encoding: String.Encoding.utf8)
+                        } catch _ {
+                        }
+                    default:
+                        break
                     }
                 }
             }
-        
-        
-        //////////let tmpDirPath = NSTemporaryDirectory()
-        //////////dataString.writeToFile(tmpDirPath.stringByAppendingPathComponent("MusicNames.txt"), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        /*
-        let libraryDirPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.LibraryDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
-        dataString.writeToFile(libraryDirPath.stringByAppendingPathComponent("ScoreData.txt"), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        */
+        }
     }
     
     /*
-    タスク終了時に呼び出されるデリゲート.
-    */
+     タスク終了時に呼び出されるデリゲート.
+     */
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         
         if error == nil {
@@ -550,9 +453,9 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
             }
             
         }
-
+        
     }
- 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

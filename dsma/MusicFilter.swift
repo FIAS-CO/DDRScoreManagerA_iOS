@@ -202,9 +202,6 @@ class MusicFilter{
         case PatternType.CDP:
             diff = music.Difficulty_CDP;
             break;
-        //default:
-        //    diff = 0;
-        //    break;
         }
         if(diff == 0){ return false; }
         if(Title != nil && music.Name != Title){ return false; }
@@ -268,41 +265,37 @@ class MusicFilter{
         }
         
         var myscore: ScoreData;
-        //{
-            var scoreData: ScoreData;
-            switch(pattern)
-            {
-            case PatternType.bSP:
-                scoreData = score.bSP;
-                break;
-            case PatternType.BSP:
-                scoreData = score.BSP;
-                break;
-            case PatternType.DSP:
-                scoreData = score.DSP;
-                break;
-            case PatternType.ESP:
-                scoreData = score.ESP;
-                break;
-            case PatternType.CSP:
-                scoreData = score.CSP;
-                break;
-            case PatternType.BDP:
-                scoreData = score.BDP;
-                break;
-            case PatternType.DDP:
-                scoreData = score.DDP;
-                break;
-            case PatternType.EDP:
-                scoreData = score.EDP;
-                break;
-            case PatternType.CDP:
-                scoreData = score.CDP;
-                break;
-            //default:
-            //    scoreData = ScoreData();
-            //    break;
-            }
+        var scoreData: ScoreData;
+        switch(pattern)
+        {
+        case PatternType.bSP:
+            scoreData = score.bSP;
+            break;
+        case PatternType.BSP:
+            scoreData = score.BSP;
+            break;
+        case PatternType.DSP:
+            scoreData = score.DSP;
+            break;
+        case PatternType.ESP:
+            scoreData = score.ESP;
+            break;
+        case PatternType.CSP:
+            scoreData = score.CSP;
+            break;
+        case PatternType.BDP:
+            scoreData = score.BDP;
+            break;
+        case PatternType.DDP:
+            scoreData = score.DDP;
+            break;
+        case PatternType.EDP:
+            scoreData = score.EDP;
+            break;
+        case PatternType.CDP:
+            scoreData = score.CDP;
+            break;
+        }
         if(!Dif1 && diff == 1){ return false; }
         if(!Dif2 && diff == 2){ return false; }
         if(!Dif3 && diff == 3){ return false; }
@@ -353,8 +346,7 @@ class MusicFilter{
         if(scoreData.PlayCount < PlayCountMin || PlayCountMax < scoreData.PlayCount){ return false; }
         if(scoreData.ClearCount < ClearCountMin || ClearCountMax < scoreData.ClearCount){ return false; }
         
-            myscore = scoreData;
-        //}
+        myscore = scoreData;
         
         if(!SerWORLD && music.SeriesTitle_ == SeriesTitle.WORLD){ return false; }
         if(!SerA3 && music.SeriesTitle_ == SeriesTitle.A3){ return false; }
@@ -379,20 +371,14 @@ class MusicFilter{
         if(!Ser1st && music.SeriesTitle_ == SeriesTitle._1st){ return false; }
         
         if(!RankAAArival || !RankAAprival || !RankAArival || !RankAAmrival || !RankAprival || !RankArival || !RankAmrival || !RankBprival || !RankBrival || !RankBmrival || !RankCprival || !RankCrival || !RankCmrival || !RankDprival || !RankDrival || !RankErival || !RankNoPlayrival ||
-            !FcMFCrival || !FcPFCrival || !FcFCrival || !FcGFCrival || !FcNoFCrival ||
-            !RivalWin || !RivalLose || !RivalDraw || ScoreMinRival > 0 || ScoreMaxRival < 1000000 ||
-            ScoreDifferenceMinusMax > -1000000 || ScoreDifferenceMinusMin < 0 || ScoreDifferencePlusMin > 0 || ScoreDifferencePlusMax < 1000000 ||
-            MaxComboDifferenceMinusMax != Int32.min || MaxComboDifferenceMinusMin <= 0 || MaxComboDifferencePlusMin >= 0 || MaxComboDifferencePlusMax != Int32.max ||
-            PlayCountDifferenceMinusMax != Int32.min || PlayCountDifferenceMinusMin <= 0 || PlayCountDifferencePlusMin >= 0 || PlayCountDifferencePlusMax != Int32.max ||
-            ClearCountDifferenceMinusMax != Int32.min || ClearCountDifferenceMinusMin <= 0 || ClearCountDifferencePlusMin >= 0 || ClearCountDifferencePlusMax != Int32.max )
+           !FcMFCrival || !FcPFCrival || !FcFCrival || !FcGFCrival || !FcNoFCrival ||
+           !RivalWin || !RivalLose || !RivalDraw || ScoreMinRival > 0 || ScoreMaxRival < 1000000 ||
+           ScoreDifferenceMinusMax > -1000000 || ScoreDifferenceMinusMin < 0 || ScoreDifferencePlusMin > 0 || ScoreDifferencePlusMax < 1000000 ||
+           MaxComboDifferenceMinusMax != Int32.min || MaxComboDifferenceMinusMin <= 0 || MaxComboDifferencePlusMin >= 0 || MaxComboDifferencePlusMax != Int32.max ||
+           PlayCountDifferenceMinusMax != Int32.min || PlayCountDifferenceMinusMin <= 0 || PlayCountDifferencePlusMin >= 0 || PlayCountDifferencePlusMax != Int32.max ||
+           ClearCountDifferenceMinusMax != Int32.min || ClearCountDifferenceMinusMin <= 0 || ClearCountDifferencePlusMin >= 0 || ClearCountDifferencePlusMax != Int32.max )
         {
             var scoreData: ScoreData;
-            //if(rivalScore == nil)
-            //{
-            //    scoreData = ScoreData();
-            //}
-            //else
-            //{
             switch(pattern)
             {
             case PatternType.bSP:
@@ -422,11 +408,7 @@ class MusicFilter{
             case PatternType.CDP:
                 scoreData = rivalScore.CDP;
                 break;
-            //default:
-            //    scoreData = ScoreData();
-            //    break;
             }
-            //}
             
             if(!RankAAArival && scoreData.Rank == MusicRank.AAA){ return false; }
             if(!RankAAprival && scoreData.Rank == MusicRank.AAp){ return false; }
@@ -473,21 +455,20 @@ class MusicFilter{
         
         if(MusicIdList != nil && MusicPatternList != nil)
         {
-            //var count = MusicIdList?.count
             var exists: Bool = false;
             if let ids = MusicIdList {
                 let count = ids.count
-            for i: Int in 0 ..< count {
-                if(music.Id == MusicIdList![i] && pattern == MusicPatternList![i])
-                {
-                    exists = true;
-                    break;
+                for i: Int in 0 ..< count {
+                    if(music.Id == MusicIdList![i] && pattern == MusicPatternList![i])
+                    {
+                        exists = true;
+                        break;
+                    }
                 }
-            }
-            if(!exists)
-            {
-                return false;
-            }
+                if(!exists)
+                {
+                    return false;
+                }
             }
         }
         

@@ -92,7 +92,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         cell.backgroundColor = UIColor(white: 0, alpha: 0.01)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
         cell.textLabel?.minimumScaleFactor = 0.5
-        //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.text = logText[(indexPath as NSIndexPath).row]
         let cellSelectedBgView = UIView()
@@ -110,8 +109,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     }
     
     @objc internal func cancelButtonTouched(_ sender: UIButton) {
-        //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        //presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         self.addLog(NSLocalizedString("Canceling...", comment: "ViewFromGate"))
         mCancel = true
         mWait = false
@@ -127,7 +124,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     @objc internal func doneButtonTouched(_ sender: UIButton) {
         self.rparam_ParentView?.refreshAll()
         if self.rparam_RivalId == nil || self.rparam_RivalId == "" {
-            //self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -163,26 +159,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     var buttonResume: UIBarButtonItem!
     
     func analyzeScore(_ srcHtml: String) -> (Bool) {
-        
-        /*WebView web = (WebView) mView.findViewById(R.id.webView);
-        String uri = web.getUrl();
-        //boolean loggedin = false;
-        if(!uri.equals(mRequestUri))
-        {
-        if(mRivalId == null)
-        {
-        return false;
-        }
-        else
-        {
-        if (!uri.contains(mRequestUri.split("&name=")[0]))
-        {
-        return false;
-        }
-        }
-        }*/
-        //print(srcHtml)
-
         var sd = ScoreData();
         let src = srcHtml;
         var cmp: String = "0\"></td>  <td>";
@@ -338,43 +314,47 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             print("3")
             if(rparam_RivalId == nil)
             {
-            cmp = "<th>フルコンボ種別</th><td>";
-            if let rs = src.range(of: cmp) {
-                var dr = String(src[rs.upperBound...])
-                cmp = "</td>";
-                if let rs = dr.range(of: cmp) {
-                    dr = String(dr[..<rs.lowerBound])
-                    if dr == "グッドフルコンボ" {
-                        sd.FullComboType_ = FullComboType.GoodFullCombo;
-                    }
-                    else if dr == "グレートフルコンボ" {
-                        sd.FullComboType_ = FullComboType.FullCombo;
-                    }
-                    else if dr == "パーフェクトフルコンボ" {
-                        sd.FullComboType_ = FullComboType.PerfectFullCombo;
-                    }
-                    else if dr == "マーベラスフルコンボ" {
-                        sd.FullComboType_ = FullComboType.MarvelousFullCombo;
+                cmp = "<th>フルコンボ種別</th><td>";
+                if let rs = src.range(of: cmp) {
+                    var dr = String(src[rs.upperBound...])
+                    cmp = "</td>";
+                    if let rs = dr.range(of: cmp) {
+                        dr = String(dr[..<rs.lowerBound])
+                        if dr == "グッドフルコンボ" {
+                            sd.FullComboType_ = FullComboType.GoodFullCombo;
+                        }
+                        else if dr == "グレートフルコンボ" {
+                            sd.FullComboType_ = FullComboType.FullCombo;
+                        }
+                        else if dr == "パーフェクトフルコンボ" {
+                            sd.FullComboType_ = FullComboType.PerfectFullCombo;
+                        }
+                        else if dr == "マーベラスフルコンボ" {
+                            sd.FullComboType_ = FullComboType.MarvelousFullCombo;
+                        }
+                        else {
+                            sd.FullComboType_ = FullComboType.None;
+                        }
                     }
                     else {
-                        sd.FullComboType_ = FullComboType.None;
+                        return false;
                     }
                 }
                 else {
                     return false;
                 }
-            }
-            else {
-                return false;
-            }
-            cmp = "<th>プレー回数</th><td>";
-            if let rs = src.range(of: cmp) {
-                var dr = String(src[rs.upperBound...])
-                cmp = "</td>";
-                if let rs = dr.range(of: cmp) {
-                    dr = String(dr[..<rs.lowerBound])
-                    if let di = Int(dr) {
-                        sd.PlayCount = Int32(di);
+                cmp = "<th>プレー回数</th><td>";
+                if let rs = src.range(of: cmp) {
+                    var dr = String(src[rs.upperBound...])
+                    cmp = "</td>";
+                    if let rs = dr.range(of: cmp) {
+                        dr = String(dr[..<rs.lowerBound])
+                        if let di = Int(dr) {
+                            sd.PlayCount = Int32(di);
+                        }
+                        else {
+                            return false
+                        }
                     }
                     else {
                         return false
@@ -383,18 +363,18 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 else {
                     return false
                 }
-            }
-            else {
-                return false
-            }
-            cmp = "<th>クリア回数</th><td>";
-            if let rs = src.range(of: cmp) {
-                var dr = String(src[rs.upperBound...])
-                cmp = "</td>";
-                if let rs = dr.range(of: cmp) {
-                    dr = String(dr[..<rs.lowerBound])
-                    if let di = Int(dr) {
-                        sd.ClearCount = Int32(di);
+                cmp = "<th>クリア回数</th><td>";
+                if let rs = src.range(of: cmp) {
+                    var dr = String(src[rs.upperBound...])
+                    cmp = "</td>";
+                    if let rs = dr.range(of: cmp) {
+                        dr = String(dr[..<rs.lowerBound])
+                        if let di = Int(dr) {
+                            sd.ClearCount = Int32(di);
+                        }
+                        else {
+                            return false
+                        }
                     }
                     else {
                         return false
@@ -403,10 +383,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 else {
                     return false
                 }
-            }
-            else {
-                return false
-            }
             }
             else{
                 cmp = "<th>フルコンボ種別</th><td>";
@@ -441,12 +417,12 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             }
         }
         var ms: MusicScore;
-            if let m = mScoreList[mTarget.MusicId] {
-                ms = m;
-            }
-            else {
-                ms = MusicScore();
-            }
+        if let m = mScoreList[mTarget.MusicId] {
+            ms = m;
+        }
+        else {
+            ms = MusicScore();
+        }
         var msd: ScoreData;
         switch mTarget.Pattern {
         case PatternType.bSP:
@@ -476,9 +452,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         case PatternType.CDP:
             msd = ms.CDP;
             break;
-        //default:
-        //    msd = ScoreData();
-        //    break;
         }
         
         // msd : 元の値
@@ -497,18 +470,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             }
         }
         
-        // 「取得したFCでGFCを上書き」 が無効
-        /*if !mPreferences.Gate_OverWriteFullCombo {
-            // 取得した値がFC
-            if sd.FullComboType_ == FullComboType.FullCombo {
-                // 元の値がGFC
-                if msd.FullComboType_ == FullComboType.GoodFullCombo {
-                    // 元のフルコンタイプに戻す
-                    sd.FullComboType_ = msd.FullComboType_;
-                }
-            }
-        }*/
-        
         // 「低いスコアを上書き」 が無効
         if !mPreferences.Gate_OverWriteLowerScores {
             // スコアが低かったら
@@ -522,70 +483,14 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 // コンボを元に戻す
                 sd.MaxCombo = msd.MaxCombo;
             }
-            /*
-            // 元の値がAAA
-            if(msd.Rank == MusicRank.AAA) {
-                // AAAにする
-                sd.Rank = msd.Rank;
-            }
-                // 元の値がAA
-            else if(msd.Rank == MusicRank.AA) {
-                // 取得した値がAAAでない
-                if(sd.Rank != MusicRank.AAA) {
-                    // AAにする
-                    sd.Rank = msd.Rank;
-                }
-            }
-                // 元の値がA
-            else if(msd.Rank == MusicRank.A) {
-                // 取得した値がAAAでもAAでもない
-                if(sd.Rank != MusicRank.AAA && sd.Rank != MusicRank.AA) {
-                    // Aにする
-                    sd.Rank = msd.Rank;
-                }
-            }
-                // 元の値がB
-            else if(msd.Rank == MusicRank.B) {
-                // 取得した値がAAAでもAAでもAでもない
-                if(sd.Rank != MusicRank.AAA && sd.Rank != MusicRank.AA && sd.Rank != MusicRank.A) {
-                    // Bにする
-                    sd.Rank = msd.Rank;
-                }
-            }
-                // 元の値がC
-            else if(msd.Rank == MusicRank.C)
-            {
-                // 取得した値がNoPlayかEかD
-                if(sd.Rank == MusicRank.Noplay || sd.Rank == MusicRank.E || sd.Rank == MusicRank.D)
-                {
-                    // Cにする
-                    sd.Rank = msd.Rank;
-                }
-            }
-                // 元の値がD
-            else if(msd.Rank == MusicRank.D) {
-                // 取得した値がNoPlayかE
-                if(sd.Rank == MusicRank.Noplay || sd.Rank == MusicRank.E) {
-                    // Dにする
-                    sd.Rank = msd.Rank;
-                }
-            }
-                // 元の値がE
-            else if(msd.Rank == MusicRank.E) {
-                // 取得した値がNoPlay
-                if(sd.Rank == MusicRank.Noplay) {
-                    // Eにする
-                    sd.Rank = msd.Rank;
-                }
-            }
-            */
+            
             // 元の値がMFC
             if(msd.FullComboType_ == FullComboType.MarvelousFullCombo)
             {
                 // MFCにする
                 sd.FullComboType_ = msd.FullComboType_;
             }
-                // 元の値がPFC
+            // 元の値がPFC
             else if(msd.FullComboType_ == FullComboType.PerfectFullCombo)
             {
                 // 取得した値がMFCでない
@@ -595,7 +500,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                     sd.FullComboType_ = msd.FullComboType_;
                 }
             }
-                // 元の値がFC
+            // 元の値がFC
             else if(msd.FullComboType_ == FullComboType.FullCombo)
             {
                 // 取得した値がMFCでもPFCでもない
@@ -605,7 +510,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                     sd.FullComboType_ = msd.FullComboType_;
                 }
             }
-                // 元の値がGFC
+            // 元の値がGFC
             else if(msd.FullComboType_ == FullComboType.GoodFullCombo)
             {
                 // 取得した値がMFCでもPFCでもFCでもない
@@ -615,7 +520,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                     sd.FullComboType_ = msd.FullComboType_;
                 }
             }
-                // 元の値がその他
+            // 元の値がその他
             else
             {
                 // 取得した値がMFCでもPFCでもFCでもGFCでもない
@@ -671,7 +576,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 let th = Double(thr.height)
                 let tci = self.tableView.contentInset
                 let tcit = Double(tci.top)
-                //let cp = CGPoint(x: 0, y: (lh < th - tcit ? 0 - tcit : lh - th))
                 var ths = Double(0)
                 if #available(iOS 11.0, *) {
                     ths = Double(self.view.safeAreaInsets.top)
@@ -682,14 +586,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             })
         })
     }
-    
-    /*func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        DispatchQueue.main.async(execute: {
-            self.addLog(NSLocalizedString("ERROR!!! : Retrying...", comment: "ViewFromGate"))
-        })
-        self.mRetry = true
-        self.mWait = false
-    }*/
     
     func didFinishLoad(_ url: String, html: String) {
         let res = analyzeScore(html)
@@ -727,16 +623,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         })
     }
     
-    /*func webViewDidFinishLoad(_ webView: UIWebView) {
-        let url = webView.stringByEvaluatingJavaScript(from: "document.URL")
-        let html = webView.stringByEvaluatingJavaScript(from: "document.getElementsByTagName('html')[0].outerHTML")
-        didFinishLoad(url!, html: html!)
-    }
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        
-    }*/
-    
     override func viewWillAppear(_ animated: Bool) {
         Admob.shAdView(adHeight)
     }
@@ -751,7 +637,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -759,37 +645,27 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         let notifc: NotificationCenter = NotificationCenter.default
         notifc.addObserver(self, selector: #selector(applicationWillEnterForeground), name: NSNotification.Name(rawValue: "applicationWillEnterForeground"), object: nil)
         
-        //self.title = "Preferences"
         adView.addSubview(Admob.getAdBannerView(self))
-
+        
         let nvFrame: CGRect = navigationBar.frame;
-        //webView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
         tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
         navigationBar.delegate = self
         
         tableView.dataSource = self
         tableView.delegate = self
-        /*
-        webView.delegate = self
-        webView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
-        webView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-        */
         tableView.indicatorStyle = UIScrollView.IndicatorStyle.white
         tableView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         
-        //if #available(iOS 8.0, *) {
-            let configuration = WKWebViewConfiguration()
-            configuration.processPool = rparam_ProcessPool
-            wkWebView = WKWebView(frame: CGRect.zero, configuration: configuration)
-            wkWebView.navigationDelegate = self
-            wkWebView.translatesAutoresizingMaskIntoConstraints = false
-            wkWebView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
-            wkWebView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-            wkWebView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
-            navigationBar.delegate = self
-            self.view.addSubview(wkWebView)
-            //self.view.bringSubviewToFront(navigationBar)
-        //}
+        let configuration = WKWebViewConfiguration()
+        configuration.processPool = rparam_ProcessPool
+        wkWebView = WKWebView(frame: CGRect.zero, configuration: configuration)
+        wkWebView.navigationDelegate = self
+        wkWebView.translatesAutoresizingMaskIntoConstraints = false
+        wkWebView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
+        wkWebView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        wkWebView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
+        navigationBar.delegate = self
+        self.view.addSubview(wkWebView)
         
         mPreferences = FileReader.readPreferences()
         mWebMusicIds = FileReader.readWebMusicIds()
@@ -817,14 +693,14 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                             self.mWebMusicId = wid
                             let patternInt: Int32 =
                             self.mTarget.Pattern == PatternType.bSP ? 0 :
-                                self.mTarget.Pattern == PatternType.BSP ? 1 :
-                                self.mTarget.Pattern == PatternType.DSP ? 2 :
-                                self.mTarget.Pattern == PatternType.ESP ? 3 :
-                                self.mTarget.Pattern == PatternType.CSP ? 4 :
-                                self.mTarget.Pattern == PatternType.BDP ? 5 :
-                                self.mTarget.Pattern == PatternType.DDP ? 6 :
-                                self.mTarget.Pattern == PatternType.EDP ? 7 :
-                                self.mTarget.Pattern == PatternType.CDP ? 8 :
+                            self.mTarget.Pattern == PatternType.BSP ? 1 :
+                            self.mTarget.Pattern == PatternType.DSP ? 2 :
+                            self.mTarget.Pattern == PatternType.ESP ? 3 :
+                            self.mTarget.Pattern == PatternType.CSP ? 4 :
+                            self.mTarget.Pattern == PatternType.BDP ? 5 :
+                            self.mTarget.Pattern == PatternType.DDP ? 6 :
+                            self.mTarget.Pattern == PatternType.EDP ? 7 :
+                            self.mTarget.Pattern == PatternType.CDP ? 8 :
                             0;
                             self.mRequestUri = "https://p.eagate.573.jp/game/ddr/"
                             if(self.mPreferences.Gate_LoadFromA3)
@@ -846,11 +722,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                             let url: URL = URL(string: (self.mRequestUri))!
                             let request: URLRequest = URLRequest(url: url)
                             //if #available(iOS 8.0, *) {
-                                self.wkWebView.load(request)
-                            /*}
-                            else {
-                                self.webView.loadRequest(request)
-                            }*/
+                            self.wkWebView.load(request)
                         }
                         else {
                             self.addLog(NSLocalizedString("ERROR!!! : No valid WEB music ID found.", comment: "ViewFromGate"))
@@ -905,7 +777,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 })
             }
             else {
-            sleep(3)
+                sleep(3)
                 DispatchQueue.main.async(execute: {
                     self.rparam_ParentView.refreshAll()
                     if self.rparam_RivalId == nil || self.rparam_RivalId == "" {
@@ -930,5 +802,4 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }

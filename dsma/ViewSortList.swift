@@ -21,9 +21,6 @@ class ViewSortList: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     var rparam_ParentView: ViewScoreList!
     
-    //var sortShowing: Bool = false
-    //var sparam_SortId: Int32!
-    
     @IBOutlet weak var adView: UIView!
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
@@ -37,8 +34,6 @@ class ViewSortList: UIViewController, UITableViewDataSource, UITableViewDelegate
         mScrollDecelerating = false
     }
     
-    // セルに表示するテキスト
-    //let texts = ["All Musics", "Series Title", "ABC", "Difficulty", "Dance Level", "Full Combo Type", "My List", "Rival", "Recent"]
     var mSortNames: [String] = []
     var mActiveSortId: Int32!
     
@@ -81,12 +76,6 @@ class ViewSortList: UIViewController, UITableViewDataSource, UITableViewDelegate
     internal func cellTapAction(_ tableView: UITableView, indexPath: IndexPath) {
         if tableView.isEditing {
             if (indexPath as NSIndexPath).row != 0 {
-                //sortShowing = true
-                //sparam_SortId = Int32(indexPath.row)
-                //var btn: UIBarButtonItem = UIBarButtonItem()
-                //btn.title = "Sorts"
-                //navigationItem.backBarButtonItem = btn
-                //performSegueWithIdentifier("showSortSetting",sender: nil)
                 self.navigationController?.pushViewController(ViewSortSetting.checkOut(self, sortId: Int32((indexPath as NSIndexPath).row)), animated: true)
             }
         }
@@ -94,7 +83,6 @@ class ViewSortList: UIViewController, UITableViewDataSource, UITableViewDelegate
             FileReader.saveActiveSortId(Int32((indexPath as NSIndexPath).row))
             refreshAll()
             rparam_ParentView?.refreshAll()
-            //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             presentingViewController?.dismiss(animated: true, completion: nil)
         }
     }
@@ -126,7 +114,6 @@ class ViewSortList: UIViewController, UITableViewDataSource, UITableViewDelegate
                 }
             }
             mDeleteShow = false
-            //tableView.deselectRowAtIndexPath(indexPath, animated: true)
             cellTapAction(tableView, indexPath: indexPath)
         }
     }
@@ -203,9 +190,7 @@ class ViewSortList: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         let notifc: NotificationCenter = NotificationCenter.default
         notifc.addObserver(self, selector: #selector(applicationWillEnterForeground), name: NSNotification.Name(rawValue: "applicationWillEnterForeground"), object: nil)
-        
-        //addButton.hidden = true
-        
+                
         let device = UIDevice.current.userInterfaceIdiom
         if device == UIUserInterfaceIdiom.pad {
             mMag = 1.5
@@ -214,7 +199,6 @@ class ViewSortList: UIViewController, UITableViewDataSource, UITableViewDelegate
         self.title = "Sorts"
         adView.addSubview(Admob.getAdBannerView(self))
 
-        //navigationController?.setNavigationBarHidden(true, animated: true)
         buttonEdit = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(ViewSortList.editButtonTouched(_:)))
         buttonDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(ViewSortList.doneButtonTouched(_:)))
         buttonAdd = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(ViewSortList.addButtonTouched(_:)))
@@ -235,5 +219,4 @@ class ViewSortList: UIViewController, UITableViewDataSource, UITableViewDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }

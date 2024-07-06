@@ -48,15 +48,6 @@ class ViewMenuRival: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func showEditAlert(_ tag: Int, title: String, message: String, placeholder: String?, defaultText: String, kbd: UIKeyboardType) {
-        /*
-        let alert: UIAlertView = UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "OK")
-        alert.alertViewStyle = UIAlertViewStyle.plainTextInput
-        alert.tag = tag
-        alert.textField(at: 0)?.keyboardType = kbd
-        alert.textField(at: 0)?.placeholder = placeholder
-        alert.textField(at: 0)?.text = defaultText
-        alert.show()
-        */
         TextAlertView(title: title, message: message, placeholder: placeholder, defaultText: defaultText, kbd: kbd, okAction: TextAlertViewAction(method: {(text)->Void in
             self.mAlertTmpString = text
             if self.mAlertTmpString.count == 0 {
@@ -134,7 +125,6 @@ class ViewMenuRival: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "Cell")
         cell.backgroundColor = UIColor(white: 0, alpha: 0.01)
-        //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.text = texts[(indexPath as NSIndexPath).row]
         cell.detailTextLabel?.textColor = UIColor.lightGray

@@ -14,7 +14,6 @@ struct StringUtil{
     
     // ０ならログイン済み
     static func checkLoggedIn(_ src: String) -> (Int) {
-        //print(src)
         let cmpNoLoginCheck: String = "<div class=\"name_str\">---</div>";
         //ログインせずにスコアページを表示のとき
         print(src.contains(cmpNoLoginCheck))
@@ -204,7 +203,7 @@ struct StringUtil{
         }
         return ret
     }
-
+    
     static func toCommaFormattedString(_ number: Int32) ->(String){
         let format: NumberFormatter = NumberFormatter()
         format.numberStyle = NumberFormatter.Style.decimal
@@ -327,8 +326,6 @@ struct StringUtil{
             ret += score.CDP.PlayCount.description;
             ret += "\t";
             ret += score.CDP.ClearCount.description;
-            //ret += "\t";
-            //ret += "\n";
         }
         
         return ret;
@@ -412,12 +409,8 @@ struct StringUtil{
             ret = ret + score.CDP.FullComboType_.rawValue
             ret = ret + "\t"
             ret = ret + score.CDP.MaxCombo.description
-            //ret = ret + "\t"
-            //ret = ret + "\n"
         }
         
         return ret
-        
     }
-
 }
