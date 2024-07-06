@@ -13,4 +13,5 @@ struct ScoreData {
     var FullComboType_: FullComboType = FullComboType.None
     var PlayCount: Int32 = 0
     var ClearCount: Int32 = 0
+    var flareSkill: Int32 = 0
 }

@@ -10,10 +10,14 @@
 		181B2BF52AA976DF00982212 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */; };
 		181B2BF72AA9770A00982212 /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BF62AA9770A00982212 /* FBAudienceNetwork.xcframework */; };
 		181B2BFF2AA977A800982212 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */; };
+		184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C65262C394D720041BF98 /* FileReaderTests.swift */; };
+		184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C652C2C3966E80041BF98 /* OldScoreData.txt */; };
+		184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */; };
 		184DD9D42BCC1373006FB282 /* ViewSongMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */; };
 		184DD9D62BCC1647006FB282 /* ViewMyList_Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */; };
 		184DD9D82BD56A9A006FB282 /* RealmUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DD9D72BD56A9A006FB282 /* RealmUtil.swift */; };
 		1863B0322BC2AE5500B01EF3 /* ViewSongMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */; };
+		188971BC2C39E4960058DCE2 /* NewScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 188971BB2C39E4960058DCE2 /* NewScoreData.txt */; };
 		18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */; };
 		8A04D8A01B3F9A58006EDD51 /* ViewClearStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */; };
 		8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8541B55F24300EF6A99 /* Localizable.strings */; };
@@ -126,6 +130,16 @@
 		A41694B5D302F871D5A26DCE /* Pods_dsma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7575189524A9105CD96AFCA3 /* Pods_dsma.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		184C651D2C3946C90041BF98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8ADD77F01B1DBEFE008324DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8ADD77F71B1DBEFE008324DF;
+			remoteInfo = dsma;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		181B2BF62AA9770A00982212 /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:V9WTTPBFK9:Meta Platforms, Inc."; lastKnownFileType = wrapper.xcframework; name = FBAudienceNetwork.xcframework; path = Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
@@ -133,10 +147,15 @@
 		181B2BFA2AA9776200982212 /* GoogleAppMeasurementIdentitySupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurementIdentitySupport.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurementIdentitySupport.xcframework; sourceTree = "<group>"; };
 		181B2BFC2AA9779500982212 /* MetaAdapter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MetaAdapter.xcframework; path = "Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.14.0.0/MetaAdapter.xcframework"; sourceTree = "<group>"; };
 		181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
+		184C65192C3946C90041BF98 /* DDR SM ATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DDR SM ATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		184C65262C394D720041BF98 /* FileReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderTests.swift; sourceTree = "<group>"; };
+		184C652C2C3966E80041BF98 /* OldScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldScoreData.txt; sourceTree = "<group>"; };
+		184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewScoreDataFlare.txt; sourceTree = "<group>"; };
 		184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewSongMemo.storyboard; sourceTree = "<group>"; };
 		184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewMyList_Add.storyboard; sourceTree = "<group>"; };
 		184DD9D72BD56A9A006FB282 /* RealmUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtil.swift; sourceTree = "<group>"; };
 		1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongMemo.swift; sourceTree = "<group>"; };
+		188971BB2C39E4960058DCE2 /* NewScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewScoreData.txt; sourceTree = "<group>"; };
 		18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		527B346527866270E84DC9AC /* Pods-dsma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.release.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.release.xcconfig"; sourceTree = "<group>"; };
 		7575189524A9105CD96AFCA3 /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,6 +304,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		184C65162C3946C90041BF98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8ADD77F51B1DBEFE008324DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,6 +335,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184C651A2C3946C90041BF98 /* DDR SM ATests */ = {
+			isa = PBXGroup;
+			children = (
+				188971BB2C39E4960058DCE2 /* NewScoreData.txt */,
+				184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */,
+				184C652C2C3966E80041BF98 /* OldScoreData.txt */,
+				184C65262C394D720041BF98 /* FileReaderTests.swift */,
+			);
+			path = "DDR SM ATests";
+			sourceTree = "<group>";
+		};
 		54F75C4F53FCEABE704E7E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +423,7 @@
 			children = (
 				8A96936B1B54A5F30025E229 /* framework */,
 				8ADD77FA1B1DBEFE008324DF /* dsma */,
+				184C651A2C3946C90041BF98 /* DDR SM ATests */,
 				8ADD77F91B1DBEFE008324DF /* Products */,
 				FB78B3BDA3B8F376AFF2F45A /* Pods */,
 				54F75C4F53FCEABE704E7E2F /* Frameworks */,
@@ -396,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				8ADD77F81B1DBEFE008324DF /* dsma.app */,
+				184C65192C3946C90041BF98 /* DDR SM ATests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -587,6 +626,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		184C65182C3946C90041BF98 /* DDR SM ATests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 184C651F2C3946C90041BF98 /* Build configuration list for PBXNativeTarget "DDR SM ATests" */;
+			buildPhases = (
+				184C65152C3946C90041BF98 /* Sources */,
+				184C65162C3946C90041BF98 /* Frameworks */,
+				184C65172C3946C90041BF98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				184C651E2C3946C90041BF98 /* PBXTargetDependency */,
+			);
+			name = "DDR SM ATests";
+			productName = "DDR SM ATests";
+			productReference = 184C65192C3946C90041BF98 /* DDR SM ATests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8ADD77F71B1DBEFE008324DF /* dsma */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8ADD78171B1DBEFE008324DF /* Build configuration list for PBXNativeTarget "dsma" */;
@@ -614,9 +671,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = LinaNfinE;
 				TargetAttributes = {
+					184C65182C3946C90041BF98 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 8ADD77F71B1DBEFE008324DF;
+					};
 					8ADD77F71B1DBEFE008324DF = {
 						CreatedOnToolsVersion = 6.3.2;
 						LastSwiftMigration = 1020;
@@ -640,11 +702,22 @@
 			projectRoot = "";
 			targets = (
 				8ADD77F71B1DBEFE008324DF /* dsma */,
+				184C65182C3946C90041BF98 /* DDR SM ATests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		184C65172C3946C90041BF98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */,
+				188971BC2C39E4960058DCE2 /* NewScoreData.txt in Resources */,
+				184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8ADD77F61B1DBEFE008324DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -758,6 +831,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		184C65152C3946C90041BF98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8ADD77F41B1DBEFE008324DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -833,6 +914,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		184C651E2C3946C90041BF98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8ADD77F71B1DBEFE008324DF /* dsma */;
+			targetProxy = 184C651D2C3946C90041BF98 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8A05B8541B55F24300EF6A99 /* Localizable.strings */ = {
@@ -988,6 +1077,67 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		184C65202C3946C90041BF98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fias.DDR-SM-ATests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dsma.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/dsma";
+			};
+			name = Debug;
+		};
+		184C65212C3946C90041BF98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fias.DDR-SM-ATests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dsma.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/dsma";
+			};
+			name = Release;
+		};
 		8ADD78151B1DBEFE008324DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1169,6 +1319,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		184C651F2C3946C90041BF98 /* Build configuration list for PBXNativeTarget "DDR SM ATests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184C65202C3946C90041BF98 /* Debug */,
+				184C65212C3946C90041BF98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8ADD77F31B1DBEFE008324DF /* Build configuration list for PBXProject "dsma" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

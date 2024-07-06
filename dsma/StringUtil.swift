@@ -326,6 +326,26 @@ struct StringUtil{
             ret += score.CDP.PlayCount.description;
             ret += "\t";
             ret += score.CDP.ClearCount.description;
+            
+            // 新しいflareSkillデータを追加
+            ret += "\t";
+            ret += score.bSP.flareSkill.description;
+            ret += "\t";
+            ret += score.BSP.flareSkill.description;
+            ret += "\t";
+            ret += score.DSP.flareSkill.description;
+            ret += "\t";
+            ret += score.ESP.flareSkill.description;
+            ret += "\t";
+            ret += score.CSP.flareSkill.description;
+            ret += "\t";
+            ret += score.BDP.flareSkill.description;
+            ret += "\t";
+            ret += score.DDP.flareSkill.description;
+            ret += "\t";
+            ret += score.EDP.flareSkill.description;
+            ret += "\t";
+            ret += score.CDP.flareSkill.description;
         }
         
         return ret;

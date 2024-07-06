@@ -797,6 +797,128 @@ struct FileReader{
     }
     
     static func readScoreList(_ rivalId: String?) ->([Int32 : MusicScore]){
+        var ret: [Int32: MusicScore] = [:]
+        
+        let libraryDirPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+        let path = "ScoreData" + (rivalId == nil ? "" : "_" + rivalId!) + ".txt"
+        if let dataNS = try? NSString(contentsOfFile: (libraryDirPath as NSString).appendingPathComponent(path), encoding: String.Encoding.utf8.rawValue) {
+            
+            let data: String = dataNS as String
+            ret = parseScoreData(data)
+        }
+        
+        migrateScoreDataIfNeeded(ret, rivalId)
+        
+        return ret
+    }
+    
+    static func parseScoreData(_ data: String) ->([Int32 : MusicScore]) {
+        var ret: [Int32 : MusicScore] = [:]
+        
+        data.enumerateLines { line, stop in
+            let sp = line.components(separatedBy: "\t")
+            var ms = MusicScore()
+            var id: Int32 = 0
+            
+            func parseRank(_ spd: String) -> MusicRank {
+                switch spd {
+                case "AAA": return .AAA
+                case "AA+": return .AAp
+                case "AA": return .AA
+                case "AA-": return .AAm
+                case "A+": return .Ap
+                case "A": return .A
+                case "A-": return .Am
+                case "B+": return .Bp
+                case "B": return .B
+                case "B-": return .Bm
+                case "C+": return .Cp
+                case "C": return .C
+                case "C-": return .Cm
+                case "D+": return .Dp
+                case "D": return .D
+                case "E": return .E
+                default: return .Noplay
+                }
+            }
+            
+            func parseFullComboType(_ spd: String) -> FullComboType {
+                switch spd {
+                case "MerverousFullCombo": return .MarvelousFullCombo
+                case "PerfectFullCombo": return .PerfectFullCombo
+                case "FullCombo": return .FullCombo
+                case "GoodFullCombo": return .GoodFullCombo
+                case "Life4": return .Life4
+                default: return .None
+                }
+            }
+            
+            func parseScoreData(_ index: Int, _ spd: String, _ difficulty: inout ScoreData) {
+                switch (index - 1) % 4 {
+                case 0: difficulty.Rank = parseRank(spd)
+                case 1: difficulty.Score = Int32(Int(spd)!)
+                case 2: difficulty.FullComboType_ = parseFullComboType(spd)
+                case 3: difficulty.MaxCombo = Int32(Int(spd)!)
+                default: break
+                }
+            }
+            
+            var difficulties: [ScoreData] = [ms.bSP, ms.BSP, ms.DSP, ms.ESP, ms.CSP, ms.BDP, ms.DDP, ms.EDP, ms.CDP]
+            
+            for (index, spd) in sp.enumerated() {
+                switch index {
+                case 0: id = Int32(Int(spd)!)
+                case 1...36: parseScoreData(index, spd, &difficulties[(index - 1) / 4])
+                case 37...54:
+                    let difficultyIndex = (index - 37) / 2
+                    if index % 2 == 1 {
+                        difficulties[difficultyIndex].PlayCount = Int32(Int(spd)!)
+                    } else {
+                        difficulties[difficultyIndex].ClearCount = Int32(Int(spd)!)
+                    }
+                case 55...63:
+                    difficulties[index - 55].flareSkill = Int32(Int(spd) ?? 0)
+                default: break
+                }
+            }
+            
+            // Set default flareSkill value if not present
+            if sp.count <= 55 {
+                difficulties.indices.forEach { difficulties[$0].flareSkill = 0 }
+            }
+            
+            // Assign back the updated ScoreData structs
+            ms.bSP = difficulties[0]
+            ms.BSP = difficulties[1]
+            ms.DSP = difficulties[2]
+            ms.ESP = difficulties[3]
+            ms.CSP = difficulties[4]
+            ms.BDP = difficulties[5]
+            ms.DDP = difficulties[6]
+            ms.EDP = difficulties[7]
+            ms.CDP = difficulties[8]
+            
+            ret[id] = ms
+        }
+        
+        return ret
+    }
+    
+    static func migrateScoreDataIfNeeded(_ musicScores: [Int32 : MusicScore], _ rivalId: String?) {
+        let key = "FlareSkillMigrationCompleted_" + (rivalId ?? "self")
+        if !UserDefaults.standard.bool(forKey: key) {
+            // Save the data (which now includes flareSkill fields, even if they're all 0)
+            if saveScoreList(rivalId, scores: musicScores) {
+                UserDefaults.standard.set(true, forKey: key)
+                print("Score data migration completed successfully for \(rivalId ?? "self").")
+            } else {
+                print("Failed to migrate score data for \(rivalId ?? "self").")
+            }
+        }
+    }
+    
+    // TODO 後で消す
+    static func readScoreListOld(_ rivalId: String?) ->([Int32 : MusicScore]){
         var ret: [Int32 : MusicScore] = [:]
         
         let libraryDirPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
@@ -805,340 +927,347 @@ struct FileReader{
             
             let data: String = dataNS as String
             
-            data.enumerateLines{
-                line, stop in
-                let sp = line.components(separatedBy: "\t")
-                var ms: MusicScore = MusicScore()
-                var id: Int32 = 0
-                for (index, spd) in sp.enumerated() {
-                    switch index{
-                    case 0:
-                        id = Int32(Int(spd)!)
-                    case 1:
-                        ms.bSP.Rank =
-                        spd == "AAA" ? MusicRank.AAA :
-                        spd == "AA+" ? MusicRank.AAp :
-                        spd == "AA" ? MusicRank.AA :
-                        spd == "AA-" ? MusicRank.AAm :
-                        spd == "A+" ? MusicRank.Ap :
-                        spd == "A" ? MusicRank.A :
-                        spd == "A-" ? MusicRank.Am :
-                        spd == "B+" ? MusicRank.Bp :
-                        spd == "B" ? MusicRank.B :
-                        spd == "B-" ? MusicRank.Bm :
-                        spd == "C+" ? MusicRank.Cp :
-                        spd == "C" ? MusicRank.C :
-                        spd == "C-" ? MusicRank.Cm :
-                        spd == "D+" ? MusicRank.Dp :
-                        spd == "D" ? MusicRank.D :
-                        spd == "E" ? MusicRank.E :
-                        MusicRank.Noplay;
-                    case 2:
-                        ms.bSP.Score = Int32(Int(spd)!);
-                    case 3:
-                        ms.bSP.FullComboType_ =
-                        spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
-                        spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
-                        spd == "FullCombo" ? FullComboType.FullCombo :
-                        spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
-                        spd == "Life4" ? FullComboType.Life4 :
-                        FullComboType.None;
-                    case 4:
-                        ms.bSP.MaxCombo = Int32(Int(spd)!);
-                    case 5:
-                        ms.BSP.Rank =
-                        spd == "AAA" ? MusicRank.AAA :
-                        spd == "AA+" ? MusicRank.AAp :
-                        spd == "AA" ? MusicRank.AA :
-                        spd == "AA-" ? MusicRank.AAm :
-                        spd == "A+" ? MusicRank.Ap :
-                        spd == "A" ? MusicRank.A :
-                        spd == "A-" ? MusicRank.Am :
-                        spd == "B+" ? MusicRank.Bp :
-                        spd == "B" ? MusicRank.B :
-                        spd == "B-" ? MusicRank.Bm :
-                        spd == "C+" ? MusicRank.Cp :
-                        spd == "C" ? MusicRank.C :
-                        spd == "C-" ? MusicRank.Cm :
-                        spd == "D+" ? MusicRank.Dp :
-                        spd == "D" ? MusicRank.D :
-                        spd == "E" ? MusicRank.E :
-                        MusicRank.Noplay;
-                    case 6:
-                        ms.BSP.Score = Int32(Int(spd)!);
-                    case 7:
-                        ms.BSP.FullComboType_ =
-                        spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
-                        spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
-                        spd == "FullCombo" ? FullComboType.FullCombo :
-                        spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
-                        spd == "Life4" ? FullComboType.Life4 :
-                        FullComboType.None;
-                    case 8:
-                        ms.BSP.MaxCombo = Int32(Int(spd)!);
-                    case 9:
-                        ms.DSP.Rank =
-                        spd == "AAA" ? MusicRank.AAA :
-                        spd == "AA+" ? MusicRank.AAp :
-                        spd == "AA" ? MusicRank.AA :
-                        spd == "AA-" ? MusicRank.AAm :
-                        spd == "A+" ? MusicRank.Ap :
-                        spd == "A" ? MusicRank.A :
-                        spd == "A-" ? MusicRank.Am :
-                        spd == "B+" ? MusicRank.Bp :
-                        spd == "B" ? MusicRank.B :
-                        spd == "B-" ? MusicRank.Bm :
-                        spd == "C+" ? MusicRank.Cp :
-                        spd == "C" ? MusicRank.C :
-                        spd == "C-" ? MusicRank.Cm :
-                        spd == "D+" ? MusicRank.Dp :
-                        spd == "D" ? MusicRank.D :
-                        spd == "E" ? MusicRank.E :
-                        MusicRank.Noplay;
-                    case 10:
-                        ms.DSP.Score = Int32(Int(spd)!);
-                    case 11:
-                        ms.DSP.FullComboType_ =
-                        spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
-                        spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
-                        spd == "FullCombo" ? FullComboType.FullCombo :
-                        spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
-                        spd == "Life4" ? FullComboType.Life4 :
-                        FullComboType.None;
-                    case 12:
-                        ms.DSP.MaxCombo = Int32(Int(spd)!);
-                    case 13:
-                        ms.ESP.Rank =
-                        spd == "AAA" ? MusicRank.AAA :
-                        spd == "AA+" ? MusicRank.AAp :
-                        spd == "AA" ? MusicRank.AA :
-                        spd == "AA-" ? MusicRank.AAm :
-                        spd == "A+" ? MusicRank.Ap :
-                        spd == "A" ? MusicRank.A :
-                        spd == "A-" ? MusicRank.Am :
-                        spd == "B+" ? MusicRank.Bp :
-                        spd == "B" ? MusicRank.B :
-                        spd == "B-" ? MusicRank.Bm :
-                        spd == "C+" ? MusicRank.Cp :
-                        spd == "C" ? MusicRank.C :
-                        spd == "C-" ? MusicRank.Cm :
-                        spd == "D+" ? MusicRank.Dp :
-                        spd == "D" ? MusicRank.D :
-                        spd == "E" ? MusicRank.E :
-                        MusicRank.Noplay;
-                    case 14:
-                        ms.ESP.Score = Int32(Int(spd)!);
-                    case 15:
-                        ms.ESP.FullComboType_ =
-                        spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
-                        spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
-                        spd == "FullCombo" ? FullComboType.FullCombo :
-                        spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
-                        spd == "Life4" ? FullComboType.Life4 :
-                        FullComboType.None;
-                    case 16:
-                        ms.ESP.MaxCombo = Int32(Int(spd)!);
-                    case 17:
-                        ms.CSP.Rank =
-                        spd == "AAA" ? MusicRank.AAA :
-                        spd == "AA+" ? MusicRank.AAp :
-                        spd == "AA" ? MusicRank.AA :
-                        spd == "AA-" ? MusicRank.AAm :
-                        spd == "A+" ? MusicRank.Ap :
-                        spd == "A" ? MusicRank.A :
-                        spd == "A-" ? MusicRank.Am :
-                        spd == "B+" ? MusicRank.Bp :
-                        spd == "B" ? MusicRank.B :
-                        spd == "B-" ? MusicRank.Bm :
-                        spd == "C+" ? MusicRank.Cp :
-                        spd == "C" ? MusicRank.C :
-                        spd == "C-" ? MusicRank.Cm :
-                        spd == "D+" ? MusicRank.Dp :
-                        spd == "D" ? MusicRank.D :
-                        spd == "E" ? MusicRank.E :
-                        MusicRank.Noplay;
-                    case 18:
-                        ms.CSP.Score = Int32(Int(spd)!);
-                    case 19:
-                        ms.CSP.FullComboType_ =
-                        spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
-                        spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
-                        spd == "FullCombo" ? FullComboType.FullCombo :
-                        spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
-                        spd == "Life4" ? FullComboType.Life4 :
-                        FullComboType.None;
-                    case 20:
-                        ms.CSP.MaxCombo = Int32(Int(spd)!);
-                    case 21:
-                        ms.BDP.Rank =
-                        spd == "AAA" ? MusicRank.AAA :
-                        spd == "AA+" ? MusicRank.AAp :
-                        spd == "AA" ? MusicRank.AA :
-                        spd == "AA-" ? MusicRank.AAm :
-                        spd == "A+" ? MusicRank.Ap :
-                        spd == "A" ? MusicRank.A :
-                        spd == "A-" ? MusicRank.Am :
-                        spd == "B+" ? MusicRank.Bp :
-                        spd == "B" ? MusicRank.B :
-                        spd == "B-" ? MusicRank.Bm :
-                        spd == "C+" ? MusicRank.Cp :
-                        spd == "C" ? MusicRank.C :
-                        spd == "C-" ? MusicRank.Cm :
-                        spd == "D+" ? MusicRank.Dp :
-                        spd == "D" ? MusicRank.D :
-                        spd == "E" ? MusicRank.E :
-                        MusicRank.Noplay;
-                    case 22:
-                        ms.BDP.Score = Int32(Int(spd)!);
-                    case 23:
-                        ms.BDP.FullComboType_ =
-                        spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
-                        spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
-                        spd == "FullCombo" ? FullComboType.FullCombo :
-                        spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
-                        spd == "Life4" ? FullComboType.Life4 :
-                        FullComboType.None;
-                    case 24:
-                        ms.BDP.MaxCombo = Int32(Int(spd)!);
-                    case 25:
-                        ms.DDP.Rank =
-                        spd == "AAA" ? MusicRank.AAA :
-                        spd == "AA+" ? MusicRank.AAp :
-                        spd == "AA" ? MusicRank.AA :
-                        spd == "AA-" ? MusicRank.AAm :
-                        spd == "A+" ? MusicRank.Ap :
-                        spd == "A" ? MusicRank.A :
-                        spd == "A-" ? MusicRank.Am :
-                        spd == "B+" ? MusicRank.Bp :
-                        spd == "B" ? MusicRank.B :
-                        spd == "B-" ? MusicRank.Bm :
-                        spd == "C+" ? MusicRank.Cp :
-                        spd == "C" ? MusicRank.C :
-                        spd == "C-" ? MusicRank.Cm :
-                        spd == "D+" ? MusicRank.Dp :
-                        spd == "D" ? MusicRank.D :
-                        spd == "E" ? MusicRank.E :
-                        MusicRank.Noplay;
-                    case 26:
-                        ms.DDP.Score = Int32(Int(spd)!);
-                    case 27:
-                        ms.DDP.FullComboType_ =
-                        spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
-                        spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
-                        spd == "FullCombo" ? FullComboType.FullCombo :
-                        spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
-                        spd == "Life4" ? FullComboType.Life4 :
-                        FullComboType.None;
-                    case 28:
-                        ms.DDP.MaxCombo = Int32(Int(spd)!);
-                    case 29:
-                        ms.EDP.Rank =
-                        spd == "AAA" ? MusicRank.AAA :
-                        spd == "AA+" ? MusicRank.AAp :
-                        spd == "AA" ? MusicRank.AA :
-                        spd == "AA-" ? MusicRank.AAm :
-                        spd == "A+" ? MusicRank.Ap :
-                        spd == "A" ? MusicRank.A :
-                        spd == "A-" ? MusicRank.Am :
-                        spd == "B+" ? MusicRank.Bp :
-                        spd == "B" ? MusicRank.B :
-                        spd == "B-" ? MusicRank.Bm :
-                        spd == "C+" ? MusicRank.Cp :
-                        spd == "C" ? MusicRank.C :
-                        spd == "C-" ? MusicRank.Cm :
-                        spd == "D+" ? MusicRank.Dp :
-                        spd == "D" ? MusicRank.D :
-                        spd == "E" ? MusicRank.E :
-                        MusicRank.Noplay;
-                    case 30:
-                        ms.EDP.Score = Int32(Int(spd)!);
-                    case 31:
-                        ms.EDP.FullComboType_ =
-                        spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
-                        spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
-                        spd == "FullCombo" ? FullComboType.FullCombo :
-                        spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
-                        spd == "Life4" ? FullComboType.Life4 :
-                        FullComboType.None;
-                    case 32:
-                        ms.EDP.MaxCombo = Int32(Int(spd)!);
-                    case 33:
-                        ms.CDP.Rank =
-                        spd == "AAA" ? MusicRank.AAA :
-                        spd == "AA+" ? MusicRank.AAp :
-                        spd == "AA" ? MusicRank.AA :
-                        spd == "AA-" ? MusicRank.AAm :
-                        spd == "A+" ? MusicRank.Ap :
-                        spd == "A" ? MusicRank.A :
-                        spd == "A-" ? MusicRank.Am :
-                        spd == "B+" ? MusicRank.Bp :
-                        spd == "B" ? MusicRank.B :
-                        spd == "B-" ? MusicRank.Bm :
-                        spd == "C+" ? MusicRank.Cp :
-                        spd == "C" ? MusicRank.C :
-                        spd == "C-" ? MusicRank.Cm :
-                        spd == "D+" ? MusicRank.Dp :
-                        spd == "D" ? MusicRank.D :
-                        spd == "E" ? MusicRank.E :
-                        MusicRank.Noplay;
-                    case 34:
-                        ms.CDP.Score = Int32(Int(spd)!);
-                    case 35:
-                        ms.CDP.FullComboType_ =
-                        spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
-                        spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
-                        spd == "FullCombo" ? FullComboType.FullCombo :
-                        spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
-                        spd == "Life4" ? FullComboType.Life4 :
-                        FullComboType.None;
-                    case 36:
-                        ms.CDP.MaxCombo = Int32(Int(spd)!);
-                    case 37:
-                        ms.bSP.PlayCount = Int32(Int(spd)!);
-                    case 38:
-                        ms.bSP.ClearCount = Int32(Int(spd)!);
-                    case 39:
-                        ms.BSP.PlayCount = Int32(Int(spd)!);
-                    case 40:
-                        ms.BSP.ClearCount = Int32(Int(spd)!);
-                    case 41:
-                        ms.DSP.PlayCount = Int32(Int(spd)!);
-                    case 42:
-                        ms.DSP.ClearCount = Int32(Int(spd)!);
-                    case 43:
-                        ms.ESP.PlayCount = Int32(Int(spd)!);
-                    case 44:
-                        ms.ESP.ClearCount = Int32(Int(spd)!);
-                    case 45:
-                        ms.CSP.PlayCount = Int32(Int(spd)!);
-                    case 46:
-                        ms.CSP.ClearCount = Int32(Int(spd)!);
-                    case 47:
-                        ms.BDP.PlayCount = Int32(Int(spd)!);
-                    case 48:
-                        ms.BDP.ClearCount = Int32(Int(spd)!);
-                    case 49:
-                        ms.DDP.PlayCount = Int32(Int(spd)!);
-                    case 50:
-                        ms.DDP.ClearCount = Int32(Int(spd)!);
-                    case 51:
-                        ms.EDP.PlayCount = Int32(Int(spd)!);
-                    case 52:
-                        ms.EDP.ClearCount = Int32(Int(spd)!);
-                    case 53:
-                        ms.CDP.PlayCount = Int32(Int(spd)!);
-                    case 54:
-                        ms.CDP.ClearCount = Int32(Int(spd)!);
-                    default:
-                        break
-                    }
-                }
-                ret[id] = ms
-            }
+            ret = parseOld(data)
         }
         
-        
         return ret;
+    }
+    
+    static func parseOld(_ data: String) ->([Int32 : MusicScore]) {
+        var ret: [Int32 : MusicScore] = [:]
+
+        data.enumerateLines{
+            line, stop in
+            let sp = line.components(separatedBy: "\t")
+            var ms: MusicScore = MusicScore()
+            var id: Int32 = 0
+            for (index, spd) in sp.enumerated() {
+                switch index{
+                case 0:
+                    id = Int32(Int(spd)!)
+                case 1:
+                    ms.bSP.Rank =
+                    spd == "AAA" ? MusicRank.AAA :
+                    spd == "AA+" ? MusicRank.AAp :
+                    spd == "AA" ? MusicRank.AA :
+                    spd == "AA-" ? MusicRank.AAm :
+                    spd == "A+" ? MusicRank.Ap :
+                    spd == "A" ? MusicRank.A :
+                    spd == "A-" ? MusicRank.Am :
+                    spd == "B+" ? MusicRank.Bp :
+                    spd == "B" ? MusicRank.B :
+                    spd == "B-" ? MusicRank.Bm :
+                    spd == "C+" ? MusicRank.Cp :
+                    spd == "C" ? MusicRank.C :
+                    spd == "C-" ? MusicRank.Cm :
+                    spd == "D+" ? MusicRank.Dp :
+                    spd == "D" ? MusicRank.D :
+                    spd == "E" ? MusicRank.E :
+                    MusicRank.Noplay;
+                case 2:
+                    ms.bSP.Score = Int32(Int(spd)!);
+                case 3:
+                    ms.bSP.FullComboType_ =
+                    spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
+                    spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
+                    spd == "FullCombo" ? FullComboType.FullCombo :
+                    spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
+                    spd == "Life4" ? FullComboType.Life4 :
+                    FullComboType.None;
+                case 4:
+                    ms.bSP.MaxCombo = Int32(Int(spd)!);
+                case 5:
+                    ms.BSP.Rank =
+                    spd == "AAA" ? MusicRank.AAA :
+                    spd == "AA+" ? MusicRank.AAp :
+                    spd == "AA" ? MusicRank.AA :
+                    spd == "AA-" ? MusicRank.AAm :
+                    spd == "A+" ? MusicRank.Ap :
+                    spd == "A" ? MusicRank.A :
+                    spd == "A-" ? MusicRank.Am :
+                    spd == "B+" ? MusicRank.Bp :
+                    spd == "B" ? MusicRank.B :
+                    spd == "B-" ? MusicRank.Bm :
+                    spd == "C+" ? MusicRank.Cp :
+                    spd == "C" ? MusicRank.C :
+                    spd == "C-" ? MusicRank.Cm :
+                    spd == "D+" ? MusicRank.Dp :
+                    spd == "D" ? MusicRank.D :
+                    spd == "E" ? MusicRank.E :
+                    MusicRank.Noplay;
+                case 6:
+                    ms.BSP.Score = Int32(Int(spd)!);
+                case 7:
+                    ms.BSP.FullComboType_ =
+                    spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
+                    spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
+                    spd == "FullCombo" ? FullComboType.FullCombo :
+                    spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
+                    spd == "Life4" ? FullComboType.Life4 :
+                    FullComboType.None;
+                case 8:
+                    ms.BSP.MaxCombo = Int32(Int(spd)!);
+                case 9:
+                    ms.DSP.Rank =
+                    spd == "AAA" ? MusicRank.AAA :
+                    spd == "AA+" ? MusicRank.AAp :
+                    spd == "AA" ? MusicRank.AA :
+                    spd == "AA-" ? MusicRank.AAm :
+                    spd == "A+" ? MusicRank.Ap :
+                    spd == "A" ? MusicRank.A :
+                    spd == "A-" ? MusicRank.Am :
+                    spd == "B+" ? MusicRank.Bp :
+                    spd == "B" ? MusicRank.B :
+                    spd == "B-" ? MusicRank.Bm :
+                    spd == "C+" ? MusicRank.Cp :
+                    spd == "C" ? MusicRank.C :
+                    spd == "C-" ? MusicRank.Cm :
+                    spd == "D+" ? MusicRank.Dp :
+                    spd == "D" ? MusicRank.D :
+                    spd == "E" ? MusicRank.E :
+                    MusicRank.Noplay;
+                case 10:
+                    ms.DSP.Score = Int32(Int(spd)!);
+                case 11:
+                    ms.DSP.FullComboType_ =
+                    spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
+                    spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
+                    spd == "FullCombo" ? FullComboType.FullCombo :
+                    spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
+                    spd == "Life4" ? FullComboType.Life4 :
+                    FullComboType.None;
+                case 12:
+                    ms.DSP.MaxCombo = Int32(Int(spd)!);
+                case 13:
+                    ms.ESP.Rank =
+                    spd == "AAA" ? MusicRank.AAA :
+                    spd == "AA+" ? MusicRank.AAp :
+                    spd == "AA" ? MusicRank.AA :
+                    spd == "AA-" ? MusicRank.AAm :
+                    spd == "A+" ? MusicRank.Ap :
+                    spd == "A" ? MusicRank.A :
+                    spd == "A-" ? MusicRank.Am :
+                    spd == "B+" ? MusicRank.Bp :
+                    spd == "B" ? MusicRank.B :
+                    spd == "B-" ? MusicRank.Bm :
+                    spd == "C+" ? MusicRank.Cp :
+                    spd == "C" ? MusicRank.C :
+                    spd == "C-" ? MusicRank.Cm :
+                    spd == "D+" ? MusicRank.Dp :
+                    spd == "D" ? MusicRank.D :
+                    spd == "E" ? MusicRank.E :
+                    MusicRank.Noplay;
+                case 14:
+                    ms.ESP.Score = Int32(Int(spd)!);
+                case 15:
+                    ms.ESP.FullComboType_ =
+                    spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
+                    spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
+                    spd == "FullCombo" ? FullComboType.FullCombo :
+                    spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
+                    spd == "Life4" ? FullComboType.Life4 :
+                    FullComboType.None;
+                case 16:
+                    ms.ESP.MaxCombo = Int32(Int(spd)!);
+                case 17:
+                    ms.CSP.Rank =
+                    spd == "AAA" ? MusicRank.AAA :
+                    spd == "AA+" ? MusicRank.AAp :
+                    spd == "AA" ? MusicRank.AA :
+                    spd == "AA-" ? MusicRank.AAm :
+                    spd == "A+" ? MusicRank.Ap :
+                    spd == "A" ? MusicRank.A :
+                    spd == "A-" ? MusicRank.Am :
+                    spd == "B+" ? MusicRank.Bp :
+                    spd == "B" ? MusicRank.B :
+                    spd == "B-" ? MusicRank.Bm :
+                    spd == "C+" ? MusicRank.Cp :
+                    spd == "C" ? MusicRank.C :
+                    spd == "C-" ? MusicRank.Cm :
+                    spd == "D+" ? MusicRank.Dp :
+                    spd == "D" ? MusicRank.D :
+                    spd == "E" ? MusicRank.E :
+                    MusicRank.Noplay;
+                case 18:
+                    ms.CSP.Score = Int32(Int(spd)!);
+                case 19:
+                    ms.CSP.FullComboType_ =
+                    spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
+                    spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
+                    spd == "FullCombo" ? FullComboType.FullCombo :
+                    spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
+                    spd == "Life4" ? FullComboType.Life4 :
+                    FullComboType.None;
+                case 20:
+                    ms.CSP.MaxCombo = Int32(Int(spd)!);
+                case 21:
+                    ms.BDP.Rank =
+                    spd == "AAA" ? MusicRank.AAA :
+                    spd == "AA+" ? MusicRank.AAp :
+                    spd == "AA" ? MusicRank.AA :
+                    spd == "AA-" ? MusicRank.AAm :
+                    spd == "A+" ? MusicRank.Ap :
+                    spd == "A" ? MusicRank.A :
+                    spd == "A-" ? MusicRank.Am :
+                    spd == "B+" ? MusicRank.Bp :
+                    spd == "B" ? MusicRank.B :
+                    spd == "B-" ? MusicRank.Bm :
+                    spd == "C+" ? MusicRank.Cp :
+                    spd == "C" ? MusicRank.C :
+                    spd == "C-" ? MusicRank.Cm :
+                    spd == "D+" ? MusicRank.Dp :
+                    spd == "D" ? MusicRank.D :
+                    spd == "E" ? MusicRank.E :
+                    MusicRank.Noplay;
+                case 22:
+                    ms.BDP.Score = Int32(Int(spd)!);
+                case 23:
+                    ms.BDP.FullComboType_ =
+                    spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
+                    spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
+                    spd == "FullCombo" ? FullComboType.FullCombo :
+                    spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
+                    spd == "Life4" ? FullComboType.Life4 :
+                    FullComboType.None;
+                case 24:
+                    ms.BDP.MaxCombo = Int32(Int(spd)!);
+                case 25:
+                    ms.DDP.Rank =
+                    spd == "AAA" ? MusicRank.AAA :
+                    spd == "AA+" ? MusicRank.AAp :
+                    spd == "AA" ? MusicRank.AA :
+                    spd == "AA-" ? MusicRank.AAm :
+                    spd == "A+" ? MusicRank.Ap :
+                    spd == "A" ? MusicRank.A :
+                    spd == "A-" ? MusicRank.Am :
+                    spd == "B+" ? MusicRank.Bp :
+                    spd == "B" ? MusicRank.B :
+                    spd == "B-" ? MusicRank.Bm :
+                    spd == "C+" ? MusicRank.Cp :
+                    spd == "C" ? MusicRank.C :
+                    spd == "C-" ? MusicRank.Cm :
+                    spd == "D+" ? MusicRank.Dp :
+                    spd == "D" ? MusicRank.D :
+                    spd == "E" ? MusicRank.E :
+                    MusicRank.Noplay;
+                case 26:
+                    ms.DDP.Score = Int32(Int(spd)!);
+                case 27:
+                    ms.DDP.FullComboType_ =
+                    spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
+                    spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
+                    spd == "FullCombo" ? FullComboType.FullCombo :
+                    spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
+                    spd == "Life4" ? FullComboType.Life4 :
+                    FullComboType.None;
+                case 28:
+                    ms.DDP.MaxCombo = Int32(Int(spd)!);
+                case 29:
+                    ms.EDP.Rank =
+                    spd == "AAA" ? MusicRank.AAA :
+                    spd == "AA+" ? MusicRank.AAp :
+                    spd == "AA" ? MusicRank.AA :
+                    spd == "AA-" ? MusicRank.AAm :
+                    spd == "A+" ? MusicRank.Ap :
+                    spd == "A" ? MusicRank.A :
+                    spd == "A-" ? MusicRank.Am :
+                    spd == "B+" ? MusicRank.Bp :
+                    spd == "B" ? MusicRank.B :
+                    spd == "B-" ? MusicRank.Bm :
+                    spd == "C+" ? MusicRank.Cp :
+                    spd == "C" ? MusicRank.C :
+                    spd == "C-" ? MusicRank.Cm :
+                    spd == "D+" ? MusicRank.Dp :
+                    spd == "D" ? MusicRank.D :
+                    spd == "E" ? MusicRank.E :
+                    MusicRank.Noplay;
+                case 30:
+                    ms.EDP.Score = Int32(Int(spd)!);
+                case 31:
+                    ms.EDP.FullComboType_ =
+                    spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
+                    spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
+                    spd == "FullCombo" ? FullComboType.FullCombo :
+                    spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
+                    spd == "Life4" ? FullComboType.Life4 :
+                    FullComboType.None;
+                case 32:
+                    ms.EDP.MaxCombo = Int32(Int(spd)!);
+                case 33:
+                    ms.CDP.Rank =
+                    spd == "AAA" ? MusicRank.AAA :
+                    spd == "AA+" ? MusicRank.AAp :
+                    spd == "AA" ? MusicRank.AA :
+                    spd == "AA-" ? MusicRank.AAm :
+                    spd == "A+" ? MusicRank.Ap :
+                    spd == "A" ? MusicRank.A :
+                    spd == "A-" ? MusicRank.Am :
+                    spd == "B+" ? MusicRank.Bp :
+                    spd == "B" ? MusicRank.B :
+                    spd == "B-" ? MusicRank.Bm :
+                    spd == "C+" ? MusicRank.Cp :
+                    spd == "C" ? MusicRank.C :
+                    spd == "C-" ? MusicRank.Cm :
+                    spd == "D+" ? MusicRank.Dp :
+                    spd == "D" ? MusicRank.D :
+                    spd == "E" ? MusicRank.E :
+                    MusicRank.Noplay;
+                case 34:
+                    ms.CDP.Score = Int32(Int(spd)!);
+                case 35:
+                    ms.CDP.FullComboType_ =
+                    spd == "MerverousFullCombo" ? FullComboType.MarvelousFullCombo :
+                    spd == "PerfectFullCombo" ? FullComboType.PerfectFullCombo :
+                    spd == "FullCombo" ? FullComboType.FullCombo :
+                    spd == "GoodFullCombo" ? FullComboType.GoodFullCombo :
+                    spd == "Life4" ? FullComboType.Life4 :
+                    FullComboType.None;
+                case 36:
+                    ms.CDP.MaxCombo = Int32(Int(spd)!);
+                case 37:
+                    ms.bSP.PlayCount = Int32(Int(spd)!);
+                case 38:
+                    ms.bSP.ClearCount = Int32(Int(spd)!);
+                case 39:
+                    ms.BSP.PlayCount = Int32(Int(spd)!);
+                case 40:
+                    ms.BSP.ClearCount = Int32(Int(spd)!);
+                case 41:
+                    ms.DSP.PlayCount = Int32(Int(spd)!);
+                case 42:
+                    ms.DSP.ClearCount = Int32(Int(spd)!);
+                case 43:
+                    ms.ESP.PlayCount = Int32(Int(spd)!);
+                case 44:
+                    ms.ESP.ClearCount = Int32(Int(spd)!);
+                case 45:
+                    ms.CSP.PlayCount = Int32(Int(spd)!);
+                case 46:
+                    ms.CSP.ClearCount = Int32(Int(spd)!);
+                case 47:
+                    ms.BDP.PlayCount = Int32(Int(spd)!);
+                case 48:
+                    ms.BDP.ClearCount = Int32(Int(spd)!);
+                case 49:
+                    ms.DDP.PlayCount = Int32(Int(spd)!);
+                case 50:
+                    ms.DDP.ClearCount = Int32(Int(spd)!);
+                case 51:
+                    ms.EDP.PlayCount = Int32(Int(spd)!);
+                case 52:
+                    ms.EDP.ClearCount = Int32(Int(spd)!);
+                case 53:
+                    ms.CDP.PlayCount = Int32(Int(spd)!);
+                case 54:
+                    ms.CDP.ClearCount = Int32(Int(spd)!);
+                default:
+                    break
+                }
+            }
+            ret[id] = ms
+        }
+        
+        return ret
     }
     
     static func saveScoreList(_ rivalId: String?, scores: [Int32 : MusicScore]) -> (Bool) {
