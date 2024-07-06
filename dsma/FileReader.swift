@@ -92,6 +92,9 @@ struct FileReader{
         sfm.putBool("VisibleItems_DanceLevel", value: pref.VisibleItems_DanceLevel)
         sfm.putBool("VisibleItems_PlayCount", value: pref.VisibleItems_PlayCount)
         sfm.putBool("VisibleItems_ClearCount", value: pref.VisibleItems_ClearCount)
+        sfm.putBool("VisibleItems_FlareRank", value: pref.VisibleItems_FlareRank)
+        sfm.putBool("VisibleItems_FlareSkill", value: pref.VisibleItems_FlareSkill)
+        
         sfm.putBool("Gate_LoadFromA3", value: pref.Gate_LoadFromA3)
         sfm.putInt32("Gate_SetPfcScore", value: pref.Gate_SetPfcScore)
         sfm.putBool("Gate_OverWriteLife4", value: pref.Gate_OverWriteLife4)
@@ -108,6 +111,9 @@ struct FileReader{
             pref.VisibleItems_DanceLevel = sfm.getBool("VisibleItems_DanceLevel", def: true)
             pref.VisibleItems_PlayCount = sfm.getBool("VisibleItems_PlayCount", def: false)
             pref.VisibleItems_ClearCount = sfm.getBool("VisibleItems_ClearCount", def: false)
+            pref.VisibleItems_FlareRank = sfm.getBool("VisibleItems_FlareRank", def: true)
+            pref.VisibleItems_FlareSkill = sfm.getBool("VisibleItems_FlareSkill", def: true)
+            
             pref.Gate_LoadFromA3 = sfm.getBool("Gate_LoadFromA3", def: true)
             pref.Gate_SetPfcScore = sfm.getInt32("Gate_SetPfcScore", def: 999990)
             pref.Gate_OverWriteLife4 = sfm.getBool("Gate_OverWriteLife4", def: false)
@@ -877,14 +883,14 @@ struct FileReader{
                         difficulties[difficultyIndex].ClearCount = Int32(Int(spd)!)
                     }
                 case 55...63:
-                    difficulties[index - 55].flareSkill = Int32(Int(spd) ?? 0)
+                    difficulties[index - 55].flareRank = Int32(Int(spd) ?? 0)
                 default: break
                 }
             }
             
             // Set default flareSkill value if not present
             if sp.count <= 55 {
-                difficulties.indices.forEach { difficulties[$0].flareSkill = 0 }
+                difficulties.indices.forEach { difficulties[$0].flareRank = 0 }
             }
             
             // Assign back the updated ScoreData structs

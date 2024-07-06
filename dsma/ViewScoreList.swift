@@ -41,10 +41,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
     }
     
-    //var filterListShowing: Bool = false
-    //var sortListShowing: Bool = false
-    //var menuMusicSelectedShowing: Bool = false
-    
     var rparam_ParentCategory: String = ""
     var rparam_Category: String = ""
     var rparam_Targets: [UniquePattern]!
@@ -124,13 +120,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         return UIBarPosition.topAttached
     }
     
-    //var reloadOnReturn: Bool = false
-    //func setReloadOnReturn() {
-    //    reloadOnReturn = true
-    //}
-    
-    // セルに表示するテキスト
-    //let texts = ["sukoarisuto", "tesuto"]
     var mListItems: [UniquePattern] = [UniquePattern]()
     
     // セルの行数
@@ -140,8 +129,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     // セルの内容を変更
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
-        //cell.textLabel?.text = texts[indexPath.row]
         var cell = tableView.dequeueReusableCell(withIdentifier: mCellReuseId) as? ScoreListItem
         // セルが作成されていないか?
         if cell == nil { // yes
@@ -245,12 +232,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                         isDP = true
                         sd = ms!.CDP
                         sdr = msr!.CDP
-                        //default:
-                        //    diff = 0
-                        //    diffColor = UIColor.clearColor()
-                        //    isDP = false
-                        //    sd = ScoreData(Rank: MusicRank.Noplay, Score: 0, MaxCombo: 0, FullComboType_: FullComboType.None, PlayCount: 0, ClearCount: 0)
-                        //    break
                     }
                     var rankColor: UIColor
                     switch sd.Rank{
@@ -353,6 +334,16 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     cell?.mLabelFC.textColor = fcColor
                     cell?.mLabelScore.text = StringUtil.toCommaFormattedString(sd.Score)
                     cell?.mLabelCombo.text = sd.MaxCombo.description
+                    
+                    if let md = mMusicData[pat.MusicId], let ms = mScoreData[pat.MusicId] {
+                        let flareSkill = calculateFlareSkill(musicScore: ms, musicData: md, pattern: pat.Pattern)
+                        
+                        let scoreData = ms.getScoreData(pat.Pattern)
+                        
+                        cell?.mLabelFlareRank.text = scoreData.flareRank.description
+                        cell?.mLabelFlareSkill.text = flareSkill.description
+                    }
+                    
                     let scd = sd.Score - sdr.Score
                     cell?.mLabelRivalDifference.textColor = scd > 0 ? UIColor.cyan : scd < 0 ? UIColor.red : UIColor.white
                     cell?.mLabelRivalDifference.text = (scd >= 0 ? "+" : "") + StringUtil.toCommaFormattedString(scd)
@@ -370,6 +361,43 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             }
         }
         return cell!
+    }
+    
+    func calculateFlareSkill(musicScore: MusicScore, musicData: MusicData, pattern: PatternType) -> Int32 {
+        let scoreData: ScoreData
+        let difficulty: Int32
+        
+        switch pattern {
+        case .bSP:
+            scoreData = musicScore.bSP
+            difficulty = musicData.Difficulty_bSP
+        case .BSP:
+            scoreData = musicScore.BSP
+            difficulty = musicData.Difficulty_BSP
+        case .DSP:
+            scoreData = musicScore.DSP
+            difficulty = musicData.Difficulty_DSP
+        case .ESP:
+            scoreData = musicScore.ESP
+            difficulty = musicData.Difficulty_ESP
+        case .CSP:
+            scoreData = musicScore.CSP
+            difficulty = musicData.Difficulty_CSP
+        case .BDP:
+            scoreData = musicScore.BDP
+            difficulty = musicData.Difficulty_BDP
+        case .DDP:
+            scoreData = musicScore.DDP
+            difficulty = musicData.Difficulty_DDP
+        case .EDP:
+            scoreData = musicScore.EDP
+            difficulty = musicData.Difficulty_EDP
+        case .CDP:
+            scoreData = musicScore.CDP
+            difficulty = musicData.Difficulty_CDP
+        }
+        
+        return scoreData.flareRank
     }
     
     let actionSheetTextsSystemA = [
@@ -397,11 +425,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         if mListItems.count == 0 {
             return
         }
-        //sparam_ParentView = self
-        //sparam_UniquePattern = mListItems[indexPath.row]
-        //sparam_ParentCategory = rparam_ParentCategory
-        //sparam_Category = rparam_Category
-        //performSegueWithIdentifier("modalMenuMusicSelected", sender: nil)
+        
         tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
         mSelectedIndexForActionSheet = (indexPath as NSIndexPath).row
         let mi = mListItems[mSelectedIndexForActionSheet]
@@ -433,14 +457,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         if mActiveRival.Id != "" {
             texts.insert(NSLocalizedString("Rival Score", comment: "ViewScoreList"), at: 3)
         }
-        /*var actionSheet = UIActionSheet(title: title, delegate: self, cancelButtonTitle: "Close", destructiveButtonTitle: nil)
-         for text in texts {
-         actionSheet.addButtonWithTitle(text)
-         }
-         actionSheet.tag = sActionSheetIdMusicSelected
-         actionSheet.actionSheetStyle = UIActionSheetStyle.BlackTranslucent
-         actionSheet.showInView(self.view)
-         tableView.deselectRowAtIndexPath(indexPath, animated: true)*/
+        
         mActionSheet = ActionSheet(title: title, cancelAction: { ()->Void in self.tableView.deselectRow(at: indexPath, animated: true) })
         for text in texts {
             var action: (()->Void)
@@ -522,10 +539,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    /*func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-     tableView.deselectRowAtIndexPath(indexPath, animated: true)
-     }*/
     
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
         let pt = sender.location(in: tableView)
@@ -675,9 +688,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     musicFilter = FileReader.readFilter(activeFilterId)!
                 }
                 
-                //self.mFilterName = FileReader.readFilterName(activeFilterId)!
-                //self.filterButton.setTitle(self.mFilterName, forState: UIControlState.Normal)
-                
                 if let tf = FileReader.readSort(musicSort, id: activeSortId){
                     musicSort = tf
                 }
@@ -685,9 +695,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     let _ = FileReader.readSortCount()
                     musicSort = FileReader.readSort(musicSort, id: activeSortId)!
                 }
-                
-                //self.sortButton.setTitle(FileReader.readSortName(activeSortId), forState: UIControlState.Normal)
-                
                 
                 switch self.rparam_ParentCategory {
                 case "Series Title":
@@ -1024,16 +1031,10 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                 default:
                     break
                 }
-                
             }
             
             self.mListItems = UniquePatternCollectionMaker.create(musicFilter, webMusicIds: self.mWebMusicIds, musics: self.mMusicData, scores: &self.mScoreData!, rivalName: self.mActiveRival.Name, rivalScores: &self.mRivalScoreData!)
-            //self.mListItems = [UniquePattern]()
             
-            //self.mTitle = self.mTitle + " (" + self.mListItems.count.description + ")"
-            
-            //mListItems.sort{ (m, p) in return m.MusicId < p.MusicId }
-            //self.mListItems.sort(musicSort.compare)  /////////////////// EXC_BAD_ACCESS occured on Release Build.
             self.mListItems.sort { m, p in return musicSort.compare(m, plusUniquePattern: p) }
             //sleep(20)
             
@@ -1282,6 +1283,4 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }

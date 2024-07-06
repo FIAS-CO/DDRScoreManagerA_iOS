@@ -329,23 +329,23 @@ struct StringUtil{
             
             // 新しいflareSkillデータを追加
             ret += "\t";
-            ret += score.bSP.flareSkill.description;
+            ret += score.bSP.flareRank.description;
             ret += "\t";
-            ret += score.BSP.flareSkill.description;
+            ret += score.BSP.flareRank.description;
             ret += "\t";
-            ret += score.DSP.flareSkill.description;
+            ret += score.DSP.flareRank.description;
             ret += "\t";
-            ret += score.ESP.flareSkill.description;
+            ret += score.ESP.flareRank.description;
             ret += "\t";
-            ret += score.CSP.flareSkill.description;
+            ret += score.CSP.flareRank.description;
             ret += "\t";
-            ret += score.BDP.flareSkill.description;
+            ret += score.BDP.flareRank.description;
             ret += "\t";
-            ret += score.DDP.flareSkill.description;
+            ret += score.DDP.flareRank.description;
             ret += "\t";
-            ret += score.EDP.flareSkill.description;
+            ret += score.EDP.flareRank.description;
             ret += "\t";
-            ret += score.CDP.flareSkill.description;
+            ret += score.CDP.flareRank.description;
         }
         
         return ret;

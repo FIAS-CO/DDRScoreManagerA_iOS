@@ -13,6 +13,8 @@ struct Preferences {
     var VisibleItems_DanceLevel: Bool = true
     var VisibleItems_PlayCount: Bool = false
     var VisibleItems_ClearCount: Bool = false
+    var VisibleItems_FlareRank: Bool = true
+    var VisibleItems_FlareSkill: Bool = true
     
     var Gate_LoadFromA3: Bool = true
     var Gate_SetPfcScore: Int32 = 999990

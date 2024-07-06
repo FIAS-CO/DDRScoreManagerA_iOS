@@ -46,15 +46,15 @@ class FileReaderTests: XCTestCase {
             XCTAssertEqual(score.EDP.Rank, .AA)
             XCTAssertEqual(score.EDP.Score, 944400)
             XCTAssertEqual(score.EDP.FullComboType_, .None)
-            XCTAssertEqual(score.bSP.flareSkill, 10)
-            XCTAssertEqual(score.BSP.flareSkill, 7)
-            XCTAssertEqual(score.DSP.flareSkill, 6)
-            XCTAssertEqual(score.ESP.flareSkill, 5)
-            XCTAssertEqual(score.CSP.flareSkill, 4)
-            XCTAssertEqual(score.BDP.flareSkill, 3)
-            XCTAssertEqual(score.DDP.flareSkill, 2)
-            XCTAssertEqual(score.EDP.flareSkill, 1)
-            XCTAssertEqual(score.CDP.flareSkill, 0)
+            XCTAssertEqual(score.bSP.flareRank, 10)
+            XCTAssertEqual(score.BSP.flareRank, 7)
+            XCTAssertEqual(score.DSP.flareRank, 6)
+            XCTAssertEqual(score.ESP.flareRank, 5)
+            XCTAssertEqual(score.CSP.flareRank, 4)
+            XCTAssertEqual(score.BDP.flareRank, 3)
+            XCTAssertEqual(score.DDP.flareRank, 2)
+            XCTAssertEqual(score.EDP.flareRank, 1)
+            XCTAssertEqual(score.CDP.flareRank, 0)
         }
         
         let score453 = scores[453]
@@ -72,8 +72,8 @@ class FileReaderTests: XCTestCase {
             XCTAssertEqual(score.CDP.Rank, .AAm)
             XCTAssertEqual(score.CDP.Score, 898950)
             XCTAssertEqual(score.CDP.FullComboType_, .None)
-            XCTAssertEqual(score.EDP.flareSkill, 8)
-            XCTAssertEqual(score.CDP.flareSkill, 9)
+            XCTAssertEqual(score.EDP.flareRank, 8)
+            XCTAssertEqual(score.CDP.flareRank, 9)
         }
     }
     
@@ -145,6 +145,6 @@ extension ScoreData: Equatable {
         lhs.FullComboType_ == rhs.FullComboType_ &&
         lhs.PlayCount == rhs.PlayCount &&
         lhs.ClearCount == rhs.ClearCount &&
-        lhs.flareSkill == rhs.flareSkill
+        lhs.flareRank == rhs.flareRank
     }
 }

@@ -22,6 +22,8 @@ class ScoreListItem: UITableViewCell{
     var mLabelScore: UILabel!
     var mLabelSlashSC: UILabel!
     var mLabelCombo: UILabel!
+    var mLabelFlareRank: UILabel!
+    var mLabelFlareSkill: UILabel!
     
     var mLabelRivalDifference: UILabel!
     var mLabelRivalName: UILabel!
@@ -167,6 +169,20 @@ class ScoreListItem: UITableViewCell{
         mLabelCombo.translatesAutoresizingMaskIntoConstraints = false
         upperView.addSubview(mLabelCombo)
         
+        mLabelFlareRank = UILabel(frame: CGRect.zero)
+        mLabelFlareRank.textColor = UIColor.white
+        mLabelFlareRank.font = UIFont(name: "Helvetica", size: _12)
+        mLabelFlareRank.textAlignment = NSTextAlignment.right
+        mLabelFlareRank.translatesAutoresizingMaskIntoConstraints = false
+        upperView.addSubview(mLabelFlareRank)
+
+        mLabelFlareSkill = UILabel(frame: CGRect.zero)
+        mLabelFlareSkill.textColor = UIColor.white
+        mLabelFlareSkill.font = UIFont(name: "Helvetica", size: _12)
+        mLabelFlareSkill.textAlignment = NSTextAlignment.right
+        mLabelFlareSkill.translatesAutoresizingMaskIntoConstraints = false
+        upperView.addSubview(mLabelFlareSkill)
+        
         mLabelRivalDifference = UILabel(frame: CGRect.zero)
         mLabelRivalDifference.textColor = UIColor.white
         mLabelRivalDifference.font = UIFont(name: "Helvetica", size: _12)
@@ -272,6 +288,8 @@ class ScoreListItem: UITableViewCell{
             "score": mLabelScore,
             "slashSC": mLabelSlashSC,
             "combo": mLabelCombo,
+            "flarerank": mLabelFlareRank,
+            "flareskill": mLabelFlareSkill,
             "rivaldiff": mLabelRivalDifference,
             "rivalname": mLabelRivalName,
             "rivalcolon": mLabelRivalColon,
@@ -297,7 +315,7 @@ class ScoreListItem: UITableViewCell{
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[lowerview]|", options: [], metrics: nil, views: views))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[upperview"+(reuseIdentifier.range(of: "Rival") == nil ? "" : "(=="+_20.description+")][lowerview")+"]|", options: [], metrics: nil, views: views))
         
-        upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[difficulty(=="+_25.description+")][spdp(=="+_11.description+")][title]-"+_5.description+"-[clear(==" + (pref.VisibleItems_ClearCount ? _30.description : "0" ) + ")][slashCP(==" + (pref.VisibleItems_ClearCount && pref.VisibleItems_PlayCount ? _5.description : "0" ) + ")][play(==" + (pref.VisibleItems_PlayCount ? _30.description : "0" ) + ")]-"+_5.description+"-[dancelevel(==" + (pref.VisibleItems_DanceLevel ? _35.description : "0" ) + ")]-(0)-[dancelevelpm(==" + (pref.VisibleItems_DanceLevel ? _11.description : "0" ) + ")]-" + (pref.VisibleItems_DanceLevel ? "(-"+_27.description+")-[fullcombo(=="+_20.description+")]-" : "0-[fullcombo(==0)]-") + "(-"+_3.description+")-[score(==" + (pref.VisibleItems_Score ? _60.description : "0" ) + ")][slashSC(==" + (pref.VisibleItems_Score && pref.VisibleItems_MaxCombo ? _5.description : "0" ) + ")][combo(==" + (pref.VisibleItems_MaxCombo ? _30.description : "0" ) + ")]|", options: [], metrics: nil, views: views))
+        upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[difficulty(=="+_25.description+")][spdp(=="+_11.description+")][title]-"+_5.description+"-[clear(==" + (pref.VisibleItems_ClearCount ? _30.description : "0" ) + ")][slashCP(==" + (pref.VisibleItems_ClearCount && pref.VisibleItems_PlayCount ? _5.description : "0" ) + ")][play(==" + (pref.VisibleItems_PlayCount ? _30.description : "0" ) + ")]-"+_5.description+"-[dancelevel(==" + (pref.VisibleItems_DanceLevel ? _35.description : "0" ) + ")]-(0)-[dancelevelpm(==" + (pref.VisibleItems_DanceLevel ? _11.description : "0" ) + ")]-" + (pref.VisibleItems_DanceLevel ? "(-"+_27.description+")-[fullcombo(=="+_20.description+")]-" : "0-[fullcombo(==0)]-") + "(-"+_3.description+")-[score(==" + (pref.VisibleItems_Score ? _60.description : "0" ) + ")][slashSC(==" + (pref.VisibleItems_Score && pref.VisibleItems_MaxCombo ? _5.description : "0" ) + ")][combo(==" + (pref.VisibleItems_MaxCombo ? _30.description : "0" ) + ")][flarerank(==" + (pref.VisibleItems_FlareRank ? _30.description : "0" ) + ")][flareskill(==" + (pref.VisibleItems_FlareSkill ? _30.description : "0" ) + ")]|", options: [], metrics: nil, views: views))
         upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[difficulty]|", options: [], metrics: nil, views: views))
         upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[spdp]|", options: [], metrics: nil, views: views))
         upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[title]|", options: [], metrics: nil, views: views))
@@ -310,6 +328,9 @@ class ScoreListItem: UITableViewCell{
         upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[score]|", options: [], metrics: nil, views: views))
         upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[slashSC]|", options: [], metrics: nil, views: views))
         upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[combo]|", options: [], metrics: nil, views: views))
+        upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[flarerank]|", options: [], metrics: nil, views: views))
+        upperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[flareskill]|", options: [], metrics: nil, views: views))
+
         
         lowerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[rivaldiff(=="+_70.description+")]-"+_5.description+"-[rivalname][rivalcolon(=="+_5.description+")][rivalclear(==" + (pref.VisibleItems_ClearCount ? "0" : "0" ) + ")][rivalslashCP(==" + (pref.VisibleItems_ClearCount && pref.VisibleItems_PlayCount ? "0" : "0" ) + ")][rivalplay(==" + (pref.VisibleItems_PlayCount ? "0" : "0" ) + ")]-"+_5.description+"-[rivaldancelevel(==" + (pref.VisibleItems_DanceLevel ? _35.description : "0" ) + ")]-(0)-[rivaldancelevelpm(==" + (pref.VisibleItems_DanceLevel ? _11.description : "0" ) + ")]-" + (pref.VisibleItems_DanceLevel ? "(-"+_27.description+")-[rivalfullcombo(=="+_20.description+")]-" : "0-[rivalfullcombo(==0)]-") + "(-"+_3.description+")-[rivalscore(==" + (pref.VisibleItems_Score ? _60.description : "0" ) + ")][rivalslashSC(==" + (pref.VisibleItems_Score && pref.VisibleItems_MaxCombo ? _5.description : "0" ) + ")][rivalcombo(==" + (pref.VisibleItems_MaxCombo ? _30.description : "0" ) + ")]|", options: [], metrics: nil, views: views))
         lowerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[rivaldiff]|", options: [], metrics: nil, views: views))
