@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JTg-QU-mp0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JTg-QU-mp0">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +15,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="w0p-uw-jj0">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,7 +43,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IQq-YF-JdU" customClass="TouchDownTableView" customModule="dsma" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="644"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="674"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <color key="separatorColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -60,7 +60,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STY-Zi-NIM">
-                                <rect key="frame" x="0.0" y="644" width="280" height="12"/>
+                                <rect key="frame" x="0.0" y="674" width="280" height="12"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="0SC-gy-Xyl"/>
@@ -70,7 +70,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0.11.22334400" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6K-iD-Szd">
-                                <rect key="frame" x="285" y="644" width="90" height="12"/>
+                                <rect key="frame" x="285" y="674" width="90" height="12"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="TCv-xH-xAK"/>
@@ -81,7 +81,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="2015010100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ7-U6-osS">
-                                <rect key="frame" x="285" y="656" width="90" height="12"/>
+                                <rect key="frame" x="285" y="686" width="90" height="12"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="Cgh-9g-IT2"/>
@@ -92,7 +92,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music List Version:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cmj-Ad-2i8">
-                                <rect key="frame" x="0.0" y="656" width="280" height="12"/>
+                                <rect key="frame" x="0.0" y="686" width="280" height="12"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="XDv-nL-7ke"/>
@@ -102,7 +102,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="325" translatesAutoresizingMaskIntoConstraints="NO" id="jwJ-zE-HRv">
-                                <rect key="frame" x="0.0" y="668" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="698" width="375" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="hyE-mM-3ex"/>
@@ -113,39 +113,26 @@ For keeping the GATE server service, please do not initiate a lot of access.</st
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can hide Ad while 24-hours by making sure to tap it." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="325" translatesAutoresizingMaskIntoConstraints="NO" id="UCo-gW-Lqa">
-                                <rect key="frame" x="0.0" y="698" width="375" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="jej-Pr-ItF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="jwJ-zE-HRv" firstAttribute="leading" secondItem="oPC-wo-7vV" secondAttribute="leading" id="2jV-xG-n0a"/>
                             <constraint firstAttribute="trailing" secondItem="jwJ-zE-HRv" secondAttribute="trailing" id="4tC-9D-Lzv"/>
-                            <constraint firstItem="UCo-gW-Lqa" firstAttribute="leading" secondItem="oPC-wo-7vV" secondAttribute="leading" id="7Sm-rU-540"/>
+                            <constraint firstItem="VW4-aB-QLC" firstAttribute="top" secondItem="jwJ-zE-HRv" secondAttribute="bottom" id="But-A3-aJG"/>
                             <constraint firstItem="STY-Zi-NIM" firstAttribute="leading" secondItem="oPC-wo-7vV" secondAttribute="leading" id="Gvh-6F-MCs"/>
                             <constraint firstItem="IQq-YF-JdU" firstAttribute="leading" secondItem="oPC-wo-7vV" secondAttribute="leading" id="KrA-aZ-eQf"/>
                             <constraint firstAttribute="trailing" secondItem="IQq-YF-JdU" secondAttribute="trailing" id="Ong-0S-LoA"/>
                             <constraint firstItem="jwJ-zE-HRv" firstAttribute="top" secondItem="CJ7-U6-osS" secondAttribute="bottom" id="Une-kQ-XIo"/>
                             <constraint firstAttribute="centerX" secondItem="VW4-aB-QLC" secondAttribute="centerX" id="YBh-pa-Hg6"/>
-                            <constraint firstAttribute="trailing" secondItem="UCo-gW-Lqa" secondAttribute="trailing" id="aNB-gZ-C15"/>
                             <constraint firstItem="IQq-YF-JdU" firstAttribute="top" secondItem="oPC-wo-7vV" secondAttribute="top" id="ams-oY-jYJ"/>
                             <constraint firstItem="CJ7-U6-osS" firstAttribute="leading" secondItem="Cmj-Ad-2i8" secondAttribute="trailing" constant="5" id="cFo-h7-wHE"/>
                             <constraint firstItem="jwJ-zE-HRv" firstAttribute="top" secondItem="Cmj-Ad-2i8" secondAttribute="bottom" id="f2x-tc-i7y"/>
                             <constraint firstItem="Cmj-Ad-2i8" firstAttribute="top" secondItem="STY-Zi-NIM" secondAttribute="bottom" id="gxg-yU-t3u"/>
                             <constraint firstItem="Cmj-Ad-2i8" firstAttribute="leading" secondItem="oPC-wo-7vV" secondAttribute="leading" id="l0t-bf-z8U"/>
                             <constraint firstItem="ems-f2-vZS" firstAttribute="top" secondItem="VW4-aB-QLC" secondAttribute="bottom" id="mTL-R0-nyu"/>
-                            <constraint firstItem="VW4-aB-QLC" firstAttribute="top" secondItem="UCo-gW-Lqa" secondAttribute="bottom" id="nCz-Sy-8Ce"/>
                             <constraint firstAttribute="trailing" secondItem="CJ7-U6-osS" secondAttribute="trailing" id="psm-6d-aza"/>
                             <constraint firstItem="CJ7-U6-osS" firstAttribute="top" secondItem="L6K-iD-Szd" secondAttribute="bottom" id="ryl-NL-N5w"/>
-                            <constraint firstItem="UCo-gW-Lqa" firstAttribute="top" secondItem="jwJ-zE-HRv" secondAttribute="bottom" id="tvD-uO-g7G"/>
                             <constraint firstItem="L6K-iD-Szd" firstAttribute="top" secondItem="IQq-YF-JdU" secondAttribute="bottom" id="utm-6a-NyJ"/>
                             <constraint firstAttribute="trailing" secondItem="L6K-iD-Szd" secondAttribute="trailing" id="vi1-u3-4dO"/>
                             <constraint firstItem="L6K-iD-Szd" firstAttribute="leading" secondItem="STY-Zi-NIM" secondAttribute="trailing" constant="5" id="zbp-Jw-rXr"/>
@@ -154,7 +141,6 @@ For keeping the GATE server service, please do not initiate a lot of access.</st
                     <navigationItem key="navigationItem" id="SQt-wI-opP"/>
                     <connections>
                         <outlet property="adHeight" destination="Brz-6f-kOt" id="vmL-DL-eDt"/>
-                        <outlet property="adNotifHeight" destination="jej-Pr-ItF" id="NGf-WY-izg"/>
                         <outlet property="adView" destination="VW4-aB-QLC" id="Bo6-P2-Tra"/>
                         <outlet property="appVersionLabel" destination="L6K-iD-Szd" id="slM-T5-a7r"/>
                         <outlet property="musicListVersionLabel" destination="CJ7-U6-osS" id="tmL-Om-hAM"/>

@@ -21,7 +21,6 @@ class ViewCategorySelect: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var adView: UIView!
     @IBOutlet weak var adHeight: NSLayoutConstraint!
-    @IBOutlet weak var adNotifHeight: NSLayoutConstraint!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var appVersionLabel: UILabel!
@@ -190,12 +189,6 @@ class ViewCategorySelect: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         Admob.shAdView(adHeight)
-        if FileReader.checkAdTapExpired() {
-            adNotifHeight.constant = 30
-        }
-        else {
-            adNotifHeight.constant = 0
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -212,12 +205,6 @@ class ViewCategorySelect: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
-        if FileReader.checkAdTapExpired() {
-            adNotifHeight.constant = 30
-        }
-        else {
-            adNotifHeight.constant = 0
-        }
     }
     
     override func viewDidLoad() {

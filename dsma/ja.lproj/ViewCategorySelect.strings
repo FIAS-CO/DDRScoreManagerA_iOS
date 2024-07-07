@@ -20,9 +20,6 @@
 /* Class = "UILabel"; text = "App Version:"; ObjectID = "STY-Zi-NIM"; */
 "STY-Zi-NIM.text" = "App Version:";
 
-/* Class = "UILabel"; text = "You can hide Ad while 24-hours by making sure to tap it."; ObjectID = "UCo-gW-Lqa"; */
-"UCo-gW-Lqa.text" = "広告はタップして確認することで24時間非表示にできます。";
-
 /* Class = "UILabel"; text = "このボタンでメニューを表示します。\nマニュアルはメニューから   .\n参照できます。"; ObjectID = "Zx3-3B-4nS"; */
 "Zx3-3B-4nS.text" = "このボタンでメニューを表示します。\nマニュアルはメニューから   .\n参照できます。";
 
