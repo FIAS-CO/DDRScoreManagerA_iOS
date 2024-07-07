@@ -530,6 +530,8 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                     sd.FullComboType_ = msd.FullComboType_;
                 }
             }
+            
+            // TODO フレアランク関連
         }
         switch(mTarget.Pattern) {
         case PatternType.bSP:

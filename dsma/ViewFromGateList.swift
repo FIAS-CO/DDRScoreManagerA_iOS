@@ -479,6 +479,8 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                             sd.FullComboType_ = msd.FullComboType_;
                         }
                     }
+                    
+                    // TODO フレアランク関連
                 }
 
                 switch(diff) {
