@@ -859,6 +859,7 @@ struct FileReader{
                 }
             }
             
+            
             func parseScoreData(_ index: Int, _ spd: String, _ difficulty: inout ScoreData) {
                 switch (index - 1) % 4 {
                 case 0: difficulty.Rank = parseRank(spd)
@@ -870,6 +871,9 @@ struct FileReader{
             }
             
             var difficulties: [ScoreData] = [ms.bSP, ms.BSP, ms.DSP, ms.ESP, ms.CSP, ms.BDP, ms.DDP, ms.EDP, ms.CDP]
+            
+            // Initialize flareRank to -1 for all difficulties
+            difficulties.indices.forEach { difficulties[$0].flareRank = -1 }
             
             for (index, spd) in sp.enumerated() {
                 switch index {
@@ -883,14 +887,9 @@ struct FileReader{
                         difficulties[difficultyIndex].ClearCount = Int32(Int(spd)!)
                     }
                 case 55...63:
-                    difficulties[index - 55].flareRank = Int32(Int(spd) ?? 0)
+                    difficulties[index - 55].flareRank = Int32(Int(spd) ?? -1)
                 default: break
                 }
-            }
-            
-            // Set default flareSkill value if not present
-            if sp.count <= 55 {
-                difficulties.indices.forEach { difficulties[$0].flareRank = 0 }
             }
             
             // Assign back the updated ScoreData structs
