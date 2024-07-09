@@ -100,3 +100,6 @@
 
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "yH5-eh-beN"; */
 "yH5-eh-beN.normalTitle" = "Edit";
+
+/* Class = "UILabel"; normalTitle = "FlareRank:"; ObjectID = "LIy-aE-hAD"; */
+"LIy-aE-hAD.text" = "フレアランク:";

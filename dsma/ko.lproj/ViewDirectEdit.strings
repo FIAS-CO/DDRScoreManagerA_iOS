@@ -1,4 +1,4 @@
-﻿/* Class = "UILabel"; text = "クリア状況:"; ObjectID = "0gC-zV-weV"; */
+/* Class = "UILabel"; text = "クリア状況:"; ObjectID = "0gC-zV-weV"; */
 "0gC-zV-weV.text" = "클리어 상황:";
 
 /* Class = "UIButton"; normalTitle = "スコアをリセット"; ObjectID = "1bi-K9-XJh"; */
@@ -99,3 +99,6 @@
 
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "yH5-eh-beN"; */
 "yH5-eh-beN.normalTitle" = "Edit";
+
+/* Class = "UILabel"; normalTitle = "FlareRank:"; ObjectID = "LIy-aE-hAD"; */
+"LIy-aE-hAD.text" = "플레어 랭크:";
