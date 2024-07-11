@@ -14,4 +14,13 @@ struct ScoreData {
     var PlayCount: Int32 = 0
     var ClearCount: Int32 = 0
     var flareRank: Int32 = -1
+    var flareSkill: Int32 = 0
+    
+    mutating func updateFlareSkill(songDifficulty: Int32) {
+        if flareRank == -1 {
+            flareSkill = 0
+        } else {
+            flareSkill = flareRank - songDifficulty
+        }
+    }
 }

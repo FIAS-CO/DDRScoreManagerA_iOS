@@ -186,13 +186,13 @@
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgY-FB-Frr" userLabel="Btn State">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgY-FB-Frr" userLabel="FlareRank Btn State">
                                                         <rect key="frame" x="110" y="0.0" width="205" height="40"/>
                                                         <state key="normal" title="_________________________">
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="stateTouchUpInside:" destination="XP5-RH-Pdl" eventType="touchUpInside" id="63N-Jh-xwn"/>
+                                                            <action selector="flareRankTouchUpInside:" destination="XP5-RH-Pdl" eventType="touchUpInside" id="nVS-ga-Pof"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -707,6 +707,7 @@
                     <connections>
                         <outlet property="adHeight" destination="wEO-o6-vt2" id="CZg-qH-MFJ"/>
                         <outlet property="adView" destination="k4v-bA-Mrf" id="PWb-2f-MXl"/>
+                        <outlet property="btnFlareRank" destination="CgY-FB-Frr" id="0XK-aN-0dV"/>
                         <outlet property="btnRivalState" destination="p0i-mD-c6K" id="vai-wH-3TS"/>
                         <outlet property="btnState" destination="6iL-lb-ofO" id="FtD-Pd-Hl6"/>
                         <outlet property="labelClear" destination="SCK-hU-vyM" id="e6E-im-FW8"/>

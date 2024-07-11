@@ -32,6 +32,8 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
     var mScoreData: ScoreData        /////// When using "!", mScoreData receive "nil" value from MusicScore. Why????
     var mRivalScoreData: ScoreData        /////// When using "!", mScoreData receive "nil" value from MusicScore. Why????
     
+    var currentDifficulty: Int32 = 0
+    
     @IBOutlet weak var adView: UIView!
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
@@ -52,8 +54,9 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
     @IBOutlet weak var labelRivalCombo: UILabel!
     @IBOutlet weak var labelRivalPlay: UILabel!
     @IBOutlet weak var labelRivalClear: UILabel!
-
+    
     @IBOutlet weak var btnState: UIButton!
+    @IBOutlet weak var btnFlareRank: UIButton!
     @IBOutlet weak var labelScore: UILabel!
     @IBOutlet weak var labelCombo: UILabel!
     @IBOutlet weak var labelPlay: UILabel!
@@ -306,8 +309,24 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
                 ccs = 5
             }
         }
-        //performSegueWithIdentifier("modalClearStateList",sender: nil)
         present(ViewClearStateList.checkOut(self, currentClearState: ccs, isRival: false), animated: true, completion: nil)
+    }
+    
+    @IBAction func flareRankTouchUpInside(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Select Flare Rank", message: nil, preferredStyle: .actionSheet)
+        
+        for rank in FlareRank.allCases {
+            alert.addAction(UIAlertAction(title: rank.displayText, style: .default) { [weak self] _ in
+                guard let self = self else { return }
+                self.mScoreData.flareRank = Int32(rank.rawValue)
+                self.updateFlareSkill()  // フレアランク変更時にフレアスキルを更新
+                self.setScoreData()  // UI更新
+            })
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     var mTextAlertView: TextAlertView!
@@ -389,7 +408,6 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
                 ccs = 5
             }
         }
-        //performSegueWithIdentifier("modalClearStateList",sender: nil)
         present(ViewClearStateList.checkOut(self, currentClearState: ccs, isRival: true), animated: true, completion: nil)
     }
     @IBAction func scoreRivalTouchUpInside(_ sender: AnyObject) {
@@ -492,6 +510,9 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
         }
         setState(state)
         
+        let flareRank = FlareRank(rawValue: Int(mScoreData.flareRank)) ?? .noRank
+        btnFlareRank.setTitle(flareRank.displayText, for: .normal)
+        
         rivalName.text = rparam_RivalData?.Name
         labelRivalScore.text = StringUtil.toCommaFormattedString(mRivalScoreData.Score)
         labelRivalCombo.text = mRivalScoreData.MaxCombo.description
@@ -539,63 +560,54 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
         switch rparam_Target.Pattern {
         case PatternType.bSP:
             labelPattern.text = "SINGLE BEGINNER"
-            //labelPattern.textColor = UIColor.cyanColor()
             lineHorizontal.backgroundColor = UIColor.cyan
             lineSP.backgroundColor = UIColor.cyan
             lineDP1.backgroundColor = UIColor.clear
             lineDP2.backgroundColor = UIColor.clear
         case PatternType.BSP:
             labelPattern.text = "SINGLE BASIC"
-            //labelPattern.textColor = UIColor.orangeColor()
             lineHorizontal.backgroundColor = UIColor.orange
             lineSP.backgroundColor = UIColor.orange
             lineDP1.backgroundColor = UIColor.clear
             lineDP2.backgroundColor = UIColor.clear
         case PatternType.DSP:
             labelPattern.text = "SINGLE DIFFICULT"
-            //labelPattern.textColor = UIColor.redColor()
             lineHorizontal.backgroundColor = UIColor.red
             lineSP.backgroundColor = UIColor.red
             lineDP1.backgroundColor = UIColor.clear
             lineDP2.backgroundColor = UIColor.clear
         case PatternType.ESP:
             labelPattern.text = "SINGLE EXPERT"
-            //labelPattern.textColor = UIColor.greenColor()
             lineHorizontal.backgroundColor = UIColor.green
             lineSP.backgroundColor = UIColor.green
             lineDP1.backgroundColor = UIColor.clear
             lineDP2.backgroundColor = UIColor.clear
         case PatternType.CSP:
             labelPattern.text = "SINGLE CHALLENGE"
-            //labelPattern.textColor = UIColor.purpleColor()
             lineHorizontal.backgroundColor = UIColor.magenta
             lineSP.backgroundColor = UIColor.magenta
             lineDP1.backgroundColor = UIColor.clear
             lineDP2.backgroundColor = UIColor.clear
         case PatternType.BDP:
             labelPattern.text = "DOUBLE BASIC"
-            //labelPattern.textColor = UIColor.orangeColor()
             lineHorizontal.backgroundColor = UIColor.orange
             lineSP.backgroundColor = UIColor.clear
             lineDP1.backgroundColor = UIColor.orange
             lineDP2.backgroundColor = UIColor.orange
         case PatternType.DDP:
             labelPattern.text = "DOUBLE DIFFICULT"
-            //labelPattern.textColor = UIColor.redColor()
             lineHorizontal.backgroundColor = UIColor.red
             lineSP.backgroundColor = UIColor.clear
             lineDP1.backgroundColor = UIColor.red
             lineDP2.backgroundColor = UIColor.red
         case PatternType.EDP:
             labelPattern.text = "DOUBLE EXPERT"
-            //labelPattern.textColor = UIColor.greenColor()
             lineHorizontal.backgroundColor = UIColor.green
             lineSP.backgroundColor = UIColor.clear
             lineDP1.backgroundColor = UIColor.green
             lineDP2.backgroundColor = UIColor.green
         case PatternType.CDP:
             labelPattern.text = "DOUBLE CHALLENGE"
-            //labelPattern.textColor = UIColor.purpleColor()
             lineHorizontal.backgroundColor = UIColor.magenta
             lineSP.backgroundColor = UIColor.clear
             lineDP1.backgroundColor = UIColor.magenta
@@ -608,12 +620,10 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
         navigationBar.topItem?.rightBarButtonItems = bb
         let bl = [UIBarButtonItem](arrayLiteral: buttonCancel)
         navigationBar.topItem?.leftBarButtonItems = bl
-        //navigationController?.navigationBarHidden = false
         Admob.shAdView(adHeight)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        //navigationController?.navigationBarHidden = true
     }
     
     @objc internal func saveButtonTouched(_ sender: UIButton) {
@@ -648,45 +658,42 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
         sl[rparam_Target.MusicId] = ms
         let _ = FileReader.saveScoreList(nil, scores: sl)
         if rparam_RivalData != nil {
-        var slr = FileReader.readScoreList(rparam_RivalData.Id)
-        var ms: MusicScore
-        if let m = slr[rparam_Target.MusicId] {
-            ms = m
+            var slr = FileReader.readScoreList(rparam_RivalData.Id)
+            var ms: MusicScore
+            if let m = slr[rparam_Target.MusicId] {
+                ms = m
+            }
+            else {
+                ms = MusicScore()
+            }
+            switch rparam_Target.Pattern {
+            case PatternType.bSP:
+                ms.bSP = mRivalScoreData
+            case PatternType.BSP:
+                ms.BSP = mRivalScoreData
+            case PatternType.DSP:
+                ms.DSP = mRivalScoreData
+            case PatternType.ESP:
+                ms.ESP = mRivalScoreData
+            case PatternType.CSP:
+                ms.CSP = mRivalScoreData
+            case PatternType.BDP:
+                ms.BDP = mRivalScoreData
+            case PatternType.DDP:
+                ms.DDP = mRivalScoreData
+            case PatternType.EDP:
+                ms.EDP = mRivalScoreData
+            case PatternType.CDP:
+                ms.CDP = mRivalScoreData
+            }
+            slr[rparam_Target.MusicId] = ms
+            let _ = FileReader.saveScoreList(rparam_RivalData.Id, scores: slr)
         }
-        else {
-            ms = MusicScore()
-        }
-        switch rparam_Target.Pattern {
-        case PatternType.bSP:
-            ms.bSP = mRivalScoreData
-        case PatternType.BSP:
-            ms.BSP = mRivalScoreData
-        case PatternType.DSP:
-            ms.DSP = mRivalScoreData
-        case PatternType.ESP:
-            ms.ESP = mRivalScoreData
-        case PatternType.CSP:
-            ms.CSP = mRivalScoreData
-        case PatternType.BDP:
-            ms.BDP = mRivalScoreData
-        case PatternType.DDP:
-            ms.DDP = mRivalScoreData
-        case PatternType.EDP:
-            ms.EDP = mRivalScoreData
-        case PatternType.CDP:
-            ms.CDP = mRivalScoreData
-        }
-        slr[rparam_Target.MusicId] = ms
-        let _ = FileReader.saveScoreList(rparam_RivalData.Id, scores: slr)
-        }
-        //rparam_ParentView.setReloadOnReturn()
         rparam_ParentView.refreshAll()
-        //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @objc internal func cancelButtonTouched(_ sender: UIButton) {
-        //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -699,7 +706,7 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -709,10 +716,10 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
         
         buttonSave = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(ViewDirectEdit.saveButtonTouched(_:)))
         buttonCancel = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(ViewDirectEdit.cancelButtonTouched(_:)))
-
+        
         self.title = "Direct Edit"
         adView.addSubview(Admob.getAdBannerView(self))
-
+        
         let nvFrame: CGRect = navigationBar.frame;
         var sai = CGFloat(0)
         if #available(iOS 11.0, *) {
@@ -753,42 +760,60 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
         }
         if rparam_RivalData != nil {
             let slr = FileReader.readScoreList(rparam_RivalData.Id)
-        if let score = slr[rparam_Target.MusicId] {
-            switch rparam_Target.Pattern {
-            case PatternType.bSP:
-                mRivalScoreData = score.bSP
-            case PatternType.BSP:
-                mRivalScoreData = score.BSP
-            case PatternType.DSP:
-                mRivalScoreData = score.DSP
-            case PatternType.ESP:
-                mRivalScoreData = score.ESP
-            case PatternType.CSP:
-                mRivalScoreData = score.CSP
-            case PatternType.BDP:
-                mRivalScoreData = score.BDP
-            case PatternType.DDP:
-                mRivalScoreData = score.DDP
-            case PatternType.EDP:
-                mRivalScoreData = score.EDP
-            case PatternType.CDP:
-                mRivalScoreData = score.CDP
+            if let score = slr[rparam_Target.MusicId] {
+                switch rparam_Target.Pattern {
+                case PatternType.bSP:
+                    mRivalScoreData = score.bSP
+                case PatternType.BSP:
+                    mRivalScoreData = score.BSP
+                case PatternType.DSP:
+                    mRivalScoreData = score.DSP
+                case PatternType.ESP:
+                    mRivalScoreData = score.ESP
+                case PatternType.CSP:
+                    mRivalScoreData = score.CSP
+                case PatternType.BDP:
+                    mRivalScoreData = score.BDP
+                case PatternType.DDP:
+                    mRivalScoreData = score.DDP
+                case PatternType.EDP:
+                    mRivalScoreData = score.EDP
+                case PatternType.CDP:
+                    mRivalScoreData = score.CDP
+                }
             }
-        }
-        else {
-            mRivalScoreData = ScoreData()
-        }
+            else {
+                mRivalScoreData = ScoreData()
+            }
         }
         else {
             rivalView.isHidden = true
         }
-
+        
         setScoreData()
-
+        setCurrentDifficulty()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setCurrentDifficulty() {
+        switch rparam_Target.Pattern {
+        case .bSP: currentDifficulty = mMusicData.Difficulty_bSP
+        case .BSP: currentDifficulty = mMusicData.Difficulty_BSP
+        case .DSP: currentDifficulty = mMusicData.Difficulty_DSP
+        case .ESP: currentDifficulty = mMusicData.Difficulty_ESP
+        case .CSP: currentDifficulty = mMusicData.Difficulty_CSP
+        case .BDP: currentDifficulty = mMusicData.Difficulty_BDP
+        case .DDP: currentDifficulty = mMusicData.Difficulty_DDP
+        case .EDP: currentDifficulty = mMusicData.Difficulty_EDP
+        case .CDP: currentDifficulty = mMusicData.Difficulty_CDP
+        }
+    }
+    
+    private func updateFlareSkill() {
+        mScoreData.updateFlareSkill(songDifficulty: currentDifficulty)
     }
 }

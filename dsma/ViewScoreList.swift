@@ -340,7 +340,8 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                         
                         let scoreData = ms.getScoreData(pat.Pattern)
                         
-                        cell?.mLabelFlareRank.text = scoreData.flareRank.description
+                        let flareRank = FlareRank(rawValue: Int(scoreData.flareRank)) ?? .noRank
+                        cell?.mLabelFlareRank.text = flareRank.description
                         cell?.mLabelFlareSkill.text = flareSkill.description
                     }
                     
