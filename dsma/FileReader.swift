@@ -940,7 +940,7 @@ struct FileReader{
     
     static func parseOld(_ data: String) ->([Int32 : MusicScore]) {
         var ret: [Int32 : MusicScore] = [:]
-
+        
         data.enumerateLines{
             line, stop in
             let sp = line.components(separatedBy: "\t")
@@ -1422,6 +1422,20 @@ struct FileReader{
             ret.FcGFC = sfm.getBool("FcGFC", def: true);
             ret.FcLife4 = sfm.getBool("FcLife4", def: true);
             ret.FcNoFC = sfm.getBool("FcNoFC", def: true);
+            
+            ret.FlareRankEX = sfm.getBool("FlareRankEX", def: true);
+            ret.FlareRankIX = sfm.getBool("FlareRankIX", def: true);
+            ret.FlareRankVIII = sfm.getBool("FlareRankVIII", def: true);
+            ret.FlareRankVII = sfm.getBool("FlareRankVII", def: true);
+            ret.FlareRankVI = sfm.getBool("FlareRankVI", def: true);
+            ret.FlareRankV = sfm.getBool("FlareRankV", def: true);
+            ret.FlareRankIV = sfm.getBool("FlareRankIV", def: true);
+            ret.FlareRankIII = sfm.getBool("FlareRankIII", def: true);
+            ret.FlareRankII = sfm.getBool("FlareRankII", def: true);
+            ret.FlareRankI = sfm.getBool("FlareRankI", def: true);
+            ret.FlareRank0 = sfm.getBool("FlareRank0", def: true);
+            ret.FlareRankNoRank = sfm.getBool("FlareRankNoRank", def: true);
+            
             ret.RankAAArival = sfm.getBool("RankAAArival", def: true);
             ret.RankAAprival = sfm.getBool("RankAA+rival", def: true);
             ret.RankAArival = sfm.getBool("RankAArival", def: true);
@@ -1564,6 +1578,20 @@ struct FileReader{
         sfm.putBool("FcGFC", value: filter.FcGFC);
         sfm.putBool("FcLife4", value: filter.FcLife4);
         sfm.putBool("FcNoFC", value: filter.FcNoFC);
+        
+        sfm.putBool("FlareRankEX", value: filter.FlareRankEX);
+        sfm.putBool("FlareRankIX", value: filter.FlareRankIX);
+        sfm.putBool("FlareRankVIII", value: filter.FlareRankVIII);
+        sfm.putBool("FlareRankVII", value: filter.FlareRankVII);
+        sfm.putBool("FlareRankVI", value: filter.FlareRankVI);
+        sfm.putBool("FlareRankV", value: filter.FlareRankV);
+        sfm.putBool("FlareRankIV", value: filter.FlareRankIV);
+        sfm.putBool("FlareRankIII", value: filter.FlareRankIII);
+        sfm.putBool("FlareRankII", value: filter.FlareRankII);
+        sfm.putBool("FlareRankI", value: filter.FlareRankI);
+        sfm.putBool("FlareRank0", value: filter.FlareRank0);
+        sfm.putBool("FlareRankNoRank", value: filter.FlareRankNoRank);
+        
         sfm.putBool("RankAAArival", value: filter.RankAAArival);
         sfm.putBool("RankAA+rival", value: filter.RankAAprival);
         sfm.putBool("RankAArival", value: filter.RankAArival);

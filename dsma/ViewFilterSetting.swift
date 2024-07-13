@@ -24,7 +24,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     
     var mFilterName: String!
     var mFilter: MusicFilter!
-
+    
     @IBOutlet weak var adView: UIView!
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
@@ -131,6 +131,20 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var swFcGFC: UISwitch!
     @IBOutlet weak var swFcLife4: UISwitch!
     @IBOutlet weak var swFcNoFC: UISwitch!
+    
+    @IBOutlet weak var swFlareRankEX: UISwitch!
+    @IBOutlet weak var swFlareRankIX: UISwitch!
+    @IBOutlet weak var swFlareRankVIII: UISwitch!
+    @IBOutlet weak var swFlareRankVII: UISwitch!
+    @IBOutlet weak var swFlareRankVI: UISwitch!
+    @IBOutlet weak var swFlareRankV: UISwitch!
+    @IBOutlet weak var swFlareRankIV: UISwitch!
+    @IBOutlet weak var swFlareRankIII: UISwitch!
+    @IBOutlet weak var swFlareRankII: UISwitch!
+    @IBOutlet weak var swFlareRankI: UISwitch!
+    @IBOutlet weak var swFlareRank0: UISwitch!
+    @IBOutlet weak var swFlareRankNoRank: UISwitch!
+    
     @IBOutlet weak var swRankAAARival: UISwitch!
     @IBOutlet weak var swRankAApRival: UISwitch!
     @IBOutlet weak var swRankAARival: UISwitch!
@@ -254,6 +268,20 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         swFcGFC.isOn = mFilter.FcGFC
         swFcLife4.isOn = mFilter.FcLife4
         swFcNoFC.isOn = mFilter.FcNoFC
+        
+        swFlareRankEX.isOn = mFilter.FlareRankEX
+        swFlareRankIX.isOn = mFilter.FlareRankIX
+        swFlareRankVIII.isOn = mFilter.FlareRankVIII
+        swFlareRankVII.isOn = mFilter.FlareRankVII
+        swFlareRankVI.isOn = mFilter.FlareRankVI
+        swFlareRankV.isOn = mFilter.FlareRankV
+        swFlareRankIV.isOn = mFilter.FlareRankIV
+        swFlareRankIII.isOn = mFilter.FlareRankIII
+        swFlareRankII.isOn = mFilter.FlareRankII
+        swFlareRankI.isOn = mFilter.FlareRankI
+        swFlareRank0.isOn = mFilter.FlareRank0
+        swFlareRankNoRank.isOn = mFilter.FlareRankNoRank
+        
         swRankAAARival.isOn = mFilter.RankAAArival
         swRankAApRival.isOn = mFilter.RankAAprival
         swRankAARival.isOn = mFilter.RankAArival
@@ -286,7 +314,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         shockArrowsExistsSP.alpha = shockArrowsExistsSP.isUserInteractionEnabled ? 1 : 0.3
         shockArrowsExistsDP.isUserInteractionEnabled = mFilter.CDP || mFilter.AllowOnlyChallenge
         shockArrowsExistsDP.alpha = shockArrowsExistsDP.isUserInteractionEnabled ? 1 : 0.3
-
+        
         filterDispCpat()
     }
     
@@ -331,7 +359,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    @IBAction func editMaxComboRange(_ sender: AnyObject) { 
+    @IBAction func editMaxComboRange(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Max Combo Range", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input FROM(minimum) combo.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.MaxComboMin.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if let no = Int(prevStr) {
@@ -358,7 +386,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    @IBAction func editPlayCountRange(_ sender: AnyObject) { 
+    @IBAction func editPlayCountRange(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Play Count Range", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input FROM(minimum) plays.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.PlayCountMin.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if let no = Int(prevStr) {
@@ -381,8 +409,8 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min play count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-
+            alert.show(self)
+            
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
@@ -391,12 +419,12 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func selectAllGoldButtonTapped(_ sender: UIButton) {
         setGoldSwitches(isOn: true)
     }
-
+    
     // 全解除ボタンのアクション
     @IBAction func deselectAllGoldButtonTapped(_ sender: UIButton) {
         setGoldSwitches(isOn: false)
     }
-
+    
     // GOLDカテゴリのスイッチを設定する関数
     private func setGoldSwitches(isOn: Bool) {
         swSerWORLD.setOn(isOn, animated: true)
@@ -417,7 +445,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func selectAllWhiteButtonTapped(_ sender: UIButton) {
         setWhiteSwitches(isOn: true)
     }
-
+    
     @IBAction func deselectAllWhiteButtonTapped(_ sender: UIButton) {
         setWhiteSwitches(isOn: false)
     }
@@ -431,16 +459,16 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         
         print("All WHITE switches set to: \(isOn)")
     }
-
+    
     // CLASSIC カテゴリ
     @IBAction func selectAllClassicButtonTapped(_ sender: UIButton) {
         setClassicSwitches(isOn: true)
     }
-
+    
     @IBAction func deselectAllClassicButtonTapped(_ sender: UIButton) {
         setClassicSwitches(isOn: false)
     }
-
+    
     private func setClassicSwitches(isOn: Bool) {
         [swSerX3, swSerX2, swSerX, swSerSuperNOVA2, swSerSuperNOVA, swSerEXTREME,
          swSerMAX2, swSerMAX, swSer5th, swSer4th, swSer3rd, swSer2nd, swSer1st].forEach { $0?.setOn(isOn, animated: true) }
@@ -485,11 +513,11 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min clear count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
+            alert.show(self)
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    @IBAction func editScoreRangeRival(_ sender: AnyObject) { 
+    @IBAction func editScoreRangeRival(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Score Range", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input FROM(minimum) rival score.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.ScoreMinRival.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if let no = Int(prevStr) {
@@ -512,38 +540,38 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min score required 0 to 1000000 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
+            alert.show(self)
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    @IBAction func editMaxComboRangeRival(_ sender: AnyObject) { 
+    @IBAction func editMaxComboRangeRival(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Max Combo Range", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input FROM(minimum) rival combo.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.MaxComboMinRival.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if let no = Int(prevStr) {              if no >= 0 {
-                    self.mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Max Combo Range", comment: "ViewFilterSetting"), message: NSLocalizedString("2. Input TO(maximum) rival combo.", comment: "ViewFilterSetting"), placeholder: "9999",defaultText: min(9999, self.mFilter.MaxComboMaxRival).description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
-                        if let no = Int(text) {
-                            let nom = Int(prevStr)!
-                            if no >= nom {
-                                self.mFilter.MaxComboMinRival = nom > 9999 ? 9999 : Int32(nom)
-                                self.mFilter.MaxComboMaxRival = no >= 9999 ? Int32.max : Int32(no)
-                                self.setFilterData()
-                                return
-                            }
+                self.mTextAlertView = TextAlertView(title: NSLocalizedString("Rival Max Combo Range", comment: "ViewFilterSetting"), message: NSLocalizedString("2. Input TO(maximum) rival combo.", comment: "ViewFilterSetting"), placeholder: "9999",defaultText: min(9999, self.mFilter.MaxComboMaxRival).description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
+                    if let no = Int(text) {
+                        let nom = Int(prevStr)!
+                        if no >= nom {
+                            self.mFilter.MaxComboMinRival = nom > 9999 ? 9999 : Int32(nom)
+                            self.mFilter.MaxComboMaxRival = no >= 9999 ? Int32.max : Int32(no)
+                            self.setFilterData()
+                            return
                         }
-                        let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Max combo count required over than MIN number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
-                    }), cancelAction: nil)
-                    self.mTextAlertView.show(self)
-                    return
-                }
+                    }
+                    let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Max combo count required over than MIN number.", comment: "ViewFilterSetting"))
+                    alert.show(self)
+                }), cancelAction: nil)
+                self.mTextAlertView.show(self)
+                return
+            }
             }
             let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min combo count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
+            alert.show(self)
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
     
-    @IBAction func editScoreDifferencePlus(_ sender: AnyObject) { 
+    @IBAction func editScoreDifferencePlus(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Score Difference (Plus)", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input PLUS FROM(minimum) score difference.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.ScoreDifferencePlusMin.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if let no = Int(prevStr) {
@@ -566,11 +594,11 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min score required 0 to 1000000 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
+            alert.show(self)
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    @IBAction func editScoreDifferenceMinus(_ sender: AnyObject) { 
+    @IBAction func editScoreDifferenceMinus(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Score Difference (Minus)", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input MINUS FROM(minimum) score difference.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: (-self.mFilter.ScoreDifferenceMinusMin).description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if let no = Int(prevStr) {
@@ -593,11 +621,11 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min score required 0 to 1000000 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
+            alert.show(self)
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    @IBAction func editMaxComboDifferencePlus(_ sender: AnyObject) { 
+    @IBAction func editMaxComboDifferencePlus(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Max Combo Difference (Plus)", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input PLUS FROM(minimum) max combo difference.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: self.mFilter.MaxComboDifferencePlusMin.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if let no = Int(prevStr) {
@@ -620,11 +648,11 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min combo count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
+            alert.show(self)
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
-    @IBAction func editMaxComboDifferenceMinus(_ sender: AnyObject) { 
+    @IBAction func editMaxComboDifferenceMinus(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Max Combo Difference (Minus)", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input MINUS FROM(minimum) max combo difference.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: (-self.mFilter.MaxComboDifferenceMinusMin).description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
             if let no = Int(prevStr) {
@@ -647,7 +675,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min combo count required over than 0 number.", comment: "ViewFilterSetting"))
-                        alert.show(self)
+            alert.show(self)
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
@@ -787,6 +815,20 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func fcGFC(_ sender: AnyObject) { mFilter.FcGFC = (sender as! UISwitch).isOn }
     @IBAction func fcLife4(_ sender: AnyObject) { mFilter.FcLife4 = (sender as! UISwitch).isOn }
     @IBAction func fcNoFC(_ sender: AnyObject) { mFilter.FcNoFC = (sender as! UISwitch).isOn }
+    
+    @IBAction func flareRankEX(_ sender: UISwitch) { mFilter.FlareRankEX = sender.isOn }
+    @IBAction func flareRankIX(_ sender: UISwitch) { mFilter.FlareRankIX = sender.isOn }
+    @IBAction func flareRankVIII(_ sender: UISwitch) { mFilter.FlareRankVIII = sender.isOn }
+    @IBAction func flareRankVII(_ sender: UISwitch) { mFilter.FlareRankVII = sender.isOn }
+    @IBAction func flareRankVI(_ sender: UISwitch) { mFilter.FlareRankVI = sender.isOn }
+    @IBAction func flareRankV(_ sender: UISwitch) { mFilter.FlareRankV = sender.isOn }
+    @IBAction func flareRankIV(_ sender: UISwitch) { mFilter.FlareRankIV = sender.isOn }
+    @IBAction func flareRankIII(_ sender: UISwitch) { mFilter.FlareRankIII = sender.isOn }
+    @IBAction func flareRankII(_ sender: UISwitch) { mFilter.FlareRankII = sender.isOn }
+    @IBAction func flareRankI(_ sender: UISwitch) { mFilter.FlareRankI = sender.isOn }
+    @IBAction func flareRank0(_ sender: UISwitch) { mFilter.FlareRank0 = sender.isOn }
+    @IBAction func flareRankNoRank(_ sender: UISwitch) { mFilter.FlareRankNoRank = sender.isOn }
+    
     @IBAction func rRankAAA(_ sender: AnyObject) { mFilter.RankAAArival = (sender as! UISwitch).isOn }
     @IBAction func rRankAAp(_ sender: AnyObject) { mFilter.RankAAprival = (sender as! UISwitch).isOn }
     @IBAction func rRankAA(_ sender: AnyObject) { mFilter.RankAArival = (sender as! UISwitch).isOn }
@@ -814,7 +856,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func rLose(_ sender: AnyObject) { mFilter.RivalLose = (sender as! UISwitch).isOn }
     @IBAction func rDraw(_ sender: AnyObject) { mFilter.RivalDraw = (sender as! UISwitch).isOn }
     @IBAction func rDeleted(_ sender: AnyObject) { mFilter.OthersDeleted = (sender as! UISwitch).isOn }
-
+    
     // セルの行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -886,7 +928,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -912,7 +954,7 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         
         self.title = mFilterName
         adView.addSubview(Admob.getAdBannerView(self))
-
+        
         scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
         scrollView.backgroundColor = UIColor(white: 0, alpha: 0.01)
         

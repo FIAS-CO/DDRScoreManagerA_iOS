@@ -140,6 +140,19 @@ class MusicFilter{
     var FcLife4: Bool  = true;
     var FcNoFC : Bool = true;
     
+    var FlareRankEX: Bool = true
+    var FlareRankIX: Bool = true
+    var FlareRankVIII: Bool = true
+    var FlareRankVII: Bool = true
+    var FlareRankVI: Bool = true
+    var FlareRankV: Bool = true
+    var FlareRankIV: Bool = true
+    var FlareRankIII: Bool = true
+    var FlareRankII: Bool = true
+    var FlareRankI: Bool = true
+    var FlareRank0: Bool = true
+    var FlareRankNoRank: Bool = true
+    
     var RankAAArival: Bool  = true;
     var RankAAprival : Bool = true;
     var RankAArival : Bool = true;
@@ -340,6 +353,22 @@ class MusicFilter{
         if(!FcGFC && scoreData.FullComboType_ == FullComboType.GoodFullCombo){ return false; }
         if(!FcLife4 && scoreData.FullComboType_ == FullComboType.Life4){ return false; }
         if(!FcNoFC && scoreData.FullComboType_ == FullComboType.None){ return false; }
+        
+        switch scoreData.flareRank {
+        case 10: if !FlareRankEX { return false }
+        case 9: if !FlareRankIX { return false }
+        case 8: if !FlareRankVIII { return false }
+        case 7: if !FlareRankVII { return false }
+        case 6: if !FlareRankVI { return false }
+        case 5: if !FlareRankV { return false }
+        case 4: if !FlareRankIV { return false }
+        case 3: if !FlareRankIII { return false }
+        case 2: if !FlareRankII { return false }
+        case 1: if !FlareRankI { return false }
+        case 0: if !FlareRank0 { return false }
+        case -1: if !FlareRankNoRank { return false }
+        default: break
+        }
         
         if(scoreData.Score < ScoreMin || ScoreMax < scoreData.Score){ return false; }
         if(scoreData.MaxCombo < MaxComboMin || MaxComboMax < scoreData.MaxCombo){ return false; }
