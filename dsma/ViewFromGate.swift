@@ -530,7 +530,10 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 }
             }
             
-            // TODO フレアランク関連
+            // フレアランク関連
+            if msd.flareRank > sd.flareRank {
+                sd.flareRank = msd.flareRank
+            }
         }
         switch(mTarget.Pattern) {
         case PatternType.bSP:

@@ -17,6 +17,7 @@
 		184DD9D62BCC1647006FB282 /* ViewMyList_Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */; };
 		184DD9D82BD56A9A006FB282 /* RealmUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DD9D72BD56A9A006FB282 /* RealmUtil.swift */; };
 		185A413C2C4018C200ECB7FA /* FlareRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A413B2C4018C200ECB7FA /* FlareRank.swift */; };
+		185A413E2C43E83600ECB7FA /* FlareSkillUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A413D2C43E83600ECB7FA /* FlareSkillUpdater.swift */; };
 		1863B0322BC2AE5500B01EF3 /* ViewSongMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */; };
 		188971C02C3A17050058DCE2 /* NewScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 188971BF2C3A17050058DCE2 /* NewScoreData.txt */; };
 		18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */; };
@@ -156,6 +157,7 @@
 		184DD9D52BCC1647006FB282 /* ViewMyList_Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewMyList_Add.storyboard; sourceTree = "<group>"; };
 		184DD9D72BD56A9A006FB282 /* RealmUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtil.swift; sourceTree = "<group>"; };
 		185A413B2C4018C200ECB7FA /* FlareRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlareRank.swift; sourceTree = "<group>"; };
+		185A413D2C43E83600ECB7FA /* FlareSkillUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlareSkillUpdater.swift; sourceTree = "<group>"; };
 		1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongMemo.swift; sourceTree = "<group>"; };
 		188971BF2C3A17050058DCE2 /* NewScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewScoreData.txt; sourceTree = "<group>"; };
 		18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				8A1A3D87290807520037B7DB /* NetworkUtil.swift */,
 				184DD9D72BD56A9A006FB282 /* RealmUtil.swift */,
 				18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */,
+				185A413D2C43E83600ECB7FA /* FlareSkillUpdater.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 			files = (
 				8AE29FAD1B40FD910068C3E2 /* ViewFromGate.swift in Sources */,
 				8AE950711B3CDA9600B6360E /* ViewDirectEdit.swift in Sources */,
+				185A413E2C43E83600ECB7FA /* FlareSkillUpdater.swift in Sources */,
 				8A1C837C1B319F40008BB780 /* ViewSortSetting.swift in Sources */,
 				8AFD01E61B21727F006500A0 /* BooleanPair.swift in Sources */,
 				8A16E4111B27171F00372D68 /* MusicSortType.swift in Sources */,

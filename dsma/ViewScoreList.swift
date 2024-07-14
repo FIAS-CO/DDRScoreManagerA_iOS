@@ -336,13 +336,12 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     cell?.mLabelCombo.text = sd.MaxCombo.description
                     
                     if let md = mMusicData[pat.MusicId], let ms = mScoreData[pat.MusicId] {
-                        let flareSkill = calculateFlareSkill(musicScore: ms, musicData: md, pattern: pat.Pattern)
                         
                         let scoreData = ms.getScoreData(pat.Pattern)
                         
                         let flareRank = FlareRank(rawValue: Int(scoreData.flareRank)) ?? .noRank
                         cell?.mLabelFlareRank.text = flareRank.description
-                        cell?.mLabelFlareSkill.text = flareSkill.description
+                        cell?.mLabelFlareSkill.text = scoreData.flareSkill.description
                     }
                     
                     let scd = sd.Score - sdr.Score
@@ -613,6 +612,8 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             
             self.mMusicData = FileReader.readMusicList()
             self.mScoreData = FileReader.readScoreList(nil)
+            FlareSkillUpdater.updateAllFlareSkills(musicData: self.mMusicData, scoreData: &self.mScoreData)
+            
             self.mRivalScoreData = FileReader.readScoreList(self.mActiveRival.Id)
             self.mWebMusicIds = FileReader.readWebMusicIds()
             
