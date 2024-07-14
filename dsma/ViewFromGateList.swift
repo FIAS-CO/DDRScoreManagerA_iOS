@@ -40,7 +40,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
     @IBOutlet weak var navigationBar: UINavigationBar!
-    //@IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var tableView: UITableView!
     
     var wkWebView: WKWebView!
@@ -70,7 +69,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 let th = Double(thr.height)
                 let tci = self.tableView.contentInset
                 let tcit = Double(tci.top)
-                //let cp = CGPoint(x: 0, y: (lh < th - tcit ? 0 - tcit : lh - th))
                 var ths = Double(0)
                 if #available(iOS 11.0, *) {
                     ths = Double(self.view.safeAreaInsets.top)
@@ -111,7 +109,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
         cell.backgroundColor = UIColor(white: 0, alpha: 0.01)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
         cell.textLabel?.minimumScaleFactor = 0.5
-        //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.text = logText[(indexPath as NSIndexPath).row]
         let cellSelectedBgView = UIView()
@@ -125,9 +122,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        //switch logText[indexPath.row] {
-        //default:
-        //}
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -135,8 +129,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
     }
     
     @objc internal func cancelButtonTouched(_ sender: UIButton) {
-        //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        //presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         addLog(NSLocalizedString("Canceling...", comment: "ViewFromGateList"))
         mCancel = true
         mPause = false
@@ -151,9 +143,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
     
     @objc internal func doneButtonTouched(_ sender: UIButton) {
         self.rparam_ParentView?.refreshAll()
-        if self.rparam_RivalId == nil || self.rparam_RivalId == "" {
-            //self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        }
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -186,7 +175,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
     var buttonDone: UIBarButtonItem!
     var buttonPause: UIBarButtonItem!
     var buttonResume: UIBarButtonItem!
-  
+    
     func analyzeScore(_ src: String) -> (Bool) {
         
         var idDiffEnd: String;
@@ -270,7 +259,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 let patternLinkText = titleLinkText+idText+"&amp;diff=";
                 var patternBlock: String
                 
-                    musicBlock = String(musicBlock[rs.lowerBound...]);
+                musicBlock = String(musicBlock[rs.lowerBound...]);
                 
                 if let rs = musicBlock.range(of: patternBlockEndText) {
                     patternBlock = String(musicBlock[..<rs.lowerBound]);
@@ -439,7 +428,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                         // MFCにする
                         sd.FullComboType_ = msd.FullComboType_;
                     }
-                        // 元の値がPFC
+                    // 元の値がPFC
                     else if(msd.FullComboType_ == FullComboType.PerfectFullCombo)
                     {
                         // 取得した値がMFCでない
@@ -449,7 +438,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                             sd.FullComboType_ = msd.FullComboType_;
                         }
                     }
-                        // 元の値がFC
+                    // 元の値がFC
                     else if(msd.FullComboType_ == FullComboType.FullCombo)
                     {
                         // 取得した値がMFCでもPFCでもない
@@ -459,7 +448,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                             sd.FullComboType_ = msd.FullComboType_;
                         }
                     }
-                        // 元の値がGFC
+                    // 元の値がGFC
                     else if(msd.FullComboType_ == FullComboType.GoodFullCombo)
                     {
                         // 取得した値がMFCでもPFCでもFCでもない
@@ -469,7 +458,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                             sd.FullComboType_ = msd.FullComboType_;
                         }
                     }
-                        // 元の値がその他
+                    // 元の値がその他
                     else
                     {
                         // 取得した値がMFCでもPFCでもFCでもGFCでもない
@@ -482,7 +471,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                     
                     // TODO フレアランク関連
                 }
-
+                
                 switch(diff) {
                 case 0:
                     ms.bSP = sd;
@@ -516,7 +505,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
         }
         
         let _ = FileReader.saveScoreList(rparam_RivalId, scores: mScoreList)
-
+        
         return true
     }
     
@@ -533,20 +522,12 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
             var dr = String(src[rs.upperBound...])
             if let rs = dr.range(of: cmpEndPagerBox) {
                 dr = String(dr[..<rs.lowerBound])
-            return countStringInString(dr, searchWord: cmpPangeNum);
+                return countStringInString(dr, searchWord: cmpPangeNum);
             }
         }
-            return 0;
+        return 0;
     }
     
-    /*func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        DispatchQueue.main.async(execute: {
-            self.addLog(NSLocalizedString("ERROR!!! : Retrying...", comment: "ViewFromGateList"))
-        })
-        self.mPageCount = 1
-        self.mRetry = true
-        self.mWait = false
-    }*/
     func didFinishLoad(_ url: String, html: String) {
         if self.mCancel {
             return;
@@ -559,8 +540,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                     self.mPageCount = 1
                     DispatchQueue.main.async(execute: {
                         self.addLog(NSLocalizedString("Opening login form...", comment: "ViewFromGateList"))
-                        //self.sparam_ParentView = self
-                        //self.performSegueWithIdentifier("modalGateLogin",sender: nil)
                         self.present(ViewGateLogin.checkOut(self, errorCheck: true, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
                     })
                     return
@@ -593,16 +572,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
         }
     }
     
-    /*func webViewDidFinishLoad(_ webView: UIWebView) {
-        let url = webView.stringByEvaluatingJavaScript(from: "document.URL")
-        let html = webView.stringByEvaluatingJavaScript(from: "document.getElementsByTagName('html')[0].outerHTML")
-        didFinishLoad(url!, html: html!)
-    }
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        
-    }*/
-    
     override func viewWillAppear(_ animated: Bool) {
         Admob.shAdView(adHeight)
     }
@@ -618,7 +587,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -626,37 +595,28 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
         let notifc: NotificationCenter = NotificationCenter.default
         notifc.addObserver(self, selector: #selector(applicationWillEnterForeground), name: NSNotification.Name(rawValue: "applicationWillEnterForeground"), object: nil)
         
-        //self.title = "Preferences"
         adView.addSubview(Admob.getAdBannerView(self))
-
+        
         let nvFrame: CGRect = navigationBar.frame;
-        //webView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
         tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
         navigationBar.delegate = self
         
         tableView.dataSource = self
         tableView.delegate = self
-        /*
-        webView.delegate = self
-        webView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
-        webView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-        */
+        
         tableView.indicatorStyle = UIScrollView.IndicatorStyle.white
         tableView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         
-        //if #available(iOS 8.0, *) {
-            let configuration = WKWebViewConfiguration()
-            configuration.processPool = rparam_ProcessPool
+        let configuration = WKWebViewConfiguration()
+        configuration.processPool = rparam_ProcessPool
         wkWebView = WKWebView(frame: CGRect.zero, configuration: configuration)
-            wkWebView.navigationDelegate = self
-            wkWebView.translatesAutoresizingMaskIntoConstraints = false
-            wkWebView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
-            wkWebView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-            wkWebView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
-            navigationBar.delegate = self
-            self.view.addSubview(wkWebView)
-            //self.view.bringSubviewToFront(navigationBar)
-        //}
+        wkWebView.navigationDelegate = self
+        wkWebView.translatesAutoresizingMaskIntoConstraints = false
+        wkWebView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
+        wkWebView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        wkWebView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
+        navigationBar.delegate = self
+        self.view.addSubview(wkWebView)
         
         addLog(NSLocalizedString("Target: ", comment: "ViewFromGateList") + (rparam_RivalId == nil ? NSLocalizedString("My scores.", comment: "ViewFromGateList") : (rparam_RivalName + " (" + rparam_RivalId + ")" )))
         addLog(NSLocalizedString("Loading scores started.", comment: "ViewFromGateList"))
@@ -691,14 +651,9 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                             self.mUriH += "rival/rival_musicdata_single.html?offset=";
                             self.mUriF = "&rival_id=" + self.rparam_RivalId;
                         }
-                            let url: URL = URL(string: (self.mUriH+i.description+self.mUriF))!
-                            let request: URLRequest = URLRequest(url: url)
-                        //if #available(iOS 8.0, *) {
-                            self.wkWebView.load(request)
-                        /*}
-                        else {
-                            self.webView.loadRequest(request)
-                        }*/
+                        let url: URL = URL(string: (self.mUriH+i.description+self.mUriF))!
+                        let request: URLRequest = URLRequest(url: url)
+                        self.wkWebView.load(request)
                     })
                     while (self.mWait || self.mPause) && !self.mCancel {
                         sleep(1)
@@ -734,9 +689,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 if self.mCancel {
                     DispatchQueue.main.async(execute: {
                         self.rparam_ParentView?.refreshAll()
-                        if self.rparam_RivalId == nil || self.rparam_RivalId == "" {
-                            //self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                        }
                         self.presentingViewController?.dismiss(animated: true, completion: nil)
                     })
                     return
@@ -745,9 +697,9 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                     break
                 }
             }
+            
             self.mPageCount = 1
             for i in 0 ..< 1000000 {
-                
                 repeat {
                     self.mWait = true
                     DispatchQueue.main.async(execute: {
@@ -769,12 +721,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                         }
                         let url: URL = URL(string: (self.mUriH+i.description+self.mUriF))!
                         let request: URLRequest = URLRequest(url: url)
-                        //if #available(iOS 8.0, *) {
-                            self.wkWebView.load(request)
-                        /*}
-                        else {
-                            self.webView.loadRequest(request)
-                        }*/
+                        self.wkWebView.load(request)
                     })
                     while (self.mWait || self.mPause)  && !self.mCancel {
                         sleep(1)
@@ -804,9 +751,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                     sleep(3)
                     DispatchQueue.main.async(execute: {
                         self.rparam_ParentView?.refreshAll()
-                        if self.rparam_RivalId == nil || self.rparam_RivalId == "" {
-                            //self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                        }
                         self.presentingViewController?.dismiss(animated: true, completion: nil)
                     })
                     return
@@ -818,20 +762,18 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
             DispatchQueue.main.async(execute: {
                 self.addLog(NSLocalizedString("Finished.", comment: "ViewFromGateList"))
             })
-                DispatchQueue.main.async(execute: {
-                    let bl = [UIBarButtonItem]()
-                    self.navigationBar.topItem?.leftBarButtonItems = bl
-                    let bb = [UIBarButtonItem](arrayLiteral: self.buttonDone)
-                    self.navigationBar.topItem?.rightBarButtonItems = bb
-                })
+            DispatchQueue.main.async(execute: {
+                let bl = [UIBarButtonItem]()
+                self.navigationBar.topItem?.leftBarButtonItems = bl
+                let bb = [UIBarButtonItem](arrayLiteral: self.buttonDone)
+                self.navigationBar.topItem?.rightBarButtonItems = bb
+            })
         })
-        
     }
     
     @available(iOS 8.0, *)
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         wkWebView.evaluateJavaScript("document.getElementsByTagName('html')[0].outerHTML", completionHandler: {(html, error) -> Void in
-            //print(html)
             self.didFinishLoad(String(describing: self.wkWebView.url), html: String(describing: html))
         })
     }
@@ -840,5 +782,4 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
