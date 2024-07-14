@@ -25,8 +25,6 @@ enum MusicSortType: String {
     case RivalRank = "RivalRank"
     case RivalFullComboType = "RivalFullComboType"
     case RivalComboCount = "RivalComboCount"
-    //case RivalPlayCount = "RivalPlayCount"
-    //case RivalClearCount = "RivalClearCount"
     case RivalScoreDifference = "RivalScoreDifference"
     case RivalScoreDifferenceAbs = "RivalScoreDifferenceAbs"
     case BpmMax = "BpmMax"
@@ -39,8 +37,6 @@ struct MusicSortTypeLister {
     
     static func getString(_ no: Int) -> (String) {
         switch no {
-        //case 0 : return NSLocalizedString("None", comment: "MusicSortTypeLister")
-        //case 1 : return NSLocalizedString("Recent", comment: "MusicSortTypeLister")
         case 0 : return NSLocalizedString("ABC", comment: "MusicSortTypeLister")
         case 1 : return NSLocalizedString("Score", comment: "MusicSortTypeLister")
         case 2 : return NSLocalizedString("Rank", comment: "MusicSortTypeLister")
@@ -56,8 +52,6 @@ struct MusicSortTypeLister {
         case 9 : return NSLocalizedString("Rival Rank", comment: "MusicSortTypeLister")
         case 10 : return NSLocalizedString("Rival Full Combo Type", comment: "MusicSortTypeLister")
         case 20 : return NSLocalizedString("Rival Combo Count", comment: "MusicSortTypeLister")
-        //case 21 : return NSLocalizedString("Rival Play Count", comment: "MusicSortTypeLister")
-        //case 22 : return NSLocalizedString("Rival Clear Count", comment: "MusicSortTypeLister")
         case 11 : return NSLocalizedString("Rival Score Difference", comment: "MusicSortTypeLister")
         case 12 : return NSLocalizedString("Rival Score DifferenceAbs", comment: "MusicSortTypeLister")
         case 13 : return NSLocalizedString("Max BPM", comment: "MusicSortTypeLister")
@@ -97,14 +91,12 @@ struct MusicSortTypeLister {
                 sorttype == MusicSortType.PlayCount ? 18 :
                 sorttype == MusicSortType.ClearCount ? 19 :
                 sorttype == MusicSortType.RivalComboCount ? 20 :
-                //sorttype == MusicSortType.RivalPlayCount ? 21 :
-                //sorttype == MusicSortType.RivalClearCount ? 22 :
-            0);
+                0);
     }
     
     static func getSortType(_ typenum: Int32) -> (MusicSortType)
     {
-        return
+        return(
             typenum == 0 ? MusicSortType.MusicName :
                 typenum == 1 ? MusicSortType.Score :
                 typenum == 2 ? MusicSortType.Rank :
@@ -126,9 +118,7 @@ struct MusicSortTypeLister {
                 typenum == 18 ? MusicSortType.PlayCount :
                 typenum == 19 ? MusicSortType.ClearCount :
                 typenum == 20 ? MusicSortType.RivalComboCount :
-                //typenum == 21 ? MusicSortType.RivalPlayCount :
-                //typenum == 22 ? MusicSortType.RivalClearCount :
-                MusicSortType.MusicName;
+                MusicSortType.MusicName
+        )
     }
-    
 }
