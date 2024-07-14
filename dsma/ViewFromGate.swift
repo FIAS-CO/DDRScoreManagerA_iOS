@@ -44,7 +44,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
     @IBOutlet weak var navigationBar: UINavigationBar!
-    //@IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var tableView: UITableView!
     
     var wkWebView: WKWebView!
@@ -608,8 +607,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 case 1:
                     DispatchQueue.main.async(execute: {
                         self.addLog(NSLocalizedString("Opening login form...", comment: "ViewFromGate"))
-                        //self.sparam_ParentView = self
-                        //self.performSegueWithIdentifier("modalGateLogin",sender: nil)
                         self.present(ViewGateLogin.checkOut(self, errorCheck: true, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
                     })
                     return
@@ -723,7 +720,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                             print(self.mRequestUri as Any)
                             let url: URL = URL(string: (self.mRequestUri))!
                             let request: URLRequest = URLRequest(url: url)
-                            //if #available(iOS 8.0, *) {
                             self.wkWebView.load(request)
                         }
                         else {
@@ -759,9 +755,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                     sleep(3)
                     DispatchQueue.main.async(execute: {
                         self.rparam_ParentView.refreshAll()
-                        if self.rparam_RivalId == nil || self.rparam_RivalId == "" {
-                            //self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                        }
                         self.presentingViewController?.dismiss(animated: true, completion: nil)
                     })
                     return
@@ -782,9 +775,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 sleep(3)
                 DispatchQueue.main.async(execute: {
                     self.rparam_ParentView.refreshAll()
-                    if self.rparam_RivalId == nil || self.rparam_RivalId == "" {
-                        //self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                    }
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
                 })
             }
@@ -795,7 +785,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     @available(iOS 8.0, *)
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         wkWebView.evaluateJavaScript("document.getElementsByTagName('html')[0].outerHTML", completionHandler: {(html, error) -> Void in
-            //print(html)
             self.didFinishLoad(String(describing: self.wkWebView.url), html: String(describing: html))
         })
     }
