@@ -31,6 +31,8 @@ enum MusicSortType: String {
     case BpmMin = "BpmMin"
     case BpmAve = "BpmAve"
     case SeriesTitle = "SeriesTitle"
+    case FlareRank = "FlareRank"
+    case FlareSkill = "FlareSkill"
 }
 
 struct MusicSortTypeLister {
@@ -58,13 +60,16 @@ struct MusicSortTypeLister {
         case 14 : return NSLocalizedString("Min BPM", comment: "MusicSortTypeLister")
         case 15 : return NSLocalizedString("Average BPM", comment: "MusicSortTypeLister")
         case 16 : return NSLocalizedString("Series Title", comment: "MusicSortTypeLister")
+        case 21 : return NSLocalizedString("Flare Rank", comment: "MusicSortTypeLister")
+        case 22 : return NSLocalizedString("Flare Skill", comment: "MusicSortTypeLister")
+        
         default:
             return ""
         }
     }
     
     static func getCount() -> (Int) {
-        return 21
+        return 23
     }
     
     static func getSortTypeNum(_ sorttype: MusicSortType) -> (Int32)
@@ -91,6 +96,8 @@ struct MusicSortTypeLister {
                 sorttype == MusicSortType.PlayCount ? 18 :
                 sorttype == MusicSortType.ClearCount ? 19 :
                 sorttype == MusicSortType.RivalComboCount ? 20 :
+                sorttype == MusicSortType.FlareRank ? 21 :
+                sorttype == MusicSortType.FlareSkill ? 22 :
                 0);
     }
     
@@ -118,6 +125,8 @@ struct MusicSortTypeLister {
                 typenum == 18 ? MusicSortType.PlayCount :
                 typenum == 19 ? MusicSortType.ClearCount :
                 typenum == 20 ? MusicSortType.RivalComboCount :
+                typenum == 21 ? MusicSortType.FlareRank :
+                typenum == 22 ? MusicSortType.FlareSkill :
                 MusicSortType.MusicName
         )
     }

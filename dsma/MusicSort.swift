@@ -305,6 +305,12 @@ class MusicSort{
             0;
             sub = cp - cm;
             break;
+        case .FlareRank:
+            sub = scoreP.flareRank - scoreM.flareRank
+            break
+        case .FlareSkill:
+            sub = scoreP.flareSkill - scoreM.flareSkill
+            break
         case MusicSortType.RivalRank:
             cp =
             rivalP.Rank == MusicRank.AAA ? 16 :

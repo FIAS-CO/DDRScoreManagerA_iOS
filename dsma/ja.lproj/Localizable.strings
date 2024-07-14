@@ -25,6 +25,12 @@
  ViewSubCategorySelect */
 "from GATE (simple)" = "GATE から取得 (通常)";
 
+/* MusicSortTypeLister */
+"Flare Rank" = "フレアランク";
+
+/* MusicSortTypeLister */
+"Flare Skill" = "フレアスキル";
+
 /* ViewManageRivals
  ViewMenuRival
  ViewMenuSystem */

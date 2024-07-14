@@ -25,6 +25,12 @@
  ViewSubCategorySelect */
 "from GATE (simple)" = "GATE 에서 받아오기 (간이)";
 
+/* MusicSortTypeLister */
+"Flare Rank" = "Flare Rank";
+
+/* MusicSortTypeLister */
+"Flare Skill" = "Flare Skill";
+
 /* ViewManageRivals
  ViewMenuRival
  ViewMenuSystem */
