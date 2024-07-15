@@ -111,8 +111,8 @@ struct FileReader{
             pref.VisibleItems_DanceLevel = sfm.getBool("VisibleItems_DanceLevel", def: true)
             pref.VisibleItems_PlayCount = sfm.getBool("VisibleItems_PlayCount", def: false)
             pref.VisibleItems_ClearCount = sfm.getBool("VisibleItems_ClearCount", def: false)
-            pref.VisibleItems_FlareRank = true //sfm.getBool("VisibleItems_FlareRank", def: false)
-            pref.VisibleItems_FlareSkill = false //sfm.getBool("VisibleItems_FlareSkill", def: false)
+            pref.VisibleItems_FlareRank = sfm.getBool("VisibleItems_FlareRank", def: false)
+            pref.VisibleItems_FlareSkill = sfm.getBool("VisibleItems_FlareSkill", def: false)
             
             pref.Gate_LoadFromA3 = sfm.getBool("Gate_LoadFromA3", def: true)
             pref.Gate_SetPfcScore = sfm.getInt32("Gate_SetPfcScore", def: 999990)
@@ -1622,8 +1622,13 @@ struct FileReader{
         sfm.putBool("RivalWin", value: filter.RivalWin);
         sfm.putBool("RivalLose", value: filter.RivalLose);
         sfm.putBool("RivalDraw", value: filter.RivalDraw);
+        
         sfm.putInt32("ScoreMin", value: filter.ScoreMin);
         sfm.putInt32("ScoreMax", value: filter.ScoreMax);
+        
+        sfm.putInt32("FlareSkillMin", value: filter.FlareSkillMin);
+        sfm.putInt32("FlareSkillMax", value: filter.FlareSkillMax);
+        
         sfm.putInt32("ScoreMinRival", value: filter.ScoreMinRival);
         sfm.putInt32("ScoreMaxRival", value: filter.ScoreMaxRival);
         sfm.putInt32("MaxComboMin", value: filter.MaxComboMin);

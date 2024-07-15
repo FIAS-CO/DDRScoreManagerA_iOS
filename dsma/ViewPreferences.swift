@@ -43,6 +43,8 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     @IBOutlet weak var visibleItemsDanceLevel: UISwitch!
     @IBOutlet weak var visibleItemsPlayCount: UISwitch!
     @IBOutlet weak var visibleItemsClearCount: UISwitch!
+    @IBOutlet weak var visibleItemsFlareRank: UISwitch!
+    @IBOutlet weak var visibleItemsFlaerSkill: UISwitch!
     
     @IBAction func musicListUpdateTouchUpInside(_ sender: AnyObject) {
         mRefreshFlag = true
@@ -74,6 +76,15 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
         mRefreshFlag = true
         mPreferences.VisibleItems_ClearCount = visibleItemsClearCount.isOn
     }
+    @IBAction func visibleItemsFlareRankValueChanged(_ sender: AnyObject) {
+        mRefreshFlag = true
+        mPreferences.VisibleItems_FlareRank = visibleItemsFlareRank.isOn
+    }
+    @IBAction func visibleItemsFlareSkillValueChanged(_ sender: AnyObject) {
+        mRefreshFlag = true
+        mPreferences.VisibleItems_FlareSkill = visibleItemsFlaerSkill.isOn
+    }
+    
     var mTextAlertView: TextAlertView!
     @IBAction func gateSaveAsPfcEdit(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Save as PFC threshold", comment: "ViewPreferences"), message: NSLocalizedString("Input threshold score and press OK.", comment: "ViewPreferences"), placeholder: "999990", defaultText: mPreferences.Gate_SetPfcScore.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
@@ -117,6 +128,8 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
         visibleItemsDanceLevel.isOn = mPreferences.VisibleItems_DanceLevel
         visibleItemsPlayCount.isOn = mPreferences.VisibleItems_PlayCount
         visibleItemsClearCount.isOn = mPreferences.VisibleItems_ClearCount
+        visibleItemsFlareRank.isOn = mPreferences.VisibleItems_FlareRank
+        visibleItemsFlaerSkill.isOn = mPreferences.VisibleItems_FlareSkill
     }
     
     override func viewWillAppear(_ animated: Bool) {

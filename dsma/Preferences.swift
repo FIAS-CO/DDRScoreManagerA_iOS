@@ -13,7 +13,7 @@ struct Preferences {
     var VisibleItems_DanceLevel: Bool = true
     var VisibleItems_PlayCount: Bool = false
     var VisibleItems_ClearCount: Bool = false
-    var VisibleItems_FlareRank: Bool = true
+    var VisibleItems_FlareRank: Bool = false
     var VisibleItems_FlareSkill: Bool = false
     
     var Gate_LoadFromA3: Bool = true
