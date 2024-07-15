@@ -469,7 +469,10 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                         }
                     }
                     
-                    // TODO フレアランク関連
+                    // フレアランク関連
+                    if msd.flareRank > sd.flareRank {
+                        sd.flareRank = msd.flareRank
+                    }
                 }
                 
                 switch(diff) {
