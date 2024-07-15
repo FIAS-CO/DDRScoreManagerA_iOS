@@ -505,3 +505,10 @@
 
 /* Class = "UILabel"; text = "no Challenge pattern."; ObjectID = "zUS-pK-Vn6"; */
 "zUS-pK-Vn6.text" = "Expert 를 표시한다";
+
+/* Class = "UILabel"; text = "Flare Rank"; ObjectID = "pIA-yO-Kte"; */
+"pIA-yO-Kte.text" = "Flare Rank";
+
+/* Class = "UILabel"; text = "Flare Skill Range"; ObjectID = "7Tb-Bs-GdE"; */
+"7Tb-Bs-GdE.text" = "Flare Skill Range";
+

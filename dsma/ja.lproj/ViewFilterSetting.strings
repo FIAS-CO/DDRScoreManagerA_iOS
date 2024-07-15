@@ -505,3 +505,9 @@
 
 /* Class = "UILabel"; text = "no Challenge pattern."; ObjectID = "zUS-pK-Vn6"; */
 "zUS-pK-Vn6.text" = "Expert を表示する";
+
+/* Class = "UILabel"; text = "Flare Rank"; ObjectID = "pIA-yO-Kte"; */
+"pIA-yO-Kte.text" = "フレアランク";
+
+/* Class = "UILabel"; text = "Flare Skill Range"; ObjectID = "7Tb-Bs-GdE"; */
+"7Tb-Bs-GdE.text" = "フレアスキル";
