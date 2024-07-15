@@ -39,6 +39,10 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBOutlet weak var textScoreRangeMin: UILabel!
     @IBOutlet weak var textScoreRangeMax: UILabel!
+    
+    @IBOutlet weak var textFlareRankRangeMin: UILabel!
+    @IBOutlet weak var textFlareRankRangeMax: UILabel!
+    
     @IBOutlet weak var textMaxComboRangeMin: UILabel!
     @IBOutlet weak var textMaxComboRangeMax: UILabel!
     @IBOutlet weak var textPlayCountRangeMin: UILabel!

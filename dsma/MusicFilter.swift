@@ -20,6 +20,9 @@ class MusicFilter{
     var ScoreMinRival: Int32 = 0;
     var ScoreMaxRival: Int32 = 1000000;
     
+    var FlareSkillMin: Int32 = 0
+    var FlareSkillMax: Int32 = Int32.max
+    
     var MaxComboMin: Int32 = 0;
     var MaxComboMax: Int32 = Int32.max;
     var MaxComboMinRival: Int32 = 0;
@@ -371,6 +374,9 @@ class MusicFilter{
         }
         
         if(scoreData.Score < ScoreMin || ScoreMax < scoreData.Score){ return false; }
+        if(scoreData.flareSkill < FlareSkillMin || FlareSkillMax < scoreData.flareSkill) {
+            return false
+        }
         if(scoreData.MaxCombo < MaxComboMin || MaxComboMax < scoreData.MaxCombo){ return false; }
         if(scoreData.PlayCount < PlayCountMin || PlayCountMax < scoreData.PlayCount){ return false; }
         if(scoreData.ClearCount < ClearCountMin || ClearCountMax < scoreData.ClearCount){ return false; }

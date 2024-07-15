@@ -1464,6 +1464,10 @@ struct FileReader{
             ret.FcNoFCrival = sfm.getBool("FcNoFCrival", def: true);
             ret.ScoreMin = sfm.getInt32("ScoreMin", def: 0);
             ret.ScoreMax = sfm.getInt32("ScoreMax", def: 1000000);
+            
+            ret.FlareSkillMin = sfm.getInt32("FlareSkillMin", def: 0)
+            ret.FlareSkillMax = sfm.getInt32("FlareSkillMax", def: Int32.max)
+            
             ret.ScoreMinRival = sfm.getInt32("ScoreMinRival", def: 0);
             ret.ScoreMaxRival = sfm.getInt32("ScoreMaxRival", def: 1000000);
             ret.MaxComboMin = sfm.getInt32("MaxComboMin", def: 0);
