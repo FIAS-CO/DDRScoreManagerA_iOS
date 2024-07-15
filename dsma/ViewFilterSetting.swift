@@ -180,6 +180,10 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     func setFilterData() {
         textScoreRangeMin.text = mFilter.ScoreMin.description
         textScoreRangeMax.text = mFilter.ScoreMax.description
+        
+        textFlareRankRangeMin.text = mFilter.FlareSkillMin.description
+        textFlareRankRangeMax.text = mFilter.FlareSkillMax == Int32.max ? "∞" : mFilter.FlareSkillMax.description
+        
         textMaxComboRangeMin.text = mFilter.MaxComboMin.description
         textMaxComboRangeMax.text = mFilter.MaxComboMax == Int32.max ? "∞" : mFilter.MaxComboMax.description
         textPlayCountRangeMin.text = mFilter.PlayCountMin.description
@@ -363,6 +367,35 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         }), cancelAction: nil)
         mTextAlertView.show(self)
     }
+    
+    @IBAction func editFlareRankRange(_ sender: AnyObject) {
+            mTextAlertView = TextAlertView(title: NSLocalizedString("Flare Rank Range", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input FROM(minimum) flare rank.", comment: "ViewFilterSetting"), placeholder: "0", defaultText: mFilter.FlareSkillMin.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
+                let prevStr = text
+                if let no = Int(prevStr) {
+                    if no >= 0 {
+                        self.mTextAlertView = TextAlertView(title: NSLocalizedString("Flare Rank Range", comment: "ViewFilterSetting"), message: NSLocalizedString("2. Input TO(maximum) flare rank.", comment: "ViewFilterSetting"), placeholder: "∞", defaultText: self.mFilter.FlareSkillMax == Int32.max ? "" : self.mFilter.FlareSkillMax.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
+                            if let no = Int(text) {
+                                let nom = Int(prevStr)!
+                                if no >= nom {
+                                    self.mFilter.FlareSkillMin = Int32(nom)
+                                    self.mFilter.FlareSkillMax = no >= Int(Int32.max) ? Int32.max : Int32(no)
+                                    self.setFilterData()
+                                    return
+                                }
+                            }
+                            let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Max flare rank required over than MIN number.", comment: "ViewFilterSetting"))
+                            alert.show(self)
+                        }), cancelAction: nil)
+                        self.mTextAlertView.show(self)
+                        return
+                    }
+                }
+                let alert = MessageAlertView(title: NSLocalizedString("Error", comment: "ViewFilterSetting"), message: NSLocalizedString("Min flare rank required over than 0 number.", comment: "ViewFilterSetting"))
+                alert.show(self)
+            }), cancelAction: nil)
+            mTextAlertView.show(self)
+        }
+    
     @IBAction func editMaxComboRange(_ sender: AnyObject) {
         mTextAlertView = TextAlertView(title: NSLocalizedString("Max Combo Range", comment: "ViewFilterSetting"), message: NSLocalizedString("1. Input FROM(minimum) combo.", comment: "ViewFilterSetting"), placeholder: "0",defaultText: mFilter.MaxComboMin.description, kbd: UIKeyboardType.numberPad, okAction: TextAlertViewAction(method: {(text)->Void in
             let prevStr = text
