@@ -529,12 +529,13 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                     sd.FullComboType_ = msd.FullComboType_;
                 }
             }
-            
-            // フレアランク関連
-            if msd.flareRank > sd.flareRank {
-                sd.flareRank = msd.flareRank
-            }
         }
+        
+        // フレアランク関連
+        if msd.flareRank > sd.flareRank {
+            sd.flareRank = msd.flareRank
+        }
+        
         switch(mTarget.Pattern) {
         case PatternType.bSP:
             ms.bSP = sd;

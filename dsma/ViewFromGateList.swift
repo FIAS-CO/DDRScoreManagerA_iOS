@@ -468,11 +468,12 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                             sd.FullComboType_ = msd.FullComboType_;
                         }
                     }
-                    
-                    // フレアランク関連
-                    if msd.flareRank > sd.flareRank {
-                        sd.flareRank = msd.flareRank
-                    }
+                }
+                
+                // Revisit: 公式サイトからフレアランクが取得できるようになったら上に移動
+                // フレアランク関連
+                if msd.flareRank > sd.flareRank {
+                    sd.flareRank = msd.flareRank
                 }
                 
                 switch(diff) {

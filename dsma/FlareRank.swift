@@ -7,18 +7,18 @@
 //
 
 enum FlareRank: Int, CaseIterable {
-    case noRank = -1
-    case rank0 = 0
-    case rank1 = 1
-    case rank2 = 2
-    case rank3 = 3
-    case rank4 = 4
-    case rank5 = 5
-    case rank6 = 6
-    case rank7 = 7
-    case rank8 = 8
-    case rank9 = 9
     case rank10 = 10
+    case rank9 = 9
+    case rank8 = 8
+    case rank7 = 7
+    case rank6 = 6
+    case rank5 = 5
+    case rank4 = 4
+    case rank3 = 3
+    case rank2 = 2
+    case rank1 = 1
+    case rank0 = 0
+    case noRank = -1
     
     var description: String {
         switch self {
