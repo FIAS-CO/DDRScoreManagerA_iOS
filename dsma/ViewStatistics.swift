@@ -112,7 +112,20 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
     @IBOutlet weak var serA20PLUS: UILabel!
     @IBOutlet weak var serA3: UILabel!
     @IBOutlet weak var serWORLD: UILabel!
-
+    
+    @IBOutlet weak var serFlareRankEX: UILabel!
+    @IBOutlet weak var serFlareRankIX: UILabel!
+    @IBOutlet weak var serFlareRankVIII: UILabel!
+    @IBOutlet weak var serFlareRankVII: UILabel!
+    @IBOutlet weak var serFlareRankVI: UILabel!
+    @IBOutlet weak var serFlareRankV: UILabel!
+    @IBOutlet weak var serFlareRankIV: UILabel!
+    @IBOutlet weak var serFlareRankIII: UILabel!
+    @IBOutlet weak var serFlareRankII: UILabel!
+    @IBOutlet weak var serFlareRankI: UILabel!
+    @IBOutlet weak var serFlareRank0: UILabel!
+    @IBOutlet weak var serFlareRankNoRank: UILabel!
+    
     var rparam_Title: String!
     var rparam_Targets: [UniquePattern] = [UniquePattern]()
     var rparam_Scores: [Int32 : MusicScore]!
@@ -125,7 +138,6 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
     }
     
     @objc internal func stopButtonTouched(_ sender: UIButton) {
-        //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -145,7 +157,7 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
     override func viewDidAppear(_ animated: Bool) {
         scrollView.setContentOffset(CGPoint(x:0, y:-scrollView.contentInset.top*2), animated: false)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -153,16 +165,9 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
         let notifc: NotificationCenter = NotificationCenter.default
         notifc.addObserver(self, selector: #selector(applicationWillEnterForeground), name: NSNotification.Name(rawValue: "applicationWillEnterForeground"), object: nil)
         
-        //self.title = "Preferences"
         naviTitle.title = rparam_Title
         adView.addSubview(Admob.getAdBannerView(self))
 
-        //let nvFrame: CGRect = navigationBar.frame;
-        //var sai = CGFloat(0)
-        //if #available(iOS 11.0, *) {
-        //    sai = view.safeAreaInsets.top+nvFrame.origin.y
-        //}
-        //scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height - sai, left: 0, bottom: 0, right: 0)
         navigationBar.delegate = self
         
         scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
@@ -226,7 +231,12 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
             var _serA20PLUS: Int = 0;
             var _serA3: Int = 0;
             var _serWORLD: Int = 0;
-
+            
+            var _flareRankCounts: [Int: Int] = [:]
+            for i in -1...10 {
+                _flareRankCounts[i] = 0
+            }
+            
             for target in self.rparam_Targets {
                 if let pat = self.rparam_Scores[target.MusicId] {
                     if let mus = self.rparam_MusicData[target.MusicId] {
@@ -300,13 +310,13 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
                         case SeriesTitle.WORLD: _serWORLD += 1
                         default:break
                         }
+                        _flareRankCounts[Int(score.flareRank), default: 0] += 1
                     }
                 }
             }
             
             let ms = MusicSort(musics: self.rparam_MusicData, scores: self.rparam_Scores, rivalScores: self.rparam_RivalScores, webMusicIds: self.rparam_WebMusicIds)
             ms._1stType = MusicSortType.Score
-            //self.rparam_Targets.sort(ms.compare)  /////////////////// EXC_BAD_ACCESS occured on Release Build.
             self.rparam_Targets.sort { m, p in return ms.compare(m, plusUniquePattern: p) }
             
             let average = Double(_scoreTotal)/Double(self.rparam_Targets.count)
@@ -409,10 +419,22 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
                 self.serA20PLUS.text = _serA20PLUS.description
                 self.serA3.text = _serA3.description
                 self.serWORLD.text = _serWORLD.description
-
+                
+                self.serFlareRankEX.text = _flareRankCounts[10]?.description ?? "0"
+                self.serFlareRankIX.text = _flareRankCounts[9]?.description ?? "0"
+                self.serFlareRankVIII.text = _flareRankCounts[8]?.description ?? "0"
+                self.serFlareRankVII.text = _flareRankCounts[7]?.description ?? "0"
+                self.serFlareRankVI.text = _flareRankCounts[6]?.description ?? "0"
+                self.serFlareRankV.text = _flareRankCounts[5]?.description ?? "0"
+                self.serFlareRankIV.text = _flareRankCounts[4]?.description ?? "0"
+                self.serFlareRankIII.text = _flareRankCounts[3]?.description ?? "0"
+                self.serFlareRankII.text = _flareRankCounts[2]?.description ?? "0"
+                self.serFlareRankI.text = _flareRankCounts[1]?.description ?? "0"
+                self.serFlareRank0.text = _flareRankCounts[0]?.description ?? "0"
+                self.serFlareRankNoRank.text = _flareRankCounts[-1]?.description ?? "0"
+                
                 self.indicator.stopAnimating()
             })
         })
     }
-    
 }

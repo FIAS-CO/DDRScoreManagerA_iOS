@@ -6,9 +6,7 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-- '직접 편집' 화면에서 플레어 랭크를 기록할 수 있게 되었습니다.
-- 목록 화면에서 플레어 랭크, 플레어 스킬을 열람할 수 있게 되었습니다. '공통 설정'에서 표시 설정이 가능합니다.
-- 기록된 플레어 랭크, 플레어 스킬에 따라 곡을 정렬, 필터링할 수 있게 되었습니다.";
+- 통계 기능에 플레어 랭크 집계 기능을 추가하고 기타 사소한 수정 작업을 완료했습니다.";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 연동";

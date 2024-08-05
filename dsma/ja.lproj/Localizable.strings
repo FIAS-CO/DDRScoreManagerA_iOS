@@ -6,9 +6,8 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-- 「直接編集」画面でフレアランクを記録できるようになりました
-- 一覧画面でフレアランク、フレアスキルを閲覧できるようになりました。「共通設定」から表示設定が可能です
-- 記録したフレアランク、フレアスキルでソート、フィルターが可能になりました";
+- 統計機能にフレアランクの集計機能を追加しました
+- その他、軽微な修正を行いました";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 連携";
