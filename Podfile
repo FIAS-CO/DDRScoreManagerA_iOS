@@ -23,4 +23,6 @@ target 'dsma' do
   pod 'FirebaseFirestore'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
+
+  pod 'SwiftSoup'
 end
