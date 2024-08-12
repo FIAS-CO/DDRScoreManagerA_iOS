@@ -17,6 +17,7 @@
 		184BBF402C67257200C77EE9 /* MusicEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF3F2C67257200C77EE9 /* MusicEntry.swift */; };
 		184BBF422C6725A200C77EE9 /* DifficultyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF412C6725A200C77EE9 /* DifficultyScore.swift */; };
 		184BBF442C69D7F500C77EE9 /* WorldSiteDataDouble.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF432C69D7F500C77EE9 /* WorldSiteDataDouble.html */; };
+		184BBF462C69F79400C77EE9 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF452C69F79400C77EE9 /* GameMode.swift */; };
 		184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C65262C394D720041BF98 /* FileReaderTests.swift */; };
 		184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C652C2C3966E80041BF98 /* OldScoreData.txt */; };
 		184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */; };
@@ -163,6 +164,7 @@
 		184BBF3F2C67257200C77EE9 /* MusicEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEntry.swift; sourceTree = "<group>"; };
 		184BBF412C6725A200C77EE9 /* DifficultyScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyScore.swift; sourceTree = "<group>"; };
 		184BBF432C69D7F500C77EE9 /* WorldSiteDataDouble.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDouble.html; sourceTree = "<group>"; };
+		184BBF452C69F79400C77EE9 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		184C65192C3946C90041BF98 /* DDR SM ATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DDR SM ATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184C65262C394D720041BF98 /* FileReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderTests.swift; sourceTree = "<group>"; };
 		184C652C2C3966E80041BF98 /* OldScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldScoreData.txt; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				1812A5982C6636F900461931 /* HtmlParseUtil.swift */,
 				184BBF3F2C67257200C77EE9 /* MusicEntry.swift */,
 				184BBF412C6725A200C77EE9 /* DifficultyScore.swift */,
+				184BBF452C69F79400C77EE9 /* GameMode.swift */,
 			);
 			name = html;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 				8AFD01DE1B215E55006500A0 /* UniquePattern.swift in Sources */,
 				8A5D6E021B5DDA5E002E4961 /* ViewFromGateRivalList.swift in Sources */,
 				8A16E40A1B25706100372D68 /* FileReader.swift in Sources */,
+				184BBF462C69F79400C77EE9 /* GameMode.swift in Sources */,
 				8A16E4131B27180800372D68 /* SortOrder.swift in Sources */,
 				184BBF422C6725A200C77EE9 /* DifficultyScore.swift in Sources */,
 				8A16E40F1B2714CC00372D68 /* MusicSort.swift in Sources */,

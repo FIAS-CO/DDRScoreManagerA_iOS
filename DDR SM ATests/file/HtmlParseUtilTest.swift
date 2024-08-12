@@ -28,9 +28,11 @@ class HtmlParseUtilTests: XCTestCase {
     }
 
     func testParseMusicListSingle() {
-        let result = tryParseMusicList(src: htmlContentSingle)
+        let (gameMode, result) = tryParseMusicList(src: htmlContentSingle)
 
         XCTAssertFalse(result.isEmpty, "Result should not be empty")
+        
+        XCTAssertEqual(gameMode, .single)
 
         // 特定の曲のテスト
         testSpecificSongs(in: result)
@@ -225,10 +227,12 @@ class HtmlParseUtilTests: XCTestCase {
     }
 
     func testParseMusicListDouble() {
-        let result = tryParseMusicList(src: htmlContentDouble)
+        let (gameMode, result) = tryParseMusicList(src: htmlContentDouble)
 
         XCTAssertFalse(result.isEmpty, "Result should not be empty")
-
+        
+        XCTAssertEqual(gameMode, .double)
+        
         // 特定の曲のテスト
         testSpecificSongsDouble(in: result)
     }
@@ -388,7 +392,7 @@ class HtmlParseUtilTests: XCTestCase {
         }
     }
     
-    private func tryParseMusicList(src: String) -> [MusicEntry] {
+    private func tryParseMusicList(src: String) -> (GameMode, [MusicEntry]) {
         do {
             return try HtmlParseUtil.parseMusicList(src: src)
         } catch {

@@ -10,13 +10,40 @@ import Foundation
 import SwiftSoup
 
 public class HtmlParseUtil {
-    static func parseMusicList(src: String) throws -> [MusicEntry] {
-        var musicEntries: [MusicEntry] = []
+    static func parseMusicList(src: String) throws -> (GameMode, [MusicEntry]) {
         let doc: Document = try SwiftSoup.parse(src)
+        let gameMode = try determineGameMode(doc)
+        let musicEntries = try parseMusicEntries(doc, mode: gameMode)
+        return (gameMode, musicEntries)
+    }
+    
+    private static func determineGameMode(_ doc: Document) throws -> GameMode {
+        // URLからモードを判定
+        if let urlElement = try doc.select("meta[property='og:url']").first(),
+           let url = try? urlElement.attr("content") {
+            if url.contains("music_data_single") {
+                return .single
+            } else if url.contains("music_data_double") {
+                return .double
+            }
+        }
+        
+        // スタイルタブからモードを判定
+        if let singleTab = try doc.select("#t_single a.select").first() {
+            return .single
+        } else if let doubleTab = try doc.select("#t_double a.select").first() {
+            return .double
+        }
+        
+        throw ParseError.unableToDetermineGameMode
+    }
+
+    private static func parseMusicEntries(_ doc: Document, mode: GameMode) throws -> [MusicEntry] {
+        var musicEntries: [MusicEntry] = []
         let musicRows: Elements = try doc.select("tr.data")
         
         for row in musicRows {
-            if let entry = try parseMusicEntry(row: row) {
+            if let entry = try parseMusicEntry(row: row, mode: mode) {
                 musicEntries.append(entry)
             }
         }
@@ -24,25 +51,19 @@ public class HtmlParseUtil {
         return musicEntries
     }
     
-    private static func parseMusicEntry(row: Element) throws -> MusicEntry? {
+    private static func parseMusicEntry(row: Element, mode: GameMode) throws -> MusicEntry? {
+        // 既存のパース処理に加えて、モードを追加
         guard let titleLink = try row.select("td a").first() else { return nil }
         
-        let musicNameRaw = try titleLink.text().trimmingCharacters(in: .whitespacesAndNewlines)
-        let musicName = StringUtilLng.escapeWebMusicTitle(src: musicNameRaw)
+        let musicName = try titleLink.text().trimmingCharacters(in: .whitespacesAndNewlines)
+        let scores = try parseDifficultyScores(row: row, mode: mode)
         
-        var scores: [DifficultyScore] = []
-        let difficultyColumns: Elements = try row.select("td.rank")
-        for column in difficultyColumns {
-            if let score = try parseDifficultyScore(column: column) {
-                scores.append(score)
-            }
-        }
-        
-        return MusicEntry(musicName: musicName, scores: scores)
+        return MusicEntry(musicName: musicName, scores: scores, mode: mode)
     }
-    
-    private static func parseDifficultyScore(column: Element) throws -> DifficultyScore? {
-        let diffId = try column.attr("id")
+
+    private static func parseDifficultyScore(column: Element, index: Int, mode: GameMode) throws -> DifficultyScore? {
+        let diffId = getDifficultyId(index: index, mode: mode)
+
         guard let scoreElement = try column.select("div.data_score").first(),
               let rankElement = try column.select("div.data_rank img").first(),
               let fullComboElement = try column.select("div.data_clearkind img").first(),
@@ -57,6 +78,28 @@ public class HtmlParseUtil {
         let rank = getRank(rankElement: rankElement, score: score)
         
         return DifficultyScore(difficultyId: diffId, score: score, rank: rank, fullComboType: fullComboType, flareRank: flareRank)
+    }
+    
+    private static func parseDifficultyScores(row: Element, mode: GameMode) throws -> [DifficultyScore] {
+        var scores: [DifficultyScore] = []
+        let difficultyColumns: Elements = try row.select("td.rank")
+        
+        for (index, column) in difficultyColumns.enumerated() {
+            if let score = try parseDifficultyScore(column: column, index: index, mode: mode) {
+                scores.append(score)
+            }
+        }
+        
+        return scores
+    }
+
+    private static func getDifficultyId(index: Int, mode: GameMode) -> String {
+        switch mode {
+        case .single:
+            return ["beginner", "basic", "difficult", "expert", "challenge"][index]
+        case .double:
+            return ["basic", "difficult", "expert", "challenge"][index]
+        }
     }
     
     private static func getFullComboType(fullComboElement: Element) -> FullComboType {
@@ -132,5 +175,9 @@ public class HtmlParseUtil {
         } else {
             return .AAA
         }
+    }
+    
+    enum ParseError: Error {
+        case unableToDetermineGameMode
     }
 }

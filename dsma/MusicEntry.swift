@@ -9,4 +9,5 @@
 public struct MusicEntry {
     let musicName: String
     let scores: [DifficultyScore]
+    let mode: GameMode
 }
