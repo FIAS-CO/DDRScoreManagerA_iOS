@@ -176,341 +176,125 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
     var buttonPause: UIBarButtonItem!
     var buttonResume: UIBarButtonItem!
     
-    func analyzeScore(_ src: String) -> (Bool) {
-        
-        var idDiffEnd: String;
-        if rparam_RivalId == nil {
-            idDiffEnd = "\"";
-        }
-        else {
-            idDiffEnd = "&";
-        }
-        let musicBlockStartText = "<tr class=\"data\">";
-        let musicBlockEndText = "</tr>";
-        var titleLinkText = "/p/playdata/music_detail.html?index=";
-        if rparam_RivalId != nil {
-            titleLinkText = "/p/rival/music_detail.html?index=";
-        }
-        let patternBlockStartText = "<td class=\"rank\" id=\"";
-        let patternBlockEndText = "</td>";
-        
-        var parsingText = src;
-        var scoreExists = false;
-        while let rs = parsingText.range(of: musicBlockStartText) {
-            parsingText = String(parsingText[rs.upperBound...])
-            var musicBlock: String
-            if let rs = parsingText.range(of: musicBlockEndText) {
-                musicBlock = String(parsingText[..<rs.lowerBound])
-                parsingText = String(parsingText[rs.upperBound...]);
-            }
-            else {
-                break
-            }
+    func analyzeScore(_ src: String) -> Bool {
+        do {
+            let (gameMode, musicEntries) = try HtmlParseUtil.parseMusicList(src: src)
+            var scoreExists = false
             
-            var idText: String
-            var musicName: String
-            
-            if let rs = musicBlock.range(of: titleLinkText) {
-                idText = String(musicBlock[rs.upperBound...]);
-                musicBlock = String(musicBlock[rs.lowerBound...]);
-                if let rs = idText.range(of: idDiffEnd) {
-                    idText = String(idText[..<rs.lowerBound]);
-                }
-                else {
-                    continue
-                }
-            }
-            else {
-                continue
-            }
-            if let rs = musicBlock.range(of: ">") {
-                musicName = String(musicBlock[musicBlock.index(rs.lowerBound, offsetBy: 1)...]);
-                if let rs = musicName.range(of: "</") {
-                    musicName = musicName[..<rs.lowerBound].trimmingCharacters(in: CharacterSet.whitespaces);
-                }
-                else {
-                    continue
-                }
-            }
-            else {
-                continue
-            }
-            musicName = StringUtilLng.escapeWebMusicTitle(src: musicName)
-            var musicIdSaved: Int32
-            if let li = mLocalIds[musicName] {
-                musicIdSaved = li
-            }
-            else {
-                continue
-            }
-            
-            var ms: MusicScore;
-            if let sl = mScoreList[musicIdSaved] {
-                ms = sl;
-            }
-            else {
-                ms = MusicScore();
-            }
-            
-            while let rs = musicBlock.range(of: patternBlockStartText) {
-                var sd = ScoreData();
-                var diff: Int32
+            for entry in musicEntries {
+                guard let mi = mLocalIds[entry.musicName] else { continue }
+                let musicIdSaved = mi
                 
-                let patternLinkText = titleLinkText+idText+"&amp;diff=";
-                var patternBlock: String
+                var musicScore = mScoreList[musicIdSaved] ?? MusicScore()
                 
-                musicBlock = String(musicBlock[rs.lowerBound...]);
-                
-                if let rs = musicBlock.range(of: patternBlockEndText) {
-                    patternBlock = String(musicBlock[..<rs.lowerBound]);
-                    musicBlock = String(musicBlock[rs.lowerBound...]);
-                }
-                else {
-                    break
-                }
-                
-                if let rs = patternBlock.range(of: patternLinkText) {
-                    patternBlock = String(patternBlock[rs.upperBound...]);
-                }
-                else {
-                    break
-                }
-                
-                var diffText: String
-                if let rs = patternBlock.range(of: idDiffEnd) {
-                    diffText = String(patternBlock[..<rs.lowerBound]);
-                    if let num = Int(diffText) {
-                        diff = Int32(num);
-                    }
-                    else {
-                        continue
-                    }
-                }
-                else {
-                    continue
-                }
-                
-                if let rs = patternBlock.range(of: ">") {
-                    patternBlock = String(patternBlock[patternBlock.index(rs.lowerBound, offsetBy: 1)...])
-                }
-                if let _ = patternBlock.range(of: "full_none") {
-                    sd.FullComboType_ = FullComboType.None;
-                }
-                else if let _ = patternBlock.range(of: "full_good") {
-                    sd.FullComboType_ = FullComboType.GoodFullCombo;
-                }
-                else if let _ = patternBlock.range(of: "full_great") {
-                    sd.FullComboType_ = FullComboType.FullCombo;
-                }
-                else if let _ = patternBlock.range(of: "full_perfect") {
-                    sd.FullComboType_ = FullComboType.PerfectFullCombo;
-                }
-                else if let _ = patternBlock.range(of: "full_mar") {
-                    sd.FullComboType_ = FullComboType.MarvelousFullCombo;
-                }
-                if let _ = patternBlock.range(of: "rank_s_none") {
-                    sd.Score = 0;
-                    sd.Rank = MusicRank.Noplay;
-                }
-                else {
-                    let scoreText = patternBlock.replacingOccurrences(of: "<.*?>", with: "", options: NSString.CompareOptions.regularExpression, range: nil);
+                for score in entry.scores {
+                    var newScoreData = ScoreData()
+                    newScoreData.Score = Int32(score.score)
+                    newScoreData.Rank = score.rank
+                    newScoreData.FullComboType_ = score.fullComboType
+                    newScoreData.flareRank = Int32(score.flareRank)
                     
-                    if let num = Int(scoreText) {
-                        sd.Score = Int32(num);
-                    }
-                    else {
-                        continue
-                    }
-                    if let _ = patternBlock.range(of: "rank_s_e") {
-                        sd.Rank = MusicRank.E;
-                    }
-                    else if(sd.Score < 550000) {
-                        sd.Rank = MusicRank.D;
-                    }
-                    else if(sd.Score < 590000) {
-                        sd.Rank = MusicRank.Dp;
-                    }
-                    else if(sd.Score < 600000) {
-                        sd.Rank = MusicRank.Cm;
-                    }
-                    else if(sd.Score < 650000) {
-                        sd.Rank = MusicRank.C;
-                    }
-                    else if(sd.Score < 690000) {
-                        sd.Rank = MusicRank.Cp;
-                    }
-                    else if(sd.Score < 700000) {
-                        sd.Rank = MusicRank.Bm;
-                    }
-                    else if(sd.Score < 750000) {
-                        sd.Rank = MusicRank.B;
-                    }
-                    else if(sd.Score < 790000) {
-                        sd.Rank = MusicRank.Bp;
-                    }
-                    else if(sd.Score < 800000) {
-                        sd.Rank = MusicRank.Am;
-                    }
-                    else if(sd.Score < 850000) {
-                        sd.Rank = MusicRank.A;
-                    }
-                    else if(sd.Score < 890000) {
-                        sd.Rank = MusicRank.Ap;
-                    }
-                    else if(sd.Score < 900000) {
-                        sd.Rank = MusicRank.AAm;
-                    }
-                    else if(sd.Score < 950000) {
-                        sd.Rank = MusicRank.AA;
-                    }
-                    else if(sd.Score < 990000) {
-                        sd.Rank = MusicRank.AAp;
-                    }
-                    else {
-                        sd.Rank = MusicRank.AAA;
-                    }
+                    let oldScoreData = getScoreDataForDifficulty(musicScore: musicScore, diffId: score.difficultyId, gameMode: gameMode)
+                    updateScoreData(sd: &newScoreData, msd: oldScoreData)
+                    
+                    setScoreDataForDifficulty(musicScore: &musicScore, diffId: score.difficultyId, scoreData: newScoreData, gameMode: gameMode)
+                    scoreExists = true
                 }
                 
-                var msd: ScoreData;
-                switch(diff) {
-                case 0:
-                    msd = ms.bSP;
-                case 1:
-                    msd = ms.BSP;
-                case 2:
-                    msd = ms.DSP;
-                case 3:
-                    msd = ms.ESP;
-                case 4:
-                    msd = ms.CSP;
-                case 5:
-                    msd = ms.BDP;
-                case 6:
-                    msd = ms.DDP;
-                case 7:
-                    msd = ms.EDP;
-                case 8:
-                    msd = ms.CDP;
-                default:
-                    msd = ScoreData();
-                }
-                sd.MaxCombo = msd.MaxCombo;
-                sd.ClearCount = msd.ClearCount;
-                sd.PlayCount = msd.PlayCount;
-                
-                // 「Life4 に未フルコンを上書きする」 が無効
-                if !mPreferences.Gate_OverWriteLife4 {
-                    // 取得した値が未フルコン
-                    if(sd.FullComboType_ == FullComboType.None) {
-                        // 元の値が Life4
-                        if(msd.FullComboType_ == FullComboType.Life4) {
-                            // 元のフルコンタイプに戻す
-                            sd.FullComboType_ = msd.FullComboType_;
-                        }
-                    }
-                }
-                // 「低いスコアを上書き」 が無効
-                if !mPreferences.Gate_OverWriteLowerScores {
-                    // スコアが低かったら
-                    if(sd.Score < msd.Score) {
-                        // スコアを元に戻す
-                        sd.Score = msd.Score;
-                        sd.Rank = msd.Rank;
-                    }
-                    // コンボが低かったら
-                    if(sd.MaxCombo < msd.MaxCombo) {
-                        // コンボを元に戻す
-                        sd.MaxCombo = msd.MaxCombo;
-                    }
-                    // 元の値がMFC
-                    if(msd.FullComboType_ == FullComboType.MarvelousFullCombo)
-                    {
-                        // MFCにする
-                        sd.FullComboType_ = msd.FullComboType_;
-                    }
-                    // 元の値がPFC
-                    else if(msd.FullComboType_ == FullComboType.PerfectFullCombo)
-                    {
-                        // 取得した値がMFCでない
-                        if(sd.FullComboType_ != FullComboType.MarvelousFullCombo)
-                        {
-                            // PFCにする
-                            sd.FullComboType_ = msd.FullComboType_;
-                        }
-                    }
-                    // 元の値がFC
-                    else if(msd.FullComboType_ == FullComboType.FullCombo)
-                    {
-                        // 取得した値がMFCでもPFCでもない
-                        if(sd.FullComboType_ != FullComboType.MarvelousFullCombo && sd.FullComboType_ != FullComboType.PerfectFullCombo)
-                        {
-                            // FCにする
-                            sd.FullComboType_ = msd.FullComboType_;
-                        }
-                    }
-                    // 元の値がGFC
-                    else if(msd.FullComboType_ == FullComboType.GoodFullCombo)
-                    {
-                        // 取得した値がMFCでもPFCでもFCでもない
-                        if(sd.FullComboType_ != FullComboType.MarvelousFullCombo && sd.FullComboType_ != FullComboType.PerfectFullCombo && sd.FullComboType_ != FullComboType.FullCombo)
-                        {
-                            // GFCにする
-                            sd.FullComboType_ = msd.FullComboType_;
-                        }
-                    }
-                    // 元の値がその他
-                    else
-                    {
-                        // 取得した値がMFCでもPFCでもFCでもGFCでもない
-                        if(sd.FullComboType_ != FullComboType.MarvelousFullCombo && sd.FullComboType_ != FullComboType.PerfectFullCombo && sd.FullComboType_ != FullComboType.FullCombo && sd.FullComboType_ != FullComboType.GoodFullCombo)
-                        {
-                            // 元の値にもどす
-                            sd.FullComboType_ = msd.FullComboType_;
-                        }
-                    }
-                }
-                
-                // Revisit: 公式サイトからフレアランクが取得できるようになったら上に移動
-                // フレアランク関連
-                if msd.flareRank > sd.flareRank {
-                    sd.flareRank = msd.flareRank
-                }
-                
-                switch(diff) {
-                case 0:
-                    ms.bSP = sd;
-                case 1:
-                    ms.BSP = sd;
-                case 2:
-                    ms.DSP = sd;
-                case 3:
-                    ms.ESP = sd;
-                case 4:
-                    ms.CSP = sd;
-                case 5:
-                    ms.BDP = sd;
-                case 6:
-                    ms.DDP = sd;
-                case 7:
-                    ms.EDP = sd;
-                case 8:
-                    ms.CDP = sd;
-                default:
-                    break
-                }
-                mScoreList[musicIdSaved] = ms;
-                scoreExists = true;
-                
+                mScoreList[musicIdSaved] = musicScore
+            }
+            
+            if scoreExists {
+                let _ = FileReader.saveScoreList(rparam_RivalId, scores: mScoreList)
+            }
+            
+            return true
+        } catch {
+            print("Error parsing HTML: \(error)")
+            return false
+        }
+    }
+    
+    private func getScoreDataForDifficulty(musicScore: MusicScore, diffId: String, gameMode: GameMode) -> ScoreData {
+        switch gameMode {
+        case .single:
+            switch diffId {
+            case "beginner": return musicScore.bSP
+            case "basic": return musicScore.BSP
+            case "difficult": return musicScore.DSP
+            case "expert": return musicScore.ESP
+            case "challenge": return musicScore.CSP
+            default: return ScoreData()
+            }
+        case .double:
+            switch diffId {
+            case "basic": return musicScore.BDP
+            case "difficult": return musicScore.DDP
+            case "expert": return musicScore.EDP
+            case "challenge": return musicScore.CDP
+            default: return ScoreData()
+            }
+        }
+    }
+    
+    private func setScoreDataForDifficulty(musicScore: inout MusicScore, diffId: String, scoreData: ScoreData, gameMode: GameMode) {
+        switch gameMode {
+        case .single:
+            switch diffId {
+            case "beginner": musicScore.bSP = scoreData
+            case "basic": musicScore.BSP = scoreData
+            case "difficult": musicScore.DSP = scoreData
+            case "expert": musicScore.ESP = scoreData
+            case "challenge": musicScore.CSP = scoreData
+            default: break
+            }
+        case .double:
+            switch diffId {
+            case "basic": musicScore.BDP = scoreData
+            case "difficult": musicScore.DDP = scoreData
+            case "expert": musicScore.EDP = scoreData
+            case "challenge": musicScore.CDP = scoreData
+            default: break
+            }
+        }
+    }
+    
+    private func updateScoreData(sd: inout ScoreData, msd: ScoreData) {
+        // 「Life4 に未フルコンを上書きする」 が無効
+        if !mPreferences.Gate_OverWriteLife4 {
+            if sd.FullComboType_ == .None && msd.FullComboType_ == .Life4 {
+                sd.FullComboType_ = msd.FullComboType_
             }
         }
         
-        if(!scoreExists) {
-            return true;
+        // 「低いスコアを上書き」 が無効
+        if !mPreferences.Gate_OverWriteLowerScores {
+            if sd.Score < msd.Score {
+                sd.Score = msd.Score
+                sd.Rank = msd.Rank
+            }
+            if sd.MaxCombo < msd.MaxCombo {
+                sd.MaxCombo = msd.MaxCombo
+            }
+            sd.FullComboType_ = maxFullComboType(sd.FullComboType_, msd.FullComboType_)
         }
         
-        let _ = FileReader.saveScoreList(rparam_RivalId, scores: mScoreList)
+        // フレアランク関連
+        if msd.flareRank > sd.flareRank {
+            sd.flareRank = msd.flareRank
+        }
         
-        return true
+        sd.MaxCombo = msd.MaxCombo
+        sd.ClearCount = msd.ClearCount
+        sd.PlayCount = msd.PlayCount
+    }
+    
+    private func maxFullComboType(_ a: FullComboType, _ b: FullComboType) -> FullComboType {
+        let order: [FullComboType] = [.None, .Life4, .GoodFullCombo, .FullCombo, .PerfectFullCombo, .MarvelousFullCombo]
+        if let indexA = order.firstIndex(of: a), let indexB = order.firstIndex(of: b) {
+            return indexA >= indexB ? a : b
+        }
+        return a // デフォルトとして、最初の引数を返す
     }
     
     func countStringInString(_ target: String, searchWord: String) -> (Int) {
@@ -642,10 +426,10 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                         self.addLog("SP : " + (i+1).description + " / " + (self.mPageCount == 1 ? "?" : self.mPageCount.description) + "\r\n")
                         self.mUriH = "https://p.eagate.573.jp/game/ddr/"
                         if self.mPreferences.Gate_LoadFromA3{
-                            self.mUriH += "ddra3/p/"
+                            self.mUriH += "ddrworld/"
                         }
                         else{
-                            self.mUriH += "ddra20/p/"
+                            self.mUriH += "ddra3/p/"
                         }
                         if self.rparam_RivalId == nil {
                             self.mUriH += "playdata/music_data_single.html?offset=";
@@ -710,10 +494,10 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                         self.addLog("DP : " + (i+1).description + " / " + (self.mPageCount == 1 ? "?" : self.mPageCount.description) + "\r\n")
                         self.mUriH = "https://p.eagate.573.jp/game/ddr/"
                         if self.mPreferences.Gate_LoadFromA3{
-                            self.mUriH += "ddra3/p/"
+                            self.mUriH += "ddrworld/"
                         }
                         else{
-                            self.mUriH += "ddra20/p/"
+                            self.mUriH += "ddra3/p/"
                         }
                         if self.rparam_RivalId == nil {
                             self.mUriH += "playdata/music_data_double.html?offset=";
