@@ -37,7 +37,7 @@ public class HtmlParseUtil {
         
         throw ParseError.unableToDetermineGameMode
     }
-
+    
     private static func parseMusicEntries(_ doc: Document, mode: GameMode) throws -> [MusicEntry] {
         var musicEntries: [MusicEntry] = []
         let musicRows: Elements = try doc.select("tr.data")
@@ -60,28 +60,28 @@ public class HtmlParseUtil {
         
         return MusicEntry(musicName: musicName, scores: scores, mode: mode)
     }
-
+    
     private static func parseDifficultyScore(column: Element, index: Int, mode: GameMode) throws -> DifficultyScore? {
         let diffId = getDifficultyId(index: index, mode: mode)
-
+        
         // スコア要素の存在を確認
         guard let scoreElement = try column.select("div.data_score").first() else {
             // スコア要素が存在しない場合は非表示の難易度として扱う
             return DifficultyScore(difficultyId: diffId, score: 0, rank: .Noplay, fullComboType: .None, flareRank: -1)
         }
-
+        
         let scoreText = try scoreElement.text()
         if scoreText.isEmpty {
             // スコアが空の場合も非表示の難易度として扱う
             return DifficultyScore(difficultyId: diffId, score: 0, rank: .Noplay, fullComboType: .None, flareRank: -1)
         }
-
+        
         // その他の要素を取得
         let rankElement = try column.select("div.data_rank img").first()
         let fullComboElement = try column.select("div.data_clearkind img").first()
         let flareRankElement = try column.select("div.data_flarerank img").first()
         let flareSkillElement = try column.select("div.data_flareskill").first()
-
+        
         let score = scoreText == "---" ? 0 : Int(scoreText) ?? 0
         
         let fullComboType = getFullComboType(fullComboElement: fullComboElement)
@@ -103,7 +103,7 @@ public class HtmlParseUtil {
         
         return scores
     }
-
+    
     private static func getDifficultyId(index: Int, mode: GameMode) -> String {
         switch mode {
         case .single:
@@ -131,7 +131,7 @@ public class HtmlParseUtil {
         guard let flareRankElement = flareRankElement else {
             return -1  // フレアランク要素がない場合
         }
-
+        
         let flareRankSrc = try? flareRankElement.attr("src")
         if flareRankSrc?.contains("flare_nodisp") == true { return -1 }
         if flareRankSrc?.contains("flare_none") == true { return -1 }
@@ -196,7 +196,109 @@ public class HtmlParseUtil {
         }
     }
     
+    static func parseMusicDetailForWorld(src: String, webMusicId: WebMusicId) throws -> ScoreData {
+        let doc: Document = try SwiftSoup.parse(src)
+        var sd = ScoreData()
+        
+        // タイトルの確認
+        let titleElement = try doc.select("table#music_info td").last()
+        let title = try titleElement?.text().trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let escapedTitle = StringUtilLng.escapeWebMusicTitle(src: title)
+        if escapedTitle != webMusicId.titleOnWebPage {
+            throw ParseError.musicIdMismatch(webTitle: webMusicId.titleOnWebPage, pageTitle: escapedTitle)
+        }
+        
+        // スコアデータのパース
+        sd.Rank = try parseRank(doc)
+        sd.Score = try parseScore(doc)
+        sd.MaxCombo = try parseMaxCombo(doc)
+        sd.FullComboType_ = try parseFullComboType(doc)
+        sd.PlayCount = try parsePlayCount(doc)
+        sd.ClearCount = try parseClearCount(doc)
+        sd.flareRank = try parseFlareRank(doc)
+        
+        return sd
+    }
+    
+    private static func parseRank(_ doc: Document) throws -> MusicRank {
+        let rankElement = try doc.select("th:contains(ハイスコア時のランク) + td").first()
+        let rankText = try rankElement?.text() ?? ""
+        return MusicRank(rawValue: rankText) ?? .Noplay
+    }
+    
+    private static func parseScore(_ doc: Document) throws -> Int32 {
+        let scoreElement = try doc.select("th:contains(ハイスコア) + td").first()
+        let scoreText = try scoreElement?.text() ?? "0"
+        return Int32(scoreText) ?? 0
+    }
+    
+    private static func parseMaxCombo(_ doc: Document) throws -> Int32 {
+        let comboElement = try doc.select("th:contains(最大コンボ数) + td").first()
+        let comboText = try comboElement?.text() ?? "0"
+        return Int32(comboText) ?? 0
+    }
+    
+    private static func parseFullComboType(_ doc: Document) throws -> FullComboType {
+        // フルコンボ種別の解析
+        let fcElements = try doc.select("#clear_detail_table tr[id^='fc_']")
+        for element in fcElements {
+            let fcTypeText = try element.select("th").text()
+            let fcCount = try Int(element.select("td").text()) ?? 0
+            if fcCount > 0 {
+                switch fcTypeText {
+                case "マーベラスフルコンボ": return .MarvelousFullCombo
+                case "パーフェクトフルコンボ": return .PerfectFullCombo
+                case "グレートフルコンボ": return .FullCombo
+                case "グッドフルコンボ": return .GoodFullCombo
+                default: break
+                }
+            }
+        }
+        
+        // LIFE4の解析
+        let life4Element = try doc.select("#clear_detail_table tr#clear_life4")
+        let life4Count = try Int(life4Element.select("td").text()) ?? 0
+        if life4Count > 0 {
+            return .Life4
+        }
+        
+        return .None
+    }
+    
+    private static func parsePlayCount(_ doc: Document) throws -> Int32 {
+        let playCountElement = try doc.select("th:contains(プレー回数) + td").first()
+        let playCountText = try playCountElement?.text() ?? "0"
+        return Int32(playCountText) ?? 0
+    }
+    
+    private static func parseClearCount(_ doc: Document) throws -> Int32 {
+        let clearCountElement = try doc.select("th:contains(クリア回数) + td").first()
+        let clearCountText = try clearCountElement?.text() ?? "0"
+        return Int32(clearCountText) ?? 0
+    }
+    
+    private static func parseFlareRank(_ doc: Document) throws -> Int32 {
+        let flareRankElement = try doc.select("th:contains(フレアランク) + td").first()
+        let flareRankText = try flareRankElement?.text() ?? ""
+        switch flareRankText {
+        case "EX": return 10
+        case "IX": return 9
+        case "VIII": return 8
+        case "VII": return 7
+        case "VI": return 6
+        case "V": return 5
+        case "IV": return 4
+        case "III": return 3
+        case "II": return 2
+        case "I": return 1
+        default: return 0
+        }
+    }
     enum ParseError: Error {
         case unableToDetermineGameMode
+        
+        case musicIdMismatch(webTitle: String, pageTitle: String)
+        case elementNotFound(String)
+        case invalidValue(String)
     }
 }

@@ -708,10 +708,10 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                             self.mRequestUri = "https://p.eagate.573.jp/game/ddr/"
                             if(self.mPreferences.Gate_LoadFromA3)
                             {
-                                self.mRequestUri += "ddra3/p/"
+                                self.mRequestUri += "ddrworld/"
                             }
                             else{
-                                self.mRequestUri += "ddra20/p/"
+                                self.mRequestUri += "ddra3/p/"
                             }
                             if(self.rparam_RivalId == nil)
                             {

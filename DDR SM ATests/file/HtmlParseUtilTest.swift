@@ -11,9 +11,10 @@ import XCTest
 @testable import dsma // あなたのアプリのモジュール名に置き換えてください
 
 class HtmlParseUtilTests: XCTestCase {
-
+    
     var htmlContentSingle: String!
     var htmlContentDouble: String!
+    var htmlContentDetail: String!
 
     override func setUp() {
         super.setUp()
@@ -24,30 +25,33 @@ class HtmlParseUtilTests: XCTestCase {
         if let path = Bundle(for: type(of: self)).path(forResource: "WorldSiteDataDouble", ofType: "html") {
             htmlContentDouble = try? String(contentsOfFile: path, encoding: .utf8)
         }
+        if let path = Bundle(for: type(of: self)).path(forResource: "WorldSiteDataDetail", ofType: "html") {
+            htmlContentDetail = try? String(contentsOfFile: path, encoding: .utf8)
+        }
         XCTAssertNotNil(htmlContentSingle, "Test data should be loaded")
     }
-
+    
     func testParseMusicListSingle() {
         let (gameMode, result) = tryParseMusicList(src: htmlContentSingle)
-
+        
         XCTAssertFalse(result.isEmpty, "Result should not be empty")
         
         XCTAssertEqual(gameMode, .single)
-
+        
         // 特定の曲のテスト
         testSpecificSongs(in: result)
-
+        
         // フレアランクのバリエーションをチェック
         checkFlareRanks(in: result)
-
+        
         // フルコンボタイプのバリエーションをチェック
         checkFullComboTypes(in: result)
     }
-
+    
     private func testSpecificSongs(in result: [MusicEntry]) {
         if let songEntry = result.first(where: { $0.musicName == "とこにゃつ☆トロピカル" }) {
             XCTAssertEqual(songEntry.scores.count, 5, "Should have 5 difficulty scores")
-
+            
             if let difficultScore = songEntry.scores.first(where: { $0.difficultyId == "basic" }) {
                 XCTAssertEqual(difficultScore.score, 0)
                 XCTAssertEqual(difficultScore.rank, .Noplay)
@@ -63,7 +67,7 @@ class HtmlParseUtilTests: XCTestCase {
         // "晴天Bon Voyage"のテスト
         if let songEntry = result.first(where: { $0.musicName == "晴天Bon Voyage" }) {
             XCTAssertEqual(songEntry.scores.count, 5, "Should have 5 difficulty scores")
-
+            
             if let difficultScore = songEntry.scores.first(where: { $0.difficultyId == "difficult" }) {
                 XCTAssertEqual(difficultScore.score, 999580)
                 XCTAssertEqual(difficultScore.rank, .AAA)
@@ -72,7 +76,7 @@ class HtmlParseUtilTests: XCTestCase {
             } else {
                 XCTFail("DIFFICULT score for '晴天Bon Voyage' not found")
             }
-
+            
             if let expertScore = songEntry.scores.first(where: { $0.difficultyId == "expert" }) {
                 XCTAssertEqual(expertScore.score, 991320)
                 XCTAssertEqual(expertScore.rank, .AAA)
@@ -84,7 +88,7 @@ class HtmlParseUtilTests: XCTestCase {
         } else {
             XCTFail("Song '晴天Bon Voyage' not found")
         }
-
+        
         // "零 - ZERO -"のテスト（EXフレアランクの確認）
         if let songEntry = result.first(where: { $0.musicName == "零 - ZERO -" }) {
             if let expertScore = songEntry.scores.first(where: { $0.difficultyId == "beginner" }) {
@@ -107,7 +111,7 @@ class HtmlParseUtilTests: XCTestCase {
         } else {
             XCTFail("Song '零 - ZERO -' not found")
         }
-
+        
         // "打打打打打打打打打打"のテスト（フレアランク9の確認）
         if let songEntry = result.first(where: { $0.musicName == "打打打打打打打打打打" }) {
             if let expertScore = songEntry.scores.first(where: { $0.difficultyId == "expert" }) {
@@ -118,7 +122,7 @@ class HtmlParseUtilTests: XCTestCase {
             } else {
                 XCTFail("EXPERT score for '打打打打打打打打打打' not found")
             }
-
+            
             if let challengeScore = songEntry.scores.first(where: { $0.difficultyId == "challenge" }) {
                 XCTAssertEqual(challengeScore.score, 985140)
                 XCTAssertEqual(challengeScore.rank, .AAp)
@@ -130,7 +134,7 @@ class HtmlParseUtilTests: XCTestCase {
         } else {
             XCTFail("Song '打打打打打打打打打打' not found")
         }
-
+        
         // "嘆きの樹"のテスト（フレアランク1の確認とクリアランクApの確認）
         if let songEntry = result.first(where: { $0.musicName == "嘆きの樹" }) {
             if let expertScore = songEntry.scores.first(where: { $0.difficultyId == "expert" }) {
@@ -141,7 +145,7 @@ class HtmlParseUtilTests: XCTestCase {
             } else {
                 XCTFail("EXPERT score for '嘆きの樹' not found")
             }
-
+            
             if let challengeScore = songEntry.scores.first(where: { $0.difficultyId == "challenge" }) {
                 XCTAssertEqual(challengeScore.score, 860550)
                 XCTAssertEqual(challengeScore.rank, .Ap)
@@ -153,7 +157,7 @@ class HtmlParseUtilTests: XCTestCase {
         } else {
             XCTFail("Song '嘆きの樹' not found")
         }
-
+        
         // "ちくわパフェだよ☆ＣＫＰ"のテスト（GoodFullComboの確認）
         if let songEntry = result.first(where: { $0.musicName == "ちくわパフェだよ☆ＣＫＰ" }) {
             if let expertScore = songEntry.scores.first(where: { $0.difficultyId == "expert" }) {
@@ -164,7 +168,7 @@ class HtmlParseUtilTests: XCTestCase {
             } else {
                 XCTFail("EXPERT score for 'ちくわパフェだよ☆ＣＫＰ' not found")
             }
-
+            
             if let challengeScore = songEntry.scores.first(where: { $0.difficultyId == "challenge" }) {
                 XCTAssertEqual(challengeScore.score, 991030)
                 XCTAssertEqual(challengeScore.rank, .AAA)
@@ -225,10 +229,10 @@ class HtmlParseUtilTests: XCTestCase {
             XCTFail("Song '春を告げる' not found")
         }
     }
-
+    
     func testParseMusicListDouble() {
         let (gameMode, result) = tryParseMusicList(src: htmlContentDouble)
-
+        
         XCTAssertFalse(result.isEmpty, "Result should not be empty")
         
         XCTAssertEqual(gameMode, .double)
@@ -236,11 +240,11 @@ class HtmlParseUtilTests: XCTestCase {
         // 特定の曲のテスト
         testSpecificSongsDouble(in: result)
     }
-
+    
     private func testSpecificSongsDouble(in result: [MusicEntry]) {
         if let songEntry = result.first(where: { $0.musicName == "蒼い衝動 ～for EXTREME～" }) {
             XCTAssertEqual(songEntry.scores.count, 4, "Should have 4 difficulty scores")
-
+            
             if let difficultScore = songEntry.scores.first(where: { $0.difficultyId == "expert" }) {
                 XCTAssertEqual(difficultScore.score, 0)
                 XCTAssertEqual(difficultScore.rank, .Noplay)
@@ -256,7 +260,7 @@ class HtmlParseUtilTests: XCTestCase {
         // "晴天Bon Voyage"のテスト
         if let songEntry = result.first(where: { $0.musicName == "蒼が消えるとき" }) {
             XCTAssertEqual(songEntry.scores.count, 4, "Should have 4 difficulty scores")
-
+            
             if let difficultScore = songEntry.scores.first(where: { $0.difficultyId == "difficult" }) {
                 XCTAssertEqual(difficultScore.score, 971780)
                 XCTAssertEqual(difficultScore.rank, .AAp)
@@ -265,7 +269,7 @@ class HtmlParseUtilTests: XCTestCase {
             } else {
                 XCTFail("DIFFICULT score for '蒼が消えるとき' not found")
             }
-
+            
             if let expertScore = songEntry.scores.first(where: { $0.difficultyId == "expert" }) {
                 XCTAssertEqual(expertScore.score, 896870)
                 XCTAssertEqual(expertScore.rank, .AAm)
@@ -277,7 +281,7 @@ class HtmlParseUtilTests: XCTestCase {
         } else {
             XCTFail("Song '蒼が消えるとき' not found")
         }
-
+        
         if let songEntry = result.first(where: { $0.musicName == "天ノ弱" }) {
             XCTAssertEqual(songEntry.scores.count, 4, "Should have 4 difficulty scores")
             
@@ -292,7 +296,7 @@ class HtmlParseUtilTests: XCTestCase {
         } else {
             XCTFail("Song '天ノ弱' not found")
         }
-
+        
         var musicName = "鋳鉄の檻"
         if let songEntry = result.first(where: { $0.musicName == musicName }) {
             XCTAssertEqual(songEntry.scores.count, 4, "Should have 4 difficulty scores")
@@ -308,7 +312,7 @@ class HtmlParseUtilTests: XCTestCase {
         } else {
             XCTFail("Song \(musicName) not found")
         }
-
+        
         musicName = "イノセントバイブル"
         if let songEntry = result.first(where: { $0.musicName == musicName }) {
             XCTAssertEqual(songEntry.scores.count, 4, "Should have 4 difficulty scores")
@@ -373,16 +377,16 @@ class HtmlParseUtilTests: XCTestCase {
             XCTFail("Song \(musicName) not found")
         }
     }
-
+    
     private func checkFlareRanks(in result: [MusicEntry]) {
-        let expectedFlareRanks = [-1, 0, 1, 9, 10] // -1はフレアランクなし、0はフレアスキルのみ、1-9は通常のランク、10はEX
+        let expectedFlareRanks = [-1, 1, 9, 10] // -1はフレアランクなし、0はフレアスキルのみ、1-9は通常のランク、10はEX
         for rank in expectedFlareRanks {
             XCTAssertTrue(result.contains { song in
                 song.scores.contains { $0.flareRank == rank }
             }, "Should find a song with flare rank \(rank)")
         }
     }
-
+    
     private func checkFullComboTypes(in result: [MusicEntry]) {
         let fullComboTypes: [FullComboType] = [.None, .FullCombo, .FullCombo, .PerfectFullCombo, .Life4]
         for type in fullComboTypes {
@@ -398,6 +402,26 @@ class HtmlParseUtilTests: XCTestCase {
         } catch {
             XCTFail("Failed to parse music list: \(error)")
             fatalError("Test failed due to parsing error") // テストを即座に終了
+        }
+    }
+    
+    func testParseMusicDetailForWorld() {
+        do {
+            let webMusicId = WebMusicId()
+            webMusicId.titleOnWebPage = "星座が恋した瞬間を。"
+            webMusicId.idOnWebPage = "ld8lOqloqD6lOl880ldDo819bDb9q1Qi"
+            
+            let scoreData = try HtmlParseUtil.parseMusicDetailForWorld(src: htmlContentDetail, webMusicId: webMusicId)
+            
+            XCTAssertEqual(scoreData.Rank, .AAA)
+            XCTAssertEqual(scoreData.Score, 999500)
+            XCTAssertEqual(scoreData.MaxCombo, 462)
+            XCTAssertEqual(scoreData.FullComboType_, .PerfectFullCombo)
+            XCTAssertEqual(scoreData.PlayCount, 22)
+            XCTAssertEqual(scoreData.ClearCount, 21)
+            XCTAssertEqual(scoreData.flareRank, 10) // EX rank
+        } catch {
+            XCTFail("Failed to parse music detail: \(error)")
         }
     }
 }
