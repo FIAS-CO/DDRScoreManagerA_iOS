@@ -7,9 +7,9 @@
 //
 
 struct DifficultyScore {
-    let difficultyId: String
-    let score: Int
-    let rank: MusicRank
-    let fullComboType: FullComboType
-    let flareRank: Int
+    var difficultyId: String
+    var score: Int = 0
+    var rank: MusicRank = .Noplay
+    var fullComboType: FullComboType = .None
+    var flareRank: Int = -1
 }

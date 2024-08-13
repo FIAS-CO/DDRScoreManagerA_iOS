@@ -64,14 +64,25 @@ public class HtmlParseUtil {
     private static func parseDifficultyScore(column: Element, index: Int, mode: GameMode) throws -> DifficultyScore? {
         let diffId = getDifficultyId(index: index, mode: mode)
 
-        guard let scoreElement = try column.select("div.data_score").first(),
-              let rankElement = try column.select("div.data_rank img").first(),
-              let fullComboElement = try column.select("div.data_clearkind img").first(),
-              let flareRankElement = try column.select("div.data_flarerank img").first(),
-              let flareSkillElement = try column.select("div.data_flareskill").first() else { return nil }
-        
+        // スコア要素の存在を確認
+        guard let scoreElement = try column.select("div.data_score").first() else {
+            // スコア要素が存在しない場合は非表示の難易度として扱う
+            return DifficultyScore(difficultyId: diffId, score: 0, rank: .Noplay, fullComboType: .None, flareRank: -1)
+        }
+
         let scoreText = try scoreElement.text()
-        let score = scoreText == "-" ? 0 : Int(scoreText) ?? 0
+        if scoreText.isEmpty {
+            // スコアが空の場合も非表示の難易度として扱う
+            return DifficultyScore(difficultyId: diffId, score: 0, rank: .Noplay, fullComboType: .None, flareRank: -1)
+        }
+
+        // その他の要素を取得
+        let rankElement = try column.select("div.data_rank img").first()
+        let fullComboElement = try column.select("div.data_clearkind img").first()
+        let flareRankElement = try column.select("div.data_flarerank img").first()
+        let flareSkillElement = try column.select("div.data_flareskill").first()
+
+        let score = scoreText == "---" ? 0 : Int(scoreText) ?? 0
         
         let fullComboType = getFullComboType(fullComboElement: fullComboElement)
         let flareRank = getFlareRank(flareRankElement: flareRankElement, flareSkillElement: flareSkillElement)
@@ -102,24 +113,28 @@ public class HtmlParseUtil {
         }
     }
     
-    private static func getFullComboType(fullComboElement: Element) -> FullComboType {
-        let fullComboSrc = try? fullComboElement.attr("src")
-        if fullComboSrc?.contains("cl_marv") == true { return .MarvelousFullCombo }
-        if fullComboSrc?.contains("cl_perf") == true { return .PerfectFullCombo }
-        if fullComboSrc?.contains("cl_great") == true { return .FullCombo }
-        if fullComboSrc?.contains("cl_good") == true { return .GoodFullCombo }
-        if fullComboSrc?.contains("cl_li4clear") == true { return .Life4 }
+    private static func getFullComboType(fullComboElement: Element?) -> FullComboType {
+        guard let fullComboElement = fullComboElement,
+              let fullComboSrc = try? fullComboElement.attr("src") else {
+            return .None
+        }
+        
+        if fullComboSrc.contains("cl_marv") { return .MarvelousFullCombo }
+        if fullComboSrc.contains("cl_perf") { return .PerfectFullCombo }
+        if fullComboSrc.contains("cl_great") { return .FullCombo }
+        if fullComboSrc.contains("cl_good") { return .GoodFullCombo }
+        if fullComboSrc.contains("cl_li4clear") { return .Life4 }
         return .None
     }
     
-    private static func getFlareRank(flareRankElement: Element, flareSkillElement: Element) -> Int {
-        let flareRankSrc = try? flareRankElement.attr("src")
-        if flareRankSrc?.contains("flare_none") == true {
-            if let flareSkillText = try? flareSkillElement.text(), flareSkillText != "---" {
-                return 0
-            }
-            return -1
+    private static func getFlareRank(flareRankElement: Element?, flareSkillElement: Element?) -> Int {
+        guard let flareRankElement = flareRankElement else {
+            return -1  // フレアランク要素がない場合
         }
+
+        let flareRankSrc = try? flareRankElement.attr("src")
+        if flareRankSrc?.contains("flare_nodisp") == true { return -1 }
+        if flareRankSrc?.contains("flare_none") == true { return -1 }
         if flareRankSrc?.contains("flare_1") == true { return 1 }
         if flareRankSrc?.contains("flare_2") == true { return 2 }
         if flareRankSrc?.contains("flare_3") == true { return 3 }
@@ -133,11 +148,15 @@ public class HtmlParseUtil {
         return 0
     }
     
-    private static func getRank(rankElement: Element, score: Int) -> MusicRank {
-        let rankSrc = try? rankElement.attr("src")
-        if rankSrc?.contains("rank_s_e") == true {
+    private static func getRank(rankElement: Element?, score: Int) -> MusicRank {
+        // まずアイコンを確認してEランクかどうかを判断
+        if let rankElement = rankElement,
+           let rankSrc = try? rankElement.attr("src"),
+           rankSrc.contains("rank_s_e") {
             return .E
         }
+        
+        // Eランクでない場合は、スコアに基づいてランクを計算
         return calculateRank(score: score)
     }
     
