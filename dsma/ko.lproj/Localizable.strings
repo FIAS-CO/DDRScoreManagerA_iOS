@@ -215,6 +215,10 @@
  ViewFromGateList */
 "Target: " = "타겟: ";
 
+/* ViewFromGate
+ ViewFromGateList */
+"Version: " = "버전: ";
+
 /* ViewDdrSaAuthenticate
  ViewDdrSaExport
  ViewMusicListUpdate */
