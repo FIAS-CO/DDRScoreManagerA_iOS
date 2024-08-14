@@ -613,11 +613,11 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 sd.MaxCombo = msd.MaxCombo
             }
             sd.FullComboType_ = maxFullComboType(sd.FullComboType_, msd.FullComboType_)
-        }
-        
-        // フレアランク関連
-        if msd.flareRank > sd.flareRank {
-            sd.flareRank = msd.flareRank
+            
+            // フレアランク関連
+            if sd.flareRank < msd.flareRank {
+                sd.flareRank = msd.flareRank
+            }
         }
         
         sd.MaxCombo = msd.MaxCombo
