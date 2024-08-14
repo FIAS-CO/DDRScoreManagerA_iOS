@@ -1041,6 +1041,9 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             //sleep(20)
             
             objc_sync_enter(self.mThreadIds)
+            defer {
+                objc_sync_exit(self.mThreadIds)
+            }
             var noc = 0
             for no in 0 ..< self.mThreadIds.count {
                 noc = no
@@ -1084,7 +1087,6 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
             if noc < self.mThreadIds.count {
                 self.mThreadIds.remove(at: noc)
             }
-            objc_sync_exit(self.mThreadIds)
             
         })
     }
