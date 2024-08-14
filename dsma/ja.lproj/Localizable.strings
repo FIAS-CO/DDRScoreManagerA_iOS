@@ -6,8 +6,11 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-- 統計機能にフレアランクの集計機能を追加しました
-- その他、軽微な修正を行いました";
+DDR WORLDの公式ページから楽曲データを取得できるようになりました！
+ただ、以下の機能はまだA3から取得するようになっています。今後のアップデートをお待ちください。
+- Recent楽曲データ（近日対応予定）
+- プレイヤー情報（機能停止中/近日対応予定）
+- ライバル情報（公式ページ未対応）";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 連携";
