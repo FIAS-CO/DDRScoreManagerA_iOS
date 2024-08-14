@@ -3,7 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -70,7 +70,7 @@
                                                             <action selector="gateLoadFromA3ValueChanged:" destination="ifu-WP-fOn" eventType="valueChanged" id="5G5-fN-Emm"/>
                                                         </connections>
                                                     </switch>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load From A3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rm9-iL-cCi">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load From WORLD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rm9-iL-cCi">
                                                         <rect key="frame" x="54" y="4.6666666666666572" width="261" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -651,7 +651,7 @@
                     <connections>
                         <outlet property="adHeight" destination="rQs-JT-GBO" id="7lp-zU-548"/>
                         <outlet property="adView" destination="q6k-ni-yVn" id="oz6-2s-GHB"/>
-                        <outlet property="gateLoadFromA3" destination="NKB-cb-a1N" id="617-Ez-qQX"/>
+                        <outlet property="gateLoadFromNewSite" destination="NKB-cb-a1N" id="617-Ez-qQX"/>
                         <outlet property="gateOverWriteLife4" destination="J7X-5j-zyG" id="TuG-x9-Uth"/>
                         <outlet property="gateOverWriteLowerScores" destination="UeG-DO-qH8" id="pIK-0a-eqA"/>
                         <outlet property="navigationBar" destination="l6D-lQ-ecm" id="hdd-NF-Mbd"/>

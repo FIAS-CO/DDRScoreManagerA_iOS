@@ -177,7 +177,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
     var buttonResume: UIBarButtonItem!
     
     func analyzeScore(_ src: String) -> (Bool) {
-        if (self.mPreferences.Gate_LoadFromA3) {
+        if (self.mPreferences.Gate_LoadFromNewSite) {
             do {
                 let (gameMode, musicEntries) = try HtmlParseUtil.parseMusicList(src: src)
                 var scoreExists = false
@@ -749,7 +749,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
         mScoreList = FileReader.readScoreList(rparam_RivalId)
         mLocalIds = FileReader.readWebTitleToLocalIdList()
         
-        let versionName = self.mPreferences.Gate_LoadFromA3 ? " WORLD" : " A3"
+        let versionName = self.mPreferences.Gate_LoadFromNewSite ? " WORLD" : " A3"
         addLog(NSLocalizedString("Version: ", comment: "ViewFromGateList") + versionName)
         addLog(NSLocalizedString("Loading scores started.", comment: "ViewFromGateList"))
         
@@ -764,7 +764,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                     DispatchQueue.main.async(execute: {
                         self.addLog("SP : " + (i+1).description + " / " + (self.mPageCount == 1 ? "?" : self.mPageCount.description) + "\r\n")
                         self.mUriH = "https://p.eagate.573.jp/game/ddr/"
-                        if self.mPreferences.Gate_LoadFromA3{
+                        if self.mPreferences.Gate_LoadFromNewSite{
                             self.mUriH += "ddrworld/"
                         }
                         else{
@@ -832,7 +832,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                     DispatchQueue.main.async(execute: {
                         self.addLog("DP : " + (i+1).description + " / " + (self.mPageCount == 1 ? "?" : self.mPageCount.description) + "\r\n")
                         self.mUriH = "https://p.eagate.573.jp/game/ddr/"
-                        if self.mPreferences.Gate_LoadFromA3{
+                        if self.mPreferences.Gate_LoadFromNewSite{
                             self.mUriH += "ddrworld/"
                         }
                         else{

@@ -95,7 +95,8 @@ struct FileReader{
         sfm.putBool("VisibleItems_FlareRank", value: pref.VisibleItems_FlareRank)
         sfm.putBool("VisibleItems_FlareSkill", value: pref.VisibleItems_FlareSkill)
         
-        sfm.putBool("Gate_LoadFromA3", value: pref.Gate_LoadFromA3)
+        // キー名を変えるの微妙に大変なのでこのまま
+        sfm.putBool("Gate_LoadFromA3", value: pref.Gate_LoadFromNewSite)
         sfm.putInt32("Gate_SetPfcScore", value: pref.Gate_SetPfcScore)
         sfm.putBool("Gate_OverWriteLife4", value: pref.Gate_OverWriteLife4)
         sfm.putBool("Gate_OverWriteLowerScores", value: pref.Gate_OverWriteLowerScores)
@@ -114,7 +115,8 @@ struct FileReader{
             pref.VisibleItems_FlareRank = sfm.getBool("VisibleItems_FlareRank", def: false)
             pref.VisibleItems_FlareSkill = sfm.getBool("VisibleItems_FlareSkill", def: false)
             
-            pref.Gate_LoadFromA3 = sfm.getBool("Gate_LoadFromA3", def: true)
+            // キー名を変えるの微妙に大変なのでこのまま
+            pref.Gate_LoadFromNewSite = sfm.getBool("Gate_LoadFromA3", def: true)
             pref.Gate_SetPfcScore = sfm.getInt32("Gate_SetPfcScore", def: 999990)
             pref.Gate_OverWriteLife4 = sfm.getBool("Gate_OverWriteLife4", def: false)
             pref.Gate_OverWriteLowerScores = sfm.getBool("Gate_OverWriteLowerScores", def: true)

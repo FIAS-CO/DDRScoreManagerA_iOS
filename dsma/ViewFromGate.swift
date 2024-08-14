@@ -161,7 +161,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         var sd = ScoreData();
         let src = srcHtml;
         
-        if (self.mPreferences.Gate_LoadFromA3) {
+        if (self.mPreferences.Gate_LoadFromNewSite) {
             do {
                 sd = try HtmlParseUtil.parseMusicDetailForWorld(src: src, webMusicId: mWebMusicId)
             } catch {
@@ -682,7 +682,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             sleep(3)
             var current: Int = 0
             let count: Int = self.rparam_Targets.count
-            let loadFromWORLD = self.mPreferences.Gate_LoadFromA3
+            let loadFromWORLD = self.mPreferences.Gate_LoadFromNewSite
             for target in self.rparam_Targets {
                 
                 self.mTarget = target
@@ -786,7 +786,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     
     private func getPatternInt(patternType : PatternType) -> Int32 {
         let patternValue: Int32
-        if (self.mPreferences.Gate_LoadFromA3) {
+        if (self.mPreferences.Gate_LoadFromNewSite) {
             switch patternType {
             case .bSP:
                 patternValue = 0

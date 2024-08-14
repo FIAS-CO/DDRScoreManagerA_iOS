@@ -34,7 +34,7 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
-    @IBOutlet weak var gateLoadFromA3: UISwitch!
+    @IBOutlet weak var gateLoadFromNewSite: UISwitch!
     @IBOutlet weak var gateOverWriteLowerScores: UISwitch!
     @IBOutlet weak var gateOverWriteLife4: UISwitch!
     
@@ -96,7 +96,7 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
         mTextAlertView.show(self)
     }
     @IBAction func gateLoadFromA3ValueChanged(_ sender: AnyObject) {
-        mPreferences.Gate_LoadFromA3 = gateLoadFromA3.isOn
+        mPreferences.Gate_LoadFromNewSite = gateLoadFromNewSite.isOn
     }
     @IBAction func gateOverWriteLowerScoresValueChanged(_ sender: AnyObject) {
         mPreferences.Gate_OverWriteLowerScores = gateOverWriteLowerScores.isOn
@@ -120,7 +120,7 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     }
     
     func setPreferenceData() {
-        gateLoadFromA3.isOn = mPreferences.Gate_LoadFromA3
+        gateLoadFromNewSite.isOn = mPreferences.Gate_LoadFromNewSite
         gateOverWriteLowerScores.isOn = mPreferences.Gate_OverWriteLowerScores
         gateOverWriteLife4.isOn = mPreferences.Gate_OverWriteLife4
         visibleItemsMaxCombo.isOn = mPreferences.VisibleItems_MaxCombo
