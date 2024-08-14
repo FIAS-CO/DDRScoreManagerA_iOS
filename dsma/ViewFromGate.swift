@@ -160,196 +160,219 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     func analyzeScore(_ srcHtml: String) -> (Bool) {
         var sd = ScoreData();
         let src = srcHtml;
-        var cmp: String = "0\"></td>  <td>";
-        if let rs = src.range(of: cmp) {
-            var dr = String(src[rs.upperBound...])
-            cmp = "<br>";
-            if let rs = dr.range(of: cmp) {
-                dr = String(dr[..<rs.lowerBound]).trimmingCharacters(in: CharacterSet.whitespaces)
-                dr = StringUtilLng.escapeWebMusicTitle(src: dr)
-                if dr != mWebMusicId.titleOnWebPage {
-                    self.addLog(NSLocalizedString("Music ID is different on GATE server.", comment: "ViewFromGate"))
-                    self.addLog(NSLocalizedString("Please report to us.", comment: "ViewFromGate"))
-                    self.addLog(mWebMusicId.titleOnWebPage)
-                    self.addLog("↓")
-                    self.addLog(dr)
-                    self.addLog(NSLocalizedString("Skipped.", comment: "ViewFromGate"))
-                    return true;
+        
+        if (self.mPreferences.Gate_LoadFromA3) {
+            do {
+                sd = try HtmlParseUtil.parseMusicDetailForWorld(src: src, webMusicId: mWebMusicId)
+            } catch {
+                // sd = ScoreData()
+            }
+        } else {
+            var cmp: String = "0\"></td>  <td>";
+            if let rs = src.range(of: cmp) {
+                var dr = String(src[rs.upperBound...])
+                cmp = "<br>";
+                if let rs = dr.range(of: cmp) {
+                    dr = String(dr[..<rs.lowerBound]).trimmingCharacters(in: CharacterSet.whitespaces)
+                    dr = StringUtilLng.escapeWebMusicTitle(src: dr)
+                    if dr != mWebMusicId.titleOnWebPage {
+                        self.addLog(NSLocalizedString("Music ID is different on GATE server.", comment: "ViewFromGate"))
+                        self.addLog(NSLocalizedString("Please report to us.", comment: "ViewFromGate"))
+                        self.addLog(mWebMusicId.titleOnWebPage)
+                        self.addLog("↓")
+                        self.addLog(dr)
+                        self.addLog(NSLocalizedString("Skipped.", comment: "ViewFromGate"))
+                        return true;
+                    }
+                }
+                else {
+                    return false;
                 }
             }
             else {
                 return false;
             }
-        }
-        else {
-            return false;
-        }
-        cmp = "NO PLAY...";
-        print("1")
-        if src.range(of: cmp) == nil {
-            if(self.mPreferences.Gate_LoadFromA3)
-            {
+            cmp = "NO PLAY...";
+            print("1")
+            if src.range(of: cmp) == nil {
+                
                 cmp = "<th>ハイスコア時のランク</th><td>";
-            }
-            else {
-                if rparam_RivalId == nil {
-                    cmp = "<th>ハイスコア時のダンスレベル</th><td>";
-                }
-                else {
-                    cmp = "<th>最高ダンスレベル</th><td>";
-                }
-            }
-            print("2")
-            if let rs = src.range(of: cmp) {
-                print("2.5")
-                var dr = String(src[rs.upperBound...])
-                cmp = "</td>";
-                if let rs = dr.range(of: cmp) {
-                    print("2.6")
-                    dr = String(dr[..<rs.lowerBound])
-                    if dr == "AAA" {
-                        sd.Rank = MusicRank.AAA;
-                    }
-                    else if dr == "AA+" {
-                        sd.Rank = MusicRank.AAp;
-                    }
-                    else if dr == "AA" {
-                        sd.Rank = MusicRank.AA;
-                    }
-                    else if dr == "AA-" {
-                        sd.Rank = MusicRank.AAm;
-                    }
-                    else if dr == "A+" {
-                        sd.Rank = MusicRank.Ap;
-                    }
-                    else if dr == "A" {
-                        sd.Rank = MusicRank.A;
-                    }
-                    else if dr == "A-" {
-                        sd.Rank = MusicRank.Am;
-                    }
-                    else if dr == "B+" {
-                        sd.Rank = MusicRank.Bp;
-                    }
-                    else if dr == "B" {
-                        sd.Rank = MusicRank.B;
-                    }
-                    else if dr == "B-" {
-                        sd.Rank = MusicRank.Bm;
-                    }
-                    else if dr == "C+" {
-                        sd.Rank = MusicRank.Cp;
-                    }
-                    else if dr == "C" {
-                        sd.Rank = MusicRank.C;
-                    }
-                    else if dr == "C-" {
-                        sd.Rank = MusicRank.Cm;
-                    }
-                    else if dr == "D+" {
-                        sd.Rank = MusicRank.Dp;
-                    }
-                    else if dr == "D" {
-                        sd.Rank = MusicRank.D;
-                    }
-                    else if dr == "E" {
-                        sd.Rank = MusicRank.E;
+                
+                print("2")
+                if let rs = src.range(of: cmp) {
+                    print("2.5")
+                    var dr = String(src[rs.upperBound...])
+                    cmp = "</td>";
+                    if let rs = dr.range(of: cmp) {
+                        print("2.6")
+                        dr = String(dr[..<rs.lowerBound])
+                        if dr == "AAA" {
+                            sd.Rank = MusicRank.AAA;
+                        }
+                        else if dr == "AA+" {
+                            sd.Rank = MusicRank.AAp;
+                        }
+                        else if dr == "AA" {
+                            sd.Rank = MusicRank.AA;
+                        }
+                        else if dr == "AA-" {
+                            sd.Rank = MusicRank.AAm;
+                        }
+                        else if dr == "A+" {
+                            sd.Rank = MusicRank.Ap;
+                        }
+                        else if dr == "A" {
+                            sd.Rank = MusicRank.A;
+                        }
+                        else if dr == "A-" {
+                            sd.Rank = MusicRank.Am;
+                        }
+                        else if dr == "B+" {
+                            sd.Rank = MusicRank.Bp;
+                        }
+                        else if dr == "B" {
+                            sd.Rank = MusicRank.B;
+                        }
+                        else if dr == "B-" {
+                            sd.Rank = MusicRank.Bm;
+                        }
+                        else if dr == "C+" {
+                            sd.Rank = MusicRank.Cp;
+                        }
+                        else if dr == "C" {
+                            sd.Rank = MusicRank.C;
+                        }
+                        else if dr == "C-" {
+                            sd.Rank = MusicRank.Cm;
+                        }
+                        else if dr == "D+" {
+                            sd.Rank = MusicRank.Dp;
+                        }
+                        else if dr == "D" {
+                            sd.Rank = MusicRank.D;
+                        }
+                        else if dr == "E" {
+                            sd.Rank = MusicRank.E;
+                        }
+                        else
+                        {
+                            sd.Rank = MusicRank.Noplay;
+                        }
                     }
                     else
                     {
-                        sd.Rank = MusicRank.Noplay;
+                        return false;
                     }
                 }
-                else
+                else {
+                    return false
+                }
+                print("5")
+                cmp = "<th>ハイスコア</th><td>";
+                if let rs = src.range(of: cmp) {
+                    var dr = String(src[rs.upperBound...])
+                    cmp = "</td>";
+                    if let rs = dr.range(of: cmp) {
+                        dr = String(dr[..<rs.lowerBound])
+                        if let di = Int(dr) {
+                            sd.Score = Int32(di);
+                        }
+                        else {
+                            return false
+                        }
+                    }
+                    else {
+                        return false
+                    }
+                }
+                else {
+                    return false
+                }
+                print("4")
+                cmp = "<th>最大コンボ数</th><td>";
+                if let rs = src.range(of: cmp) {
+                    var dr = String(src[rs.upperBound...])
+                    cmp = "</td>";
+                    if let rs = dr.range(of: cmp) {
+                        dr = String(dr[..<rs.lowerBound])
+                        if let di = Int(dr) {
+                            sd.MaxCombo = Int32(di);
+                        }
+                        else {
+                            return false
+                        }
+                    }
+                    else {
+                        return false
+                    }
+                }
+                else {
+                    return false
+                }
+                print("3")
+                if(rparam_RivalId == nil)
                 {
-                    return false;
-                }
-            }
-            else {
-                return false
-            }
-            print("5")
-            cmp = "<th>ハイスコア</th><td>";
-            if let rs = src.range(of: cmp) {
-                var dr = String(src[rs.upperBound...])
-                cmp = "</td>";
-                if let rs = dr.range(of: cmp) {
-                    dr = String(dr[..<rs.lowerBound])
-                    if let di = Int(dr) {
-                        sd.Score = Int32(di);
-                    }
-                    else {
-                        return false
-                    }
-                }
-                else {
-                    return false
-                }
-            }
-            else {
-                return false
-            }
-            print("4")
-            cmp = "<th>最大コンボ数</th><td>";
-            if let rs = src.range(of: cmp) {
-                var dr = String(src[rs.upperBound...])
-                cmp = "</td>";
-                if let rs = dr.range(of: cmp) {
-                    dr = String(dr[..<rs.lowerBound])
-                    if let di = Int(dr) {
-                        sd.MaxCombo = Int32(di);
-                    }
-                    else {
-                        return false
-                    }
-                }
-                else {
-                    return false
-                }
-            }
-            else {
-                return false
-            }
-            print("3")
-            if(rparam_RivalId == nil)
-            {
-                cmp = "<th>フルコンボ種別</th><td>";
-                if let rs = src.range(of: cmp) {
-                    var dr = String(src[rs.upperBound...])
-                    cmp = "</td>";
-                    if let rs = dr.range(of: cmp) {
-                        dr = String(dr[..<rs.lowerBound])
-                        if dr == "グッドフルコンボ" {
-                            sd.FullComboType_ = FullComboType.GoodFullCombo;
-                        }
-                        else if dr == "グレートフルコンボ" {
-                            sd.FullComboType_ = FullComboType.FullCombo;
-                        }
-                        else if dr == "パーフェクトフルコンボ" {
-                            sd.FullComboType_ = FullComboType.PerfectFullCombo;
-                        }
-                        else if dr == "マーベラスフルコンボ" {
-                            sd.FullComboType_ = FullComboType.MarvelousFullCombo;
+                    cmp = "<th>フルコンボ種別</th><td>";
+                    if let rs = src.range(of: cmp) {
+                        var dr = String(src[rs.upperBound...])
+                        cmp = "</td>";
+                        if let rs = dr.range(of: cmp) {
+                            dr = String(dr[..<rs.lowerBound])
+                            if dr == "グッドフルコンボ" {
+                                sd.FullComboType_ = FullComboType.GoodFullCombo;
+                            }
+                            else if dr == "グレートフルコンボ" {
+                                sd.FullComboType_ = FullComboType.FullCombo;
+                            }
+                            else if dr == "パーフェクトフルコンボ" {
+                                sd.FullComboType_ = FullComboType.PerfectFullCombo;
+                            }
+                            else if dr == "マーベラスフルコンボ" {
+                                sd.FullComboType_ = FullComboType.MarvelousFullCombo;
+                            }
+                            else {
+                                sd.FullComboType_ = FullComboType.None;
+                            }
                         }
                         else {
-                            sd.FullComboType_ = FullComboType.None;
+                            return false;
                         }
                     }
                     else {
                         return false;
                     }
-                }
-                else {
-                    return false;
-                }
-                cmp = "<th>プレー回数</th><td>";
-                if let rs = src.range(of: cmp) {
-                    var dr = String(src[rs.upperBound...])
-                    cmp = "</td>";
-                    if let rs = dr.range(of: cmp) {
-                        dr = String(dr[..<rs.lowerBound])
-                        if let di = Int(dr) {
-                            sd.PlayCount = Int32(di);
+                    cmp = "<th>プレー回数</th><td>";
+                    if let rs = src.range(of: cmp) {
+                        var dr = String(src[rs.upperBound...])
+                        cmp = "</td>";
+                        if let rs = dr.range(of: cmp) {
+                            dr = String(dr[..<rs.lowerBound])
+                            if let di = Int(dr) {
+                                sd.PlayCount = Int32(di);
+                            }
+                            else {
+                                return false
+                            }
+                        }
+                        else {
+                            return false
+                        }
+                    }
+                    else {
+                        return false
+                    }
+                    cmp = "<th>クリア回数</th><td>";
+                    if let rs = src.range(of: cmp) {
+                        var dr = String(src[rs.upperBound...])
+                        cmp = "</td>";
+                        if let rs = dr.range(of: cmp) {
+                            dr = String(dr[..<rs.lowerBound])
+                            if let di = Int(dr) {
+                                sd.ClearCount = Int32(di);
+                            }
+                            else {
+                                return false
+                            }
                         }
                         else {
                             return false
@@ -359,59 +382,36 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                         return false
                     }
                 }
-                else {
-                    return false
-                }
-                cmp = "<th>クリア回数</th><td>";
-                if let rs = src.range(of: cmp) {
-                    var dr = String(src[rs.upperBound...])
-                    cmp = "</td>";
-                    if let rs = dr.range(of: cmp) {
-                        dr = String(dr[..<rs.lowerBound])
-                        if let di = Int(dr) {
-                            sd.ClearCount = Int32(di);
+                else{
+                    cmp = "<th>フルコンボ種別</th><td>";
+                    if let rs = src.range(of: cmp) {
+                        var dr = String(src[rs.upperBound...])
+                        cmp = "</td>";
+                        if let rs = dr.range(of: cmp) {
+                            dr = String(dr[..<rs.lowerBound])
+                            if dr == "グッドフルコンボ" {
+                                sd.FullComboType_ = FullComboType.GoodFullCombo;
+                            }
+                            else if dr == "グレートフルコンボ" {
+                                sd.FullComboType_ = FullComboType.FullCombo;
+                            }
+                            else if dr == "パーフェクトフルコンボ" {
+                                sd.FullComboType_ = FullComboType.PerfectFullCombo;
+                            }
+                            else if dr == "マーベラスフルコンボ" {
+                                sd.FullComboType_ = FullComboType.MarvelousFullCombo;
+                            }
+                            else {
+                                sd.FullComboType_ = FullComboType.None;
+                            }
                         }
                         else {
-                            return false
-                        }
-                    }
-                    else {
-                        return false
-                    }
-                }
-                else {
-                    return false
-                }
-            }
-            else{
-                cmp = "<th>フルコンボ種別</th><td>";
-                if let rs = src.range(of: cmp) {
-                    var dr = String(src[rs.upperBound...])
-                    cmp = "</td>";
-                    if let rs = dr.range(of: cmp) {
-                        dr = String(dr[..<rs.lowerBound])
-                        if dr == "グッドフルコンボ" {
-                            sd.FullComboType_ = FullComboType.GoodFullCombo;
-                        }
-                        else if dr == "グレートフルコンボ" {
-                            sd.FullComboType_ = FullComboType.FullCombo;
-                        }
-                        else if dr == "パーフェクトフルコンボ" {
-                            sd.FullComboType_ = FullComboType.PerfectFullCombo;
-                        }
-                        else if dr == "マーベラスフルコンボ" {
-                            sd.FullComboType_ = FullComboType.MarvelousFullCombo;
-                        }
-                        else {
-                            sd.FullComboType_ = FullComboType.None;
+                            return false;
                         }
                     }
                     else {
                         return false;
                     }
-                }
-                else {
-                    return false;
                 }
             }
         }
@@ -682,7 +682,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             sleep(3)
             var current: Int = 0
             let count: Int = self.rparam_Targets.count
-            
+            let loadFromWORLD = self.mPreferences.Gate_LoadFromA3
             for target in self.rparam_Targets {
                 
                 self.mTarget = target
@@ -694,31 +694,30 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                         self.addLog(" (" + current.description + "/" + count.description + ") " + self.mTarget.Pattern.rawValue + " : " + self.rparam_MusicData[self.mTarget.MusicId]!.Name + "\r\n")
                         if let wid = self.mWebMusicIds[self.mTarget.MusicId] {
                             self.mWebMusicId = wid
-                            let patternInt: Int32 =
-                            self.mTarget.Pattern == PatternType.bSP ? 0 :
-                            self.mTarget.Pattern == PatternType.BSP ? 1 :
-                            self.mTarget.Pattern == PatternType.DSP ? 2 :
-                            self.mTarget.Pattern == PatternType.ESP ? 3 :
-                            self.mTarget.Pattern == PatternType.CSP ? 4 :
-                            self.mTarget.Pattern == PatternType.BDP ? 5 :
-                            self.mTarget.Pattern == PatternType.DDP ? 6 :
-                            self.mTarget.Pattern == PatternType.EDP ? 7 :
-                            self.mTarget.Pattern == PatternType.CDP ? 8 :
-                            0;
                             self.mRequestUri = "https://p.eagate.573.jp/game/ddr/"
-                            if(self.mPreferences.Gate_LoadFromA3)
+                            if(loadFromWORLD)
                             {
                                 self.mRequestUri += "ddrworld/"
                             }
                             else{
                                 self.mRequestUri += "ddra3/p/"
                             }
+                            
+                            let patternInt: Int32 = self.getPatternInt(patternType: self.mTarget.Pattern)
                             if(self.rparam_RivalId == nil)
                             {
-                                self.mRequestUri += "playdata/music_detail.html?index="+wid.idOnWebPage+"&diff="+patternInt.description;
+                                self.mRequestUri += "playdata/music_detail.html?index="+wid.idOnWebPage
+                                
+                                if (loadFromWORLD) {
+                                    let style = self.getStyleInt(patternType: self.mTarget.Pattern).description
+                                    self.mRequestUri += "&style="+style+"&difficulty="+patternInt.description
+                                } else {
+                                    self.mRequestUri += "&diff="+patternInt.description;
+                                }
                             }
                             else
                             {
+                                // TODO ここ＋＝じゃなくていいんか？
                                 self.mRequestUri = "rival/music_detail.html?index="+wid.idOnWebPage+"&diff="+patternInt.description+"&rival_id="+self.rparam_RivalId;
                             }
                             print(self.mRequestUri as Any)
@@ -783,7 +782,60 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 })
             }
         })
+    }
+    
+    private func getPatternInt(patternType : PatternType) -> Int32 {
+        let patternValue: Int32
+        if (self.mPreferences.Gate_LoadFromA3) {
+            switch patternType {
+            case .bSP:
+                patternValue = 0
+            case .BSP, .BDP:
+                patternValue = 1
+            case .DSP, .DDP:
+                patternValue = 2
+            case .ESP, .EDP:
+                patternValue = 3
+            case .CSP, .CDP:
+                patternValue = 4
+            }
+        } else {
+            switch patternType {
+            case .bSP:
+                patternValue = 0
+            case .BSP:
+                patternValue = 1
+            case .DSP:
+                patternValue = 2
+            case .ESP:
+                patternValue = 3
+            case .CSP:
+                patternValue = 4
+            case .BDP:
+                patternValue = 5
+            case .DDP:
+                patternValue = 6
+            case .EDP:
+                patternValue = 7
+            case .CDP:
+                patternValue = 8
+            }
+        }
         
+        return patternValue
+    }
+    
+    private func getStyleInt(patternType: PatternType) -> Int32 {
+        let styleValue: Int32
+
+        switch patternType {
+        case .bSP, .BSP, .DSP, .ESP, .CSP:
+            styleValue = 0
+        case .BDP, .DDP, .EDP, .CDP:
+            styleValue = 1
+        }
+
+        return styleValue
     }
     
     @available(iOS 8.0, *)

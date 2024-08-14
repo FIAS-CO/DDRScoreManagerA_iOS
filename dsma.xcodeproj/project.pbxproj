@@ -19,6 +19,11 @@
 		184BBF442C69D7F500C77EE9 /* WorldSiteDataDouble.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF432C69D7F500C77EE9 /* WorldSiteDataDouble.html */; };
 		184BBF462C69F79400C77EE9 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF452C69F79400C77EE9 /* GameMode.swift */; };
 		184BBF482C6B70E900C77EE9 /* WorldSiteDataDetail.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF472C6B70E900C77EE9 /* WorldSiteDataDetail.html */; };
+		184BBF4A2C6B7C3500C77EE9 /* WorldSiteDataDetail_AAp_GFC_NoRank.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF492C6B7C3500C77EE9 /* WorldSiteDataDetail_AAp_GFC_NoRank.html */; };
+		184BBF4C2C6B7E4100C77EE9 /* WorldSiteDataDetail_AA_LIFE4_FlareIX.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF4B2C6B7E4100C77EE9 /* WorldSiteDataDetail_AA_LIFE4_FlareIX.html */; };
+		184BBF4E2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF4D2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html */; };
+		184BBF502C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF4F2C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html */; };
+		184BBF522C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF512C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html */; };
 		184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C65262C394D720041BF98 /* FileReaderTests.swift */; };
 		184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C652C2C3966E80041BF98 /* OldScoreData.txt */; };
 		184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */; };
@@ -167,6 +172,11 @@
 		184BBF432C69D7F500C77EE9 /* WorldSiteDataDouble.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDouble.html; sourceTree = "<group>"; };
 		184BBF452C69F79400C77EE9 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		184BBF472C6B70E900C77EE9 /* WorldSiteDataDetail.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail.html; sourceTree = "<group>"; };
+		184BBF492C6B7C3500C77EE9 /* WorldSiteDataDetail_AAp_GFC_NoRank.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_AAp_GFC_NoRank.html; sourceTree = "<group>"; };
+		184BBF4B2C6B7E4100C77EE9 /* WorldSiteDataDetail_AA_LIFE4_FlareIX.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_AA_LIFE4_FlareIX.html; sourceTree = "<group>"; };
+		184BBF4D2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_Noplay.html; sourceTree = "<group>"; };
+		184BBF4F2C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_Ap_GdFc_FlareEX.html; sourceTree = "<group>"; };
+		184BBF512C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_E.html; sourceTree = "<group>"; };
 		184C65192C3946C90041BF98 /* DDR SM ATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DDR SM ATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184C65262C394D720041BF98 /* FileReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderTests.swift; sourceTree = "<group>"; };
 		184C652C2C3966E80041BF98 /* OldScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldScoreData.txt; sourceTree = "<group>"; };
@@ -372,9 +382,13 @@
 			isa = PBXGroup;
 			children = (
 				1834A8ED2C6652E800B9B28A /* HtmlParseUtilTest.swift */,
+				184BBF492C6B7C3500C77EE9 /* WorldSiteDataDetail_AAp_GFC_NoRank.html */,
 				1834A8EF2C66531A00B9B28A /* WorldSiteDataSingle.html */,
 				184BBF432C69D7F500C77EE9 /* WorldSiteDataDouble.html */,
 				184BBF472C6B70E900C77EE9 /* WorldSiteDataDetail.html */,
+				184BBF4B2C6B7E4100C77EE9 /* WorldSiteDataDetail_AA_LIFE4_FlareIX.html */,
+				184BBF4D2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html */,
+				184BBF4F2C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html */,
 			);
 			path = file;
 			sourceTree = "<group>";
@@ -387,6 +401,7 @@
 				184C652C2C3966E80041BF98 /* OldScoreData.txt */,
 				188971BF2C3A17050058DCE2 /* NewScoreData.txt */,
 				184C65262C394D720041BF98 /* FileReaderTests.swift */,
+				184BBF512C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html */,
 			);
 			path = "DDR SM ATests";
 			sourceTree = "<group>";
@@ -764,9 +779,14 @@
 			files = (
 				1834A8F02C66531A00B9B28A /* WorldSiteDataSingle.html in Resources */,
 				184BBF442C69D7F500C77EE9 /* WorldSiteDataDouble.html in Resources */,
+				184BBF502C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html in Resources */,
 				184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */,
+				184BBF4E2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html in Resources */,
+				184BBF522C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html in Resources */,
 				188971C02C3A17050058DCE2 /* NewScoreData.txt in Resources */,
+				184BBF4C2C6B7E4100C77EE9 /* WorldSiteDataDetail_AA_LIFE4_FlareIX.html in Resources */,
 				184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */,
+				184BBF4A2C6B7C3500C77EE9 /* WorldSiteDataDetail_AAp_GFC_NoRank.html in Resources */,
 				184BBF482C6B70E900C77EE9 /* WorldSiteDataDetail.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

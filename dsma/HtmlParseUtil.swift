@@ -202,10 +202,17 @@ public class HtmlParseUtil {
         
         // タイトルの確認
         let titleElement = try doc.select("table#music_info td").last()
-        let title = try titleElement?.text().trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let fullTitle = try titleElement?.html().trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let titleComponents = fullTitle.components(separatedBy: "<br />")
+        let title = titleComponents.first?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let escapedTitle = StringUtilLng.escapeWebMusicTitle(src: title)
         if escapedTitle != webMusicId.titleOnWebPage {
             throw ParseError.musicIdMismatch(webTitle: webMusicId.titleOnWebPage, pageTitle: escapedTitle)
+        }
+        
+        // "NO PLAY..." の確認
+        if let noPlayElement = try? doc.select("body").text(), noPlayElement.contains("NO PLAY...") {
+            return ScoreData()  // デフォルトの ScoreData を返す
         }
         
         // スコアデータのパース
@@ -227,9 +234,21 @@ public class HtmlParseUtil {
     }
     
     private static func parseScore(_ doc: Document) throws -> Int32 {
-        let scoreElement = try doc.select("th:contains(ハイスコア) + td").first()
-        let scoreText = try scoreElement?.text() ?? "0"
-        return Int32(scoreText) ?? 0
+        let thElements = try doc.select("th")
+        
+        for th in thElements {
+            if try th.text().trimmingCharacters(in: .whitespacesAndNewlines) == "ハイスコア" {
+                // 完全一致する th 要素が見つかった場合、その次の兄弟 td 要素を取得
+                if let scoreElement = try th.nextElementSibling() {
+                    let scoreText = try scoreElement.text()
+                    print("Score Element Text: \(scoreText)")  // デバッグ用
+                    return Int32(scoreText) ?? 0
+                }
+            }
+        }
+        
+        print("Score Element not found")  // デバッグ用
+        return 0
     }
     
     private static func parseMaxCombo(_ doc: Document) throws -> Int32 {
@@ -242,8 +261,12 @@ public class HtmlParseUtil {
         // フルコンボ種別の解析
         let fcElements = try doc.select("#clear_detail_table tr[id^='fc_']")
         for element in fcElements {
-            let fcTypeText = try element.select("th").text()
-            let fcCount = try Int(element.select("td").text()) ?? 0
+            // 各行の <th> 要素のテキストと <td> 要素のテキストを取得
+            let fcTypeText = try element.select("th").text().trimmingCharacters(in: .whitespacesAndNewlines)
+            let fcCountText = try element.select("td").text().trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let fcCount = Int(fcCountText) ?? 0
+            
             if fcCount > 0 {
                 switch fcTypeText {
                 case "マーベラスフルコンボ": return .MarvelousFullCombo
@@ -257,7 +280,9 @@ public class HtmlParseUtil {
         
         // LIFE4の解析
         let life4Element = try doc.select("#clear_detail_table tr#clear_life4")
-        let life4Count = try Int(life4Element.select("td").text()) ?? 0
+        let life4CountText = try life4Element.select("td").text().trimmingCharacters(in: .whitespacesAndNewlines)
+        let life4Count = Int(life4CountText) ?? 0
+        
         if life4Count > 0 {
             return .Life4
         }
@@ -291,7 +316,7 @@ public class HtmlParseUtil {
         case "III": return 3
         case "II": return 2
         case "I": return 1
-        default: return 0
+        default: return -1
         }
     }
     enum ParseError: Error {
