@@ -97,7 +97,6 @@
 		8AA9D7ED1B4D5E520001ECFE /* ViewMyList_Select.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA9D7EC1B4D5E520001ECFE /* ViewMyList_Select.storyboard */; };
 		8AA9D7EF1B4D604A0001ECFE /* ViewMenuMusicSelected.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA9D7EE1B4D604A0001ECFE /* ViewMenuMusicSelected.storyboard */; };
 		8AA9D7F11B4D61480001ECFE /* ViewScoreList_SameTitle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA9D7F01B4D61480001ECFE /* ViewScoreList_SameTitle.storyboard */; };
-		8AB4C2771CF3D18D001B02F4 /* StringUtilLng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB4C2761CF3D18D001B02F4 /* StringUtilLng.swift */; };
 		8AB4C27B1CF40AE8001B02F4 /* ViewCopyFormatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB4C27A1CF40AE8001B02F4 /* ViewCopyFormatList.swift */; };
 		8ABA798A1B4DF26E00880817 /* ViewSubCategorySelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ABA79891B4DF26E00880817 /* ViewSubCategorySelect.storyboard */; };
 		8ABA798C1B4E064300880817 /* MusicSortRecent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABA798B1B4E064300880817 /* MusicSortRecent.swift */; };
@@ -282,7 +281,6 @@
 		8AB113C51CC6ECA6008A58AD /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ViewDdrSa.strings; sourceTree = "<group>"; };
 		8AB113C61CC6ECA6008A58AD /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ViewDdrSaAuthenticate.strings; sourceTree = "<group>"; };
 		8AB113C71CC6ECA6008A58AD /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8AB4C2761CF3D18D001B02F4 /* StringUtilLng.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtilLng.swift; sourceTree = "<group>"; };
 		8AB4C27A1CF40AE8001B02F4 /* ViewCopyFormatList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCopyFormatList.swift; sourceTree = "<group>"; };
 		8ABA6EDE1B6DC2FD00D602F3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ViewDirectEdit.strings; sourceTree = "<group>"; };
 		8ABA79891B4DF26E00880817 /* ViewSubCategorySelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewSubCategorySelect.storyboard; sourceTree = "<group>"; };
@@ -665,7 +663,6 @@
 				8A16E40B1B26738A00372D68 /* maker */,
 				8A16E4081B25704D00372D68 /* file */,
 				8AFD01EE1B2284F4006500A0 /* StringUtil.swift */,
-				8AB4C2761CF3D18D001B02F4 /* StringUtilLng.swift */,
 				8A9693661B5498550025E229 /* Admob.swift */,
 				8AD4E13B1B6702B9007DF84D /* ActionSheet.swift */,
 				8AD4E13F1B6755BF007DF84D /* TextAlertView.swift */,
@@ -1005,7 +1002,6 @@
 				8AA8DACA1BA68883008733ED /* MgrView.swift in Sources */,
 				8AFD01EF1B2284F4006500A0 /* StringUtil.swift in Sources */,
 				8AE467511B3BD26C00D58C5A /* Preferences.swift in Sources */,
-				8AB4C2771CF3D18D001B02F4 /* StringUtilLng.swift in Sources */,
 				8AFCB83B1B539250009133F9 /* ViewMenuRival.swift in Sources */,
 				184DD9D82BD56A9A006FB282 /* RealmUtil.swift in Sources */,
 				8AFCB8331B51FDBA009133F9 /* RivalData.swift in Sources */,
@@ -1408,7 +1404,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24081401;
+				CURRENT_PROJECT_VERSION = 24081801;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1423,7 +1419,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.71;
+				MARKETING_VERSION = 0.72;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;
@@ -1442,7 +1438,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24081401;
+				CURRENT_PROJECT_VERSION = 24081801;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1457,7 +1453,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.71;
+				MARKETING_VERSION = 0.72;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;

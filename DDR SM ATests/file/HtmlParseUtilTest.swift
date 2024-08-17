@@ -230,6 +230,21 @@ class HtmlParseUtilTests: XCTestCase {
         } else {
             XCTFail("Song '春を告げる' not found")
         }
+        
+        //Afterimage d'automne シングルクォーテーションのテスト
+        
+        if let songEntry = result.first(where: { $0.musicName == "Afterimage d'automne" }) {
+            if let expertScore = songEntry.scores.first(where: { $0.difficultyId == "expert" }) {
+                XCTAssertEqual(expertScore.score, 980370)
+                XCTAssertEqual(expertScore.rank, .AAp)
+                XCTAssertEqual(expertScore.fullComboType, .FullCombo)
+                XCTAssertEqual(expertScore.flareRank, -1) // フレアランクなし
+            } else {
+                XCTFail("EXPERT score for 'Afterimage d'automne' not found")
+            }
+        } else {
+            XCTFail("Song 'Afterimage d'automne' not found")
+        }
     }
     
     func testParseMusicListDouble() {

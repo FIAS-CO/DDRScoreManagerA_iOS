@@ -201,13 +201,15 @@ public class HtmlParseUtil {
         var sd = ScoreData()
         
         // タイトルの確認
-        let titleElement = try doc.select("table#music_info td").last()
-        let fullTitle = try titleElement?.html().trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        let titleComponents = fullTitle.components(separatedBy: "<br />")
-        let title = titleComponents.first?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        let escapedTitle = StringUtilLng.escapeWebMusicTitle(src: title)
-        if escapedTitle != webMusicId.titleOnWebPage {
-            throw ParseError.musicIdMismatch(webTitle: webMusicId.titleOnWebPage, pageTitle: escapedTitle)
+        if let titleElement = try doc.select("table#music_info td").last(),
+           let titleNode = titleElement.childNode(0) as? TextNode {
+            let title = titleNode.text().trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if title != webMusicId.titleOnWebPage {
+                throw ParseError.musicNameMismatch(webTitle: webMusicId.titleOnWebPage, pageTitle: title)
+            }
+        } else {
+            throw ParseError.parsingFailed(description: "Title element or text node not found.")
         }
         
         // "NO PLAY..." の確認
@@ -322,7 +324,8 @@ public class HtmlParseUtil {
     enum ParseError: Error {
         case unableToDetermineGameMode
         
-        case musicIdMismatch(webTitle: String, pageTitle: String)
+        case parsingFailed(description: String)
+        case musicNameMismatch(webTitle: String, pageTitle: String)
         case elementNotFound(String)
         case invalidValue(String)
     }

@@ -165,6 +165,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             do {
                 sd = try HtmlParseUtil.parseMusicDetailForWorld(src: src, webMusicId: mWebMusicId)
             } catch {
+                self.addLog(NSLocalizedString("Data could not be retrieved.", comment: "ViewFromGate"))
                 // sd = ScoreData()
             }
         } else {
@@ -174,7 +175,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 cmp = "<br>";
                 if let rs = dr.range(of: cmp) {
                     dr = String(dr[..<rs.lowerBound]).trimmingCharacters(in: CharacterSet.whitespaces)
-                    dr = StringUtilLng.escapeWebMusicTitle(src: dr)
                     if dr != mWebMusicId.titleOnWebPage {
                         self.addLog(NSLocalizedString("Music ID is different on GATE server.", comment: "ViewFromGate"))
                         self.addLog(NSLocalizedString("Please report to us.", comment: "ViewFromGate"))
@@ -593,7 +593,16 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     }
     
     func didFinishLoad(_ url: String, html: String) {
-        let res = analyzeScore(html)
+        let checkLoggedIn = StringUtil.checkLoggedIn(html)
+        let res: Bool
+
+        if checkLoggedIn == 0 {
+            // checkLoggedIn が 0 の場合は analyzeScore を実行
+            res = analyzeScore(html)
+        } else {
+            // それ以外の場合は res を false に設定
+            res = false
+        }
         DispatchQueue.main.async(execute: {
             if res || self.mCancel {
                 self.mRetry = false
@@ -602,7 +611,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 self.addLog(NSLocalizedString("Done.", comment: "ViewFromGate"))
             }
             else {
-                switch StringUtil.checkLoggedIn(html) {
+                switch checkLoggedIn {
                 case 0:
                     self.mRetry = false
                     self.mRetryCount = 3

@@ -183,7 +183,10 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 var scoreExists = false
                 
                 for entry in musicEntries {
-                    guard let mi = mLocalIds[entry.musicName] else { continue }
+                    guard let mi = mLocalIds[entry.musicName] else {
+                        print(entry.musicName + "has no data")
+                        continue
+                    }
                     let musicIdSaved = mi
                     
                     var musicScore = mScoreList[musicIdSaved] ?? MusicScore()
@@ -272,7 +275,6 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                 else {
                     continue
                 }
-                musicName = StringUtilLng.escapeWebMusicTitle(src: musicName)
                 var musicIdSaved: Int32
                 if let li = mLocalIds[musicName] {
                     musicIdSaved = li

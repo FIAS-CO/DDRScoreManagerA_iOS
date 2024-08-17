@@ -6,11 +6,7 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-이제 DDR WORLD 공식 페이지에서 곡 데이터를 가져올 수 있습니다! 그러나 다음 기능은 아직 A3에서 가져오고 있으며, 향후 업데이트에서 개선될 예정입니다:
-
-- 최신 곡 데이터 (곧 지원 예정)
-- 플레이어 정보 (현재 사용 불가/곧 지원 예정)
-- 라이벌 정보 (공식 페이지에서 지원하지 않음)";
+일부 곡 데이터가 가져와지지 않는 버그를 수정했습니다.";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 연동";
@@ -477,6 +473,9 @@
 
 /* ViewFromGate */
 "Music ID is different on GATE server." = "곡 ID가 GATE 서버와 다릅니다.";
+
+/* ViewFromGate */
+"Data could not be retrieved." = "미해금, 미플레이, 삭제되었거나 기타 이유로 인해 데이터를 가져올 수 없습니다.";
 
 /* ViewFromGate */
 "Please report to us." = "제작자에게 알려주시기 바랍니다.";
