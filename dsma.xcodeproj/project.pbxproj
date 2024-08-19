@@ -24,6 +24,8 @@
 		184BBF4E2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF4D2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html */; };
 		184BBF502C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF4F2C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html */; };
 		184BBF522C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF512C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html */; };
+		184BBF542C732E4F00C77EE9 /* RecentParseUtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF532C732E4F00C77EE9 /* RecentParseUtilTest.swift */; };
+		184BBF562C73312600C77EE9 /* HtmlRecentParseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF552C73312600C77EE9 /* HtmlRecentParseUtil.swift */; };
 		184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C65262C394D720041BF98 /* FileReaderTests.swift */; };
 		184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C652C2C3966E80041BF98 /* OldScoreData.txt */; };
 		184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */; };
@@ -176,6 +178,8 @@
 		184BBF4D2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_Noplay.html; sourceTree = "<group>"; };
 		184BBF4F2C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_Ap_GdFc_FlareEX.html; sourceTree = "<group>"; };
 		184BBF512C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_E.html; sourceTree = "<group>"; };
+		184BBF532C732E4F00C77EE9 /* RecentParseUtilTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentParseUtilTest.swift; sourceTree = "<group>"; };
+		184BBF552C73312600C77EE9 /* HtmlRecentParseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlRecentParseUtil.swift; sourceTree = "<group>"; };
 		184C65192C3946C90041BF98 /* DDR SM ATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DDR SM ATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184C65262C394D720041BF98 /* FileReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderTests.swift; sourceTree = "<group>"; };
 		184C652C2C3966E80041BF98 /* OldScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldScoreData.txt; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 				184BBF3F2C67257200C77EE9 /* MusicEntry.swift */,
 				184BBF412C6725A200C77EE9 /* DifficultyScore.swift */,
 				184BBF452C69F79400C77EE9 /* GameMode.swift */,
+				184BBF552C73312600C77EE9 /* HtmlRecentParseUtil.swift */,
 			);
 			name = html;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				184BBF4B2C6B7E4100C77EE9 /* WorldSiteDataDetail_AA_LIFE4_FlareIX.html */,
 				184BBF4D2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html */,
 				184BBF4F2C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html */,
+				184BBF532C732E4F00C77EE9 /* RecentParseUtilTest.swift */,
 			);
 			path = file;
 			sourceTree = "<group>";
@@ -977,6 +983,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184BBF542C732E4F00C77EE9 /* RecentParseUtilTest.swift in Sources */,
 				1834A8EE2C6652E800B9B28A /* HtmlParseUtilTest.swift in Sources */,
 				184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */,
 			);
@@ -1004,6 +1011,7 @@
 				8AE467511B3BD26C00D58C5A /* Preferences.swift in Sources */,
 				8AFCB83B1B539250009133F9 /* ViewMenuRival.swift in Sources */,
 				184DD9D82BD56A9A006FB282 /* RealmUtil.swift in Sources */,
+				184BBF562C73312600C77EE9 /* HtmlRecentParseUtil.swift in Sources */,
 				8AFCB8331B51FDBA009133F9 /* RivalData.swift in Sources */,
 				8AFD01CD1B200B80006500A0 /* ScoreListItem.swift in Sources */,
 				8AFD01E01B2164E3006500A0 /* PatternType.swift in Sources */,
