@@ -684,6 +684,9 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         mScoreList = FileReader.readScoreList(rparam_RivalId)
         
         addLog(NSLocalizedString("Target: ", comment: "ViewFromGate") + (rparam_RivalId == nil ? NSLocalizedString("My scores.", comment: "ViewFromGate") : (rparam_RivalName + " (" + rparam_RivalId + ")" )))
+        
+        let versionName = self.mPreferences.Gate_LoadFromNewSite ? " WORLD" : " A3"
+        addLog(NSLocalizedString("Version: ", comment: "ViewFromGateList") + versionName)
         addLog(NSLocalizedString("Loading scores started.", comment: "ViewFromGate"))
         
         OperationQueue().addOperation({ () -> Void in
