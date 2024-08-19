@@ -51,7 +51,7 @@
 "ynX-cO-MaN.text" = "表示項目";
 
 /* Class = "UILabel"; text = "Load From A3"; ObjectID = "rm9-iL-cCi"; */
-"rm9-iL-cCi.text" = "A3 のスコアを取得する";
+"rm9-iL-cCi.text" = "WORLD のスコアを取得する";
 
 /* Class = "UILabel"; text = "Flare Rank"; ObjectID = "ItN-JR-bpr"; */
 "ItN-JR-bpr.text" = "フレアランク";

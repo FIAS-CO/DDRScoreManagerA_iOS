@@ -6,8 +6,7 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-- 統計機能にフレアランクの集計機能を追加しました
-- その他、軽微な修正を行いました";
+一部の楽曲データが取得できないバグを修正しました";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 連携";
@@ -215,6 +214,10 @@
 /* ViewFromGate
  ViewFromGateList */
 "Target: " = "ターゲット: ";
+
+/* ViewFromGate
+ ViewFromGateList */
+"Version: " = "バージョン: ";
 
 /* ViewDdrSaAuthenticate
  ViewDdrSaExport
@@ -470,6 +473,9 @@
 
 /* ViewFromGate */
 "Music ID is different on GATE server." = "楽曲IDがGATEサーバと異なっています";
+
+/* ViewFromGate */
+"Data could not be retrieved." = "未プレイ、削除済みなどの理由でデータが取得できませんでした。";
 
 /* ViewFromGate */
 "Please report to us." = "製作者に報告をお願いします";

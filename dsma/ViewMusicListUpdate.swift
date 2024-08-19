@@ -300,7 +300,7 @@ class ViewMusicListUpdate: UIViewController, URLSessionDownloadDelegate, UINavig
                             } catch _ {
                             }
                             do {
-                                try (StringUtilLng.escapeWebMusicTitle(src: wmns as String) as NSString).write(toFile: (libraryDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
+                                try wmns.write(toFile: (libraryDirPath as NSString).appendingPathComponent("WebMusicIds.txt"), atomically: true, encoding: String.Encoding.utf8.rawValue)
                             } catch _ {
                             }
                         }

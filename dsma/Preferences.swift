@@ -16,7 +16,7 @@ struct Preferences {
     var VisibleItems_FlareRank: Bool = false
     var VisibleItems_FlareSkill: Bool = false
     
-    var Gate_LoadFromA3: Bool = true
+    var Gate_LoadFromNewSite: Bool = true
     var Gate_SetPfcScore: Int32 = 999990
     var Gate_OverWriteLife4: Bool = false
     var Gate_OverWriteLowerScores: Bool = true

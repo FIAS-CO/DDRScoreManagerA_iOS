@@ -6,7 +6,7 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-- 통계 기능에 플레어 랭크 집계 기능을 추가하고 기타 사소한 수정 작업을 완료했습니다.";
+일부 곡 데이터가 가져와지지 않는 버그를 수정했습니다.";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 연동";
@@ -214,6 +214,10 @@
 /* ViewFromGate
  ViewFromGateList */
 "Target: " = "타겟: ";
+
+/* ViewFromGate
+ ViewFromGateList */
+"Version: " = "버전: ";
 
 /* ViewDdrSaAuthenticate
  ViewDdrSaExport
@@ -469,6 +473,9 @@
 
 /* ViewFromGate */
 "Music ID is different on GATE server." = "곡 ID가 GATE 서버와 다릅니다.";
+
+/* ViewFromGate */
+"Data could not be retrieved." = "미해금, 미플레이, 삭제되었거나 기타 이유로 인해 데이터를 가져올 수 없습니다.";
 
 /* ViewFromGate */
 "Please report to us." = "제작자에게 알려주시기 바랍니다.";

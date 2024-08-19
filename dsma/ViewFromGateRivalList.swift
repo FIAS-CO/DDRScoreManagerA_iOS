@@ -284,7 +284,7 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
                 DispatchQueue.main.async(execute: {
                     self.addLog(NSLocalizedString("Loading rival list page.", comment: "ViewFromGateRivalList"))
                     self.mRequestUri = "https://p.eagate.573.jp/game/ddr/"
-                    if self.mPreferences.Gate_LoadFromA3{
+                    if self.mPreferences.Gate_LoadFromNewSite{
                         self.mRequestUri += "ddra3/p/rival/index.html"
                     }
                     else{

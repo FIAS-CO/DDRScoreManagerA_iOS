@@ -50,7 +50,7 @@
 "ynX-cO-MaN.text" = "표시 항목";
 
 /* Class = "UILabel"; text = "Load From A3"; ObjectID = "rm9-iL-cCi"; */
-"rm9-iL-cCi.text" = "A3 점수 받기";
+"rm9-iL-cCi.text" = "WORLD 점수 받기";
 
 /* Class = "UILabel"; text = "Flare Rank"; ObjectID = "ItN-JR-bpr"; */
 "ItN-JR-bpr.text" = "Flare Rank";
