@@ -26,6 +26,7 @@
 		184BBF522C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF512C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html */; };
 		184BBF542C732E4F00C77EE9 /* RecentParseUtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF532C732E4F00C77EE9 /* RecentParseUtilTest.swift */; };
 		184BBF562C73312600C77EE9 /* HtmlRecentParseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF552C73312600C77EE9 /* HtmlRecentParseUtil.swift */; };
+		184BBF582C772F3A00C77EE9 /* GameVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF572C772F3A00C77EE9 /* GameVersion.swift */; };
 		184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C65262C394D720041BF98 /* FileReaderTests.swift */; };
 		184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C652C2C3966E80041BF98 /* OldScoreData.txt */; };
 		184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */; };
@@ -180,6 +181,7 @@
 		184BBF512C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_E.html; sourceTree = "<group>"; };
 		184BBF532C732E4F00C77EE9 /* RecentParseUtilTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentParseUtilTest.swift; sourceTree = "<group>"; };
 		184BBF552C73312600C77EE9 /* HtmlRecentParseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlRecentParseUtil.swift; sourceTree = "<group>"; };
+		184BBF572C772F3A00C77EE9 /* GameVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVersion.swift; sourceTree = "<group>"; };
 		184C65192C3946C90041BF98 /* DDR SM ATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DDR SM ATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184C65262C394D720041BF98 /* FileReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderTests.swift; sourceTree = "<group>"; };
 		184C652C2C3966E80041BF98 /* OldScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldScoreData.txt; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				8AFCB8321B51FDBA009133F9 /* RivalData.swift */,
 				8A9B47BE1BA257890080FF8D /* PlayerStatus.swift */,
 				8A10063C1CBB80380000BFD9 /* RecentData.swift */,
+				184BBF572C772F3A00C77EE9 /* GameVersion.swift */,
 			);
 			name = value;
 			sourceTree = "<group>";
@@ -1061,6 +1064,7 @@
 				8AD4E1421B676AA0007DF84D /* MessageAlertView.swift in Sources */,
 				8AFD01DC1B213FB4006500A0 /* FullComboType.swift in Sources */,
 				8A16E4071B25240700372D68 /* ViewMusicListUpdate.swift in Sources */,
+				184BBF582C772F3A00C77EE9 /* GameVersion.swift in Sources */,
 				8A41B6FF1B4414B10094B1FE /* ViewGateLogin.swift in Sources */,
 				1812A5992C6636F900461931 /* HtmlParseUtil.swift in Sources */,
 				8A0DC88C1B33A98C00F162B7 /* ViewSortTypeSetting.swift in Sources */,

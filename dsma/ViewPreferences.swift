@@ -34,6 +34,7 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
+    @IBOutlet weak var versionSelectControl: UISegmentedControl!
     @IBOutlet weak var gateLoadFromNewSite: UISwitch!
     @IBOutlet weak var gateOverWriteLowerScores: UISwitch!
     @IBOutlet weak var gateOverWriteLife4: UISwitch!
@@ -105,6 +106,17 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
         mPreferences.Gate_OverWriteLife4 = gateOverWriteLife4.isOn
     }
     
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        if let selectedTitle = sender.titleForSegment(at: sender.selectedSegmentIndex),
+           let selectedItem = GameVersion(rawValue: selectedTitle) {
+            print("\(selectedItem.rawValue) selected")
+            // ここで選択されたitemに応じた処理を行う
+            mPreferences.Gate_LoadFrom = selectedItem
+        } else {
+            print("Unknown segment selected")
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         mPreferences = Preferences()
         super.init(coder: aDecoder)
@@ -120,7 +132,8 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
     }
     
     func setPreferenceData() {
-        gateLoadFromNewSite.isOn = mPreferences.Gate_LoadFromNewSite
+        //        gateLoadFromNewSite.isOn = mPreferences.Gate_LoadFromNewSite
+        selectSegment(mPreferences.Gate_LoadFrom)
         gateOverWriteLowerScores.isOn = mPreferences.Gate_OverWriteLowerScores
         gateOverWriteLife4.isOn = mPreferences.Gate_OverWriteLife4
         visibleItemsMaxCombo.isOn = mPreferences.VisibleItems_MaxCombo
@@ -173,11 +186,38 @@ class ViewPreferences: UIViewController, UINavigationBarDelegate, UIBarPositioni
         scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
         scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         
+        setupSegmentedControl()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupSegmentedControl() {
+        versionSelectControl.removeAllSegments()
+        
+        for (index, item) in GameVersion.allCases.enumerated() {
+            versionSelectControl.insertSegment(withTitle: item.rawValue, at: index, animated: false)
+        }
+        
+        versionSelectControl.selectedSegmentIndex = 0
+        //        selectedItem = .world  // デフォルト値を設定
+        
+        versionSelectControl.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
+        versionSelectControl.selectedSegmentTintColor = UIColor(red: 0.0, green: 0.4, blue: 0.8, alpha: 1.0)
+        versionSelectControl.setTitleTextAttributes([.foregroundColor: UIColor(white: 0.8, alpha: 1.0)], for: .normal)
+        versionSelectControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+    }
+    
+    func selectSegment(_ item: GameVersion) {
+        if let index = GameVersion.allCases.firstIndex(of: item) {
+            versionSelectControl.selectedSegmentIndex = index
+            print("\(item.rawValue) selected programmatically")
+            // ここで選択されたitemに応じた処理を行う
+        } else {
+            print("Failed to select \(item.rawValue)")
+        }
     }
 }
 

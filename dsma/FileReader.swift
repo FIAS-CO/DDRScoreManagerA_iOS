@@ -97,6 +97,7 @@ struct FileReader{
         
         // キー名を変えるの微妙に大変なのでこのまま
         sfm.putBool("Gate_LoadFromA3", value: pref.Gate_LoadFromNewSite)
+        sfm.putString("Gate_LoadFrom", value: pref.Gate_LoadFrom.rawValue)
         sfm.putInt32("Gate_SetPfcScore", value: pref.Gate_SetPfcScore)
         sfm.putBool("Gate_OverWriteLife4", value: pref.Gate_OverWriteLife4)
         sfm.putBool("Gate_OverWriteLowerScores", value: pref.Gate_OverWriteLowerScores)
@@ -121,6 +122,8 @@ struct FileReader{
             pref.Gate_OverWriteLife4 = sfm.getBool("Gate_OverWriteLife4", def: false)
             pref.Gate_OverWriteLowerScores = sfm.getBool("Gate_OverWriteLowerScores", def: true)
             pref.Gate_OverWriteFullCombo = sfm.getBool("Gate_OverWriteFullCombo", def: true)
+            let defalutVersion = pref.Gate_LoadFromNewSite ? "WORLD": "A3"
+            pref.Gate_LoadFrom = GameVersion.fromString(sfm.getString("Gate_LoadFrom", def: defalutVersion))
         }
         return pref
     }

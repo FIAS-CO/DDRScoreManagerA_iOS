@@ -16,9 +16,12 @@ struct Preferences {
     var VisibleItems_FlareRank: Bool = false
     var VisibleItems_FlareSkill: Bool = false
     
+    // Gate_LoadFrom導入に伴い実質廃止
     var Gate_LoadFromNewSite: Bool = true
     var Gate_SetPfcScore: Int32 = 999990
     var Gate_OverWriteLife4: Bool = false
     var Gate_OverWriteLowerScores: Bool = true
     var Gate_OverWriteFullCombo: Bool = true
+    
+    var Gate_LoadFrom: GameVersion = .world
 }
