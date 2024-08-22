@@ -6,7 +6,7 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-一部の楽曲データが取得できないバグを修正しました";
+RecentページでWORLDの情報を取得できるようにしました";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 連携";

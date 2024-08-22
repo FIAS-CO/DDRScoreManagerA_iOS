@@ -1412,7 +1412,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24081801;
+				CURRENT_PROJECT_VERSION = 24081901;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1427,7 +1427,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.72;
+				MARKETING_VERSION = 0.73;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;
@@ -1446,7 +1446,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24081801;
+				CURRENT_PROJECT_VERSION = 24081901;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1461,7 +1461,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.72;
+				MARKETING_VERSION = 0.73;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;
