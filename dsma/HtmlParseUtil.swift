@@ -133,8 +133,6 @@ public class HtmlParseUtil {
         }
         
         let flareRankSrc = try? flareRankElement.attr("src")
-        if flareRankSrc?.contains("flare_nodisp") == true { return -1 }
-        if flareRankSrc?.contains("flare_none") == true { return -1 }
         if flareRankSrc?.contains("flare_1") == true { return 1 }
         if flareRankSrc?.contains("flare_2") == true { return 2 }
         if flareRankSrc?.contains("flare_3") == true { return 3 }
@@ -145,7 +143,12 @@ public class HtmlParseUtil {
         if flareRankSrc?.contains("flare_8") == true { return 8 }
         if flareRankSrc?.contains("flare_9") == true { return 9 }
         if flareRankSrc?.contains("flare_ex") == true { return 10 }
-        return 0
+        
+        let flareSkill = Int(try! flareSkillElement?.text() ?? "0") ?? 0
+        
+        if flareRankSrc?.contains("flare_nodisp") == true { return flareSkill > 0 ? 0 : -1 }
+        if flareRankSrc?.contains("flare_none") == true { return flareSkill > 0 ? 0 : -1 }
+        return flareSkill > 0 ? 0 : -1
     }
     
     private static func getRank(rankElement: Element?, score: Int) -> MusicRank {
@@ -307,6 +310,11 @@ public class HtmlParseUtil {
     private static func parseFlareRank(_ doc: Document) throws -> Int32 {
         let flareRankElement = try doc.select("th:contains(フレアランク) + td").first()
         let flareRankText = try flareRankElement?.text() ?? ""
+        
+        let flareSkillElement = try doc.select("th:contains(フレアスキル) + td").first()
+        let flareSkillText = try flareSkillElement?.text() ?? "0"
+        let flareSkill = Int(flareSkillText) ?? 0
+        
         switch flareRankText {
         case "EX": return 10
         case "IX": return 9
@@ -318,9 +326,12 @@ public class HtmlParseUtil {
         case "III": return 3
         case "II": return 2
         case "I": return 1
-        default: return -1
+        default:
+            // フレアランクがない場合でもフレアスキルが0より大きければRank0とする
+            return flareSkill > 0 ? 0 : -1
         }
     }
+    
     enum ParseError: Error {
         case unableToDetermineGameMode
         

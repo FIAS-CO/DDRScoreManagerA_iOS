@@ -27,6 +27,7 @@
 		184BBF542C732E4F00C77EE9 /* RecentParseUtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF532C732E4F00C77EE9 /* RecentParseUtilTest.swift */; };
 		184BBF562C73312600C77EE9 /* HtmlRecentParseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF552C73312600C77EE9 /* HtmlRecentParseUtil.swift */; };
 		184BBF582C772F3A00C77EE9 /* GameVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF572C772F3A00C77EE9 /* GameVersion.swift */; };
+		184BBF5A2C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF592C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html */; };
 		184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C65262C394D720041BF98 /* FileReaderTests.swift */; };
 		184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C652C2C3966E80041BF98 /* OldScoreData.txt */; };
 		184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */; };
@@ -182,6 +183,7 @@
 		184BBF532C732E4F00C77EE9 /* RecentParseUtilTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentParseUtilTest.swift; sourceTree = "<group>"; };
 		184BBF552C73312600C77EE9 /* HtmlRecentParseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlRecentParseUtil.swift; sourceTree = "<group>"; };
 		184BBF572C772F3A00C77EE9 /* GameVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVersion.swift; sourceTree = "<group>"; };
+		184BBF592C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_Rank0.html; sourceTree = "<group>"; };
 		184C65192C3946C90041BF98 /* DDR SM ATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DDR SM ATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184C65262C394D720041BF98 /* FileReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderTests.swift; sourceTree = "<group>"; };
 		184C652C2C3966E80041BF98 /* OldScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldScoreData.txt; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				184BBF4D2C6CA8C500C77EE9 /* WorldSiteDataDetail_Noplay.html */,
 				184BBF4F2C6CAA8B00C77EE9 /* WorldSiteDataDetail_Ap_GdFc_FlareEX.html */,
 				184BBF532C732E4F00C77EE9 /* RecentParseUtilTest.swift */,
+				184BBF592C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html */,
 			);
 			path = file;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				184BBF4C2C6B7E4100C77EE9 /* WorldSiteDataDetail_AA_LIFE4_FlareIX.html in Resources */,
 				184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */,
 				184BBF4A2C6B7C3500C77EE9 /* WorldSiteDataDetail_AAp_GFC_NoRank.html in Resources */,
+				184BBF5A2C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html in Resources */,
 				184BBF482C6B70E900C77EE9 /* WorldSiteDataDetail.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1416,7 +1420,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24081901;
+				CURRENT_PROJECT_VERSION = 24082303;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1431,7 +1435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.73;
+				MARKETING_VERSION = 0.74;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;
@@ -1450,7 +1454,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24081901;
+				CURRENT_PROJECT_VERSION = 24082303;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1465,7 +1469,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.73;
+				MARKETING_VERSION = 0.74;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;

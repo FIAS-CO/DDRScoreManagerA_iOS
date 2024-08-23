@@ -245,6 +245,19 @@ class HtmlParseUtilTests: XCTestCase {
         } else {
             XCTFail("Song 'Afterimage d'automne' not found")
         }
+        
+        if let songEntry = result.first(where: { $0.musicName == "蒼が消えるとき" }) {
+            if let score = songEntry.scores.first(where: { $0.difficultyId == "difficult" }) {
+                XCTAssertEqual(score.score, 999640)
+                XCTAssertEqual(score.rank, .AAA)
+                XCTAssertEqual(score.fullComboType, .PerfectFullCombo)
+                XCTAssertEqual(score.flareRank, 0) // フレアランクなし
+            } else {
+                XCTFail("EXPERT score for 'Afterimage d'automne' not found")
+            }
+        } else {
+            XCTFail("Song 'Afterimage d'automne' not found")
+        }
     }
     
     func testParseMusicListDouble() {
@@ -373,6 +386,27 @@ class HtmlParseUtilTests: XCTestCase {
             XCTAssertEqual(scoreData.PlayCount, 1)
             XCTAssertEqual(scoreData.ClearCount, 0)
             XCTAssertEqual(scoreData.flareRank, -1)
+        } catch {
+            XCTFail("Failed to parse music detail: \(error)")
+        }
+    }
+    
+    func testParseMusicDetailForWorld_Rank0() {
+        do {
+            let webMusicId = WebMusicId()
+            webMusicId.titleOnWebPage = "蒼が消えるとき"
+            webMusicId.idOnWebPage = "dummy"
+            
+            let content = loadHTMLContent(fileName: "WorldSiteDataDetail_Rank0") ?? ""
+            let scoreData = try HtmlParseUtil.parseMusicDetailForWorld(src: content, webMusicId: webMusicId)
+            
+            XCTAssertEqual(scoreData.Rank, .AAA)
+            XCTAssertEqual(scoreData.Score, 999640)
+            XCTAssertEqual(scoreData.MaxCombo, 323)
+            XCTAssertEqual(scoreData.FullComboType_, .PerfectFullCombo)
+            XCTAssertEqual(scoreData.PlayCount, 4)
+            XCTAssertEqual(scoreData.ClearCount, 4)
+            XCTAssertEqual(scoreData.flareRank, 0)
         } catch {
             XCTFail("Failed to parse music detail: \(error)")
         }
