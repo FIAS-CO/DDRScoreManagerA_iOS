@@ -161,10 +161,24 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         var sd = ScoreData();
         let src = srcHtml;
         
-        if (self.mPreferences.Gate_LoadFromNewSite) {
+        if (self.mPreferences.Gate_LoadFrom == GameVersion.world) {
             do {
                 sd = try HtmlParseUtil.parseMusicDetailForWorld(src: src, webMusicId: mWebMusicId)
-            } catch {
+            } catch let error as HtmlParseUtil.ParseError {
+                switch error {
+                case .musicNameMismatch(let webTitle, let pageTitle):
+                    self.addLog(NSLocalizedString("Music ID is different on GATE server.", comment: "ViewFromGate"))
+                    self.addLog(NSLocalizedString("Please report to us.", comment: "ViewFromGate"))
+                    self.addLog(mWebMusicId.titleOnWebPage)
+                    self.addLog("↓")
+                    self.addLog(pageTitle)
+                    self.addLog(NSLocalizedString("Skipped.", comment: "ViewFromGate"))
+                    return true;
+                default:
+                    self.addLog(NSLocalizedString("Data could not be retrieved.", comment: "ViewFromGate"))
+                }
+            }
+            catch {
                 self.addLog(NSLocalizedString("Data could not be retrieved.", comment: "ViewFromGate"))
                 // sd = ScoreData()
             }
@@ -195,9 +209,18 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             cmp = "NO PLAY...";
             print("1")
             if src.range(of: cmp) == nil {
-                
-                cmp = "<th>ハイスコア時のランク</th><td>";
-                
+                if(self.mPreferences.Gate_LoadFrom == GameVersion.a3)
+                {
+                    cmp = "<th>ハイスコア時のランク</th><td>";
+                }
+                else {
+                    if rparam_RivalId == nil {
+                        cmp = "<th>ハイスコア時のダンスレベル</th><td>";
+                    }
+                    else {
+                        cmp = "<th>最高ダンスレベル</th><td>";
+                    }
+                }
                 print("2")
                 if let rs = src.range(of: cmp) {
                     print("2.5")
@@ -685,7 +708,15 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
         
         addLog(NSLocalizedString("Target: ", comment: "ViewFromGate") + (rparam_RivalId == nil ? NSLocalizedString("My scores.", comment: "ViewFromGate") : (rparam_RivalName + " (" + rparam_RivalId + ")" )))
         
-        let versionName = self.mPreferences.Gate_LoadFromNewSite ? " WORLD" : " A3"
+        let versionName: String
+        switch(self.mPreferences.Gate_LoadFrom) {
+        case .world:
+            versionName = "WORLD"
+        case .a3:
+            versionName = "A3"
+        case .a20plus:
+            versionName = "A20PLUS"
+        }
         addLog(NSLocalizedString("Version: ", comment: "ViewFromGateList") + versionName)
         addLog(NSLocalizedString("Loading scores started.", comment: "ViewFromGate"))
         
@@ -694,7 +725,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
             sleep(3)
             var current: Int = 0
             let count: Int = self.rparam_Targets.count
-            let loadFromWORLD = self.mPreferences.Gate_LoadFromNewSite
             for target in self.rparam_Targets {
                 
                 self.mTarget = target
@@ -707,12 +737,15 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                         if let wid = self.mWebMusicIds[self.mTarget.MusicId] {
                             self.mWebMusicId = wid
                             self.mRequestUri = "https://p.eagate.573.jp/game/ddr/"
-                            if(loadFromWORLD)
+                            if(self.mPreferences.Gate_LoadFrom == GameVersion.world)
                             {
                                 self.mRequestUri += "ddrworld/"
                             }
-                            else{
+                            else if(self.mPreferences.Gate_LoadFrom == GameVersion.a3)
+                            {
                                 self.mRequestUri += "ddra3/p/"
+                            } else {
+                                self.mRequestUri += "ddra20/p/"
                             }
                             
                             let patternInt: Int32 = self.getPatternInt(patternType: self.mTarget.Pattern)
@@ -720,7 +753,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                             {
                                 self.mRequestUri += "playdata/music_detail.html?index="+wid.idOnWebPage
                                 
-                                if (loadFromWORLD) {
+                                if (self.mPreferences.Gate_LoadFrom == GameVersion.world) {
                                     let style = self.getStyleInt(patternType: self.mTarget.Pattern).description
                                     self.mRequestUri += "&style="+style+"&difficulty="+patternInt.description
                                 } else {
@@ -798,7 +831,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     
     private func getPatternInt(patternType : PatternType) -> Int32 {
         let patternValue: Int32
-        if (self.mPreferences.Gate_LoadFromNewSite) {
+        if (self.mPreferences.Gate_LoadFrom == .world) {
             switch patternType {
             case .bSP:
                 patternValue = 0

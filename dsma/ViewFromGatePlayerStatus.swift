@@ -335,7 +335,8 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
                 DispatchQueue.main.async(execute: {
                     self.addLog(NSLocalizedString("Loading player status page.", comment: "ViewFromGatePlayerStatus"))
                     self.mRequestUri = "https://p.eagate.573.jp/game/ddr/"
-                    if self.mPreferences.Gate_LoadFromNewSite{
+                    // TODO ライバルが解放されたら対応
+                    if self.mPreferences.Gate_LoadFrom != .a20plus {
                         self.mRequestUri += "ddra3/p/playdata/index.html"
                     }
                     else{

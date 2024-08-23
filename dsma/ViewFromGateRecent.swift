@@ -128,7 +128,7 @@ class ViewFromGateRecent: UIViewController, UINavigationBarDelegate, UIBarPositi
     var buttonCancel: UIBarButtonItem!
     
     func analyzeRecent(_ src: String) -> (Bool) {
-        if self.mPreferences.Gate_LoadFromNewSite{
+        if self.mPreferences.Gate_LoadFrom == .world{
             return analyzeRecentForWorld(src)
         }
         return analyzeRecentForAx(src)
@@ -271,7 +271,15 @@ class ViewFromGateRecent: UIViewController, UINavigationBarDelegate, UIBarPositi
         
         addLog(NSLocalizedString("Loading recent started.", comment: "ViewFromGateRecent"))
         
-        let versionName = self.mPreferences.Gate_LoadFromNewSite ? " WORLD" : " A3"
+        let versionName: String
+        switch(self.mPreferences.Gate_LoadFrom) {
+        case .world:
+            versionName = "WORLD"
+        case .a3:
+            versionName = "A3"
+        case .a20plus:
+            versionName = "A20PLUS"
+        }
         addLog(NSLocalizedString("Version: ", comment: "ViewFromGateList") + versionName)
         
         mLocalIds = FileReader.readWebIdToLocalIdList()
@@ -285,13 +293,16 @@ class ViewFromGateRecent: UIViewController, UINavigationBarDelegate, UIBarPositi
                 DispatchQueue.main.async(execute: {
                     self.addLog(NSLocalizedString("Loading recent page.", comment: "ViewFromGateRecent"))
                     self.mRequestUri = "https://p.eagate.573.jp/game/ddr/"
-                    if self.mPreferences.Gate_LoadFromNewSite{
+                    
+                    switch(self.mPreferences.Gate_LoadFrom) {
+                    case .world:
                         self.mRequestUri += "ddrworld/playdata/music_recent.html"
-                    }
-                    else{
+                    case .a3:
                         self.mRequestUri += "ddra3/p/playdata/music_recent.html"
+                    case .a20plus:
+                        self.mRequestUri += "ddra20/p/playdata/music_recent.html"
                     }
-                    print(self.mPreferences.Gate_LoadFromNewSite)
+                    
                     let url: URL = URL(string: (self.mRequestUri))!
                     let request: URLRequest = URLRequest(url: url)
                     self.wkWebView.load(request)

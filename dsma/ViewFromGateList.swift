@@ -177,7 +177,7 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
     var buttonResume: UIBarButtonItem!
     
     func analyzeScore(_ src: String) -> (Bool) {
-        if (self.mPreferences.Gate_LoadFromNewSite) {
+        if (self.mPreferences.Gate_LoadFrom == .world) {
             do {
                 let (gameMode, musicEntries) = try HtmlParseUtil.parseMusicList(src: src)
                 var scoreExists = false
@@ -751,7 +751,15 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
         mScoreList = FileReader.readScoreList(rparam_RivalId)
         mLocalIds = FileReader.readWebTitleToLocalIdList()
         
-        let versionName = self.mPreferences.Gate_LoadFromNewSite ? " WORLD" : " A3"
+        let versionName: String
+        switch(self.mPreferences.Gate_LoadFrom) {
+        case .world: 
+            versionName = "WORLD"
+        case .a3:
+            versionName = "A3"
+        case .a20plus:
+            versionName = "A20PLUS"
+        }
         addLog(NSLocalizedString("Version: ", comment: "ViewFromGateList") + versionName)
         addLog(NSLocalizedString("Loading scores started.", comment: "ViewFromGateList"))
         
@@ -766,12 +774,15 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                     DispatchQueue.main.async(execute: {
                         self.addLog("SP : " + (i+1).description + " / " + (self.mPageCount == 1 ? "?" : self.mPageCount.description) + "\r\n")
                         self.mUriH = "https://p.eagate.573.jp/game/ddr/"
-                        if self.mPreferences.Gate_LoadFromNewSite{
+                        switch(self.mPreferences.Gate_LoadFrom) {
+                        case .world:
                             self.mUriH += "ddrworld/"
-                        }
-                        else{
+                        case .a3:
                             self.mUriH += "ddra3/p/"
+                        case .a20plus:
+                            self.mUriH += "ddra20/p/"
                         }
+                        
                         if self.rparam_RivalId == nil {
                             self.mUriH += "playdata/music_data_single.html?offset=";
                             self.mUriF = "";
@@ -834,11 +845,13 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                     DispatchQueue.main.async(execute: {
                         self.addLog("DP : " + (i+1).description + " / " + (self.mPageCount == 1 ? "?" : self.mPageCount.description) + "\r\n")
                         self.mUriH = "https://p.eagate.573.jp/game/ddr/"
-                        if self.mPreferences.Gate_LoadFromNewSite{
+                        switch(self.mPreferences.Gate_LoadFrom) {
+                        case .world:
                             self.mUriH += "ddrworld/"
-                        }
-                        else{
+                        case .a3:
                             self.mUriH += "ddra3/p/"
+                        case .a20plus:
+                            self.mUriH += "ddra20/p/"
                         }
                         if self.rparam_RivalId == nil {
                             self.mUriH += "playdata/music_data_double.html?offset=";
