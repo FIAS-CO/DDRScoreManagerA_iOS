@@ -28,7 +28,6 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
     @IBOutlet weak var navigationBar: UINavigationBar!
-    //@IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var tableView: UITableView!
     
     var wkWebView: WKWebView!
@@ -70,7 +69,6 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
                 let th = Double(thr.height)
                 let tci = self.tableView.contentInset
                 let tcit = Double(tci.top)
-                //let cp = CGPoint(x: 0, y: (lh < th - tcit ? 0 - tcit : lh - th))
                 var ths = Double(0)
                 if #available(iOS 11.0, *) {
                     ths = Double(self.view.safeAreaInsets.top)

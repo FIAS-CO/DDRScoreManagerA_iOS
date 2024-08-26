@@ -20,20 +20,16 @@ class ViewPlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPosition
     }
     
     var rparam_ProcessPool: WKProcessPool!
-
+    
     @IBOutlet weak var adView: UIView!
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
-    //@IBOutlet weak var viewMgr: MgrView!
-    
     @IBOutlet weak var labelPlayerName: UILabel!
     @IBOutlet weak var labelDdrCode: UILabel!
     @IBOutlet weak var labelArea: UILabel!
-    //@IBOutlet weak var labelEnjoyLevel: UILabel!
-    //@IBOutlet weak var labelEnjoyLevelNext: UILabel!
     @IBOutlet weak var labelPlayCount: UILabel!
     @IBOutlet weak var labelLastPlay: UILabel!
     @IBOutlet weak var labelSpClass: UILabel!
@@ -49,18 +45,13 @@ class ViewPlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPosition
     
     func setPlayerStatus() {
         let ps = FileReader.readPlayerStatus()
-        //viewMgr.setData(ps)
         labelPlayerName.text = ps.DancerName
         labelDdrCode.text = ps.DdrCode
         labelArea.text = ps.Todofuken
-        //labelEnjoyLevel.text = ps.EnjoyLevel.description
-        //labelEnjoyLevelNext.text = "(Next: "+ps.EnjoyLevelNextExp.description+")"
         labelPlayCount.text = ps.PlayCount.description
         labelLastPlay.text = ps.LastPlay
-        //labelSpClass.text = ps.SingleShougou
         labelSpPlayCount.text = ps.SinglePlayCount.description
         labelSpLastPlay.text = ps.SingleLastPlay
-        //labelDpClass.text = ps.DoubleShougou
         labelDpPlayCount.text = ps.DoublePlayCount.description
         labelDpLastPlay.text = ps.DoubleLastPlay
     }
@@ -88,7 +79,7 @@ class ViewPlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPosition
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -98,7 +89,7 @@ class ViewPlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPosition
         
         buttonStop = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.stop, target: self, action: #selector(ViewPlayerStatus.stopButtonTouched(_:)))
         buttonRefresh = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(ViewPlayerStatus.refreshButtonTouched(_:)))
-
+        
         self.title = "Player Status"
         adView.addSubview(Admob.getAdBannerView(self))
         
@@ -110,13 +101,11 @@ class ViewPlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPosition
         scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         
         setPlayerStatus()
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
 
