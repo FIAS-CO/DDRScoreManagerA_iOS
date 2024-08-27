@@ -10,6 +10,11 @@ import UIKit
 import WebKit
 import GoogleMobileAds
 
+// ダイアログが閉じた時にViewPlayerStatusで画面を更新する用
+protocol ModalViewControllerDelegate: AnyObject {
+    func modalViewControllerDidDismiss()
+}
+
 class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPositioningDelegate, UIWebViewDelegate, WKNavigationDelegate, UITableViewDataSource, UITableViewDelegate, LoginViewOpener, GADBannerViewDelegate {
     
     static func checkOut(_ processPool: WKProcessPool) -> (ViewFromGatePlayerStatus) {
@@ -19,6 +24,8 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
         return ret
     }
     
+    weak var delegate: ModalViewControllerDelegate?
+
     var rparam_ProcessPool: WKProcessPool!
     
     var mPreferences: Preferences
@@ -33,12 +40,12 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
     var wkWebView: WKWebView!
     
     required init?(coder aDecoder: NSCoder) {
-        mPreferences = Preferences()
+        mPreferences = FileReader.readPreferences()//Preferences()
         super.init(coder: aDecoder)
     }
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        mPreferences = Preferences()
+        mPreferences = FileReader.readPreferences()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -128,9 +135,21 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
     func analyzePlayerStatus(_ src: String) -> (Bool) {
         
         let cmpTdEnd = "</td>";
-        let cmpDancerName = "<th>ダンサーネーム</th><td>";
+        let cmpDancerName: String
+        let cmpTodofuken: String
+        if self.mPreferences.Gate_LoadFrom == .world {
+            cmpDancerName = "DANCER NAME</th><td>"
+            cmpTodofuken = "<th>所属エリア</th><td>";
+        }
+        else if self.mPreferences.Gate_LoadFrom == .a3 {
+            cmpDancerName = "<th>ダンサーネーム</th><td>"
+            cmpTodofuken = "<th>所属都道府県</th><td>";
+        }
+        else{
+            cmpDancerName = "<th>ダンサーネーム</th><td>"
+            cmpTodofuken = "<th>所属都道府県</th><td>";
+        }
         let cmpDdrCode = "<th>DDR-CODE</th><td>";
-        let cmpTodofuken = "<th>所属都道府県</th><td>";
         let cmpPlayCount = "<th>総プレー回数</th><td>";
         let cmpPlayCountEnd = "回"
         let cmpLastPlay = "<th>最終プレー日時</th><td>";
@@ -192,6 +211,16 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
             else{ return false }
         }
         else{ return false }
+        
+        if self.mPreferences.Gate_LoadFrom != .a20plus {
+            playerStatus.SinglePlayCount = 0
+            playerStatus.SingleLastPlay = ""
+            playerStatus.DoublePlayCount = 0
+            playerStatus.DoubleLastPlay = ""
+            
+            FileReader.savePlayerStatus(playerStatus)
+            return true
+        }
         
         let cmpOPlayCount = "<th>プレー回数</th><td>";
         let cmpOLastPlay = "<th>最終プレー日時</th><td>";
@@ -320,6 +349,16 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
         navigationBar.delegate = self
         self.view.addSubview(wkWebView)
         
+        let versionName: String
+        switch(self.mPreferences.Gate_LoadFrom) {
+        case .world:
+            versionName = "WORLD"
+        case .a3:
+            versionName = "A3"
+        case .a20plus:
+            versionName = "A20PLUS"
+        }
+        addLog(NSLocalizedString("Version: ", comment: "ViewFromGateList") + versionName)
         addLog(NSLocalizedString("Loading player status started.", comment: "ViewFromGatePlayerStatus"))
         
         OperationQueue().addOperation({ () -> Void in
@@ -333,8 +372,10 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
                 DispatchQueue.main.async(execute: {
                     self.addLog(NSLocalizedString("Loading player status page.", comment: "ViewFromGatePlayerStatus"))
                     self.mRequestUri = "https://p.eagate.573.jp/game/ddr/"
-                    // TODO ライバルが解放されたら対応
-                    if self.mPreferences.Gate_LoadFrom != .a20plus {
+                    if self.mPreferences.Gate_LoadFrom == .world {
+                        self.mRequestUri += "ddrworld/playdata/index.html"
+                    }
+                    else if self.mPreferences.Gate_LoadFrom == .a3 {
                         self.mRequestUri += "ddra3/p/playdata/index.html"
                     }
                     else{
@@ -389,5 +430,10 @@ class ViewFromGatePlayerStatus: UIViewController, UINavigationBarDelegate, UIBar
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.modalViewControllerDidDismiss()
     }
 }

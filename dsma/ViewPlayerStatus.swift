@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import GoogleMobileAds
 
-class ViewPlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPositioningDelegate, GADBannerViewDelegate {
+class ViewPlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPositioningDelegate, GADBannerViewDelegate, ModalViewControllerDelegate {
     
     static func checkOut(_ processPool: WKProcessPool) -> (ViewPlayerStatus) {
         let storyboard = UIStoryboard(name: "ViewPlayerStatus", bundle: nil)
@@ -61,7 +61,14 @@ class ViewPlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPosition
     }
     
     @objc internal func refreshButtonTouched(_ sender: UIButton) {
-        present(ViewFromGatePlayerStatus.checkOut(self.rparam_ProcessPool), animated: true, completion: nil)
+        let viewControllerToPresent = ViewFromGatePlayerStatus.checkOut(self.rparam_ProcessPool)
+        viewControllerToPresent.delegate = self
+
+        present(viewControllerToPresent, animated: true, completion: {
+            
+                self.setPlayerStatus()
+            
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,6 +113,10 @@ class ViewPlayerStatus: UIViewController, UINavigationBarDelegate, UIBarPosition
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func modalViewControllerDidDismiss() {
+        setPlayerStatus()
     }
 }
 
