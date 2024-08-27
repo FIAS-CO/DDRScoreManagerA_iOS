@@ -6,8 +6,8 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-- データを取得するページをWORLD/A3/A20PLUSから選択できるようにしました。共通設定から選択可能です
-- フレアランクを設定せずプレイした楽曲のフレアランクが算出されるよう修正しました。お手数ですが、再度データの取得をお願いします";
+- プレイヤーステータス取得機能をWORLD/A3/A20PLUSに対応しました。
+- 軽微な修正を行いました。";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 連携";
