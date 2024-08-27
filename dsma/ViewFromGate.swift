@@ -506,6 +506,11 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                 sd.MaxCombo = msd.MaxCombo;
             }
             
+            // フレアランク関連
+            if sd.flareRank < msd.flareRank  {
+                sd.flareRank = msd.flareRank
+            }
+            
             // 元の値がMFC
             if(msd.FullComboType_ == FullComboType.MarvelousFullCombo)
             {
@@ -552,11 +557,6 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                     sd.FullComboType_ = msd.FullComboType_;
                 }
             }
-        }
-        
-        // フレアランク関連
-        if msd.flareRank > sd.flareRank {
-            sd.flareRank = msd.flareRank
         }
         
         switch(mTarget.Pattern) {
