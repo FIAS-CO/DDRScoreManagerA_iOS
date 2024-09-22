@@ -141,6 +141,7 @@ class ViewCategorySelect: UIViewController, UITableViewDataSource, UITableViewDe
         NSLocalizedString("from GATE (simple)", comment: "ViewCategorySelect"),
         NSLocalizedString("DDR SA", comment: "ViewCategorySelect"),
         NSLocalizedString("Manage Rivals", comment: "ViewCategorySelect"),
+        NSLocalizedString("FlareNoteUploader", comment: "ViewScoreList"),
     ]
     
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
@@ -174,6 +175,10 @@ class ViewCategorySelect: UIViewController, UITableViewDataSource, UITableViewDe
                 action = { ()->Void in self.present(ViewDdrSa.checkOut(), animated: true, completion: nil) }
             case NSLocalizedString("Manage Rivals", comment: "ViewCategorySelect"):
                 action = { ()->Void in self.present(ViewManageRivals.checkOut(nil, listItems: nil, fromMenu: true, processPool: self.processPool), animated: true, completion: nil) }
+            case NSLocalizedString("FlareNoteUploader", comment: "ViewScoreList"):
+                action = { ()->Void in
+                    self.present(FlareSkillNoteViewController(),animated: true, completion: nil)
+                }
             default:
                 action = { ()->Void in }
             }

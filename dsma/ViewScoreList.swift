@@ -409,7 +409,8 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         NSLocalizedString("from GATE (detail)", comment: "ViewScoreList"),
         NSLocalizedString("DDR SA", comment: "ViewScoreList"),
         NSLocalizedString("Random Pickup", comment: "ViewScoreList"),
-        NSLocalizedString("Manage Rivals", comment: "ViewScoreList"),
+        NSLocalizedString("Manage Rivals", comment: "ViewScoreList"),                
+        NSLocalizedString("FlareNoteUploader", comment: "ViewScoreList"),
     ]
     let actionSheetTextsSystemB = [
         NSLocalizedString("Preferences", comment: "ViewScoreList"),
@@ -418,6 +419,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         NSLocalizedString("from GATE (simple)", comment: "ViewScoreList"),
         NSLocalizedString("DDR SA", comment: "ViewScoreList"),
         NSLocalizedString("Manage Rivals", comment: "ViewScoreList"),
+        NSLocalizedString("FlareNoteUploader", comment: "ViewScoreList"),
     ]
     
     var mSelectedIndexForActionSheet = 0
@@ -1177,6 +1179,10 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                 action = { ()->Void in self.present(ViewScoreList.checkOut("Random Pickup", category: "Random Pickup", targets: self.mListItems, parentScoreList: self, processPool: self.rparam_ProcessPool), animated: true, completion: nil) }
             case NSLocalizedString("Manage Rivals", comment: "ViewScoreList"):
                 action = { ()->Void in self.present(ViewManageRivals.checkOut(self, listItems: self.mListItems, fromMenu: true, processPool: self.rparam_ProcessPool), animated: true, completion: nil) }
+            case NSLocalizedString("FlareNoteUploader", comment: "ViewScoreList"):
+                action = { ()->Void in
+                    self.present(FlareSkillNoteViewController(),animated: true, completion: nil)
+                }
             default:
                 action = { ()->Void in }
             }

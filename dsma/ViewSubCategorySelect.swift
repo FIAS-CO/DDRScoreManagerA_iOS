@@ -80,7 +80,8 @@ class ViewSubCategorySelect: UIViewController, UITableViewDataSource, UITableVie
         NSLocalizedString("Player Status", comment: "ViewSubCategorySelect"),
         NSLocalizedString("from GATE (simple)", comment: "ViewSubCategorySelect"),
         NSLocalizedString("DDR SA", comment: "ViewSubCategorySelect"),
-        NSLocalizedString("Manage Rivals", comment: "ViewSubCategorySelect"),
+        NSLocalizedString("Manage Rivals", comment: "ViewSubCategorySelect"),  
+        NSLocalizedString("FlareNoteUploader", comment: "ViewScoreList"),
     ]
     
     internal func cellTapAction(_ tableView: UITableView, indexPath: IndexPath) {
@@ -128,6 +129,10 @@ class ViewSubCategorySelect: UIViewController, UITableViewDataSource, UITableVie
                 action = { ()->Void in self.present(ViewDdrSa.checkOut(), animated: true, completion: nil) }
             case NSLocalizedString("Manage Rivals", comment: "ViewSubCategorySelect"):
                 action = { ()->Void in self.present(ViewManageRivals.checkOut(nil, listItems: nil, fromMenu: true, processPool: self.rparam_ProcessPool), animated: true, completion: nil) }
+            case NSLocalizedString("FlareNoteUploader", comment: "ViewScoreList"):
+                action = { ()->Void in
+                    self.present(FlareSkillNoteViewController(),animated: true, completion: nil)
+                }
             default:
                 action = { ()->Void in }
             }

@@ -28,6 +28,7 @@
 		184BBF562C73312600C77EE9 /* HtmlRecentParseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF552C73312600C77EE9 /* HtmlRecentParseUtil.swift */; };
 		184BBF582C772F3A00C77EE9 /* GameVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF572C772F3A00C77EE9 /* GameVersion.swift */; };
 		184BBF5A2C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF592C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html */; };
+		184BBF5C2C9FF36200C77EE9 /* ViewFlareNoteUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF5B2C9FF36200C77EE9 /* ViewFlareNoteUploader.swift */; };
 		184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C65262C394D720041BF98 /* FileReaderTests.swift */; };
 		184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C652C2C3966E80041BF98 /* OldScoreData.txt */; };
 		184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */; };
@@ -184,6 +185,7 @@
 		184BBF552C73312600C77EE9 /* HtmlRecentParseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlRecentParseUtil.swift; sourceTree = "<group>"; };
 		184BBF572C772F3A00C77EE9 /* GameVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVersion.swift; sourceTree = "<group>"; };
 		184BBF592C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDetail_Rank0.html; sourceTree = "<group>"; };
+		184BBF5B2C9FF36200C77EE9 /* ViewFlareNoteUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFlareNoteUploader.swift; sourceTree = "<group>"; };
 		184C65192C3946C90041BF98 /* DDR SM ATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DDR SM ATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184C65262C394D720041BF98 /* FileReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderTests.swift; sourceTree = "<group>"; };
 		184C652C2C3966E80041BF98 /* OldScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldScoreData.txt; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 				8AB4C27A1CF40AE8001B02F4 /* ViewCopyFormatList.swift */,
 				8AE105671B48BB8800329285 /* ViewDdrSa.swift */,
 				1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */,
+				184BBF5B2C9FF36200C77EE9 /* ViewFlareNoteUploader.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				184BBF462C69F79400C77EE9 /* GameMode.swift in Sources */,
 				8A16E4131B27180800372D68 /* SortOrder.swift in Sources */,
 				184BBF422C6725A200C77EE9 /* DifficultyScore.swift in Sources */,
+				184BBF5C2C9FF36200C77EE9 /* ViewFlareNoteUploader.swift in Sources */,
 				8A16E40F1B2714CC00372D68 /* MusicSort.swift in Sources */,
 				8A1456721B297AAF00DF786E /* SettingFileManager.swift in Sources */,
 				8AF27F881B3697640007B84E /* ViewMenuMusicSelected.swift in Sources */,
