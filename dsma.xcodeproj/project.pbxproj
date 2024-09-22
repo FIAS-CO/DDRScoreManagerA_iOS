@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18099F372CA0377C009C9995 /* TopFlareSkillProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18099F362CA0377C009C9995 /* TopFlareSkillProcessor.swift */; };
+		18099F382CA04144009C9995 /* TopFlareSkillProcessorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18099F332CA03738009C9995 /* TopFlareSkillProcessorTest.swift */; };
 		1812A5952C6119BA00461931 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1812A5942C6119BA00461931 /* GoogleService-Info.plist */; };
 		1812A5992C6636F900461931 /* HtmlParseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812A5982C6636F900461931 /* HtmlParseUtil.swift */; };
 		181B2BF52AA976DF00982212 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */; };
@@ -161,6 +163,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18099F332CA03738009C9995 /* TopFlareSkillProcessorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFlareSkillProcessorTest.swift; sourceTree = "<group>"; };
+		18099F362CA0377C009C9995 /* TopFlareSkillProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFlareSkillProcessor.swift; sourceTree = "<group>"; };
 		1812A5942C6119BA00461931 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1812A5982C6636F900461931 /* HtmlParseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlParseUtil.swift; sourceTree = "<group>"; };
 		181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
@@ -375,6 +379,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18099F322CA0370C009C9995 /* flarenote */ = {
+			isa = PBXGroup;
+			children = (
+				18099F332CA03738009C9995 /* TopFlareSkillProcessorTest.swift */,
+			);
+			path = flarenote;
+			sourceTree = "<group>";
+		};
+		18099F352CA03760009C9995 /* flarenote */ = {
+			isa = PBXGroup;
+			children = (
+				18099F362CA0377C009C9995 /* TopFlareSkillProcessor.swift */,
+			);
+			name = flarenote;
+			sourceTree = "<group>";
+		};
 		1812A5972C6636DE00461931 /* html */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +427,7 @@
 		184C651A2C3946C90041BF98 /* DDR SM ATests */ = {
 			isa = PBXGroup;
 			children = (
+				18099F322CA0370C009C9995 /* flarenote */,
 				1834A8EC2C6652D200B9B28A /* file */,
 				184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */,
 				184C652C2C3966E80041BF98 /* OldScoreData.txt */,
@@ -674,6 +695,7 @@
 		8AFD01EB1B2284D3006500A0 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				18099F352CA03760009C9995 /* flarenote */,
 				1812A5972C6636DE00461931 /* html */,
 				8A16E40B1B26738A00372D68 /* maker */,
 				8A16E4081B25704D00372D68 /* file */,
@@ -995,6 +1017,7 @@
 			files = (
 				184BBF542C732E4F00C77EE9 /* RecentParseUtilTest.swift in Sources */,
 				1834A8EE2C6652E800B9B28A /* HtmlParseUtilTest.swift in Sources */,
+				18099F382CA04144009C9995 /* TopFlareSkillProcessorTest.swift in Sources */,
 				184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1066,6 +1089,7 @@
 				8AE105681B48BB8800329285 /* ViewDdrSa.swift in Sources */,
 				185A413C2C4018C200ECB7FA /* FlareRank.swift in Sources */,
 				18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */,
+				18099F372CA0377C009C9995 /* TopFlareSkillProcessor.swift in Sources */,
 				8A0DC88E1B33FFDC00F162B7 /* ViewSubCategorySelect.swift in Sources */,
 				8AFD01EA1B217698006500A0 /* ScoreData.swift in Sources */,
 				8A41B7021B441C420094B1FE /* LoginViewOpener.swift in Sources */,
@@ -1434,7 +1458,7 @@
 					"${inherited}",
 				);
 				INFOPLIST_FILE = dsma/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1468,7 +1492,7 @@
 					"${inherited}",
 				);
 				INFOPLIST_FILE = dsma/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
