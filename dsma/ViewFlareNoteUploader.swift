@@ -16,21 +16,44 @@ class FlareSkillNoteViewController: UIViewController {
 }
 
 struct ViewFlareNoteUploader: View {
-    @State private var username: String = ""
+    @State private var userName: String = ""
     @State private var message: String = ""
     @State private var isUserRegistered: Bool = false
     @State private var userId: String = ""
     @State private var showHowToUse: Bool = false
+    @Environment(\.presentationMode) var presentationMode
     
     private let baseURL = "https://fnapi.fia-s.com/api"
     
     var body: some View {
+        
         ZStack {
             Color.black.opacity(1.0).edgesIgnoringSafeArea(.all)
             
             ScrollView {
                 VStack(spacing: 20) {
-                    TextField("ユーザー名を入力", text: $username)
+                    HStack {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.blue)
+                                .font(.system(size: 20, weight: .bold))
+                        }
+                        .frame(width: 44, height: 44)
+                        
+                        Spacer()
+                        
+                        Text("FlareNote Uploader")
+                            .foregroundColor(.white)
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        // 右側のスペースを確保するための空のビュー
+                        Color.clear.frame(width: 44, height: 44)
+                    }
+                    TextField("ユーザー名を入力", text: $userName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .disabled(isUserRegistered)
                         .foregroundColor(.black)
@@ -59,35 +82,44 @@ struct ViewFlareNoteUploader: View {
                             openURL("https://flarenote.fia-s.com")
                         }
                         .buttonStyle(SecondaryButtonStyle())
+                        .frame(maxWidth: .infinity)
                         
                         Button("ユーザーページ") {
-                            openURL("https://flarenote.fia-s.com/personal-skill/\(username)")
+                            openURL("https://flarenote.fia-s.com/personal-skill/\(userName)")
                         }
                         .buttonStyle(SecondaryButtonStyle())
                         .disabled(!isUserRegistered)
+                        .frame(maxWidth: .infinity)
                     }
                     
                     Button("ユーザー削除", action: deleteUser)
                         .buttonStyle(DangerButtonStyle())
                     
-                        Text("使い方")
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("使い方")
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     
-                        Text("ここに使い方の説明を記述")
-                            .padding()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.white.opacity(0.1))
-                            .cornerRadius(8)
+                    Text("ここに使い方の説明を記述")
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.white.opacity(0.1))
+                        .cornerRadius(8)
                 }
                 .padding()
             }
         }
         .foregroundColor(.white)
         .navigationTitle("DDR FlareNote")
+        .onAppear {
+            let (savedId, savedName) = getIdAndName()
+            self.userId = savedId
+            self.userName = savedName
+            
+            isUserRegistered = !userId.isEmpty
+        }
     }
     
     func registerUser() {
-        guard !username.isEmpty else {
+        guard !userName.isEmpty else {
             message = "ユーザー名を入力してください"
             return
         }
@@ -97,7 +129,7 @@ struct ViewFlareNoteUploader: View {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let body = ["name": username]
+        let body = ["name": userName]
         request.httpBody = try? JSONEncoder().encode(body)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -116,7 +148,8 @@ struct ViewFlareNoteUploader: View {
                     self.userId = userResponse.id
                     self.message = "ユーザー '\(userResponse.name)' が登録されました"
                     self.isUserRegistered = true
-                    // ここでUserDefaultsなどにuserIdとusernameを保存するとよいでしょう
+                    
+                    saveIdAndName(id: self.userId, name: self.userName)
                 } else if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
                     self.message = "エラー: \(errorResponse.error)\n詳細: \(errorResponse.detail ?? "なし")"
                 } else {
@@ -132,25 +165,16 @@ struct ViewFlareNoteUploader: View {
             return
         }
         
-        // ここで楽曲データを取得し、JSONに変換する処理を行います
-        // この例では、ダミーデータを使用しています
-        let dummyData: [String: Any] = [
-            "userId": userId,
-            "scores": [["songId": "1", "score": 1000000]]
-        ]
-        
         let url = URL(string: "\(baseURL)/player-scores")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: dummyData, options: [])
-            request.httpBody = jsonData
-        } catch {
-            self.message = "JSONの作成に失敗しました: \(error.localizedDescription)"
-            return
-        }
+        var musicScores = FileReader.readScoreList(nil)
+        let musicData = FileReader.readMusicList()
+        FlareSkillUpdater.updateAllFlareSkills(musicData: musicData, scoreData: &musicScores)
+        let jsonData = TopFlareSkillProcessor.processTopFlareSkills(playerId: userId, mScoreList: musicScores, musicDataMap: musicData).data(using: .utf8)
+        request.httpBody = jsonData
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
@@ -163,11 +187,10 @@ struct ViewFlareNoteUploader: View {
                     self.message = "データが受信できませんでした"
                     return
                 }
-                
-                if let responseDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    self.message = "データが正常に送信されました"
-                } else if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
+                if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
                     self.message = "エラー: \(errorResponse.error)\n詳細: \(errorResponse.detail ?? "なし")"
+                } else if (try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]) != nil {
+                    self.message = "データが正常に送信されました"
                 } else {
                     self.message = "不明なエラーが発生しました"
                 }
@@ -206,8 +229,8 @@ struct ViewFlareNoteUploader: View {
                     self.message = "ユーザー '\(deletedUser)' が削除されました"
                     self.isUserRegistered = false
                     self.userId = ""
-                    self.username = ""
-                    // ここでUserDefaultsなどからuserIdとusernameを削除するとよいでしょう
+                    self.userName = ""
+                    saveIdAndName(id: "", name: "")
                 } else if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
                     self.message = "エラー: \(errorResponse.error)\n詳細: \(errorResponse.detail ?? "なし")"
                 } else {
@@ -223,6 +246,23 @@ struct ViewFlareNoteUploader: View {
     }
 }
 
+func saveIdAndName(id: String, name: String) {
+    let defaults = UserDefaults.standard
+    defaults.set(id, forKey: "flareNoteId")
+    defaults.set(name, forKey: "flareNoteName")
+    print("IDと名前を保存しました: \(id), \(name)")
+}
+
+func getIdAndName() -> (id: String, name: String) {
+    let defaults = UserDefaults.standard
+    
+    // 保存されていなければデフォルト値を使用
+    let id = defaults.string(forKey: "flareNoteId") ?? ""
+    let name = defaults.string(forKey: "flareNoteName") ?? "" // `nil`の場合は空文字を返す
+    
+    return (id, name)
+}
+
 struct UserResponse: Codable {
     let id: String
     let name: String
@@ -234,40 +274,58 @@ struct ErrorResponse: Codable {
 }
 
 struct PrimaryButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) var isEnabled
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
+            .background(isEnabled ? Color.gray.opacity(0.3) : Color.gray.opacity(0.1))
+            .foregroundColor(isEnabled ? .white : .gray)
             .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(isEnabled ? Color.white.opacity(0.5) : Color.gray.opacity(0.3), lineWidth: 1)
+            )
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
     }
 }
 
 struct SecondaryButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) var isEnabled
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color.gray)
-            .foregroundColor(.white)
+            .background(Color.black.opacity(0.3))
+            .foregroundColor(isEnabled ? .white : .gray)
             .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(isEnabled ? Color.white.opacity(0.3) : Color.gray.opacity(0.3), lineWidth: 1)
+            )
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
     }
 }
 
 struct DangerButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) var isEnabled
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color.red)
-            .foregroundColor(.white)
+            .background(isEnabled ? Color.red.opacity(0.3) : Color.red.opacity(0.1))
+            .foregroundColor(isEnabled ? .white : .gray)
             .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(isEnabled ? Color.red.opacity(0.5) : Color.red.opacity(0.3), lineWidth: 1)
+            )
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
     }
 }
 
-struct FlareSkillNoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewFlareNoteUploader()
-    }
-}
+//struct FlareSkillNoteView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ViewFlareNoteUploader()
+//    }
+//}

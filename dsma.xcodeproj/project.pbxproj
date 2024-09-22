@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18099F372CA0377C009C9995 /* TopFlareSkillProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18099F362CA0377C009C9995 /* TopFlareSkillProcessor.swift */; };
 		18099F382CA04144009C9995 /* TopFlareSkillProcessorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18099F332CA03738009C9995 /* TopFlareSkillProcessorTest.swift */; };
+		18099F392CA042A2009C9995 /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C65262C394D720041BF98 /* FileReaderTests.swift */; };
 		1812A5952C6119BA00461931 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1812A5942C6119BA00461931 /* GoogleService-Info.plist */; };
 		1812A5992C6636F900461931 /* HtmlParseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812A5982C6636F900461931 /* HtmlParseUtil.swift */; };
 		181B2BF52AA976DF00982212 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BF42AA976DF00982212 /* GoogleMobileAds.xcframework */; };
@@ -31,7 +32,6 @@
 		184BBF582C772F3A00C77EE9 /* GameVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF572C772F3A00C77EE9 /* GameVersion.swift */; };
 		184BBF5A2C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF592C788F1C00C77EE9 /* WorldSiteDataDetail_Rank0.html */; };
 		184BBF5C2C9FF36200C77EE9 /* ViewFlareNoteUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF5B2C9FF36200C77EE9 /* ViewFlareNoteUploader.swift */; };
-		184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C65262C394D720041BF98 /* FileReaderTests.swift */; };
 		184C652D2C3966E80041BF98 /* OldScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C652C2C3966E80041BF98 /* OldScoreData.txt */; };
 		184C65372C39CBC80041BF98 /* NewScoreDataFlare.txt in Resources */ = {isa = PBXBuildFile; fileRef = 184C65362C39CBC80041BF98 /* NewScoreDataFlare.txt */; };
 		184DD9D42BCC1373006FB282 /* ViewSongMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */; };
@@ -1017,8 +1017,8 @@
 			files = (
 				184BBF542C732E4F00C77EE9 /* RecentParseUtilTest.swift in Sources */,
 				1834A8EE2C6652E800B9B28A /* HtmlParseUtilTest.swift in Sources */,
+				18099F392CA042A2009C9995 /* FileReaderTests.swift in Sources */,
 				18099F382CA04144009C9995 /* TopFlareSkillProcessorTest.swift in Sources */,
-				184C65272C394D720041BF98 /* FileReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

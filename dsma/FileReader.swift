@@ -807,6 +807,7 @@ struct FileReader{
         return ret;
     }
     
+    // FlareSkillが必要な場合はFlareSkillUpdater.updateAllFlareSkillsを実行する必要あり
     static func readScoreList(_ rivalId: String?) ->([Int32 : MusicScore]){
         var ret: [Int32: MusicScore] = [:]
         
