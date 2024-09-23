@@ -159,7 +159,7 @@ class ViewDdrSaExport: UIViewController, URLSessionDataDelegate, UINavigationBar
                     self.mPostQuery = self.mPostQuery + "\t"
                     self.mPostQuery = self.mPostQuery + wmi.idOnWebPage
                     self.mPostQuery = self.mPostQuery + "\t"
-                    self.mPostQuery = self.mPostQuery + (wmi.titleOnWebPage.replacingOccurrences(of: "<", with: "&lt;", options: [], range: nil).replacingOccurrences(of: ">", with: "&gt;", options: [], range: nil).replacingOccurrences(of: "♡", with: "&#9825;", options: [], range: nil)).addingPercentEncoding(withAllowedCharacters: allowedCharacterSet as CharacterSet)!
+                    self.mPostQuery = self.mPostQuery + HtmlEntityConverter.escapeWebMusicTitle(src: wmi.titleOnWebPage).addingPercentEncoding(withAllowedCharacters: allowedCharacterSet as CharacterSet)!
                     self.mPostQuery = self.mPostQuery + "\n"
                 }
             }
