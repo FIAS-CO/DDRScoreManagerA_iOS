@@ -727,3 +727,52 @@
 
 /* ScoreList */
 "Rival Score" = "ライバルスコア";
+
+/* FlareNoteUploader */
+"FlareNoteUploader" = "FlareNote Uploader";
+
+/* FlareNoteUploader */
+"FlareNote_Input_user_name" = "ユーザー名を入力してください";
+
+/* FlareNoteUploader */
+"FlareNote_Register User" = "ユーザー登録";
+
+/* FlareNoteUploader */
+"FlareNote_Send Song Data" = "曲データ送信";
+
+/* FlareNoteUploader */
+"FlareNote_Your Page" = "あなたのページ";
+
+/* FlareNoteUploader */
+"FlareNote_Delete User" = "ユーザー削除 / ユーザー名変更";
+
+/* FlareNoteUploader */
+"FlareNote_How to use" = "使い方";
+
+/* FlareNoteUploader */
+"FlareNote_How to use detail" = "1. ユーザー名を登録
+2. 曲データを送信
+3. FlareNoteであなたのページを確認
+* この機能はベータ版です。問題が発生した場合は、X（@sig_re）でご連絡ください。";
+
+/* FlareNoteUploader */
+"FlareNote_Please enter your username" = "ユーザー名を入力してください。";
+
+/* FlareNoteUploader */
+"FlareNote_Recieving data is failed" = "データの受信に失敗しました。";
+
+/* FlareNoteUploader */
+"FlareNote_User created successfully" = "ユーザー %@ が正常に作成されました。";
+
+/* FlareNoteUploader */
+"FlareNote_error detail" = "エラー: %@
+詳細: %@";
+
+/* FlareNoteUploader */
+"FlareNote_Please register user" = "ユーザーを登録してからデータを送信してください。";
+
+/* FlareNoteUploader */
+"FlareNote_Sent data successfully" = "データが正常に送信されました。";
+
+/* FlareNoteUploader */
+"FlareNote_User deleted" = "ユーザー %@ が削除されました。";

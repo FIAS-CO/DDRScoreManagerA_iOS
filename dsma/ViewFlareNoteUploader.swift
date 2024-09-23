@@ -53,20 +53,20 @@ struct ViewFlareNoteUploader: View {
                         // 右側のスペースを確保するための空のビュー
                         Color.clear.frame(width: 44, height: 44)
                     }
-                    TextField("ユーザー名を入力", text: $userName)
+                    TextField(NSLocalizedString("FlareNote_Input_user_name", comment: "ViewFlareNoteUploader"), text: $userName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .disabled(isUserRegistered)
                         .foregroundColor(.black)
                     
                     Button(action: registerUser) {
-                        Text("ユーザー登録")
+                        Text(NSLocalizedString("FlareNote_Register User", comment: "ViewFlareNoteUploader"))
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(PrimaryButtonStyle())
                     .disabled(isUserRegistered)
                     
                     Button(action: sendData) {
-                        Text("楽曲データを送信")
+                        Text(NSLocalizedString("FlareNote_Send Song Data", comment: "ViewFlareNoteUploader"))
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(PrimaryButtonStyle())
@@ -84,7 +84,7 @@ struct ViewFlareNoteUploader: View {
                         .buttonStyle(SecondaryButtonStyle())
                         .frame(maxWidth: .infinity)
                         
-                        Button("ユーザーページ") {
+                        Button(NSLocalizedString("FlareNote_Your Page", comment: "ViewFlareNoteUploader")) {
                             openURL("https://flarenote.fia-s.com/personal-skill/\(userName)")
                         }
                         .buttonStyle(SecondaryButtonStyle())
@@ -92,13 +92,13 @@ struct ViewFlareNoteUploader: View {
                         .frame(maxWidth: .infinity)
                     }
                     
-                    Button("ユーザー削除", action: deleteUser)
+                    Button(NSLocalizedString("FlareNote_Delete User", comment: "ViewFlareNoteUploader"), action: deleteUser)
                         .buttonStyle(DangerButtonStyle())
                     
-                    Text("使い方")
+                    Text(NSLocalizedString("FlareNote_How to use", comment: "ViewFlareNoteUploader"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Text("ここに使い方の説明を記述")
+                    Text(NSLocalizedString("FlareNote_How to use detail", comment: "ViewFlareNoteUploader"))
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Color.white.opacity(0.1))
@@ -120,7 +120,7 @@ struct ViewFlareNoteUploader: View {
     
     func registerUser() {
         guard !userName.isEmpty else {
-            message = "ユーザー名を入力してください"
+            message = NSLocalizedString("FlareNote_Please enter your username", comment: "ViewFlareNoteUploader")
             return
         }
         
@@ -135,25 +135,25 @@ struct ViewFlareNoteUploader: View {
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 if let error = error {
-                    self.message = "エラー: \(error.localizedDescription)"
+                    self.message = "Error: \(error.localizedDescription)"
                     return
                 }
                 
                 guard let data = data else {
-                    self.message = "データが受信できませんでした"
+                    self.message = NSLocalizedString("FlareNote_Recieving data is failed", comment: "ViewFlareNoteUploader")
                     return
                 }
                 
                 if let userResponse = try? JSONDecoder().decode(UserResponse.self, from: data) {
                     self.userId = userResponse.id
-                    self.message = "ユーザー '\(userResponse.name)' が登録されました"
+                    self.message = String(format: NSLocalizedString("FlareNote_User created successfully", comment: "FlareNoteUploader"), userName)
                     self.isUserRegistered = true
                     
                     saveIdAndName(id: self.userId, name: self.userName)
                 } else if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
-                    self.message = "エラー: \(errorResponse.error)\n詳細: \(errorResponse.detail ?? "なし")"
+                    self.message = String(format: NSLocalizedString("FlareNote_error detail", comment: "FlareNoteUploader"), errorResponse.error, errorResponse.detail ?? "none")
                 } else {
-                    self.message = "不明なエラーが発生しました"
+                    self.message = "Unknown error occurred."
                 }
             }
         }.resume()
@@ -161,7 +161,7 @@ struct ViewFlareNoteUploader: View {
     
     func sendData() {
         guard isUserRegistered, !userId.isEmpty else {
-            message = "ユーザーを登録してからデータを送信してください"
+            message = NSLocalizedString("FlareNote_Please register user", comment: "FlareNoteUploader")
             return
         }
         
@@ -179,20 +179,20 @@ struct ViewFlareNoteUploader: View {
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 if let error = error {
-                    self.message = "エラー: \(error.localizedDescription)"
+                    self.message = "Error: \(error.localizedDescription)"
                     return
                 }
                 
                 guard let data = data else {
-                    self.message = "データが受信できませんでした"
+                    self.message = NSLocalizedString("FlareNote_Recieving data is failed", comment: "ViewFlareNoteUploader")
                     return
                 }
                 if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
-                    self.message = "エラー: \(errorResponse.error)\n詳細: \(errorResponse.detail ?? "なし")"
+                    self.message = String(format: NSLocalizedString("FlareNote_error detail", comment: "FlareNoteUploader"), errorResponse.error, errorResponse.detail ?? "none")
                 } else if (try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]) != nil {
-                    self.message = "データが正常に送信されました"
+                    self.message = NSLocalizedString("FlareNote_Sent data successfully", comment: "ViewFlareNoteUploader")
                 } else {
-                    self.message = "不明なエラーが発生しました"
+                    self.message = "Unknown error occurred."
                 }
             }
         }.resume()
@@ -200,7 +200,7 @@ struct ViewFlareNoteUploader: View {
     
     func deleteUser() {
         guard isUserRegistered, !userId.isEmpty else {
-            message = "削除するユーザーが登録されていません"
+            message = "No user found."
             return
         }
         
@@ -215,26 +215,26 @@ struct ViewFlareNoteUploader: View {
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 if let error = error {
-                    self.message = "エラー: \(error.localizedDescription)"
+                    self.message = "Error: \(error.localizedDescription)"
                     return
                 }
                 
                 guard let data = data else {
-                    self.message = "データが受信できませんでした"
+                    self.message = NSLocalizedString("FlareNote_Recieving data is failed", comment: "ViewFlareNoteUploader")
                     return
                 }
                 
                 if let response = try? JSONDecoder().decode([String: String].self, from: data),
                    let deletedUser = response["user"] {
-                    self.message = "ユーザー '\(deletedUser)' が削除されました"
+                    self.message = String(format: NSLocalizedString("FlareNote_User deleted", comment: "ViewFlareNoteUploader"), userName)
                     self.isUserRegistered = false
                     self.userId = ""
                     self.userName = ""
                     saveIdAndName(id: "", name: "")
                 } else if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
-                    self.message = "エラー: \(errorResponse.error)\n詳細: \(errorResponse.detail ?? "なし")"
+                    self.message = String(format: NSLocalizedString("FlareNote_error detail", comment: "FlareNoteUploader"), errorResponse.error, errorResponse.detail ?? "none")
                 } else {
-                    self.message = "不明なエラーが発生しました"
+                    self.message = "Unknown error occurred."
                 }
             }
         }.resume()

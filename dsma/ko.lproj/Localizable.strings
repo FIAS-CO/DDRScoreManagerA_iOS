@@ -727,3 +727,52 @@
 
 /* ScoreList */
 "Rival Score" = "라이벌의 점수";
+
+/* FlareNoteUploader */
+"FlareNoteUploader" = "FlareNote Uploader";
+
+/* FlareNoteUploader */
+"FlareNote_Input_user_name" = "사용자 이름을 입력하세요.";
+
+/* FlareNoteUploader */
+"FlareNote_Register User" = "사용자 등록";
+
+/* FlareNoteUploader */
+"FlareNote_Send Song Data" = "곡 데이터 전송";
+
+/* FlareNoteUploader */
+"FlareNote_Your Page" = "당신의 페이지";
+
+/* FlareNoteUploader */
+"FlareNote_Delete User" = "사용자 삭제 / 사용자 이름 변경";
+
+/* FlareNoteUploader */
+"FlareNote_How to use" = "사용 방법";
+
+/* FlareNoteUploader */
+"FlareNote_How to use detail" = "1. 사용자 이름을 등록하세요.
+2. 곡 데이터를 전송하세요.
+3. FlareNote에서 당신의 페이지를 확인하세요.
+* 이 기능은 베타 버전입니다. 문제가 발생하면 X(@sig_re)로 연락해 주세요.";
+
+/* FlareNoteUploader */
+"FlareNote_Please enter your username" = "사용자 이름을 입력하세요.";
+
+/* FlareNoteUploader */
+"FlareNote_Recieving data is failed" = "데이터 수신에 실패했습니다.";
+
+/* FlareNoteUploader */
+"FlareNote_User created successfully" = "사용자 %@가 정상적으로 생성되었습니다.";
+
+/* FlareNoteUploader */
+"FlareNote_error detail" = "오류: %@
+상세: %@";
+
+/* FlareNoteUploader */
+"FlareNote_Please register user" = "사용자를 등록한 후 데이터를 전송하세요.";
+
+/* FlareNoteUploader */
+"FlareNote_Sent data successfully" = "데이터가 정상적으로 전송되었습니다.";
+
+/* FlareNoteUploader */
+"FlareNote_User deleted" = "사용자 %@가 삭제되었습니다.";
