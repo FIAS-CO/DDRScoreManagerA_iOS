@@ -788,9 +788,15 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                             self.mUriF = "";
                         }
                         else {
-                            self.mUriH += "rival/rival_musicdata_single.html?offset=";
-                            self.mUriF = "&rival_id=" + self.rparam_RivalId;
+                            if (self.mPreferences.Gate_LoadFrom == .world) {
+                                self.mUriH += "rival/music_data_single.html?offset=";
+                                self.mUriF = "&rival_id=" + self.rparam_RivalId;
+                            } else {
+                                self.mUriH += "rival/rival_musicdata_single.html?offset=";
+                                self.mUriF = "&rival_id=" + self.rparam_RivalId;
+                            }
                         }
+                        
                         let url: URL = URL(string: (self.mUriH+i.description+self.mUriF))!
                         let request: URLRequest = URLRequest(url: url)
                         self.wkWebView.load(request)
@@ -858,8 +864,13 @@ class ViewFromGateList: UIViewController, UINavigationBarDelegate, UIBarPosition
                             self.mUriF = "";
                         }
                         else {
-                            self.mUriH += "rival/rival_musicdata_double.html?offset=";
-                            self.mUriF = "&rival_id=" + self.rparam_RivalId;
+                            if (self.mPreferences.Gate_LoadFrom == .world) {
+                                self.mUriH += "rival/music_data_double.html?offset=";
+                                self.mUriF = "&rival_id=" + self.rparam_RivalId;
+                            } else {
+                                self.mUriH += "rival/rival_musicdata_double.html?offset=";
+                                self.mUriF = "&rival_id=" + self.rparam_RivalId;
+                            }
                         }
                         let url: URL = URL(string: (self.mUriH+i.description+self.mUriF))!
                         let request: URLRequest = URLRequest(url: url)

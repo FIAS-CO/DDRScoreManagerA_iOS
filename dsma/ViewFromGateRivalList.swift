@@ -31,18 +31,17 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
     @IBOutlet weak var navigationBar: UINavigationBar!
-    //@IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var tableView: UITableView!
     
     var wkWebView: WKWebView!
     
     required init?(coder aDecoder: NSCoder) {
-        mPreferences = Preferences()
+        mPreferences = FileReader.readPreferences()
         super.init(coder: aDecoder)
     }
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        mPreferences = Preferences()
+        mPreferences = FileReader.readPreferences()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -73,7 +72,6 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
                 let th = Double(thr.height)
                 let tci = self.tableView.contentInset
                 let tcit = Double(tci.top)
-                //let cp = CGPoint(x: 0, y: (lh < th - tcit ? 0 - tcit : lh - th))
                 var ths = Double(0)
                 if #available(iOS 11.0, *) {
                     ths = Double(self.view.safeAreaInsets.top)
@@ -98,7 +96,6 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
         cell.backgroundColor = UIColor(white: 0, alpha: 0.01)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
         cell.textLabel?.minimumScaleFactor = 0.5
-        //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.text = logText[(indexPath as NSIndexPath).row]
         let cellSelectedBgView = UIView()
@@ -116,8 +113,6 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
     }
     
     @objc internal func cancelButtonTouched(_ sender: UIButton) {
-        //presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        //presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         addLog(NSLocalizedString("Canceling...", comment: "ViewFromGateRecent"))
         mCancel = true
         buttonCancel.isEnabled = false
@@ -134,7 +129,7 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
     var buttonCancel: UIBarButtonItem!
     
     func analyzeRivalList(_ src: String) -> (Bool) {
-        let idSearchText = "/p/rival/rival_status.html?rival_id=";
+        let idSearchText = "/rival/rival_status.html?rival_id=";
         let nameSearchText = "\">";
         
         var parsingText = src;
@@ -149,19 +144,19 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
                 if let rs = parsingText.range(of: nameSearchText) {
                     parsingText = String(parsingText[rs.upperBound...])
                     if let rs = parsingText.range(of: "<") {
-                    let nameText: String = parsingText[..<rs.lowerBound].trimmingCharacters(in: CharacterSet.whitespaces)
-                    dataExists = true
-                    var exists = false
-                    for i in 2 ..< rivals.count {
-                        if rivals[i].Id == idText {
-                            exists = true
-                            rivals[i].Name = nameText
-                            break
+                        let nameText: String = parsingText[..<rs.lowerBound].trimmingCharacters(in: CharacterSet.whitespaces)
+                        dataExists = true
+                        var exists = false
+                        for i in 2 ..< rivals.count {
+                            if rivals[i].Id == idText {
+                                exists = true
+                                rivals[i].Name = nameText
+                                break
+                            }
                         }
-                    }
-                    if !exists {
-                        rivals.append(RivalData(Id: idText, Name: nameText))
-                    }
+                        if !exists {
+                            rivals.append(RivalData(Id: idText, Name: nameText))
+                        }
                     }
                 }
             }
@@ -191,8 +186,6 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
             case 1:
                 DispatchQueue.main.async(execute: {
                     self.addLog(NSLocalizedString("Opening login form...", comment: "ViewFromGateRivalList"))
-                    //self.sparam_ParentView = self
-                    //self.performSegueWithIdentifier("modalGateLogin",sender: nil)
                     self.present(ViewGateLogin.checkOut(self, errorCheck: true, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
                 })
                 return
@@ -207,16 +200,6 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
         }
     }
     
-    /*func webViewDidFinishLoad(_ webView: UIWebView) {
-        let url = webView.stringByEvaluatingJavaScript(from: "document.URL")
-        let html = webView.stringByEvaluatingJavaScript(from: "document.getElementsByTagName('html')[0].outerHTML")
-        didFinishLoad(url!, html: html!)
-    }
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        
-    }*/
-    
     override func viewWillAppear(_ animated: Bool) {
         Admob.shAdView(adHeight)
     }
@@ -229,7 +212,7 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
     @objc func applicationWillEnterForeground() {
         Admob.shAdView(adHeight)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -237,39 +220,40 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
         let notifc: NotificationCenter = NotificationCenter.default
         notifc.addObserver(self, selector: #selector(applicationWillEnterForeground), name: NSNotification.Name(rawValue: "applicationWillEnterForeground"), object: nil)
         
-        //self.title = "Preferences"
         adView.addSubview(Admob.getAdBannerView(self))
         
         let nvFrame: CGRect = navigationBar.frame;
-        //webView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
         tableView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
         navigationBar.delegate = self
         
         tableView.dataSource = self
         tableView.delegate = self
-        /*
-        webView.delegate = self
-        webView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
-        webView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-        */
         tableView.indicatorStyle = UIScrollView.IndicatorStyle.white
         tableView.backgroundColor = UIColor(white: 0, alpha: 0.8)
         
-        //if #available(iOS 8.0, *) {
-            let configuration = WKWebViewConfiguration()
-            configuration.processPool = rparam_ProcessPool
-            wkWebView = WKWebView(frame: CGRect.zero, configuration: configuration)
-            wkWebView.navigationDelegate = self
-            wkWebView.translatesAutoresizingMaskIntoConstraints = false
-            wkWebView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
-            wkWebView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-            wkWebView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
-            navigationBar.delegate = self
-            self.view.addSubview(wkWebView)
-            //self.view.bringSubviewToFront(navigationBar)
-        //}
+        let configuration = WKWebViewConfiguration()
+        configuration.processPool = rparam_ProcessPool
+        wkWebView = WKWebView(frame: CGRect.zero, configuration: configuration)
+        wkWebView.navigationDelegate = self
+        wkWebView.translatesAutoresizingMaskIntoConstraints = false
+        wkWebView.scrollView.indicatorStyle = UIScrollView.IndicatorStyle.white
+        wkWebView.scrollView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        wkWebView.scrollView.contentInset = UIEdgeInsets(top: nvFrame.origin.y + nvFrame.height, left: 0, bottom: 0, right: 0)
+        navigationBar.delegate = self
+        self.view.addSubview(wkWebView)
         
         addLog(NSLocalizedString("Loading rival list started.", comment: "ViewFromGateRivalList"))
+        
+        let versionName: String
+        switch(self.mPreferences.Gate_LoadFrom) {
+        case .world:
+            versionName = "WORLD"
+        case .a3:
+            versionName = "A3"
+        case .a20plus:
+            versionName = "A20PLUS"
+        }
+        addLog(NSLocalizedString("Version: ", comment: "ViewFromGateList") + versionName)
         
         mLocalIds = FileReader.readWebTitleToLocalIdList()
         
@@ -284,20 +268,17 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
                 DispatchQueue.main.async(execute: {
                     self.addLog(NSLocalizedString("Loading rival list page.", comment: "ViewFromGateRivalList"))
                     self.mRequestUri = "https://p.eagate.573.jp/game/ddr/"
-                    if self.mPreferences.Gate_LoadFrom != .a20plus{
+                    switch(self.mPreferences.Gate_LoadFrom) {
+                    case .world:
+                        self.mRequestUri += "ddrworld/rival/index.html"
+                    case .a3:
                         self.mRequestUri += "ddra3/p/rival/index.html"
-                    }
-                    else{
+                    case .a20plus:
                         self.mRequestUri += "ddra20/p/rival/index.html"
                     }
                     let url: URL = URL(string: (self.mRequestUri))!
                     let request: URLRequest = URLRequest(url: url)
-                    //if #available(iOS 8.0, *) {
-                        self.wkWebView.load(request)
-                    /*}
-                    else {
-                        self.webView.loadRequest(request)
-                    }*/
+                    self.wkWebView.load(request)
                 })
                 while self.mPause && !self.mCancel {
                     sleep(1)
@@ -318,7 +299,6 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
             if self.mCancel {
                 DispatchQueue.main.async(execute: {
                     self.rparam_ParentView?.refreshAll()
-                    //self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
                 })
                 return
@@ -330,7 +310,6 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
             sleep(3)
             DispatchQueue.main.async(execute: {
                 self.rparam_ParentView?.refreshAll()
-                //self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
             })
         })
@@ -340,7 +319,6 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
     @available(iOS 8.0, *)
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         wkWebView.evaluateJavaScript("document.getElementsByTagName('html')[0].outerHTML", completionHandler: {(html, error) -> Void in
-            //print(html)
             self.didFinishLoad(String(describing: self.wkWebView.url), html: String(describing: html))
         })
     }
@@ -349,6 +327,4 @@ class ViewFromGateRivalList: UIViewController, UINavigationBarDelegate, UIBarPos
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
