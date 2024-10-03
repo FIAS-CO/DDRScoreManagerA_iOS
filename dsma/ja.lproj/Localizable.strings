@@ -6,8 +6,9 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-- プレイヤーステータス取得機能をWORLD/A3/A20PLUSに対応しました。
-- 軽微な修正を行いました。";
+- フレアスキル帳を公開するサービスとしてDDR FlareNoteというWebページを公開しました。
+それに伴い、本アプリからフレアスキル対象曲データをFlareNoteにアップロードする機能を追加しました。右上メニューから\"FlareNote Uploader\"をご確認ください。
+- DDR SAへの一部楽曲のエクスポートが失敗する問題を修正しました。";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 連携";

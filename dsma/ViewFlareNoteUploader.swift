@@ -53,10 +53,11 @@ struct ViewFlareNoteUploader: View {
                         // 右側のスペースを確保するための空のビュー
                         Color.clear.frame(width: 44, height: 44)
                     }
-                    TextField(NSLocalizedString("FlareNote_Input_user_name", comment: "ViewFlareNoteUploader"), text: $userName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .disabled(isUserRegistered)
-                        .foregroundColor(.black)
+                    AdaptiveTextField(
+                        text: $userName,
+                        placeholder: "FlareNote_Input_user_name",
+                        isDisabled: isUserRegistered
+                    )
                     
                     Button(action: registerUser) {
                         Text(NSLocalizedString("FlareNote_Register User", comment: "ViewFlareNoteUploader"))
@@ -321,6 +322,41 @@ struct DangerButtonStyle: ButtonStyle {
                     .stroke(isEnabled ? Color.red.opacity(0.5) : Color.red.opacity(0.3), lineWidth: 1)
             )
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
+    }
+}
+
+struct AdaptiveTextField: View {
+    @Binding var text: String
+    let placeholder: String
+    let isDisabled: Bool
+    
+    var body: some View {
+        TextField(NSLocalizedString(placeholder, comment: ""), text: $text)
+            .textFieldStyle(PlainTextFieldStyle())
+            .padding()
+            .foregroundColor(textColor)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(backgroundColor)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(borderColor, lineWidth: 1)
+            )
+            .disabled(isDisabled)
+            .environment(\.colorScheme, .light) // 常にライトモードの外観を強制
+    }
+    
+    private var backgroundColor: Color {
+        isDisabled ? Color(.systemGray5) : Color.white
+    }
+    
+    private var borderColor: Color {
+        isDisabled ? Color.gray.opacity(0.4) : Color.gray.opacity(0.5)
+    }
+    
+    private var textColor: Color {
+        isDisabled ? Color.gray.opacity(0.7) : .black
     }
 }
 

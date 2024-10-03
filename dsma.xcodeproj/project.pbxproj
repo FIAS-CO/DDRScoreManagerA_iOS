@@ -17,6 +17,7 @@
 		181B2BFF2AA977A800982212 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */; };
 		1834A8EE2C6652E800B9B28A /* HtmlParseUtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834A8ED2C6652E800B9B28A /* HtmlParseUtilTest.swift */; };
 		1834A8F02C66531A00B9B28A /* WorldSiteDataSingle.html in Resources */ = {isa = PBXBuildFile; fileRef = 1834A8EF2C66531A00B9B28A /* WorldSiteDataSingle.html */; };
+		1846951D2CA0F6500016AC27 /* HtmlEntityConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846951C2CA0F6500016AC27 /* HtmlEntityConverter.swift */; };
 		184BBF402C67257200C77EE9 /* MusicEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF3F2C67257200C77EE9 /* MusicEntry.swift */; };
 		184BBF422C6725A200C77EE9 /* DifficultyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BBF412C6725A200C77EE9 /* DifficultyScore.swift */; };
 		184BBF442C69D7F500C77EE9 /* WorldSiteDataDouble.html in Resources */ = {isa = PBXBuildFile; fileRef = 184BBF432C69D7F500C77EE9 /* WorldSiteDataDouble.html */; };
@@ -175,6 +176,7 @@
 		181B2BFE2AA977A800982212 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
 		1834A8ED2C6652E800B9B28A /* HtmlParseUtilTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlParseUtilTest.swift; sourceTree = "<group>"; };
 		1834A8EF2C66531A00B9B28A /* WorldSiteDataSingle.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataSingle.html; sourceTree = "<group>"; };
+		1846951C2CA0F6500016AC27 /* HtmlEntityConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlEntityConverter.swift; sourceTree = "<group>"; };
 		184BBF3F2C67257200C77EE9 /* MusicEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEntry.swift; sourceTree = "<group>"; };
 		184BBF412C6725A200C77EE9 /* DifficultyScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyScore.swift; sourceTree = "<group>"; };
 		184BBF432C69D7F500C77EE9 /* WorldSiteDataDouble.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = WorldSiteDataDouble.html; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 				184DD9D72BD56A9A006FB282 /* RealmUtil.swift */,
 				18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */,
 				185A413D2C43E83600ECB7FA /* FlareSkillUpdater.swift */,
+				1846951C2CA0F6500016AC27 /* HtmlEntityConverter.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -1100,6 +1103,7 @@
 				8A41B6FF1B4414B10094B1FE /* ViewGateLogin.swift in Sources */,
 				1812A5992C6636F900461931 /* HtmlParseUtil.swift in Sources */,
 				8A0DC88C1B33A98C00F162B7 /* ViewSortTypeSetting.swift in Sources */,
+				1846951D2CA0F6500016AC27 /* HtmlEntityConverter.swift in Sources */,
 				8A9693671B5498550025E229 /* Admob.swift in Sources */,
 				8ABA79901B4E0C4700880817 /* ViewFromGateRecent.swift in Sources */,
 			);
@@ -1448,7 +1452,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24082702;
+				CURRENT_PROJECT_VERSION = 24092302;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1463,7 +1467,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.76;
+				MARKETING_VERSION = 0.79;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;
@@ -1482,7 +1486,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24082702;
+				CURRENT_PROJECT_VERSION = 24092302;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1497,7 +1501,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.76;
+				MARKETING_VERSION = 0.79;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;
