@@ -754,7 +754,7 @@
 "FlareNote_How to use detail" = "1. ユーザー名を登録
 2. 曲データを送信
 3. FlareNoteであなたのページを確認
-* この機能はベータ版です。問題が発生した場合は、X（@sig_re）でご連絡ください。";
+* この機能はベータ版です。問題が発生した場合は、X（@sig_re）までご連絡ください。";
 
 /* FlareNoteUploader */
 "FlareNote_Please enter your username" = "ユーザー名を入力してください。";
