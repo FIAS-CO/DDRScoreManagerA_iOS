@@ -168,8 +168,8 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var swRankNoPlayRival: UISwitch!
     @IBOutlet weak var swFcMFCRival: UISwitch!
     @IBOutlet weak var swFcPFCRival: UISwitch!
-    @IBOutlet weak var swFcFCRival: UISwitch!
     @IBOutlet weak var swFcGFCRival: UISwitch!
+    @IBOutlet weak var swFcFCRival: UISwitch!
     @IBOutlet weak var swFcLife4Rival: UISwitch!
     @IBOutlet weak var swFcNoFCRival: UISwitch!
     @IBOutlet weak var swWin: UISwitch!
@@ -309,8 +309,8 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         swRankNoPlayRival.isOn = mFilter.RankNoPlayrival
         swFcMFCRival.isOn = mFilter.FcMFCrival
         swFcPFCRival.isOn = mFilter.FcPFCrival
-        swFcFCRival.isOn = mFilter.FcFCrival
         swFcGFCRival.isOn = mFilter.FcGFCrival
+        swFcFCRival.isOn = mFilter.FcFCrival
         swFcLife4Rival.isOn = mFilter.FcLife4rival
         swFcNoFCRival.isOn = mFilter.FcNoFCrival
         swWin.isOn = mFilter.RivalWin
@@ -885,8 +885,8 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func rRankNoPlay(_ sender: AnyObject) { mFilter.RankNoPlayrival = (sender as! UISwitch).isOn }
     @IBAction func rFcMFC(_ sender: AnyObject) { mFilter.FcMFCrival = (sender as! UISwitch).isOn }
     @IBAction func rFcPFC(_ sender: AnyObject) { mFilter.FcPFCrival = (sender as! UISwitch).isOn }
-    @IBAction func rFcFC(_ sender: AnyObject) { mFilter.FcFCrival = (sender as! UISwitch).isOn }
     @IBAction func rFcGFC(_ sender: AnyObject) { mFilter.FcGFCrival = (sender as! UISwitch).isOn }
+    @IBAction func rFcFC(_ sender: AnyObject) { mFilter.FcFCrival = (sender as! UISwitch).isOn }
     @IBAction func rFcLife4(_ sender: AnyObject) { mFilter.FcLife4rival = (sender as! UISwitch).isOn }
     @IBAction func rFcNoFC(_ sender: AnyObject) { mFilter.FcNoFCrival = (sender as! UISwitch).isOn }
     @IBAction func rWin(_ sender: AnyObject) { mFilter.RivalWin = (sender as! UISwitch).isOn }

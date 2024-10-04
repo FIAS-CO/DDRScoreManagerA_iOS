@@ -176,8 +176,8 @@ class MusicFilter{
     
     var FcMFCrival: Bool  = true;
     var FcPFCrival: Bool  = true;
-    var FcFCrival : Bool = true;
-    var FcGFCrival: Bool  = true;
+    var FcGFCrival : Bool = true;
+    var FcFCrival: Bool  = true;
     var FcLife4rival: Bool  = true;
     var FcNoFCrival : Bool = true;
     
@@ -406,7 +406,7 @@ class MusicFilter{
         if(!Ser1st && music.SeriesTitle_ == SeriesTitle._1st){ return false; }
         
         if(!RankAAArival || !RankAAprival || !RankAArival || !RankAAmrival || !RankAprival || !RankArival || !RankAmrival || !RankBprival || !RankBrival || !RankBmrival || !RankCprival || !RankCrival || !RankCmrival || !RankDprival || !RankDrival || !RankErival || !RankNoPlayrival ||
-           !FcMFCrival || !FcPFCrival || !FcFCrival || !FcGFCrival || !FcNoFCrival ||
+           !FcMFCrival || !FcPFCrival || !FcGFCrival || !FcFCrival || !FcNoFCrival ||
            !RivalWin || !RivalLose || !RivalDraw || ScoreMinRival > 0 || ScoreMaxRival < 1000000 ||
            ScoreDifferenceMinusMax > -1000000 || ScoreDifferenceMinusMin < 0 || ScoreDifferencePlusMin > 0 || ScoreDifferencePlusMax < 1000000 ||
            MaxComboDifferenceMinusMax != Int32.min || MaxComboDifferenceMinusMin <= 0 || MaxComboDifferencePlusMin >= 0 || MaxComboDifferencePlusMax != Int32.max ||
@@ -465,8 +465,8 @@ class MusicFilter{
             
             if(!FcMFCrival && scoreData.FullComboType_ == FullComboType.MarvelousFullCombo){ return false; }
             if(!FcPFCrival && scoreData.FullComboType_ == FullComboType.PerfectFullCombo){ return false; }
-            if(!FcFCrival && scoreData.FullComboType_ == FullComboType.FullCombo){ return false; }
-            if(!FcGFCrival && scoreData.FullComboType_ == FullComboType.GoodFullCombo){ return false; }
+            if(!FcGFCrival && scoreData.FullComboType_ == FullComboType.FullCombo){ return false; }
+            if(!FcFCrival && scoreData.FullComboType_ == FullComboType.GoodFullCombo){ return false; }
             if(!FcLife4rival && scoreData.FullComboType_ == FullComboType.Life4){ return false; }
             if(!FcNoFCrival && scoreData.FullComboType_ == FullComboType.None){ return false; }
             

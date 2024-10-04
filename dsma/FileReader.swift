@@ -1466,8 +1466,10 @@ struct FileReader{
             ret.RivalDraw = sfm.getBool("RivalDraw", def: true);
             ret.FcMFCrival = sfm.getBool("FcMFCrival", def: true);
             ret.FcPFCrival = sfm.getBool("FcPFCrival", def: true);
-            ret.FcFCrival = sfm.getBool("FcFCrival", def: true);
-            ret.FcGFCrival = sfm.getBool("FcGFCrival", def: true);
+            // 元々GFC＝GoodFCだったが、公式がGreatFCをGFCと呼び出したので交換した
+            // ただ、データ保存の部分のキーを逆にするのはややこしかったのでここがチグハグのまま
+            ret.FcGFCrival = sfm.getBool("FcFCrival", def: true);
+            ret.FcFCrival = sfm.getBool("FcGFCrival", def: true);
             ret.FcLife4rival = sfm.getBool("FcLife4rival", def: true);
             ret.FcNoFCrival = sfm.getBool("FcNoFCrival", def: true);
             ret.ScoreMin = sfm.getInt32("ScoreMin", def: 0);
@@ -1625,8 +1627,10 @@ struct FileReader{
         sfm.putBool("RankNoPlayrival", value: filter.RankNoPlayrival);
         sfm.putBool("FcMFCrival", value: filter.FcMFCrival);
         sfm.putBool("FcPFCrival", value: filter.FcPFCrival);
-        sfm.putBool("FcFCrival", value: filter.FcFCrival);
-        sfm.putBool("FcGFCrival", value: filter.FcGFCrival);
+        // 元々GFC＝GoodFCだったが、公式がGreatFCをGFCと呼び出したので交換した
+        // ただ、データ保存の部分のキーを逆にするのはややこしかったのでここがチグハグのまま
+        sfm.putBool("FcFCrival", value: filter.FcGFCrival);
+        sfm.putBool("FcGFCrival", value: filter.FcFCrival);
         sfm.putBool("FcLife4rival", value: filter.FcLife4rival);
         sfm.putBool("FcNoFCrival", value: filter.FcNoFCrival);
         sfm.putBool("RivalWin", value: filter.RivalWin);

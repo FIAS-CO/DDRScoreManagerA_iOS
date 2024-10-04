@@ -4305,10 +4305,10 @@
                                                             <constraint firstAttribute="height" constant="31" id="zQE-X6-HQp"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="rFcGFC:" destination="JFD-hs-1sp" eventType="valueChanged" id="DH9-5g-Rn1"/>
+                                                            <action selector="rFcFC:" destination="JFD-hs-1sp" eventType="valueChanged" id="DH9-5g-Rn1"/>
                                                         </connections>
                                                     </switch>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GFC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hZ-oX-XAx">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hZ-oX-XAx">
                                                         <rect key="frame" x="211.66666666666666" y="4.6666666666669698" width="103.33333333333334" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4421,10 +4421,10 @@
                                                             <constraint firstAttribute="height" constant="31" id="cmE-7e-PAf"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="rFcFC:" destination="JFD-hs-1sp" eventType="valueChanged" id="8vd-d1-TB6"/>
+                                                            <action selector="rFcGFC:" destination="JFD-hs-1sp" eventType="valueChanged" id="8vd-d1-TB6"/>
                                                         </connections>
                                                     </switch>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJm-u8-YAg">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GFC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJm-u8-YAg">
                                                         <rect key="frame" x="54.000000000000007" y="4.6666666666669698" width="103.66666666666669" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5522,9 +5522,9 @@
                         <outlet property="swDif9" destination="VZn-k8-cZo" id="dex-s5-M3d"/>
                         <outlet property="swDraw" destination="SH5-Z6-1sZ" id="OSa-Mn-e23"/>
                         <outlet property="swFcFC" destination="KYE-eg-BMT" id="UjL-ui-bXa"/>
-                        <outlet property="swFcFCRival" destination="u2I-Pq-0Sw" id="y4U-2o-Qbq"/>
+                        <outlet property="swFcFCRival" destination="WMj-Lt-t2o" id="ENp-P3-E1S"/>
                         <outlet property="swFcGFC" destination="mqq-j3-1Bg" id="vod-8W-kX9"/>
-                        <outlet property="swFcGFCRival" destination="WMj-Lt-t2o" id="ENp-P3-E1S"/>
+                        <outlet property="swFcGFCRival" destination="u2I-Pq-0Sw" id="y4U-2o-Qbq"/>
                         <outlet property="swFcLife4" destination="3Q7-HW-RbW" id="P3I-R7-vj0"/>
                         <outlet property="swFcLife4Rival" destination="RNN-Pq-iUB" id="Fcb-qI-KE5"/>
                         <outlet property="swFcMFC" destination="lnG-cJ-SyQ" id="OcY-ov-bmu"/>

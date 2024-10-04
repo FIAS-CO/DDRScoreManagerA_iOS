@@ -904,8 +904,8 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     {
                         if self.rparam_Category != "MFC" { musicFilter.FcMFCrival = false }
                         if self.rparam_Category != "PFC" { musicFilter.FcPFCrival = false }
-                        if self.rparam_Category != "FC" { musicFilter.FcFCrival = false }
                         if self.rparam_Category != "GFC" { musicFilter.FcGFCrival = false }
+                        if self.rparam_Category != "FC" { musicFilter.FcFCrival = false }
                         if self.rparam_Category != "Life4" { musicFilter.FcLife4rival = false }
                         if self.rparam_Category != "NoFC" { musicFilter.FcNoFCrival = false }
                     }
