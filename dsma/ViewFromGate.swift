@@ -618,7 +618,7 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     func didFinishLoad(_ url: String, html: String) {
         let checkLoggedIn = StringUtil.checkLoggedIn(html)
         let res: Bool
-
+        
         if checkLoggedIn == 0 {
             // checkLoggedIn が 0 の場合は analyzeScore を実行
             res = analyzeScore(html)
@@ -872,14 +872,14 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
     
     private func getStyleInt(patternType: PatternType) -> Int32 {
         let styleValue: Int32
-
+        
         switch patternType {
         case .bSP, .BSP, .DSP, .ESP, .CSP:
             styleValue = 0
         case .BDP, .DDP, .EDP, .CDP:
             styleValue = 1
         }
-
+        
         return styleValue
     }
     
