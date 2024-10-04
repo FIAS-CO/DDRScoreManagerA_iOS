@@ -38,11 +38,11 @@ class ViewSubCategorySelect: UIViewController, UITableViewDataSource, UITableVie
         "ABC" : ["NUM", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
         "Difficulty" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"],
         "Dance Level" : ["AAA", "AA+", "AA", "AA-", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "E", "NoPlay"],
-        "Full Combo Type" : ["MFC", "PFC", "FC", "GFC", "Life4", "NoFC", "Failed", "NoPlay"],
+        "Full Combo Type" : ["MFC", "PFC", "GFC", "FC", "Life4", "NoFC", "Failed", "NoPlay"],
         "Rival" : [NSLocalizedString("Manage Rivals", comment: "ViewSubCategorySelect"), "Win/Lose", "Dance Level", "Full Combo Type"],
         "Rival Win/Lose" : ["Win", "Lose", "Draw", "Win (Close)", "Lose (Close)", "Draw (Played)", "Win (Rival NoPlay)", "Lose (Player NoPlay)", "Draw (NoPlay)"],
         "Rival Dance Level" : ["AAA", "AA+", "AA", "AA-", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "E", "NoPlay"],
-        "Rival Full Combo Type" : ["MFC", "PFC", "FC", "GFC", "Life4", "NoFC", "Failed"],
+        "Rival Full Combo Type" : ["MFC", "PFC", "GFC", "FC", "Life4", "NoFC", "Failed"],
     ]
     
     var mScrollDecelerating = false
