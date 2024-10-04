@@ -57,8 +57,8 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
     
     @IBOutlet weak var fcMFC: UILabel!
     @IBOutlet weak var fcPFC: UILabel!
-    @IBOutlet weak var fcFC: UILabel!
     @IBOutlet weak var fcGFC: UILabel!
+    @IBOutlet weak var fcFC: UILabel!
     @IBOutlet weak var fcLife4: UILabel!
     @IBOutlet weak var fcNoFC: UILabel!
     
@@ -197,8 +197,8 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
             var _danceLevelNoPlay: Int = 0
             var _fcTypeMFC: Int = 0
             var _fcTypePFC: Int = 0
-            var _fcTypeFC: Int = 0
             var _fcTypeGFC: Int = 0
+            var _fcTypeFC: Int = 0
             var _fcTypeLife4: Int = 0
             var _fcTypeNoFC: Int = 0
             var _difficultides: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -270,8 +270,8 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
                         switch(score.FullComboType_) {
                         case FullComboType.MarvelousFullCombo:_fcTypeMFC += 1;break;
                         case FullComboType.PerfectFullCombo:_fcTypePFC += 1;break;
-                        case FullComboType.FullCombo:_fcTypeFC += 1;break;
-                        case FullComboType.GoodFullCombo:_fcTypeGFC += 1;break;
+                        case FullComboType.FullCombo:_fcTypeGFC += 1;break;
+                        case FullComboType.GoodFullCombo:_fcTypeFC += 1;break;
                         case FullComboType.Life4:_fcTypeLife4 += 1;break;
                         case FullComboType.None:_fcTypeNoFC += 1;break;
                         }
@@ -364,8 +364,8 @@ class ViewStatistics: UIViewController, UINavigationBarDelegate, UIBarPositionin
                 
                 self.fcMFC.text = _fcTypeMFC.description
                 self.fcPFC.text = _fcTypePFC.description
-                self.fcFC.text = _fcTypeFC.description
                 self.fcGFC.text = _fcTypeGFC.description
+                self.fcFC.text = _fcTypeFC.description
                 self.fcLife4.text = _fcTypeLife4.description
                 self.fcNoFC.text = _fcTypeNoFC.description
                 

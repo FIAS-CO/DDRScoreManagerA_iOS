@@ -3,7 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1010,7 +1010,7 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPZ-dp-lYQ">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPZ-dp-lYQ" userLabel="MFCView">
                                                 <rect key="frame" x="10" y="485" width="305" height="15"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MFC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0m0-gK-t2o">
@@ -1053,7 +1053,7 @@
                                                     <constraint firstAttribute="height" constant="15" id="xyb-mn-XRV"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfp-7w-cb9">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfp-7w-cb9" userLabel="PFCView">
                                                 <rect key="frame" x="10" y="500" width="305" height="15"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PFC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWV-3s-ZCM">
@@ -1096,10 +1096,10 @@
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="No3-SE-y00" secondAttribute="trailing" id="aA7-jT-J0B"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAM-Xi-JdX">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAM-Xi-JdX" userLabel="GFCView">
                                                 <rect key="frame" x="10" y="515" width="305" height="15"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMB-Rx-9ku">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GFC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMB-Rx-9ku">
                                                         <rect key="frame" x="0.0" y="0.0" width="31.666666666666668" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="HuX-qJ-7dg"/>
@@ -1139,10 +1139,10 @@
                                                     <constraint firstItem="CMB-Rx-9ku" firstAttribute="leading" secondItem="RAM-Xi-JdX" secondAttribute="leading" id="yaW-xf-azM"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQN-q7-avJ">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQN-q7-avJ" userLabel="FCView">
                                                 <rect key="frame" x="10" y="530" width="305" height="15"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GFC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMZ-Uv-8ox">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMZ-Uv-8ox">
                                                         <rect key="frame" x="0.0" y="0.0" width="31.666666666666668" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="fUQ-kA-fn4"/>
@@ -1182,7 +1182,7 @@
                                                     <constraint firstItem="xMZ-Uv-8ox" firstAttribute="leading" secondItem="LQN-q7-avJ" secondAttribute="leading" id="key-NA-eZe"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IdG-pK-4eR">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IdG-pK-4eR" userLabel="Life4View">
                                                 <rect key="frame" x="10" y="545" width="305" height="15"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlH-yr-6p9">
@@ -1225,7 +1225,7 @@
                                                     <constraint firstItem="nGp-a4-tWa" firstAttribute="top" secondItem="IdG-pK-4eR" secondAttribute="top" id="xFj-Zh-5X9"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CTT-B4-tIN">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CTT-B4-tIN" userLabel="NoFCView">
                                                 <rect key="frame" x="10" y="560" width="305" height="15"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NoFC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewS-73-QNZ">
@@ -4440,8 +4440,8 @@
                         <outlet property="diff7" destination="Abs-FQ-mp0" id="8LY-qR-uEf"/>
                         <outlet property="diff8" destination="ZJq-So-6g4" id="sQC-Go-DXN"/>
                         <outlet property="diff9" destination="fFg-rV-rov" id="i9L-7s-dEd"/>
-                        <outlet property="fcFC" destination="SsT-No-iU6" id="ghG-0k-Q6j"/>
-                        <outlet property="fcGFC" destination="Keu-tk-btj" id="jG3-4y-vvu"/>
+                        <outlet property="fcFC" destination="Keu-tk-btj" id="jG3-4y-vvu"/>
+                        <outlet property="fcGFC" destination="SsT-No-iU6" id="ghG-0k-Q6j"/>
                         <outlet property="fcLife4" destination="gUg-8p-XQ4" id="iJw-EI-XBt"/>
                         <outlet property="fcMFC" destination="eiA-4W-rLj" id="Lyp-yf-5z1"/>
                         <outlet property="fcNoFC" destination="405-gL-A3j" id="vue-17-Kj7"/>
