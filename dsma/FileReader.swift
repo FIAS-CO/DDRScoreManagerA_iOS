@@ -1424,8 +1424,10 @@ struct FileReader{
             ret.RankNoPlay = sfm.getBool("RankNoPlay", def: true);
             ret.FcMFC = sfm.getBool("FcMFC", def: true);
             ret.FcPFC = sfm.getBool("FcPFC", def: true);
-            ret.FcFC = sfm.getBool("FcFC", def: true);
-            ret.FcGFC = sfm.getBool("FcGFC", def: true);
+            // 元々GFC＝GoodFCだったが、公式がGreatFCをGFCと呼び出したので交換した
+            // ただ、データ保存の部分のキーを逆にするのはややこしかったのでここがチグハグのまま
+            ret.FcGFC = sfm.getBool("FcFC", def: true);
+            ret.FcFC = sfm.getBool("FcGFC", def: true);
             ret.FcLife4 = sfm.getBool("FcLife4", def: true);
             ret.FcNoFC = sfm.getBool("FcNoFC", def: true);
             
@@ -1584,8 +1586,10 @@ struct FileReader{
         sfm.putBool("RankNoPlay", value: filter.RankNoPlay);
         sfm.putBool("FcMFC", value: filter.FcMFC);
         sfm.putBool("FcPFC", value: filter.FcPFC);
-        sfm.putBool("FcFC", value: filter.FcFC);
-        sfm.putBool("FcGFC", value: filter.FcGFC);
+        // 元々GFC＝GoodFCだったが、公式がGreatFCをGFCと呼び出したので交換した
+        // ただ、データ保存の部分のキーを逆にするのはややこしかったのでここがチグハグのまま
+        sfm.putBool("FcFC", value: filter.FcGFC);
+        sfm.putBool("FcGFC", value: filter.FcFC);
         sfm.putBool("FcLife4", value: filter.FcLife4);
         sfm.putBool("FcNoFC", value: filter.FcNoFC);
         

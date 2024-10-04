@@ -138,8 +138,8 @@ class MusicFilter{
     
     var FcMFC: Bool  = true;
     var FcPFC: Bool  = true;
-    var FcFC : Bool = true;
-    var FcGFC: Bool  = true;
+    var FcGFC : Bool = true;
+    var FcFC: Bool  = true;
     var FcLife4: Bool  = true;
     var FcNoFC : Bool = true;
     
@@ -352,8 +352,8 @@ class MusicFilter{
         
         if(!FcMFC && scoreData.FullComboType_ == FullComboType.MarvelousFullCombo){ return false; }
         if(!FcPFC && scoreData.FullComboType_ == FullComboType.PerfectFullCombo){ return false; }
-        if(!FcFC && scoreData.FullComboType_ == FullComboType.FullCombo){ return false; }
-        if(!FcGFC && scoreData.FullComboType_ == FullComboType.GoodFullCombo){ return false; }
+        if(!FcGFC && scoreData.FullComboType_ == FullComboType.FullCombo){ return false; }
+        if(!FcFC && scoreData.FullComboType_ == FullComboType.GoodFullCombo){ return false; }
         if(!FcLife4 && scoreData.FullComboType_ == FullComboType.Life4){ return false; }
         if(!FcNoFC && scoreData.FullComboType_ == FullComboType.None){ return false; }
         

@@ -818,24 +818,24 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                     {
                         musicFilter.FcMFC = false;
                         musicFilter.FcPFC = false;
-                        musicFilter.FcFC = false;
                         musicFilter.FcGFC = false;
+                        musicFilter.FcFC = false;
                         musicFilter.RankNoPlay = false;
                     }
                     else
                     {
                         if self.rparam_Category != "MFC" { musicFilter.FcMFC = false }
                         if self.rparam_Category != "PFC" { musicFilter.FcPFC = false }
-                        if self.rparam_Category != "FC" { musicFilter.FcFC = false }
                         if self.rparam_Category != "GFC" { musicFilter.FcGFC = false }
+                        if self.rparam_Category != "FC" { musicFilter.FcFC = false }
                         if self.rparam_Category != "Life4" { musicFilter.FcLife4 = false }
                         if self.rparam_Category != "NoFC" { musicFilter.FcNoFC = false }
                         if self.rparam_Category == "NoFC"
                         {
                             musicFilter.FcMFC = false;
                             musicFilter.FcPFC = false;
-                            musicFilter.FcFC = false;
                             musicFilter.FcGFC = false;
+                            musicFilter.FcFC = false;
                             musicFilter.RankNoPlay = false;
                         }
                     }

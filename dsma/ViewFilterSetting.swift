@@ -131,8 +131,8 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var swRankNoPlay: UISwitch!
     @IBOutlet weak var swFcMFC: UISwitch!
     @IBOutlet weak var swFcPFC: UISwitch!
-    @IBOutlet weak var swFcFC: UISwitch!
     @IBOutlet weak var swFcGFC: UISwitch!
+    @IBOutlet weak var swFcFC: UISwitch!
     @IBOutlet weak var swFcLife4: UISwitch!
     @IBOutlet weak var swFcNoFC: UISwitch!
     
@@ -272,8 +272,8 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
         swRankNoPlay.isOn = mFilter.RankNoPlay
         swFcMFC.isOn = mFilter.FcMFC
         swFcPFC.isOn = mFilter.FcPFC
-        swFcFC.isOn = mFilter.FcFC
         swFcGFC.isOn = mFilter.FcGFC
+        swFcFC.isOn = mFilter.FcFC
         swFcLife4.isOn = mFilter.FcLife4
         swFcNoFC.isOn = mFilter.FcNoFC
         
@@ -848,8 +848,8 @@ class ViewFilterSetting: UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func rankNoPlay(_ sender: AnyObject) { mFilter.RankNoPlay = (sender as! UISwitch).isOn }
     @IBAction func fcMFC(_ sender: AnyObject) { mFilter.FcMFC = (sender as! UISwitch).isOn }
     @IBAction func fcPFC(_ sender: AnyObject) { mFilter.FcPFC = (sender as! UISwitch).isOn }
-    @IBAction func fcFC(_ sender: AnyObject) { mFilter.FcFC = (sender as! UISwitch).isOn }
     @IBAction func fcGFC(_ sender: AnyObject) { mFilter.FcGFC = (sender as! UISwitch).isOn }
+    @IBAction func fcFC(_ sender: AnyObject) { mFilter.FcFC = (sender as! UISwitch).isOn }
     @IBAction func fcLife4(_ sender: AnyObject) { mFilter.FcLife4 = (sender as! UISwitch).isOn }
     @IBAction func fcNoFC(_ sender: AnyObject) { mFilter.FcNoFC = (sender as! UISwitch).isOn }
     

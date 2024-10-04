@@ -3,7 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -2668,10 +2668,10 @@
                                                             <constraint firstAttribute="width" constant="49" id="zEP-fA-IGa"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="fcGFC:" destination="JFD-hs-1sp" eventType="valueChanged" id="YVO-BX-swr"/>
+                                                            <action selector="fcFC:" destination="JFD-hs-1sp" eventType="valueChanged" id="YVO-BX-swr"/>
                                                         </connections>
                                                     </switch>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GFC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rd4-g9-gVU">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rd4-g9-gVU">
                                                         <rect key="frame" x="211.66666666666666" y="4.6666666666665151" width="103.33333333333334" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2784,10 +2784,10 @@
                                                             <constraint firstAttribute="width" constant="49" id="ghV-2g-MUV"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="fcFC:" destination="JFD-hs-1sp" eventType="valueChanged" id="Qqr-gW-OaT"/>
+                                                            <action selector="fcGFC:" destination="JFD-hs-1sp" eventType="valueChanged" id="Qqr-gW-OaT"/>
                                                         </connections>
                                                     </switch>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJq-TE-rvy">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GFC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJq-TE-rvy">
                                                         <rect key="frame" x="54.000000000000007" y="4.6666666666669698" width="103.66666666666669" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5521,9 +5521,9 @@
                         <outlet property="swDif8" destination="g72-Hm-hUg" id="68g-yA-ksI"/>
                         <outlet property="swDif9" destination="VZn-k8-cZo" id="dex-s5-M3d"/>
                         <outlet property="swDraw" destination="SH5-Z6-1sZ" id="OSa-Mn-e23"/>
-                        <outlet property="swFcFC" destination="mqq-j3-1Bg" id="vod-8W-kX9"/>
+                        <outlet property="swFcFC" destination="KYE-eg-BMT" id="UjL-ui-bXa"/>
                         <outlet property="swFcFCRival" destination="u2I-Pq-0Sw" id="y4U-2o-Qbq"/>
-                        <outlet property="swFcGFC" destination="KYE-eg-BMT" id="UjL-ui-bXa"/>
+                        <outlet property="swFcGFC" destination="mqq-j3-1Bg" id="vod-8W-kX9"/>
                         <outlet property="swFcGFCRival" destination="WMj-Lt-t2o" id="ENp-P3-E1S"/>
                         <outlet property="swFcLife4" destination="3Q7-HW-RbW" id="P3I-R7-vj0"/>
                         <outlet property="swFcLife4Rival" destination="RNN-Pq-iUB" id="Fcb-qI-KE5"/>
