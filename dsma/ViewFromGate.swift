@@ -763,7 +763,16 @@ class ViewFromGate: UIViewController, UINavigationBarDelegate, UIBarPositioningD
                             else
                             {
                                 // TODO ここ＋＝じゃなくていいんか？
-                                self.mRequestUri = "rival/music_detail.html?index="+wid.idOnWebPage+"&diff="+patternInt.description+"&rival_id="+self.rparam_RivalId;
+                                self.mRequestUri +=
+                                "rival/music_detail.html?index="+wid.idOnWebPage;
+                                
+                                if (self.mPreferences.Gate_LoadFrom == GameVersion.world) {
+                                    let style = self.getStyleInt(patternType: self.mTarget.Pattern).description
+                                    self.mRequestUri += "&style="+style+"&difficulty="+patternInt.description
+                                } else {
+                                    self.mRequestUri += "&diff="+patternInt.description;
+                                }
+                                self.mRequestUri += "&rival_id="+self.rparam_RivalId;
                             }
                             print(self.mRequestUri as Any)
                             let url: URL = URL(string: (self.mRequestUri))!
