@@ -39,7 +39,7 @@ class ViewClearStateList: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     // セルに表示するテキスト
-    let texts = ["Marvelous Full Combo", "Perfect Full Combo", "Full Combo", "Good Full Combo", "Life4 Clear", "Clear", "RankE", "NoPlay"]
+    let texts = ["Marvelous Full Combo", "Perfect Full Combo", "Great Full Combo", "Good Full Combo", "Life4 Clear", "Clear", "RankE", "NoPlay"]
     
     // セルの行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

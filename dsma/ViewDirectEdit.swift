@@ -207,7 +207,7 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
         case 2:
             mScoreData.FullComboType_ = FullComboType.FullCombo
             setRank()
-            btnState.setTitle("Full Combo", for: UIControl.State())
+            btnState.setTitle("Great Full Combo", for: UIControl.State())
         case 3:
             mScoreData.FullComboType_ = FullComboType.GoodFullCombo
             setRank()
@@ -246,7 +246,7 @@ class ViewDirectEdit: UIViewController, UIAlertViewDelegate, UINavigationBarDele
         case 2:
             mRivalScoreData.FullComboType_ = FullComboType.FullCombo
             setRivalRank()
-            btnRivalState.setTitle("Full Combo", for: UIControl.State())
+            btnRivalState.setTitle("Great Full Combo", for: UIControl.State())
         case 3:
             mRivalScoreData.FullComboType_ = FullComboType.GoodFullCombo
             setRivalRank()
