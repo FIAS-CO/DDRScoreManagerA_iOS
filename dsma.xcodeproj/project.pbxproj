@@ -44,6 +44,8 @@
 		188971C02C3A17050058DCE2 /* NewScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 188971BF2C3A17050058DCE2 /* NewScoreData.txt */; };
 		18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */; };
 		18F5F9822CAFC425001FAF0D /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F9812CAFC425001FAF0D /* AdMobBannerView.swift */; };
+		18F5F9842CD75453001FAF0D /* ViewFromGateList2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F9832CD75453001FAF0D /* ViewFromGateList2.swift */; };
+		18F5F9862CD76AAA001FAF0D /* ViewFromGateList2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5F9852CD76AAA001FAF0D /* ViewFromGateList2.storyboard */; };
 		42AF6B6126D58A4A81477EFA /* Pods_dsma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BFFA52C552F1F109F2C99C4 /* Pods_dsma.framework */; };
 		8A04D8A01B3F9A58006EDD51 /* ViewClearStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */; };
 		8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8541B55F24300EF6A99 /* Localizable.strings */; };
@@ -206,6 +208,8 @@
 		188971BF2C3A17050058DCE2 /* NewScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewScoreData.txt; sourceTree = "<group>"; };
 		18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		18F5F9812CAFC425001FAF0D /* AdMobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
+		18F5F9832CD75453001FAF0D /* ViewFromGateList2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFromGateList2.swift; sourceTree = "<group>"; };
+		18F5F9852CD76AAA001FAF0D /* ViewFromGateList2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewFromGateList2.storyboard; sourceTree = "<group>"; };
 		1BFFA52C552F1F109F2C99C4 /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6426EC98C613F18B1AAA86 /* Pods-dsma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.debug.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.debug.xcconfig"; sourceTree = "<group>"; };
 		8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClearStateList.swift; sourceTree = "<group>"; };
@@ -615,6 +619,7 @@
 				8AEC3D221BA16F7D00277E87 /* ViewPlayerStatus.storyboard */,
 				8A6DF1971CF537A300BDF736 /* ViewCopyFormatList.storyboard */,
 				184DD9D32BCC1373006FB282 /* ViewSongMemo.storyboard */,
+				18F5F9852CD76AAA001FAF0D /* ViewFromGateList2.storyboard */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -653,6 +658,7 @@
 				8AE105671B48BB8800329285 /* ViewDdrSa.swift */,
 				1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */,
 				184BBF5B2C9FF36200C77EE9 /* ViewFlareNoteUploader.swift */,
+				18F5F9832CD75453001FAF0D /* ViewFromGateList2.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -877,6 +883,7 @@
 				8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */,
 				8A7F127425CE8118006C0CAC /* InfoPlist.strings in Resources */,
 				8A86BB0A1B4D113600D4DAAE /* ViewSortList.storyboard in Resources */,
+				18F5F9862CD76AAA001FAF0D /* ViewFromGateList2.storyboard in Resources */,
 				184DD9D42BCC1373006FB282 /* ViewSongMemo.storyboard in Resources */,
 				8A9694031B54CF8A0025E229 /* ViewPreferences.storyboard in Resources */,
 				8A9694121B54D0530025E229 /* ViewDirectEdit.storyboard in Resources */,
@@ -1059,6 +1066,7 @@
 				8AFCB83B1B539250009133F9 /* ViewMenuRival.swift in Sources */,
 				184DD9D82BD56A9A006FB282 /* RealmUtil.swift in Sources */,
 				184BBF562C73312600C77EE9 /* HtmlRecentParseUtil.swift in Sources */,
+				18F5F9842CD75453001FAF0D /* ViewFromGateList2.swift in Sources */,
 				8AFCB8331B51FDBA009133F9 /* RivalData.swift in Sources */,
 				8AFD01CD1B200B80006500A0 /* ScoreListItem.swift in Sources */,
 				8AFD01E01B2164E3006500A0 /* PatternType.swift in Sources */,

@@ -166,10 +166,16 @@ class ViewCategorySelect: UIViewController, UITableViewDataSource, UITableViewDe
                 action = { ()->Void in self.present(ViewPlayerStatus.checkOut(self.processPool), animated: true, completion: nil) }
             case NSLocalizedString("from GATE (simple)", comment: "ViewCategorySelect"):
                 action = { ()->Void in
-                    self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("from GATE (simple)", comment: "ViewCategorySelect"), message: NSLocalizedString("Load all scores from GATE with no detail data.", comment: "ViewCategorySelect"), okAction: MessageAlertViewAction(method: {()->Void in
-                        self.present(ViewFromGateList.checkOut(nil, rivalId: nil, rivalName: nil, processPool: self.processPool), animated: true, completion: nil)
-                    }), cancelAction: MessageAlertViewAction(method: {()->Void in }))
-                    self.mMessageAlertView.show(self)
+                    var preferences = FileReader.readPreferences()
+                    // WORLD選択時のみSP/DP個別にデータ取得できるようにする。旧バージョンのデータ取得コードいじりたくないため。
+                    if (preferences.Gate_LoadFrom == .world) {
+                        self.showDataFetchOptions()
+                    } else {
+                        self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("from GATE (simple)", comment: "ViewCategorySelect"), message: NSLocalizedString("Load all scores from GATE with no detail data.", comment: "ViewCategorySelect"), okAction: MessageAlertViewAction(method: {()->Void in
+                            self.present(ViewFromGateList.checkOut(nil, rivalId: nil, rivalName: nil, processPool: self.processPool), animated: true, completion: nil)
+                        }), cancelAction: MessageAlertViewAction(method: {()->Void in }))
+                        self.mMessageAlertView.show(self)
+                    }
                 }
             case NSLocalizedString("DDR SA", comment: "ViewCategorySelect"):
                 action = { ()->Void in self.present(ViewDdrSa.checkOut(), animated: true, completion: nil) }
@@ -185,6 +191,46 @@ class ViewCategorySelect: UIViewController, UITableViewDataSource, UITableViewDe
             mActionSheet.addAction(ActionSheetAction(title: text, method: action))
         }
         mActionSheet.show(self, barButtonItem: buttonMenu)
+    }
+    
+    func showDataFetchOptions() {
+        let alert = UIAlertController(
+            title: "データ取得範囲の選択",
+            message: "取得するデータの範囲を選択してください",
+            preferredStyle: .alert  // actionSheetの代わりにalertを使用
+        )
+        
+        // すべて取得
+        alert.addAction(UIAlertAction(
+            title: "すべて取得 (SP + DP)",
+            style: .default
+        ) {_ in
+            self.present(ViewFromGateList2.checkOut(nil, playStyle: .all, rivalId: nil, rivalName: nil, processPool: self.processPool), animated: true, completion: nil)
+        })
+        
+        // SPのみ取得
+        alert.addAction(UIAlertAction(
+            title: "SPのみ取得",
+            style: .default
+        ) { _ in
+            self.present(ViewFromGateList2.checkOut(nil, playStyle: .sp, rivalId: nil, rivalName: nil, processPool: self.processPool), animated: true, completion: nil)
+        })
+        
+        // DPのみ取得
+        alert.addAction(UIAlertAction(
+            title: "DPのみ取得",
+            style: .default
+        ) {_ in
+            self.present(ViewFromGateList2.checkOut(nil, playStyle: .dp, rivalId: nil, rivalName: nil, processPool: self.processPool), animated: true, completion: nil)
+        })
+        
+        // キャンセル
+        alert.addAction(UIAlertAction(
+            title: "キャンセル",
+            style: .cancel
+        ))
+        
+        present(alert, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

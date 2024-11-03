@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YZG-pR-gz5">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View From Gate List2-->
+        <scene sceneID="NXG-PF-Z9V">
+            <objects>
+                <viewController id="YZG-pR-gz5" customClass="ViewFromGateList2" customModule="dsma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G65-Lj-tom"/>
+                        <viewControllerLayoutGuide type="bottom" id="MOY-Jv-AGI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xxr-8y-pL2">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lwd-OR-vVc">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="216"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5V-tR-2SH">
+                                <rect key="frame" x="0.0" y="216" width="325" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="325" id="5wR-2I-gzM"/>
+                                    <constraint firstAttribute="height" constant="50" id="now-rY-lZJ"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="JAF-EW-XDV">
+                                <rect key="frame" x="0.0" y="59" width="325" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="DMr-xd-5wD"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Score Loader" id="Nrm-yh-94G"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ilo-cr-VuT"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Lwd-OR-vVc" firstAttribute="top" secondItem="xxr-8y-pL2" secondAttribute="top" id="6Rc-oF-Jn1"/>
+                            <constraint firstAttribute="trailing" secondItem="Lwd-OR-vVc" secondAttribute="trailing" id="Ajm-9v-hxG"/>
+                            <constraint firstAttribute="centerX" secondItem="k5V-tR-2SH" secondAttribute="centerX" id="Aql-Wh-0SG"/>
+                            <constraint firstAttribute="trailing" secondItem="JAF-EW-XDV" secondAttribute="trailing" id="FYW-pp-P9j"/>
+                            <constraint firstItem="MOY-Jv-AGI" firstAttribute="top" secondItem="k5V-tR-2SH" secondAttribute="bottom" id="NKE-tH-T1Z"/>
+                            <constraint firstItem="k5V-tR-2SH" firstAttribute="top" secondItem="Lwd-OR-vVc" secondAttribute="bottom" id="cOT-dm-Nzf"/>
+                            <constraint firstItem="JAF-EW-XDV" firstAttribute="top" secondItem="G65-Lj-tom" secondAttribute="bottom" id="dUw-tP-gvl"/>
+                            <constraint firstItem="Lwd-OR-vVc" firstAttribute="leading" secondItem="xxr-8y-pL2" secondAttribute="leading" id="xdH-Km-z2I"/>
+                            <constraint firstItem="JAF-EW-XDV" firstAttribute="leading" secondItem="xxr-8y-pL2" secondAttribute="leading" id="yKC-3a-hkd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="E0N-0b-2o1"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="300"/>
+                    <connections>
+                        <outlet property="adHeight" destination="now-rY-lZJ" id="f90-WM-1Li"/>
+                        <outlet property="adView" destination="k5V-tR-2SH" id="uat-10-iWB"/>
+                        <outlet property="navigationBar" destination="JAF-EW-XDV" id="HlR-Mf-XZa"/>
+                        <outlet property="tableView" destination="Lwd-OR-vVc" id="xq8-94-Kcp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X7a-BB-uWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3869.5" y="2590"/>
+        </scene>
+    </scenes>
+</document>
