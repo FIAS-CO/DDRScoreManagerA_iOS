@@ -6,9 +6,8 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-- フレアスキル帳を公開するサービスとしてDDR FlareNoteというWebページを公開しました。
-それに伴い、本アプリからフレアスキル対象曲データをFlareNoteにアップロードする機能を追加しました。右上メニューから\"FlareNote Uploader\"をご確認ください。
-- DDR SAへの一部楽曲のエクスポートが失敗する問題を修正しました。";
+・ライバル機能が公式サイトに追加されたので、本アプリでもWORLDの情報を取得できるよう修正しました。
+・公式ページのフルコン表記が「GreatFullCombo=GFC」「GoodFullCombo=FC」となったことに伴い、本アプリ内の表記を修正しました。";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 連携";

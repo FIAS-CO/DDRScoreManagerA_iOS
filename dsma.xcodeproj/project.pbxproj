@@ -43,6 +43,7 @@
 		1863B0322BC2AE5500B01EF3 /* ViewSongMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */; };
 		188971C02C3A17050058DCE2 /* NewScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 188971BF2C3A17050058DCE2 /* NewScoreData.txt */; };
 		18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */; };
+		18F5F9822CAFC425001FAF0D /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F9812CAFC425001FAF0D /* AdMobBannerView.swift */; };
 		42AF6B6126D58A4A81477EFA /* Pods_dsma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BFFA52C552F1F109F2C99C4 /* Pods_dsma.framework */; };
 		8A04D8A01B3F9A58006EDD51 /* ViewClearStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */; };
 		8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8541B55F24300EF6A99 /* Localizable.strings */; };
@@ -204,6 +205,7 @@
 		1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongMemo.swift; sourceTree = "<group>"; };
 		188971BF2C3A17050058DCE2 /* NewScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewScoreData.txt; sourceTree = "<group>"; };
 		18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		18F5F9812CAFC425001FAF0D /* AdMobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
 		1BFFA52C552F1F109F2C99C4 /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6426EC98C613F18B1AAA86 /* Pods-dsma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.debug.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.debug.xcconfig"; sourceTree = "<group>"; };
 		8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClearStateList.swift; sourceTree = "<group>"; };
@@ -438,6 +440,14 @@
 				184BBF512C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html */,
 			);
 			path = "DDR SM ATests";
+			sourceTree = "<group>";
+		};
+		18F5F9802CAFC40C001FAF0D /* admob */ = {
+			isa = PBXGroup;
+			children = (
+				18F5F9812CAFC425001FAF0D /* AdMobBannerView.swift */,
+			);
+			name = admob;
 			sourceTree = "<group>";
 		};
 		54F75C4F53FCEABE704E7E2F /* Frameworks */ = {
@@ -697,6 +707,7 @@
 		8AFD01EB1B2284D3006500A0 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				18F5F9802CAFC40C001FAF0D /* admob */,
 				18099F352CA03760009C9995 /* flarenote */,
 				1812A5972C6636DE00461931 /* html */,
 				8A16E40B1B26738A00372D68 /* maker */,
@@ -1073,6 +1084,7 @@
 				8ABA79921B4EAE7100880817 /* ViewStatistics.swift in Sources */,
 				8A1C837E1B319F50008BB780 /* ViewSortList.swift in Sources */,
 				8A16E4171B28021500372D68 /* ShockArrowInclude.swift in Sources */,
+				18F5F9822CAFC425001FAF0D /* AdMobBannerView.swift in Sources */,
 				8AEC3D251BA1706500277E87 /* ViewPlayerStatus.swift in Sources */,
 				8AC6D5211B4A01830041A1B2 /* ViewDdrSaExport.swift in Sources */,
 				8A16E4151B27FEED00372D68 /* MusicFilter.swift in Sources */,
@@ -1452,7 +1464,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24092302;
+				CURRENT_PROJECT_VERSION = 24100402;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1467,7 +1479,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.79;
+				MARKETING_VERSION = 0.80;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;
@@ -1486,7 +1498,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24092302;
+				CURRENT_PROJECT_VERSION = 24100402;
 				DEVELOPMENT_TEAM = Q52AKPW243;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -1501,7 +1513,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.79;
+				MARKETING_VERSION = 0.80;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.linanfine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dsma;

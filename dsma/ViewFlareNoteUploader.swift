@@ -30,83 +30,88 @@ struct ViewFlareNoteUploader: View {
         ZStack {
             Color.black.opacity(1.0).edgesIgnoringSafeArea(.all)
             
-            ScrollView {
-                VStack(spacing: 20) {
-                    HStack {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.blue)
-                                .font(.system(size: 20, weight: .bold))
-                        }
-                        .frame(width: 44, height: 44)
-                        
-                        Spacer()
-                        
-                        Text("FlareNote Uploader")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                        
-                        Spacer()
-                        
-                        // 右側のスペースを確保するための空のビュー
-                        Color.clear.frame(width: 44, height: 44)
+            VStack {
+                HStack {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.blue)
+                            .font(.system(size: 20, weight: .bold))
                     }
-                    AdaptiveTextField(
-                        text: $userName,
-                        placeholder: "FlareNote_Input_user_name",
-                        isDisabled: isUserRegistered
-                    )
+                    .frame(width: 44, height: 44)
                     
-                    Button(action: registerUser) {
-                        Text(NSLocalizedString("FlareNote_Register User", comment: "ViewFlareNoteUploader"))
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(PrimaryButtonStyle())
-                    .disabled(isUserRegistered)
+                    Spacer()
                     
-                    Button(action: sendData) {
-                        Text(NSLocalizedString("FlareNote_Send Song Data", comment: "ViewFlareNoteUploader"))
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(PrimaryButtonStyle())
+                    Text("FlareNote Uploader")
+                        .foregroundColor(.white)
+                        .font(.headline)
                     
-                    Text(message)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(8)
+                    Spacer()
                     
-                    HStack {
-                        Button("FlareNote TOP") {
-                            openURL("https://flarenote.fia-s.com")
-                        }
-                        .buttonStyle(SecondaryButtonStyle())
-                        .frame(maxWidth: .infinity)
-                        
-                        Button(NSLocalizedString("FlareNote_Your Page", comment: "ViewFlareNoteUploader")) {
-                            openURL("https://flarenote.fia-s.com/personal-skill/\(userName)")
-                        }
-                        .buttonStyle(SecondaryButtonStyle())
-                        .disabled(!isUserRegistered)
-                        .frame(maxWidth: .infinity)
-                    }
-                    
-                    Button(NSLocalizedString("FlareNote_Delete User", comment: "ViewFlareNoteUploader"), action: deleteUser)
-                        .buttonStyle(DangerButtonStyle())
-                    
-                    Text(NSLocalizedString("FlareNote_How to use", comment: "ViewFlareNoteUploader"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Text(NSLocalizedString("FlareNote_How to use detail", comment: "ViewFlareNoteUploader"))
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.white.opacity(0.1))
-                        .cornerRadius(8)
+                    // 右側のスペースを確保するための空のビュー
+                    Color.clear.frame(width: 44, height: 44)
                 }
-                .padding()
+                ScrollView {
+                    VStack(spacing: 20) {
+                        AdaptiveTextField(
+                            text: $userName,
+                            placeholder: "FlareNote_Input_user_name",
+                            isDisabled: isUserRegistered
+                        )
+                        
+                        Button(action: registerUser) {
+                            Text(NSLocalizedString("FlareNote_Register User", comment: "ViewFlareNoteUploader"))
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(PrimaryButtonStyle())
+                        .disabled(isUserRegistered)
+                        
+                        Button(action: sendData) {
+                            Text(NSLocalizedString("FlareNote_Send Song Data", comment: "ViewFlareNoteUploader"))
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(PrimaryButtonStyle())
+                        
+                        Text(message)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(8)
+                        
+                        HStack {
+                            Button("FlareNote TOP") {
+                                openURL("https://flarenote.fia-s.com")
+                            }
+                            .buttonStyle(SecondaryButtonStyle())
+                            .frame(maxWidth: .infinity)
+                            
+                            Button(NSLocalizedString("FlareNote_Your Page", comment: "ViewFlareNoteUploader")) {
+                                openURL("https://flarenote.fia-s.com/personal-skill/\(userName)")
+                            }
+                            .buttonStyle(SecondaryButtonStyle())
+                            .disabled(!isUserRegistered)
+                            .frame(maxWidth: .infinity)
+                        }
+                        
+                        Button(NSLocalizedString("FlareNote_Delete User", comment: "ViewFlareNoteUploader"), action: deleteUser)
+                            .buttonStyle(DangerButtonStyle())
+                        
+                        Text(NSLocalizedString("FlareNote_How to use", comment: "ViewFlareNoteUploader"))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Text(NSLocalizedString("FlareNote_How to use detail", comment: "ViewFlareNoteUploader"))
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color.white.opacity(0.1))
+                            .cornerRadius(8)
+                    }
+                }
+                
+                AdMobBannerView()
+                    .frame(height: 50)
             }
+            .padding()
         }
         .foregroundColor(.white)
         .navigationTitle("DDR FlareNote")
