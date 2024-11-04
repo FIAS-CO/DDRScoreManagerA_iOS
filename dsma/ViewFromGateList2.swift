@@ -477,7 +477,7 @@ class ViewFromGateList2: UIViewController, UINavigationBarDelegate, UIBarPositio
             repeat {
                 self.mWait = true
                 DispatchQueue.main.async(execute: {
-                    self.addLog("SP : " + (i+1).description + " / " + (self.mPageCount == 1 ? "?" : self.mPageCount.description) + "\r\n")
+                    self.addLog("\(logLabel) : " + (i+1).description + " / " + (self.mPageCount == 1 ? "?" : self.mPageCount.description) + "\r\n")
                     self.mUriH = "https://p.eagate.573.jp/game/ddr/ddrworld/"
                     
                     
@@ -486,8 +486,8 @@ class ViewFromGateList2: UIViewController, UINavigationBarDelegate, UIBarPositio
                         self.mUriF = "";
                     }
                     else {
-                            self.mUriH += "rival/music_data_\(playStyle).html?offset=";
-                            self.mUriF = "&rival_id=" + self.rparam_RivalId;
+                        self.mUriH += "rival/music_data_\(playStyle).html?offset=";
+                        self.mUriF = "&rival_id=" + self.rparam_RivalId;
                     }
                     
                     let url: URL = URL(string: (self.mUriH+i.description+self.mUriF))!
