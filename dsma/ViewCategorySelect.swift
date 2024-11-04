@@ -169,7 +169,7 @@ class ViewCategorySelect: UIViewController, UITableViewDataSource, UITableViewDe
                     let preferences = FileReader.readPreferences()
                     // WORLD選択時のみSP/DP個別にデータ取得できるようにする。旧バージョンのデータ取得コードいじりたくないため。
                     if (preferences.Gate_LoadFrom == .world) {
-                        DialogUtils.showDataFetchOptions(from: self, processPool: self.processPool)
+                        DialogUtil.showDataFetchOptions(from: self, processPool: self.processPool)
                     } else {
                         self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("from GATE (simple)", comment: "ViewCategorySelect"), message: NSLocalizedString("Load all scores from GATE with no detail data.", comment: "ViewCategorySelect"), okAction: MessageAlertViewAction(method: {()->Void in
                             self.present(ViewFromGateList.checkOut(nil, rivalId: nil, rivalName: nil, processPool: self.processPool), animated: true, completion: nil)

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import WebKit
 
-class DialogUtils {
+class DialogUtil {
     
     static func showDataFetchOptions(from viewController: UIViewController,
                               processPool: WKProcessPool,

@@ -128,7 +128,7 @@ class ViewSubCategorySelect: UIViewController, UITableViewDataSource, UITableVie
                     let preferences = FileReader.readPreferences()
                     // WORLD選択時のみSP/DP個別にデータ取得できるようにする。旧バージョンのデータ取得コードいじりたくないため。
                     if (preferences.Gate_LoadFrom == .world) {
-                        DialogUtils.showDataFetchOptions(from: self, processPool: self.rparam_ProcessPool)
+                        DialogUtil.showDataFetchOptions(from: self, processPool: self.rparam_ProcessPool)
                     } else {
                         self.present(ViewFromGateList.checkOut(nil, rivalId: nil, rivalName: nil, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
                     }
