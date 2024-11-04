@@ -13,42 +13,46 @@ import WebKit
 class DialogUtil {
     
     static func showDataFetchOptions(from viewController: UIViewController,
-                              processPool: WKProcessPool,
-                              rivalId: String? = nil,
-                              rivalName: String? = nil) {
+                                     processPool: WKProcessPool,
+                                     rivalId: String? = nil,
+                                     rivalName: String? = nil) {
+        let alertMessage = rivalId == nil ?
+        NSLocalizedString("Load all scores from GATE with no detail data.", comment: "DialogUtil")
+        :NSLocalizedString("Load active rival's all scores from GATE with no detail data.", comment: "DialogUtil")
+        
         let alert = UIAlertController(
-            title: "データ取得範囲の選択",
-            message: "取得するデータの範囲を選択してください",
+            title: NSLocalizedString("from GATE (simple)", comment: "DialogUtil"),
+            message: alertMessage,
             preferredStyle: .alert  // actionSheetの代わりにalertを使用
         )
         
         // すべて取得
         alert.addAction(UIAlertAction(
-            title: "すべて取得 (SP + DP)",
+            title: NSLocalizedString("Load all data (SP + DP)", comment: "DialogUtil"),
             style: .default
         ) {_ in
-            viewController.present(ViewFromGateList2.checkOut(nil, playStyle: .all, rivalId: nil, rivalName: nil, processPool: processPool), animated: true, completion: nil)
+            viewController.present(ViewFromGateList2.checkOut(nil, playStyle: .all, rivalId: rivalId, rivalName: rivalName, processPool: processPool), animated: true, completion: nil)
         })
         
         // SPのみ取得
         alert.addAction(UIAlertAction(
-            title: "SPのみ取得",
+            title: NSLocalizedString("Load SP only", comment: "DialogUtil"),
             style: .default
         ) { _ in
-            viewController.present(ViewFromGateList2.checkOut(nil, playStyle: .sp, rivalId: nil, rivalName: nil, processPool: processPool), animated: true, completion: nil)
+            viewController.present(ViewFromGateList2.checkOut(nil, playStyle: .sp, rivalId: rivalId, rivalName: rivalName, processPool: processPool), animated: true, completion: nil)
         })
         
         // DPのみ取得
         alert.addAction(UIAlertAction(
-            title: "DPのみ取得",
+            title: NSLocalizedString("Load DP only", comment: "DialogUtil"),
             style: .default
         ) {_ in
-            viewController.present(ViewFromGateList2.checkOut(nil, playStyle: .dp, rivalId: nil, rivalName: nil, processPool: processPool), animated: true, completion: nil)
+            viewController.present(ViewFromGateList2.checkOut(nil, playStyle: .dp, rivalId: rivalId, rivalName: rivalName, processPool: processPool), animated: true, completion: nil)
         })
         
         // キャンセル
         alert.addAction(UIAlertAction(
-            title: "キャンセル",
+            title: NSLocalizedString("Cancel", comment: "DialogUtil"),
             style: .cancel
         ))
         

@@ -654,6 +654,18 @@
  ViewScoreList */
 "Load all scores from GATE with no detail data." = "全楽曲のスコアとフルコンタイプを取得します。(ライバルのスコアはライバル一覧から取得できます)";
 
+/* DialogUtil */
+"Load all data (SP + DP)" = "すべて取得 (SP + DP)";
+
+/* DialogUtil */
+"Load SP only" = "SPのみ取得";
+
+/* DialogUtil */
+"Load DP only" = "DPのみ取得";
+
+/* DialogUtil */
+"Cancel" = "キャンセル";
+
 /* ViewCategorySelect */
 "DDR Score Manager needs to access internet to download music list file on 1st launch. Press OK to retry." = "楽曲リストの初回ダウンロードに失敗しました。 OKを押すと再試行します。";
 

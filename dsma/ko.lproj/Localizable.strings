@@ -654,6 +654,18 @@
  ViewScoreList */
 "Load all scores from GATE with no detail data." = "모든 곡의 스코어와 풀콤보 종류를 받아옵니다.(라이벌의 점수는 라이벌 목록 페이지에서 얻을 수 있습니다.)";
 
+/* DialogUtil */
+"Load all data (SP + DP)" = "모두 가져오기 (SP + DP)";
+
+/* DialogUtil */
+"Load SP only" = "SP만 가져오기";
+
+/* DialogUtil */
+"Load DP only" = "DP만 가져오기";
+
+/* DialogUtil */
+"Cancel" = "취소";
+
 /* ViewCategorySelect */
 "DDR Score Manager needs to access internet to download music list file on 1st launch. Press OK to retry." = "곡 리스트의 초기 다운로드에 실패하였습니다. OK를 누르면 재시도합니다.";
 
