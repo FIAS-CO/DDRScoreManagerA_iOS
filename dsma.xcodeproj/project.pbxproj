@@ -46,6 +46,7 @@
 		18F5F9822CAFC425001FAF0D /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F9812CAFC425001FAF0D /* AdMobBannerView.swift */; };
 		18F5F9842CD75453001FAF0D /* ViewFromGateList2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F9832CD75453001FAF0D /* ViewFromGateList2.swift */; };
 		18F5F9862CD76AAA001FAF0D /* ViewFromGateList2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F5F9852CD76AAA001FAF0D /* ViewFromGateList2.storyboard */; };
+		18F5F9882CD89CBA001FAF0D /* DialogUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F9872CD89CBA001FAF0D /* DialogUtil.swift */; };
 		42AF6B6126D58A4A81477EFA /* Pods_dsma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BFFA52C552F1F109F2C99C4 /* Pods_dsma.framework */; };
 		8A04D8A01B3F9A58006EDD51 /* ViewClearStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */; };
 		8A05B8521B55F24300EF6A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A05B8541B55F24300EF6A99 /* Localizable.strings */; };
@@ -210,6 +211,7 @@
 		18F5F9812CAFC425001FAF0D /* AdMobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
 		18F5F9832CD75453001FAF0D /* ViewFromGateList2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFromGateList2.swift; sourceTree = "<group>"; };
 		18F5F9852CD76AAA001FAF0D /* ViewFromGateList2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewFromGateList2.storyboard; sourceTree = "<group>"; };
+		18F5F9872CD89CBA001FAF0D /* DialogUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogUtil.swift; sourceTree = "<group>"; };
 		1BFFA52C552F1F109F2C99C4 /* Pods_dsma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dsma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6426EC98C613F18B1AAA86 /* Pods-dsma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dsma.debug.xcconfig"; path = "Target Support Files/Pods-dsma/Pods-dsma.debug.xcconfig"; sourceTree = "<group>"; };
 		8A04D89F1B3F9A58006EDD51 /* ViewClearStateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewClearStateList.swift; sourceTree = "<group>"; };
@@ -728,6 +730,7 @@
 				18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */,
 				185A413D2C43E83600ECB7FA /* FlareSkillUpdater.swift */,
 				1846951C2CA0F6500016AC27 /* HtmlEntityConverter.swift */,
+				18F5F9872CD89CBA001FAF0D /* DialogUtil.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -1120,6 +1123,7 @@
 				8AFD01DC1B213FB4006500A0 /* FullComboType.swift in Sources */,
 				8A16E4071B25240700372D68 /* ViewMusicListUpdate.swift in Sources */,
 				184BBF582C772F3A00C77EE9 /* GameVersion.swift in Sources */,
+				18F5F9882CD89CBA001FAF0D /* DialogUtil.swift in Sources */,
 				8A41B6FF1B4414B10094B1FE /* ViewGateLogin.swift in Sources */,
 				1812A5992C6636F900461931 /* HtmlParseUtil.swift in Sources */,
 				8A0DC88C1B33A98C00F162B7 /* ViewSortTypeSetting.swift in Sources */,

@@ -124,7 +124,15 @@ class ViewSubCategorySelect: UIViewController, UITableViewDataSource, UITableVie
             case NSLocalizedString("Player Status", comment: "ViewSubCategorySelect"):
                 action = { ()->Void in self.present(ViewPlayerStatus.checkOut(self.rparam_ProcessPool), animated: true, completion: nil) }
             case NSLocalizedString("from GATE (simple)", comment: "ViewSubCategorySelect"):
-                action = { ()->Void in self.present(ViewFromGateList.checkOut(nil, rivalId: nil, rivalName: nil, processPool: self.rparam_ProcessPool), animated: true, completion: nil) }
+                action = { ()->Void in
+                    let preferences = FileReader.readPreferences()
+                    // WORLD選択時のみSP/DP個別にデータ取得できるようにする。旧バージョンのデータ取得コードいじりたくないため。
+                    if (preferences.Gate_LoadFrom == .world) {
+                        DialogUtils.showDataFetchOptions(from: self, processPool: self.rparam_ProcessPool)
+                    } else {
+                        self.present(ViewFromGateList.checkOut(nil, rivalId: nil, rivalName: nil, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
+                    }
+                }
             case NSLocalizedString("DDR SA", comment: "ViewSubCategorySelect"):
                 action = { ()->Void in self.present(ViewDdrSa.checkOut(), animated: true, completion: nil) }
             case NSLocalizedString("Manage Rivals", comment: "ViewSubCategorySelect"):

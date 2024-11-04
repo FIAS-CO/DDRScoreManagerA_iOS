@@ -409,7 +409,7 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
         NSLocalizedString("from GATE (detail)", comment: "ViewScoreList"),
         NSLocalizedString("DDR SA", comment: "ViewScoreList"),
         NSLocalizedString("Random Pickup", comment: "ViewScoreList"),
-        NSLocalizedString("Manage Rivals", comment: "ViewScoreList"),                
+        NSLocalizedString("Manage Rivals", comment: "ViewScoreList"),
         NSLocalizedString("FlareNoteUploader", comment: "ViewScoreList"),
     ]
     let actionSheetTextsSystemB = [
@@ -1161,10 +1161,17 @@ class ViewScoreList: UIViewController, UITableViewDataSource, UITableViewDelegat
                 }
             case NSLocalizedString("from GATE (simple)", comment: "ViewScoreList"):
                 action = { ()->Void in
-                    self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("from GATE (simple)", comment: "ViewScoreList"), message: NSLocalizedString("Load all scores from GATE with no detail data.", comment: "ViewScoreList"), okAction: MessageAlertViewAction(method: {()->Void in
-                        self.present(ViewFromGateList.checkOut(self, rivalId: nil, rivalName: nil, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
-                    }), cancelAction: MessageAlertViewAction(method: {()->Void in }))
-                    self.mMessageAlertView.show(self)
+                    
+                    let preferences = FileReader.readPreferences()
+                    // WORLD選択時のみSP/DP個別にデータ取得できるようにする。旧バージョンのデータ取得コードいじりたくないため。
+                    if (preferences.Gate_LoadFrom == .world) {
+                        DialogUtils.showDataFetchOptions(from: self, processPool: self.rparam_ProcessPool)
+                    } else {
+                        self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("from GATE (simple)", comment: "ViewScoreList"), message: NSLocalizedString("Load all scores from GATE with no detail data.", comment: "ViewScoreList"), okAction: MessageAlertViewAction(method: {()->Void in
+                            self.present(ViewFromGateList.checkOut(self, rivalId: nil, rivalName: nil, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
+                        }), cancelAction: MessageAlertViewAction(method: {()->Void in }))
+                        self.mMessageAlertView.show(self)
+                    }
                 }
             case NSLocalizedString("from GATE (detail)", comment: "ViewScoreList"):
                 action = { ()->Void in
