@@ -114,10 +114,21 @@ class ViewManageRivals: UIViewController, UITableViewDataSource, UITableViewDele
                     switch text {
                     case NSLocalizedString("from GATE (simple)", comment: "ViewManageRivals"):
                         action = { ()->Void in
-                            self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("from GATE (simple)", comment: "ViewManageRivals"), message: NSLocalizedString("Load active rival's all scores from GATE with no detail data.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in
-                                self.present(ViewFromGateList.checkOut(self.rparam_ParentView, rivalId: self.mRivalList[(indexPath as NSIndexPath).row].Id, rivalName: self.mRivalList[(indexPath as NSIndexPath).row].Name, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
-                            }), cancelAction: MessageAlertViewAction(method: {()->Void in self.tableView.deselectRow(at: indexPath, animated: true)}))
-                            self.mMessageAlertView.show(self)
+                            let preferences = FileReader.readPreferences()
+                            // WORLD選択時のみSP/DP個別にデータ取得できるようにする。旧バージョンのデータ取得コードいじりたくないため。
+                            if (preferences.Gate_LoadFrom == .world) {
+                                DialogUtil.showDataFetchOptions(
+                                    from: self,
+                                    processPool: self.rparam_ProcessPool,
+                                    rivalId: self.mRivalList[(indexPath as NSIndexPath).row].Id,
+                                    rivalName: self.mRivalList[(indexPath as NSIndexPath).row].Name
+                                )
+                            } else {
+                                self.mMessageAlertView = MessageAlertView(title: NSLocalizedString("from GATE (simple)", comment: "ViewManageRivals"), message: NSLocalizedString("Load active rival's all scores from GATE with no detail data.", comment: "ViewManageRivals"), okAction: MessageAlertViewAction(method: {()->Void in
+                                    self.present(ViewFromGateList.checkOut(self.rparam_ParentView, rivalId: self.mRivalList[(indexPath as NSIndexPath).row].Id, rivalName: self.mRivalList[(indexPath as NSIndexPath).row].Name, processPool: self.rparam_ProcessPool), animated: true, completion: nil)
+                                }), cancelAction: MessageAlertViewAction(method: {()->Void in self.tableView.deselectRow(at: indexPath, animated: true)}))
+                                self.mMessageAlertView.show(self)
+                            }
                         }
                     case NSLocalizedString("from GATE (detail)", comment: "ViewManageRivals"):
                         if self.rparam_ListItems == nil {
