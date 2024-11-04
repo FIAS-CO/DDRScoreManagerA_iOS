@@ -647,6 +647,7 @@
 				8A41B6FE1B4414B10094B1FE /* ViewGateLogin.swift */,
 				8AE29FAC1B40FD910068C3E2 /* ViewFromGate.swift */,
 				8AD24EB61B44C2B400439BDE /* ViewFromGateList.swift */,
+				18F5F9832CD75453001FAF0D /* ViewFromGateList2.swift */,
 				8ABA798F1B4E0C4700880817 /* ViewFromGateRecent.swift */,
 				8A5D6E011B5DDA5E002E4961 /* ViewFromGateRivalList.swift */,
 				8AFF0FC81BA7BC6C00CF96BC /* ViewFromGatePlayerStatus.swift */,
@@ -658,7 +659,6 @@
 				8AE105671B48BB8800329285 /* ViewDdrSa.swift */,
 				1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */,
 				184BBF5B2C9FF36200C77EE9 /* ViewFlareNoteUploader.swift */,
-				18F5F9832CD75453001FAF0D /* ViewFromGateList2.swift */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
