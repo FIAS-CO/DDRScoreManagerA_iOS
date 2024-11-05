@@ -6,8 +6,8 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-* 공식 사이트에 라이벌 기능이 추가되어, 본 앱에서도 WORLD 정보를 가져올 수 있도록 수정했습니다.
-* 공식 페이지에서 \'Great Full Combo = GFC\', \'Good Full Combo = FC\'로 표기된 것에 맞춰, 앱 내 표기를 수정했습니다.";
+'GATE에서 받아오기 (간이)' 실행 시 SP 또는 DP 중 하나만 가져올 수 있게 되었습니다.
+(A3 또는 A20PLUS에서 가져오는 경우, 기존과 같이 SP와 DP 모두 가져옵니다.)";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 연동";

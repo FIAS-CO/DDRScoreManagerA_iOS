@@ -6,8 +6,8 @@
 
 /* ViewCategorySelect */
 "----- Version Information Main Text-----" = "* Update:
-・ライバル機能が公式サイトに追加されたので、本アプリでもWORLDの情報を取得できるよう修正しました。
-・公式ページのフルコン表記が「GreatFullCombo=GFC」「GoodFullCombo=FC」となったことに伴い、本アプリ内の表記を修正しました。";
+'Gateから取得（通常）'実行時に、SP/DPのいずれか一方のみを取得できるようになりました。
+（A3およびA20PLUSから取得する場合は、従来通りSP/DPの両方が取得されます）";
 
 /* ViewMenuSystem */
 "Export scores to DDR Skill Attack." = "DDR Skill Attack 連携";
