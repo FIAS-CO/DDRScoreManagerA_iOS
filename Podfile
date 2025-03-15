@@ -22,4 +22,6 @@ target 'dsma' do
   pod 'Firebase/Crashlytics'
 
   pod 'SwiftSoup'
+
+  pod 'GoogleSignIn'
 end
