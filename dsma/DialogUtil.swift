@@ -15,10 +15,14 @@ class DialogUtil {
     static func showDataFetchOptions(from viewController: UIViewController,
                                      processPool: WKProcessPool,
                                      rivalId: String? = nil,
-                                     rivalName: String? = nil) {
+                                     rivalName: String? = nil,
+                                     refreshAfter: Bool = false) {
         let alertMessage = rivalId == nil ?
         NSLocalizedString("Load all scores from GATE with no detail data.", comment: "DialogUtil")
         :NSLocalizedString("Load active rival's all scores from GATE with no detail data.", comment: "DialogUtil")
+        
+        let parentView =
+            refreshAfter && viewController is ViewScoreList ? viewController as? ViewScoreList : nil
         
         let alert = UIAlertController(
             title: NSLocalizedString("from GATE (simple)", comment: "DialogUtil"),
@@ -31,7 +35,7 @@ class DialogUtil {
             title: NSLocalizedString("Load all data (SP + DP)", comment: "DialogUtil"),
             style: .default
         ) {_ in
-            viewController.present(ViewFromGateList2.checkOut(nil, playStyle: .all, rivalId: rivalId, rivalName: rivalName, processPool: processPool), animated: true, completion: nil)
+            viewController.present(ViewFromGateList2.checkOut(parentView, playStyle: .all, rivalId: rivalId, rivalName: rivalName, processPool: processPool), animated: true, completion: nil)
         })
         
         // SPのみ取得
@@ -39,7 +43,7 @@ class DialogUtil {
             title: NSLocalizedString("Load SP only", comment: "DialogUtil"),
             style: .default
         ) { _ in
-            viewController.present(ViewFromGateList2.checkOut(nil, playStyle: .sp, rivalId: rivalId, rivalName: rivalName, processPool: processPool), animated: true, completion: nil)
+            viewController.present(ViewFromGateList2.checkOut(parentView, playStyle: .sp, rivalId: rivalId, rivalName: rivalName, processPool: processPool), animated: true, completion: nil)
         })
         
         // DPのみ取得
@@ -47,7 +51,7 @@ class DialogUtil {
             title: NSLocalizedString("Load DP only", comment: "DialogUtil"),
             style: .default
         ) {_ in
-            viewController.present(ViewFromGateList2.checkOut(nil, playStyle: .dp, rivalId: rivalId, rivalName: rivalName, processPool: processPool), animated: true, completion: nil)
+            viewController.present(ViewFromGateList2.checkOut(parentView, playStyle: .dp, rivalId: rivalId, rivalName: rivalName, processPool: processPool), animated: true, completion: nil)
         })
         
         // キャンセル
