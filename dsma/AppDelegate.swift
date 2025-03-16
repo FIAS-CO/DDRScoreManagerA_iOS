@@ -31,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         FirebaseApp.configure()
 
+        // GoogleSignInの初期化を追加
+        GIDSignIn.sharedInstance.configuration = GIDConfiguration(
+            clientID: "709569493981-q41hfgshokr29mmpmfdf3afeg9nod4fp.apps.googleusercontent.com"
+        )
+        
         return true
     }
     

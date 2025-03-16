@@ -41,6 +41,7 @@
 		185A413C2C4018C200ECB7FA /* FlareRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A413B2C4018C200ECB7FA /* FlareRank.swift */; };
 		185A413E2C43E83600ECB7FA /* FlareSkillUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A413D2C43E83600ECB7FA /* FlareSkillUpdater.swift */; };
 		1863B0322BC2AE5500B01EF3 /* ViewSongMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */; };
+		186B0A402D86E665009C386C /* GoogleAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B0A3F2D86E665009C386C /* GoogleAuthManager.swift */; };
 		188971C02C3A17050058DCE2 /* NewScoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 188971BF2C3A17050058DCE2 /* NewScoreData.txt */; };
 		18CEC2862BDD194A0082BCC8 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */; };
 		18F5F9822CAFC425001FAF0D /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F9812CAFC425001FAF0D /* AdMobBannerView.swift */; };
@@ -206,6 +207,7 @@
 		185A413B2C4018C200ECB7FA /* FlareRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlareRank.swift; sourceTree = "<group>"; };
 		185A413D2C43E83600ECB7FA /* FlareSkillUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlareSkillUpdater.swift; sourceTree = "<group>"; };
 		1863B0312BC2AE5500B01EF3 /* ViewSongMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongMemo.swift; sourceTree = "<group>"; };
+		186B0A3F2D86E665009C386C /* GoogleAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthManager.swift; sourceTree = "<group>"; };
 		188971BF2C3A17050058DCE2 /* NewScoreData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewScoreData.txt; sourceTree = "<group>"; };
 		18CEC2852BDD194A0082BCC8 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		18F5F9812CAFC425001FAF0D /* AdMobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
@@ -446,6 +448,14 @@
 				184BBF512C6CAD8A00C77EE9 /* WorldSiteDataDetail_E.html */,
 			);
 			path = "DDR SM ATests";
+			sourceTree = "<group>";
+		};
+		186B0A3E2D86E63A009C386C /* google */ = {
+			isa = PBXGroup;
+			children = (
+				186B0A3F2D86E665009C386C /* GoogleAuthManager.swift */,
+			);
+			name = google;
 			sourceTree = "<group>";
 		};
 		18F5F9802CAFC40C001FAF0D /* admob */ = {
@@ -715,6 +725,7 @@
 		8AFD01EB1B2284D3006500A0 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				186B0A3E2D86E63A009C386C /* google */,
 				18F5F9802CAFC40C001FAF0D /* admob */,
 				18099F352CA03760009C9995 /* flarenote */,
 				1812A5972C6636DE00461931 /* html */,
@@ -1114,6 +1125,7 @@
 				8AB4C27B1CF40AE8001B02F4 /* ViewCopyFormatList.swift in Sources */,
 				8AD24EB71B44C2B400439BDE /* ViewFromGateList.swift in Sources */,
 				8A1456701B29594700DF786E /* ViewFilterList.swift in Sources */,
+				186B0A402D86E665009C386C /* GoogleAuthManager.swift in Sources */,
 				8AFD01E41B21718F006500A0 /* SeriesTitle.swift in Sources */,
 				8AFD01D31B2030D3006500A0 /* MusicRank.swift in Sources */,
 				8AEB6E721B651339005C7F8F /* TouchDownTableView.swift in Sources */,

@@ -21,16 +21,18 @@ struct ViewFlareNoteUploader: View {
     @State private var isUserRegistered: Bool = false
     @State private var userId: String = ""
     @State private var showHowToUse: Bool = false
+    @State private var isGoogleLinked: Bool = false
+    @State private var isLoading: Bool = false
     @Environment(\.presentationMode) var presentationMode
     
     private let baseURL = "https://fnapi.fia-s.com/api"
     
     var body: some View {
-        
         ZStack {
             Color.black.opacity(1.0).edgesIgnoringSafeArea(.all)
             
             VStack {
+                // ヘッダー部分
                 HStack {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
@@ -52,26 +54,16 @@ struct ViewFlareNoteUploader: View {
                     // 右側のスペースを確保するための空のビュー
                     Color.clear.frame(width: 44, height: 44)
                 }
+                
                 ScrollView {
                     VStack(spacing: 20) {
-                        AdaptiveTextField(
-                            text: $userName,
-                            placeholder: "FlareNote_Input_user_name",
-                            isDisabled: isUserRegistered
-                        )
-                        
-                        Button(action: registerUser) {
-                            Text(NSLocalizedString("FlareNote_Register User", comment: "ViewFlareNoteUploader"))
-                                .frame(maxWidth: .infinity)
+                        if !isUserRegistered {
+                            // ユーザー未登録時の表示
+                            nonRegisteredUserView
+                        } else {
+                            // ユーザー登録済み時の表示
+                            registeredUserView
                         }
-                        .buttonStyle(PrimaryButtonStyle())
-                        .disabled(isUserRegistered)
-                        
-                        Button(action: sendData) {
-                            Text(NSLocalizedString("FlareNote_Send Song Data", comment: "ViewFlareNoteUploader"))
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(PrimaryButtonStyle())
                         
                         Text(message)
                             .padding()
@@ -79,6 +71,7 @@ struct ViewFlareNoteUploader: View {
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(8)
                         
+                        // 共通のリンクボタン
                         HStack {
                             Button("FlareNote TOP") {
                                 openURL("https://flarenote.fia-s.com")
@@ -94,8 +87,10 @@ struct ViewFlareNoteUploader: View {
                             .frame(maxWidth: .infinity)
                         }
                         
-                        Button(NSLocalizedString("FlareNote_Delete User", comment: "ViewFlareNoteUploader"), action: deleteUser)
-                            .buttonStyle(DangerButtonStyle())
+                        if isUserRegistered {
+                            Button(NSLocalizedString("FlareNote_Delete User", comment: "ViewFlareNoteUploader"), action: deleteUser)
+                                .buttonStyle(DangerButtonStyle())
+                        }
                         
                         Text(NSLocalizedString("FlareNote_How to use", comment: "ViewFlareNoteUploader"))
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -112,23 +107,135 @@ struct ViewFlareNoteUploader: View {
                     .frame(height: 50)
             }
             .padding()
+            .disabled(isLoading)
+            
+            if isLoading {
+                LoadingView()
+            }
         }
         .foregroundColor(.white)
         .navigationTitle("DDR FlareNote")
         .onAppear {
-            let (savedId, savedName) = getIdAndName()
-            self.userId = savedId
-            self.userName = savedName
-            
-            isUserRegistered = !userId.isEmpty
+            loadUserData()
         }
     }
     
+    // 未登録ユーザー向けビュー
+    private var nonRegisteredUserView: some View {
+        VStack(spacing: 20) {
+            AdaptiveTextField(
+                text: $userName,
+                placeholder: "FlareNote_Input_user_name",
+                isDisabled: false
+            )
+            
+            Button(action: registerUser) {
+                Text(NSLocalizedString("FlareNote_Register User", comment: "ViewFlareNoteUploader"))
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(PrimaryButtonStyle())
+            
+            Divider().background(Color.white.opacity(0.3))
+            
+            Text("Googleアカウントでログイン")
+                .frame(maxWidth: .infinity, alignment: .center)
+            
+            Button(action: findUserWithGoogle) {
+                HStack {
+                    Image(systemName: "g.circle.fill")
+                        .foregroundColor(.white)
+                    Text("Google アカウントと連携")
+                        .foregroundColor(.white)
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(GoogleButtonStyle())
+        }
+    }
+    
+    // 登録済みユーザー向けビュー
+    private var registeredUserView: some View {
+        VStack(spacing: 20) {
+            HStack {
+                Text("ユーザー名: \(userName)")
+                    .fontWeight(.bold)
+                Spacer()
+            }
+            
+            Button(action: sendData) {
+                Text(NSLocalizedString("FlareNote_Send Song Data", comment: "ViewFlareNoteUploader"))
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(PrimaryButtonStyle())
+            
+            Divider().background(Color.white.opacity(0.3))
+            
+            if isGoogleLinked {
+                Button(action: unlinkGoogleAccount) {
+                    HStack {
+                        Image(systemName: "link.badge.minus")
+                            .foregroundColor(.white)
+                        Text("Google アカウント連携を解除")
+                            .foregroundColor(.white)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(GoogleDisconnectButtonStyle())
+            } else {
+                Button(action: linkGoogleAccount) {
+                    HStack {
+                        Image(systemName: "g.circle.fill")
+                            .foregroundColor(.white)
+                        Text("Google アカウントと連携")
+                            .foregroundColor(.white)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(GoogleButtonStyle())
+            }
+        }
+    }
+    
+    // ローディング表示用ビュー
+    private struct LoadingView: View {
+        var body: some View {
+            ZStack {
+                Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
+                VStack {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(1.5)
+                    Text("処理中...")
+                        .foregroundColor(.white)
+                        .padding(.top, 10)
+                }
+                .padding(25)
+                .background(Color.gray.opacity(0.7))
+                .cornerRadius(10)
+            }
+        }
+    }
+    
+    // ユーザーデータの読み込み
+    private func loadUserData() {
+        let (savedId, savedName) = getIdAndName()
+        self.userId = savedId
+        self.userName = savedName
+        
+        isUserRegistered = !userId.isEmpty
+        
+        // Google連携状態の確認（UserDefaultsなどから読み込む）
+        isGoogleLinked = UserDefaults.standard.bool(forKey: "isGoogleLinked_\(userId)")
+    }
+    
+    // ユーザー登録処理
     func registerUser() {
         guard !userName.isEmpty else {
             message = NSLocalizedString("FlareNote_Please enter your username", comment: "ViewFlareNoteUploader")
             return
         }
+        
+        isLoading = true
         
         let url = URL(string: "\(baseURL)/create-user")!
         var request = URLRequest(url: url)
@@ -140,6 +247,8 @@ struct ViewFlareNoteUploader: View {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
+                self.isLoading = false
+                
                 if let error = error {
                     self.message = "Error: \(error.localizedDescription)"
                     return
@@ -165,11 +274,14 @@ struct ViewFlareNoteUploader: View {
         }.resume()
     }
     
+    // 曲データ送信処理
     func sendData() {
         guard isUserRegistered, !userId.isEmpty else {
             message = NSLocalizedString("FlareNote_Please register user", comment: "FlareNoteUploader")
             return
         }
+        
+        isLoading = true
         
         let url = URL(string: "\(baseURL)/player-scores")!
         var request = URLRequest(url: url)
@@ -184,6 +296,8 @@ struct ViewFlareNoteUploader: View {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
+                self.isLoading = false
+                
                 if let error = error {
                     self.message = "Error: \(error.localizedDescription)"
                     return
@@ -204,11 +318,14 @@ struct ViewFlareNoteUploader: View {
         }.resume()
     }
     
+    // ユーザー削除
     func deleteUser() {
         guard isUserRegistered, !userId.isEmpty else {
             message = "No user found."
             return
         }
+        
+        isLoading = true
         
         let url = URL(string: "\(baseURL)/delete-user")!
         var request = URLRequest(url: url)
@@ -220,6 +337,8 @@ struct ViewFlareNoteUploader: View {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
+                self.isLoading = false
+                
                 if let error = error {
                     self.message = "Error: \(error.localizedDescription)"
                     return
@@ -234,8 +353,13 @@ struct ViewFlareNoteUploader: View {
                    let deletedUser = response["user"] {
                     self.message = String(format: NSLocalizedString("FlareNote_User deleted", comment: "ViewFlareNoteUploader"), userName)
                     self.isUserRegistered = false
+                    self.isGoogleLinked = false
                     self.userId = ""
                     self.userName = ""
+                    
+                    // Google連携情報も削除
+                    UserDefaults.standard.removeObject(forKey: "isGoogleLinked_\(userId)")
+                    
                     saveIdAndName(id: "", name: "")
                 } else if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
                     self.message = String(format: NSLocalizedString("FlareNote_error detail", comment: "FlareNoteUploader"), errorResponse.error, errorResponse.detail ?? "none")
@@ -244,6 +368,117 @@ struct ViewFlareNoteUploader: View {
                 }
             }
         }.resume()
+    }
+    
+    // Googleアカウントを使ってユーザーを検索
+    func findUserWithGoogle() {
+        isLoading = true
+        
+        // rootViewControllerを取得
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let rootViewController = windowScene.windows.first?.rootViewController else {
+            isLoading = false
+            message = "内部エラー: rootViewControllerが見つかりません"
+            return
+        }
+        
+        GoogleAuthManager.shared.signIn(presentingViewController: rootViewController) { result in
+            switch result {
+            case .success(let idToken, _):
+                GoogleAuthManager.shared.findPlayerByGoogleToken(idToken) { result in
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.message = result.message
+                        
+                        if result.success && result.found, let player = result.player {
+                            self.userId = player.id
+                            self.userName = player.name
+                            self.isUserRegistered = true
+                            self.isGoogleLinked = true
+                            
+                            UserDefaults.standard.set(true, forKey: "isGoogleLinked_\(player.id)")
+                            saveIdAndName(id: player.id, name: player.name)
+                        }
+                    }
+                }
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.message = "Google認証エラー: \(error.localizedDescription)"
+                }
+                
+            case .cancelled:
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.message = "Google認証がキャンセルされました"
+                }
+            }
+        }
+    }
+    
+    // Googleアカウントとユーザーを紐づける
+    func linkGoogleAccount() {
+        guard isUserRegistered, !userId.isEmpty else {
+            message = "ユーザーが登録されていません"
+            return
+        }
+        
+        isLoading = true
+        
+        // rootViewControllerを取得
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let rootViewController = windowScene.windows.first?.rootViewController else {
+            isLoading = false
+            message = "内部エラー: rootViewControllerが見つかりません"
+            return
+        }
+        
+        GoogleAuthManager.shared.signIn(presentingViewController: rootViewController) { result in
+            switch result {
+            case .success(let idToken, _):
+                GoogleAuthManager.shared.connectUserWithGoogleToken(playerId: self.userId, googleToken: idToken) { result in
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.message = result.message
+                        
+                        if result.success {
+                            self.isGoogleLinked = true
+                            UserDefaults.standard.set(true, forKey: "isGoogleLinked_\(self.userId)")
+                        }
+                    }
+                }
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.message = "Google認証エラー: \(error.localizedDescription)"
+                }
+                
+            case .cancelled:
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.message = "Google認証がキャンセルされました"
+                }
+            }
+        }
+    }
+    
+    // Googleアカウントとの連携を解除
+    func unlinkGoogleAccount() {
+        isLoading = true
+        
+        GoogleAuthManager.shared.unlinkGoogleAccount(playerId: userId) { success, message in
+            DispatchQueue.main.async {
+                self.isLoading = false
+                self.message = message
+                
+                if success {
+                    self.isGoogleLinked = false
+                    UserDefaults.standard.set(false, forKey: "isGoogleLinked_\(self.userId)")
+                }
+            }
+        }
     }
     
     func openURL(_ urlString: String) {
@@ -313,6 +548,36 @@ struct SecondaryButtonStyle: ButtonStyle {
     }
 }
 
+struct GoogleButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(Color.blue.opacity(0.5))
+            .foregroundColor(.white)
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.blue.opacity(0.8), lineWidth: 1)
+            )
+            .scaleEffect(configuration.isPressed ? 0.95 : 1)
+    }
+}
+
+struct GoogleDisconnectButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(Color.orange.opacity(0.5))
+            .foregroundColor(.white)
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.orange.opacity(0.8), lineWidth: 1)
+            )
+            .scaleEffect(configuration.isPressed ? 0.95 : 1)
+    }
+}
+
 struct DangerButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) var isEnabled
     
@@ -364,9 +629,3 @@ struct AdaptiveTextField: View {
         isDisabled ? Color.gray.opacity(0.7) : .black
     }
 }
-
-//struct FlareSkillNoteView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ViewFlareNoteUploader()
-//    }
-//}
