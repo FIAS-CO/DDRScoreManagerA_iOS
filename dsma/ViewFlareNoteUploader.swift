@@ -385,8 +385,12 @@ struct ViewFlareNoteUploader: View {
         GoogleAuthManager.shared.signIn(presentingViewController: rootViewController) { result in
             switch result {
             case .success(let idToken, _):
-                GoogleAuthManager.shared.findPlayerByGoogleToken(idToken) { result in
-                    DispatchQueue.main.async {
+                // 非同期処理を開始
+                Task {
+                    let result = await GoogleAuthManager.shared.findPlayerByGoogleToken(idToken)
+                    
+                    // UIの更新はメインスレッドで
+                    await MainActor.run {
                         self.isLoading = false
                         self.message = result.message
                         
@@ -403,16 +407,12 @@ struct ViewFlareNoteUploader: View {
                 }
                 
             case .failure(let error):
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.message = "Google認証エラー: \(error.localizedDescription)"
-                }
+                self.isLoading = false
+                self.message = "Google認証エラー: \(error.localizedDescription)"
                 
             case .cancelled:
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.message = "Google認証がキャンセルされました"
-                }
+                self.isLoading = false
+                self.message = "Google認証がキャンセルされました"
             }
         }
     }
@@ -437,8 +437,12 @@ struct ViewFlareNoteUploader: View {
         GoogleAuthManager.shared.signIn(presentingViewController: rootViewController) { result in
             switch result {
             case .success(let idToken, _):
-                GoogleAuthManager.shared.connectUserWithGoogleToken(playerId: self.userId, googleToken: idToken) { result in
-                    DispatchQueue.main.async {
+                // 非同期処理を開始
+                Task {
+                    let result = await GoogleAuthManager.shared.connectUserWithGoogleToken(playerId: self.userId, googleToken: idToken)
+                    
+                    // UIの更新はメインスレッドで
+                    await MainActor.run {
                         self.isLoading = false
                         self.message = result.message
                         
@@ -450,16 +454,12 @@ struct ViewFlareNoteUploader: View {
                 }
                 
             case .failure(let error):
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.message = "Google認証エラー: \(error.localizedDescription)"
-                }
+                self.isLoading = false
+                self.message = "Google認証エラー: \(error.localizedDescription)"
                 
             case .cancelled:
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.message = "Google認証がキャンセルされました"
-                }
+                self.isLoading = false
+                self.message = "Google認証がキャンセルされました"
             }
         }
     }
@@ -468,12 +468,14 @@ struct ViewFlareNoteUploader: View {
     func unlinkGoogleAccount() {
         isLoading = true
         
-        GoogleAuthManager.shared.unlinkGoogleAccount(playerId: userId) { success, message in
-            DispatchQueue.main.async {
+        Task {
+            let result = await GoogleAuthManager.shared.unlinkGoogleAccount(playerId: userId)
+            
+            await MainActor.run {
                 self.isLoading = false
-                self.message = message
+                self.message = result.message
                 
-                if success {
+                if result.success {
                     self.isGoogleLinked = false
                     UserDefaults.standard.set(false, forKey: "isGoogleLinked_\(self.userId)")
                 }
