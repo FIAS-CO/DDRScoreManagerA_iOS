@@ -23,6 +23,18 @@ struct ConnectGoogleResult {
     let message: String
 }
 
+struct UnlinkResponse: Codable {
+    let success: Bool
+    let message: String?
+}
+
+// 連携解除時のエラーレスポンス構造体
+struct UnlinkErrorResponse: Codable {
+    let success: Bool
+    let error: String
+    let details: String?
+}
+
 // Google認証を管理するクラス
 class GoogleAuthManager {
     static let shared = GoogleAuthManager()
@@ -177,14 +189,16 @@ class GoogleAuthManager {
                 return (false, "サーバーからのレスポンスがありません")
             }
             
-            
-            if let response = try? JSONDecoder().decode([String: Bool].self, from: data),
-               response["success"] == true {
-                return (true, "Googleアカウントとの連携を解除しました")
-            } else if let errorResponse = try? JSONDecoder().decode([String: String].self, from: data),
-                      let errorMessage = errorResponse["error"] {
-                return (false, errorMessage)
+            if let response = try? JSONDecoder().decode(UnlinkResponse.self, from: data),
+               response.success == true {
+                return (true, response.message ?? "Googleアカウントとの連携を解除しました")
+            } else if let errorResponse = try? JSONDecoder().decode(UnlinkErrorResponse.self, from: data) {
+                return (false, errorResponse.error)
             } else {
+                // デバッグのためにデータを表示
+                if let jsonString = String(data: data, encoding: .utf8) {
+                    print("Received JSON: \(jsonString)")
+                }
                 return (false, "Googleアカウント連携解除に失敗しました")
             }
         } catch {
