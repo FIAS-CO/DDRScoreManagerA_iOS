@@ -108,7 +108,7 @@ class GoogleAuthManager {
                     success: false,
                     found: false,
                     player: nil,
-                    message: "レスポンスの解析に失敗しました"
+                    message: NSLocalizedString("Failed to parse response", comment: "GoogleAuthManager")
                 )
             }
         } catch {
@@ -116,7 +116,7 @@ class GoogleAuthManager {
                 success: false,
                 found: false,
                 player: nil,
-                message: "エラー: \(error.localizedDescription)"
+                message: String(format: NSLocalizedString("Error: %@", comment: "GoogleAuthManager"), error.localizedDescription)
             )
         }
     }
@@ -150,24 +150,25 @@ class GoogleAuthManager {
                         message: NSLocalizedString("Google account connection completed", comment: "GoogleAuthManager")
                     )
                 } else {
+                    let errorMessage = response.error ?? NSLocalizedString("Unknown error", comment: "GoogleAuthManager")
                     return ConnectGoogleResult(
                         success: false,
                         player: nil,
-                        message: "Googleアカウント連携に失敗しました: \(response.error ?? "不明なエラー")"
+                        message: String(format: NSLocalizedString("Google account connection failed: %@", comment: "GoogleAuthManager"), errorMessage)
                     )
                 }
             } else {
                 return ConnectGoogleResult(
                     success: false,
                     player: nil,
-                    message: "レスポンスの解析に失敗しました"
+                    message: NSLocalizedString("Failed to parse response", comment: "GoogleAuthManager")
                 )
             }
         } catch {
             return ConnectGoogleResult(
                 success: false,
                 player: nil,
-                message: "エラー: \(error.localizedDescription)"
+                message: "Error: \(error.localizedDescription)"
             )
         }
     }
@@ -199,10 +200,10 @@ class GoogleAuthManager {
                 if let jsonString = String(data: data, encoding: .utf8) {
                     print("Received JSON: \(jsonString)")
                 }
-                return (false, "Googleアカウント連携解除に失敗しました")
+                return (false, NSLocalizedString("Failed to disconnect Google account", comment: "GoogleAuthManager"))
             }
         } catch {
-            return (false, "エラー: \(error.localizedDescription)")
+            return (false, "Error: \(error.localizedDescription)")
         }
     }
 }

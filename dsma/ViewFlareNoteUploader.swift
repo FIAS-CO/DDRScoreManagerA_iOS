@@ -453,7 +453,7 @@ struct ViewFlareNoteUploader: View {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let rootViewController = windowScene.windows.first?.rootViewController else {
             isLoading = false
-            message = "内部エラー: rootViewControllerが見つかりません"
+            self.message = NSLocalizedString("Error: rootViewController not found", comment: "ViewFlareNoteUploader")
             return
         }
         
@@ -478,11 +478,10 @@ struct ViewFlareNoteUploader: View {
                 
             case .failure(let error):
                 self.isLoading = false
-                self.message = "Google認証エラー: \(error.localizedDescription)"
-                
+                self.message = String(format: NSLocalizedString("Google Authentication Error: %@", comment: "ViewFlareNoteUploader"), error.localizedDescription)
             case .cancelled:
                 self.isLoading = false
-                self.message = "Google認証がキャンセルされました"
+                self.message = NSLocalizedString("Google Authentication Cancelled", comment: "ViewFlareNoteUploader")
             }
         }
     }
