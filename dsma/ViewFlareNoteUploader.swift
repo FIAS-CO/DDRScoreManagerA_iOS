@@ -23,6 +23,8 @@ struct ViewFlareNoteUploader: View {
     @State private var showHowToUse: Bool = false
     @State private var isGoogleLinked: Bool = false
     @State private var isLoading: Bool = false
+    @State private var showDeleteAlert: Bool = false
+    
     @Environment(\.presentationMode) var presentationMode
     
     private let baseURL = "https://fnapi.fia-s.com/api"
@@ -85,11 +87,6 @@ struct ViewFlareNoteUploader: View {
                             .buttonStyle(SecondaryButtonStyle())
                             .disabled(!isUserRegistered)
                             .frame(maxWidth: .infinity)
-                        }
-                        
-                        if isUserRegistered {
-                            Button(NSLocalizedString("FlareNote_Delete User", comment: "ViewFlareNoteUploader"), action: deleteUser)
-                                .buttonStyle(DangerButtonStyle())
                         }
                         
                         Text(NSLocalizedString("FlareNote_How to use", comment: "ViewFlareNoteUploader"))
@@ -183,7 +180,7 @@ struct ViewFlareNoteUploader: View {
             if isGoogleLinked {
                 Button(action: unlinkGoogleAccount) {
                     HStack {
-                        Image(systemName: "link.badge.minus")
+                        Image(systemName: "g.circle.fill")
                             .foregroundColor(.white)
                         Text("Google アカウント連携を解除")
                             .foregroundColor(.white)
@@ -202,6 +199,22 @@ struct ViewFlareNoteUploader: View {
                     .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(GoogleButtonStyle())
+            }
+            
+            // 削除ボタンを確認ダイアログを表示するように変更
+            Button(NSLocalizedString("FlareNote_Delete User", comment: "ViewFlareNoteUploader")) {
+                showDeleteAlert = true
+            }
+            .buttonStyle(DangerButtonStyle())
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(
+                    title: Text("アカウント削除の確認"),
+                    message: Text("本当に「\(userName)」のアカウントを削除しますか？この操作は取り消せません。"),
+                    primaryButton: .destructive(Text("削除する")) {
+                        deleteUser()
+                    },
+                    secondaryButton: .cancel(Text("キャンセル"))
+                )
             }
         }
     }
