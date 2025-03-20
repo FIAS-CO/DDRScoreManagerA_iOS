@@ -788,3 +788,31 @@
 
 /* FlareNoteUploader */
 "FlareNote_User deleted" = "ユーザー %@ が削除されました。";
+
+"Unregistered User" = "ユーザー未登録の方";
+"Google Account Linked User" = "Googleアカウント連携済みの方";
+"Login with Google Account" = "Google アカウントでログイン";
+"Disconnect Google Account" = "Google アカウント連携を解除";
+"Connect with Google Account" = "Google アカウントと連携";
+"Username" = "ユーザー名";
+"Processing..." = "処理中...";
+"Confirm Account Deletion" = "アカウント削除の確認";
+"Are you sure you want to delete account %@? This action cannot be undone." = "本当に「%@」のアカウントを削除しますか？この操作は取り消せません。";
+"Delete" = "削除する";
+"Cancel" = "キャンセル";
+"Internal Error" = "内部エラー";
+"No user found." = "ユーザーが見つかりません";
+"Error: rootViewController not found" = "内部エラー: rootViewControllerが見つかりません";
+"Google Authentication Error" = "Google認証エラー";
+"Google Authentication Cancelled" = "Google認証がキャンセルされました";
+"User Not Registered" = "ユーザーが登録されていません";
+
+/* ↑FlareNoteUploader↑ */
+
+/* GoogleAuthManager */
+"No response from server" = "サーバーからのレスポンスがありません";
+"Authenticated with Google account, logged in as user '%@'" = "Googleアカウントで認証され、ユーザー「%@」としてログインしました";
+"No user linked to this Google account. Please register a new user." = "Googleアカウントに紐づけられたユーザーが見つかりませんでした。新規ユーザー登録を行ってください。";
+"Google account connection completed" = "Googleアカウントとの連携が完了しました";
+"Google account connection removed" = "Googleアカウントとの連携を解除しました";
+/* ↑GoogleAuthManager↑ */

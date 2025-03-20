@@ -82,7 +82,7 @@ class GoogleAuthManager {
                     success: false,
                     found: false,
                     player: nil,
-                    message: "サーバーからのレスポンスがありません"
+                    message: NSLocalizedString("No response from server", comment: "GoogleAuthManager")
                 )
             }
             
@@ -93,14 +93,14 @@ class GoogleAuthManager {
                         success: true,
                         found: true,
                         player: player,
-                        message: "Googleアカウントで認証され、ユーザー「\(player.name)」としてログインしました"
+                        message: String(format: NSLocalizedString("Authenticated with Google account, logged in as user '%@'", comment: "GoogleAuthManager"), player.name)
                     )
                 } else {
                     return FindPlayerResult(
                         success: true,
                         found: false,
                         player: nil,
-                        message: "Googleアカウントに紐づけられたユーザーが見つかりませんでした。新規ユーザー登録を行ってください。"
+                        message: NSLocalizedString("No user linked to this Google account. Please register a new user.", comment: "GoogleAuthManager")
                     )
                 }
             } else {
@@ -138,7 +138,7 @@ class GoogleAuthManager {
                 return ConnectGoogleResult(
                     success: false,
                     player: nil,
-                    message: "サーバーからのレスポンスがありません"
+                    message: NSLocalizedString("No response from server", comment: "GoogleAuthManager")
                 )
             }
             
@@ -147,7 +147,7 @@ class GoogleAuthManager {
                     return ConnectGoogleResult(
                         success: true,
                         player: response.player,
-                        message: "Googleアカウントとの連携が完了しました"
+                        message: NSLocalizedString("Google account connection completed", comment: "GoogleAuthManager")
                     )
                 } else {
                     return ConnectGoogleResult(
@@ -186,12 +186,12 @@ class GoogleAuthManager {
             let (data, _) = try await URLSession.shared.data(for: request)
             
             guard !data.isEmpty else {
-                return (false, "サーバーからのレスポンスがありません")
+                return (false, NSLocalizedString("No response from server", comment: "GoogleAuthManager"))
             }
             
             if let response = try? JSONDecoder().decode(UnlinkResponse.self, from: data),
                response.success == true {
-                return (true, response.message ?? "Googleアカウントとの連携を解除しました")
+                return (true, response.message ?? NSLocalizedString("Google account connection removed", comment: "GoogleAuthManager"))
             } else if let errorResponse = try? JSONDecoder().decode(UnlinkErrorResponse.self, from: data) {
                 return (false, errorResponse.error)
             } else {

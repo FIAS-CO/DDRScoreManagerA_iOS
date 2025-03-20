@@ -47,7 +47,7 @@ struct ViewFlareNoteUploader: View {
                     
                     Spacer()
                     
-                    Text("FlareNote Uploader")
+                    Text(NSLocalizedString("FlareNoteUploader", comment: "ViewFlareNoteUploader"))
                         .foregroundColor(.white)
                         .font(.headline)
                     
@@ -121,7 +121,7 @@ struct ViewFlareNoteUploader: View {
     private var nonRegisteredUserView: some View {
         VStack(spacing: 20) {
             // 「ユーザー未登録の方」というヘッダー
-            Text("ユーザー未登録の方")
+            Text(NSLocalizedString("Unregistered User", comment: "ViewFlareNoteUploader"))
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -141,7 +141,7 @@ struct ViewFlareNoteUploader: View {
             
             Divider().background(Color.white.opacity(0.3))
             
-            Text("Googleアカウント連携済みの方")
+            Text(NSLocalizedString("Google Account Linked User", comment: "ViewFlareNoteUploader"))
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -151,7 +151,7 @@ struct ViewFlareNoteUploader: View {
                 HStack {
                     Image(systemName: "g.circle.fill")
                         .foregroundColor(.white)
-                    Text("Google アカウントでログイン")
+                    Text(NSLocalizedString("Login with Google Account", comment: "ViewFlareNoteUploader"))
                         .foregroundColor(.white)
                 }
                 .frame(maxWidth: .infinity)
@@ -164,7 +164,7 @@ struct ViewFlareNoteUploader: View {
     private var registeredUserView: some View {
         VStack(spacing: 20) {
             HStack {
-                Text("ユーザー名: \(userName)")
+                Text("\(NSLocalizedString("Username", comment: "ViewFlareNoteUploader")): \(userName)")
                     .fontWeight(.bold)
                 Spacer()
             }
@@ -182,7 +182,7 @@ struct ViewFlareNoteUploader: View {
                     HStack {
                         Image(systemName: "g.circle.fill")
                             .foregroundColor(.white)
-                        Text("Google アカウント連携を解除")
+                        Text(NSLocalizedString("Disconnect Google Account", comment: "ViewFlareNoteUploader"))
                             .foregroundColor(.white)
                     }
                     .frame(maxWidth: .infinity)
@@ -193,7 +193,7 @@ struct ViewFlareNoteUploader: View {
                     HStack {
                         Image(systemName: "g.circle.fill")
                             .foregroundColor(.white)
-                        Text("Google アカウントと連携")
+                        Text(NSLocalizedString("Connect with Google Account", comment: "ViewFlareNoteUploader"))
                             .foregroundColor(.white)
                     }
                     .frame(maxWidth: .infinity)
@@ -208,12 +208,12 @@ struct ViewFlareNoteUploader: View {
             .buttonStyle(DangerButtonStyle())
             .alert(isPresented: $showDeleteAlert) {
                 Alert(
-                    title: Text("アカウント削除の確認"),
-                    message: Text("本当に「\(userName)」のアカウントを削除しますか？この操作は取り消せません。"),
-                    primaryButton: .destructive(Text("削除する")) {
+                    title: Text(NSLocalizedString("Confirm Account Deletion", comment: "ViewFlareNoteUploader")),
+                    message: Text(String(format: NSLocalizedString("Are you sure you want to delete account %@? This action cannot be undone.", comment: "ViewFlareNoteUploader"), userName)),
+                    primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "ViewFlareNoteUploader"))) {
                         deleteUser()
                     },
-                    secondaryButton: .cancel(Text("キャンセル"))
+                    secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "ViewFlareNoteUploader")))
                 )
             }
         }
@@ -228,7 +228,7 @@ struct ViewFlareNoteUploader: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         .scaleEffect(1.5)
-                    Text("処理中...")
+                    Text(NSLocalizedString("Processing...", comment: "ViewFlareNoteUploader"))
                         .foregroundColor(.white)
                         .padding(.top, 10)
                 }
@@ -401,7 +401,7 @@ struct ViewFlareNoteUploader: View {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let rootViewController = windowScene.windows.first?.rootViewController else {
             isLoading = false
-            message = "内部エラー: rootViewControllerが見つかりません"
+            message = NSLocalizedString("Error: rootViewController not found", comment: "ViewFlareNoteUploader")
             return
         }
         
@@ -431,11 +431,11 @@ struct ViewFlareNoteUploader: View {
                 
             case .failure(let error):
                 self.isLoading = false
-                self.message = "Google認証エラー: \(error.localizedDescription)"
-                
+                self.message = "\(NSLocalizedString("Google Authentication Error", comment: "ViewFlareNoteUploader")): \(error.localizedDescription)"
+
             case .cancelled:
                 self.isLoading = false
-                self.message = "Google認証がキャンセルされました"
+                self.message = NSLocalizedString("Google Authentication Cancelled", comment: "ViewFlareNoteUploader")
             }
         }
     }
@@ -443,7 +443,7 @@ struct ViewFlareNoteUploader: View {
     // Googleアカウントとユーザーを紐づける
     func linkGoogleAccount() {
         guard isUserRegistered, !userId.isEmpty else {
-            message = "ユーザーが登録されていません"
+            message = NSLocalizedString("User Not Registered", comment: "ViewFlareNoteUploader")
             return
         }
         
