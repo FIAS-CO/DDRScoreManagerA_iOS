@@ -123,6 +123,13 @@ struct ViewFlareNoteUploader: View {
     // 未登録ユーザー向けビュー
     private var nonRegisteredUserView: some View {
         VStack(spacing: 20) {
+            // 「ユーザー未登録の方」というヘッダー
+            Text("ユーザー未登録の方")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 5)
+            
             AdaptiveTextField(
                 text: $userName,
                 placeholder: "FlareNote_Input_user_name",
@@ -137,14 +144,17 @@ struct ViewFlareNoteUploader: View {
             
             Divider().background(Color.white.opacity(0.3))
             
-            Text("Googleアカウントでログイン")
-                .frame(maxWidth: .infinity, alignment: .center)
+            Text("Googleアカウント連携済みの方")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 5)
             
             Button(action: findUserWithGoogle) {
                 HStack {
                     Image(systemName: "g.circle.fill")
                         .foregroundColor(.white)
-                    Text("Google アカウントと連携")
+                    Text("Google アカウントでログイン")
                         .foregroundColor(.white)
                 }
                 .frame(maxWidth: .infinity)
