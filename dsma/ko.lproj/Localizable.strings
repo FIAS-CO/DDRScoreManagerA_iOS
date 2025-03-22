@@ -798,14 +798,13 @@
 "Confirm Account Deletion" = "계정 삭제 확인";
 "Are you sure you want to delete account %@? This action cannot be undone." = "정말로 '%@' 계정을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.";
 "Delete" = "삭제";
-"Cancel" = "취소";
+"FlareNote_Cancel" = "취소";
 "Internal Error" = "내부 오류";
 "No user found." = "사용자를 찾을 수 없습니다";
 "Error: rootViewController not found" = "내부 오류: rootViewController를 찾을 수 없습니다";
 "Google Authentication Error" = "Google 인증 오류";
 "Google Authentication Cancelled" = "Google 인증이 취소되었습니다";
 "User Not Registered" = "사용자가 등록되지 않았습니다";
-"Error: rootViewController not found" = "내부 오류: rootViewController를 찾을 수 없습니다";
 "Google Authentication Error: %@" = "Google 인증 오류: %@";
 
 /* ↑FlareNoteUploader↑ */

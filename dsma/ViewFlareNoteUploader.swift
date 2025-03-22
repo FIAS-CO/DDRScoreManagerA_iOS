@@ -213,7 +213,7 @@ struct ViewFlareNoteUploader: View {
                     primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "ViewFlareNoteUploader"))) {
                         deleteUser()
                     },
-                    secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "ViewFlareNoteUploader")))
+                    secondaryButton: .cancel(Text(NSLocalizedString("FlareNote_Cancel", comment: "ViewFlareNoteUploader")))
                 )
             }
         }
@@ -344,7 +344,7 @@ struct ViewFlareNoteUploader: View {
     // ユーザー削除
     func deleteUser() {
         guard isUserRegistered, !userId.isEmpty else {
-            message = "No user found."
+            message = NSLocalizedString("No user found.", comment: "ViewFlareNoteUploader")
             return
         }
         
@@ -372,8 +372,7 @@ struct ViewFlareNoteUploader: View {
                     return
                 }
                 
-                if let response = try? JSONDecoder().decode([String: String].self, from: data),
-                   let deletedUser = response["user"] {
+                if let response = try? JSONDecoder().decode([String: String].self, from: data) {
                     self.message = String(format: NSLocalizedString("FlareNote_User deleted", comment: "ViewFlareNoteUploader"), userName)
                     self.isUserRegistered = false
                     self.isGoogleLinked = false

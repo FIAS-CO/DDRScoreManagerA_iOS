@@ -788,7 +788,6 @@
 
 /* FlareNoteUploader */
 "FlareNote_User deleted" = "ユーザー %@ が削除されました。";
-
 "Unregistered User" = "ユーザー未登録の方";
 "Google Account Linked User" = "Googleアカウント連携済みの方";
 "Login with Google Account" = "Google アカウントでログイン";
@@ -799,7 +798,7 @@
 "Confirm Account Deletion" = "アカウント削除の確認";
 "Are you sure you want to delete account %@? This action cannot be undone." = "本当に「%@」のアカウントを削除しますか？この操作は取り消せません。";
 "Delete" = "削除する";
-"Cancel" = "キャンセル";
+"FlareNote_Cancel" = "キャンセル";
 "Internal Error" = "内部エラー";
 "No user found." = "ユーザーが見つかりません";
 "Error: rootViewController not found" = "内部エラー: rootViewControllerが見つかりません";
