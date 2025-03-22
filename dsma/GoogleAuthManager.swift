@@ -206,6 +206,43 @@ class GoogleAuthManager {
             return (false, "Error: \(error.localizedDescription)")
         }
     }
+    
+    // ユーザーの存在確認とGoogle連携状態を検証する関数
+    func validateUser(userId: String) async -> (success: Bool, exists: Bool, isGoogleLinked: Bool, message: String?) {
+        let url = URL(string: "\(baseURL)/validate-user")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let body = ["id": userId]
+            request.httpBody = try JSONEncoder().encode(body)
+            
+            let (data, _) = try await URLSession.shared.data(for: request)
+            
+            guard !data.isEmpty else {
+                return (false, false, false, "サーバーからのデータなし")
+            }
+            
+            if let response = try? JSONDecoder().decode(ValidateUserResponse.self, from: data) {
+                if !response.exists {
+                    return (true, false, false, "別端末からユーザーが削除されました。")
+                } else {
+                    return (true, true, response.isGoogleLinked, nil)
+                }
+            } else {
+                return (false, false, false, "レスポンスの解析に失敗しました")
+            }
+        } catch {
+            return (false, false, false, "エラー: \(error.localizedDescription)")
+        }
+    }
+
+    // ValidateUserResponseもこのファイルに移動
+    struct ValidateUserResponse: Codable {
+        let exists: Bool
+        let isGoogleLinked: Bool
+    }
 }
 
 // APIレスポンス用のモデル

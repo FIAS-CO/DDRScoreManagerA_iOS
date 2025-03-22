@@ -114,6 +114,11 @@ struct ViewFlareNoteUploader: View {
         .navigationTitle("DDR FlareNote")
         .onAppear {
             loadUserData()
+            
+            // 非同期メソッドを呼び出す
+            Task {
+                await validateUserOnServer()
+            }
         }
     }
     
@@ -500,6 +505,48 @@ struct ViewFlareNoteUploader: View {
                     self.isGoogleLinked = false
                     UserDefaults.standard.set(false, forKey: "isGoogleLinked_\(self.userId)")
                 }
+            }
+        }
+    }
+    
+    private func validateUserOnServer() async {
+        guard !userId.isEmpty else { return }
+        
+        await MainActor.run {
+            isLoading = true
+        }
+        
+        let result = await GoogleAuthManager.shared.validateUser(userId: userId)
+        
+        await MainActor.run {
+            isLoading = false
+            
+            if !result.success {
+                // APIエラーの場合
+                print(result.message ?? "不明なエラー")
+                return
+            }
+            
+            if !result.exists {
+                // ユーザーが削除されている場合
+                self.message = result.message ?? "ユーザーが存在しません"
+                self.isUserRegistered = false
+                self.isGoogleLinked = false
+                self.userId = ""
+                self.userName = ""
+                
+                // UserDefaultsもクリア
+                saveIdAndName(id: "", name: "")
+                UserDefaults.standard.removeObject(forKey: "isGoogleLinked_\(self.userId)")
+            } else if isGoogleLinked && !result.isGoogleLinked {
+                // Google連携が解除されている場合
+                self.message = "別端末からGoogleアカウントとの連携が解除されました。"
+                self.isGoogleLinked = false
+                UserDefaults.standard.set(false, forKey: "isGoogleLinked_\(self.userId)")
+            } else {
+                // サーバーと連携状態を同期
+                self.isGoogleLinked = result.isGoogleLinked
+                UserDefaults.standard.set(result.isGoogleLinked, forKey: "isGoogleLinked_\(self.userId)")
             }
         }
     }
