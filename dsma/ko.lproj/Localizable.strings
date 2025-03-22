@@ -806,6 +806,8 @@
 "Google Authentication Cancelled" = "Google 인증이 취소되었습니다";
 "User Not Registered" = "사용자가 등록되지 않았습니다";
 "Google Authentication Error: %@" = "Google 인증 오류: %@";
+"User does not exist" = "사용자가 존재하지 않습니다";
+"Google account has been disconnected from another device" = "다른 기기에서 Google 계정 연결이 해제되었습니다";
 
 /* ↑FlareNoteUploader↑ */
 

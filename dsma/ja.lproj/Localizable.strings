@@ -806,6 +806,8 @@
 "Google Authentication Cancelled" = "Google認証がキャンセルされました";
 "User Not Registered" = "ユーザーが登録されていません";
 "Google Authentication Error: %@" = "Google認証エラー: %@";
+"User does not exist" = "ユーザーが存在しません";
+"Google account has been disconnected from another device" = "別端末からGoogleアカウントとの連携が解除されました";
 
 /* ↑FlareNoteUploader↑ */
 

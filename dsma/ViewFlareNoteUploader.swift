@@ -529,7 +529,7 @@ struct ViewFlareNoteUploader: View {
             
             if !result.exists {
                 // ユーザーが削除されている場合
-                self.message = result.message ?? "ユーザーが存在しません"
+                self.message = result.message ?? NSLocalizedString("User does not exist", comment: "ViewFlareNoteUploader")
                 self.isUserRegistered = false
                 self.isGoogleLinked = false
                 self.userId = ""
@@ -540,7 +540,7 @@ struct ViewFlareNoteUploader: View {
                 UserDefaults.standard.removeObject(forKey: "isGoogleLinked_\(self.userId)")
             } else if isGoogleLinked && !result.isGoogleLinked {
                 // Google連携が解除されている場合
-                self.message = "別端末からGoogleアカウントとの連携が解除されました。"
+                self.message = NSLocalizedString("Google account has been disconnected from another device", comment: "ViewFlareNoteUploader")
                 self.isGoogleLinked = false
                 UserDefaults.standard.set(false, forKey: "isGoogleLinked_\(self.userId)")
             } else {
