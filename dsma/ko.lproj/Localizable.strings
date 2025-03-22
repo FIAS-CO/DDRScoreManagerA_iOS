@@ -811,6 +811,12 @@
 
 /* ↑FlareNoteUploader↑ */
 
+/* FlareNoteUploader */
+"FlareNote_Google_Account_Title" = "Google 계정 연동 기능";
+
+/* FlareNoteUploader */
+"FlareNote_Google_Account_Detail" = "• Google 계정과 연동하면 다른 기기에서도 동일한 계정을 사용할 수 있습니다\n• 사용자 등록 후, 'Google 계정과 연결' 버튼을 통해 계정을 연동할 수 있습니다\n• 다음 방문 시에는 'Google 계정으로 로그인'으로 계정에 접근할 수 있습니다";
+
 /* GoogleAuthManager */
 "No response from server" = "서버에서 응답이 없습니다";
 "Authenticated with Google account, logged in as user '%@'" = "Google 계정으로 인증되어 사용자 '%@'으로 로그인했습니다";

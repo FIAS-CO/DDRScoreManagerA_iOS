@@ -97,6 +97,16 @@ struct ViewFlareNoteUploader: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .background(Color.white.opacity(0.1))
                             .cornerRadius(8)
+                        
+                        Text(NSLocalizedString("FlareNote_Google_Account_Title", comment: "ViewFlareNoteUploader"))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.top, 10)
+
+                        Text(NSLocalizedString("FlareNote_Google_Account_Detail", comment: "ViewFlareNoteUploader"))
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color.white.opacity(0.1))
+                            .cornerRadius(8)
                     }
                 }
                 

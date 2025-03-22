@@ -811,6 +811,12 @@
 
 /* ↑FlareNoteUploader↑ */
 
+/* FlareNoteUploader */
+"FlareNote_Google_Account_Title" = "Googleアカウント連携機能";
+
+/* FlareNoteUploader */
+"FlareNote_Google_Account_Detail" = "・Googleアカウントと連携すると、他の端末でも同じアカウントを使用できます\n・ユーザー登録後、「Google アカウントと連携」ボタンからアカウントを連携できます\n・次回からは「Google アカウントでログイン」でアカウントを呼び出せます";
+
 /* GoogleAuthManager */
 "No response from server" = "サーバーからのレスポンスがありません";
 "Authenticated with Google account, logged in as user '%@'" = "Googleアカウントで認証され、ユーザー「%@」としてログインしました";
