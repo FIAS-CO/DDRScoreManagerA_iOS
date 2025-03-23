@@ -820,7 +820,7 @@
 /* GoogleAuthManager */
 "No response from server" = "서버에서 응답이 없습니다";
 "Authenticated with Google account, logged in as user '%@'" = "Google 계정으로 인증되어 사용자 '%@'으로 로그인했습니다";
-"No user linked to this Google account. Please register a new user." = "이 Google 계정에 연결된 사용자가 없습니다. 새 사용자를 등록해 주세요.";
+"No user linked to this Google account. Please register a new user." = "이 Google 계정에 연결된 FlareNote 계정이 없습니다. FlareNote 계정을 가지고 계신 경우, 먼저 연결해 주세요.";
 "Google account connection completed" = "Google 계정 연결이 완료되었습니다";
 "Google account connection removed" = "Google 계정 연결이 해제되었습니다";
 "Failed to parse response" = "응답 분석에 실패했습니다";

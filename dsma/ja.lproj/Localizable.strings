@@ -820,7 +820,7 @@
 /* GoogleAuthManager */
 "No response from server" = "サーバーからのレスポンスがありません";
 "Authenticated with Google account, logged in as user '%@'" = "Googleアカウントで認証され、ユーザー「%@」としてログインしました";
-"No user linked to this Google account. Please register a new user." = "Googleアカウントに紐づけられたユーザーが見つかりませんでした。新規ユーザー登録を行ってください。";
+"No user linked to this Google account. Please register a new user." = "Googleアカウントに紐づけられたFlareNoteアカウントが見つかりませんでした。FlareNoteアカウントをお持ちの方は先に紐づけを行ってください。";
 "Google account connection completed" = "Googleアカウントとの連携が完了しました";
 "Google account connection removed" = "Googleアカウントとの連携を解除しました";
 "Failed to parse response" = "レスポンスの解析に失敗しました";
